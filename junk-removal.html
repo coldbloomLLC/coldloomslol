@@ -5,6 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Junk Removal | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: linear-gradient(to right, rgba(0, 121, 107, 0.4), rgba(0, 121, 107, 0.2)), url('https://i.postimg.cc/WbhYtfQg/Chat-GPT-Image-Apr-25-2025-07-42-56-AM.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+    .hero-section h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .pro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .fun-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .fun-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .message-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .message-button:hover {
+      background-color: #009688;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -13,16 +68,36 @@
     </div>
   </nav>
 
-  <section style="padding: 3rem; text-align: center;">
+  <section class="hero-section">
     <h1>Junk Removal Services</h1>
-    <p>Clear out clutter fast. Whether it's furniture, yard waste, or renovation debris — we’ll connect you with pros who haul it all.</p>
+    <p>Need to clear out clutter fast? Our junk removal pros haul it all — furniture, appliances, debris, and more.</p>
   </section>
 
-  <footer class="site-footer">
+  <section>
+    <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Junk Removal Pros</h2>
+    <div class="pro-grid">
+      <div class="fun-card">
+        <h3>Haul It Now <span style="color: #00bfa5;">✔️</span></h3>
+        <p style="font-size: 0.85rem; color: #888;">📍 Van Nuys, CA</p>
+        <p style="color: #555;">Same-day service. Garage cleanouts, mattresses, yard debris and more.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+
+      <div class="fun-card">
+        <h3>Dump Run Crew <span style="color: #00bfa5;">✔️</span></h3>
+        <p style="font-size: 0.85rem; color: #888;">📍 Chatsworth, CA</p>
+        <p style="color: #555;">Fast pickups, curbside options, and appliance removal available.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" style="margin-top: 3rem;">
     <div class="container">
-      <p>© 2025 Cold Looms</p>
+      <p style="text-align: center; color: #777;">© 2025 Cold Looms</p>
     </div>
   </footer>
 </body>
 </html>
-
