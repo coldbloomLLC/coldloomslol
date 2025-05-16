@@ -6,46 +6,6 @@
   <title>Window Washing | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .fun-card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 1.8rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      animation: fadeUp 0.6s ease forwards;
-      opacity: 0;
-    }
-    .fun-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-    }
-    .fun-card::after {
-      content: "✨";
-      font-size: 2rem;
-      position: absolute;
-      top: -10px;
-      right: -10px;
-    }
-    .message-button {
-      margin-top: 1rem;
-      display: inline-block;
-      background-color: #00bfa5;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .message-button:hover {
-      background-color: #009688;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     .hero-section {
       padding: 6rem 2rem;
       text-align: center;
@@ -64,6 +24,41 @@
       font-size: 1.2rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
+    .pro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .fun-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .fun-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .message-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .message-button:hover {
+      background-color: #009688;
+    }
   </style>
 </head>
 <body>
@@ -78,28 +73,21 @@
     <p>Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
   </section>
 
-  <section style="padding: 2rem; max-width: 1200px; margin: auto;">
-    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #045c52;">Available Window Washing Pros</h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <!-- Business Card -->
+  <section>
+    <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Window Washing Pros</h2>
+    <div class="pro-grid">
       <div class="fun-card">
-        <h3 style="margin: 0 0 0.5rem; color: #333;">
-          ClearView Windows <span style="color: #00bfa5;">✔️</span>
-        </h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Reseda, CA</p>
-        <p style="font-size: 0.95rem; color: #555;">Family-owned, eco-friendly solutions, serving LA county for over 10 years.</p>
+        <h3>ClearView Windows <span style="color: #00bfa5;">✔️</span></h3>
+        <p style="font-size: 0.85rem; color: #888;">📍 Sherman Oaks, CA</p>
+        <p style="color: #555;">Family-owned, eco-friendly solutions, serving LA county for over 10 years.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <!-- Business Card -->
       <div class="fun-card">
-        <h3 style="margin: 0 0 0.5rem; color: #333;">
-          Shine Squad <span style="color: #00bfa5;">✔️</span>
-        </h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Northridge, CA</p>
-        <p style="font-size: 0.95rem; color: #555;">Quick appointments, insured & bonded, great Yelp reviews.</p>
+        <h3>Shine Squad <span style="color: #00bfa5;">✔️</span></h3>
+        <p style="font-size: 0.85rem; color: #888;">📍 Encino, CA</p>
+        <p style="color: #555;">Quick appointments, insured & bonded, great Yelp reviews.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
@@ -107,8 +95,12 @@
   </section>
 
   <footer class="site-footer" style="margin-top: 3rem;">
-    <div class="container">
-      <p style="text-align: center; color: #777;">© 2025 Cold Looms</p>
+    <div class="container" style="text-align: center; color: #777;">
+      <p>© 2025 Cold Looms</p>
+      <p>
+        <a href="privacy.html" style="color: #00796b; text-decoration: none;">Privacy Policy</a> |
+        <a href="terms.html" style="color: #00796b; text-decoration: none;">Terms of Service</a>
+      </p>
     </div>
   </footer>
 </body>
