@@ -5,6 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Window Washing | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .fun-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .fun-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .fun-card::after {
+      content: "✨";
+      font-size: 2rem;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+    .message-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .message-button:hover {
+      background-color: #009688;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -13,36 +49,36 @@
     </div>
   </nav>
 
-  <section style="padding: 3rem; text-align: center;">
-    <h1>Window Washing Services</h1>
-    <p>Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
+  <section style="padding: 3rem; text-align: center; background: #f7fdfc;">
+    <h1 style="font-size: 2.5rem; color: #045c52;">Window Washing Services</h1>
+    <p style="font-size: 1.2rem; color: #444;">Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
   </section>
 
   <section style="padding: 2rem; max-width: 1200px; margin: auto;">
-    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Available Window Washing Pros</h2>
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #045c52;">Available Window Washing Pros</h2>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
       <!-- Business Card -->
-      <div style="background: white; border-radius: 10px; padding: 1.5rem; box-shadow: 0 1px 5px rgba(0,0,0,0.08);">
-        <h3 style="margin: 0 0 0.5rem;">ClearView Windows</h3>
+      <div class="fun-card">
+        <h3 style="margin: 0 0 0.5rem; color: #333;">ClearView Windows</h3>
         <p style="font-size: 0.95rem; color: #555;">Family-owned, eco-friendly solutions, serving LA county for over 10 years.</p>
-        <p style="color: #ffaa00;">★★★★★</p>
-        <a href="#" style="margin-top: 1rem; display: inline-block; background-color: #00796b; color: white; padding: 0.6rem 1rem; border-radius: 6px; text-decoration: none;">Message</a>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
       </div>
 
       <!-- Business Card -->
-      <div style="background: white; border-radius: 10px; padding: 1.5rem; box-shadow: 0 1px 5px rgba(0,0,0,0.08);">
-        <h3 style="margin: 0 0 0.5rem;">Shine Squad</h3>
+      <div class="fun-card">
+        <h3 style="margin: 0 0 0.5rem; color: #333;">Shine Squad</h3>
         <p style="font-size: 0.95rem; color: #555;">Quick appointments, insured & bonded, great Yelp reviews.</p>
-        <p style="color: #ffaa00;">★★★★☆</p>
-        <a href="#" style="margin-top: 1rem; display: inline-block; background-color: #00796b; color: white; padding: 0.6rem 1rem; border-radius: 6px; text-decoration: none;">Message</a>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
+  <footer class="site-footer" style="margin-top: 3rem;">
     <div class="container">
-      <p>© 2025 Cold Looms</p>
+      <p style="text-align: center; color: #777;">© 2025 Cold Looms</p>
     </div>
   </footer>
 </body>
