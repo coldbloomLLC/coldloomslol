@@ -36,14 +36,13 @@
       border-radius: 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       min-height: 100vh;
-      width: 220px;
+      width: 260px;
       flex-shrink: 0;
     }
     .sidebar h3 {
       font-size: 1.8rem;
       margin-top: 0;
       margin-bottom: 2rem;
-      cursor: pointer;
       background: #00796b;
       color: white;
       padding: 0.8rem 1rem;
@@ -51,13 +50,21 @@
       text-align: center;
     }
     .filter-group {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .filter-group legend {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
     }
     .filter-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .filter-group input[type="checkbox"] {
+      margin-right: 0.5rem;
     }
     .tile-grid {
       flex: 1;
@@ -125,7 +132,7 @@
         checkbox.addEventListener("change", () => {
           const activeFilters = Array.from(checkboxes)
             .filter(box => box.checked)
-            .map(box => box.nextSibling.textContent.trim());
+            .map(box => box.value);
 
           tiles.forEach(tile => {
             const content = tile.textContent;
@@ -147,22 +154,27 @@
   <h1 class="page-title">Power Washing Pros</h1>
 
   <section class="main-layout">
-    <!-- Sidebar Filters -->
     <aside class="sidebar">
       <h3>FILTER</h3>
-      <div class="filter-group">
-        <label>Service Type</label>
-        <input type="checkbox" value="Residential" /> Residential<br />
-        <input type="checkbox" value="Commercial" /> Commercial
-      </div>
-      <div class="filter-group">
-        <label>Location</label>
-        <input type="checkbox" value="North Hollywood" /> North Hollywood<br />
-        <input type="checkbox" value="Chatsworth" /> Chatsworth
-      </div>
+      <fieldset class="filter-group">
+        <legend>When do you want to start?</legend>
+        <label><input type="checkbox" value="Within 48 hours" /> Within 48 hours</label>
+        <label><input type="checkbox" value="Within a week" /> Within a week</label>
+        <label><input type="checkbox" value="Flexible" /> Flexible on timeline</label>
+        <label><input type="checkbox" value="Specific date" /> Specific date(s)</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Service Type</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Location</legend>
+        <label><input type="checkbox" value="North Hollywood" /> North Hollywood</label>
+        <label><input type="checkbox" value="Chatsworth" /> Chatsworth</label>
+      </fieldset>
     </aside>
 
-    <!-- Grid Results -->
     <div class="tile-grid">
       <div class="tile">
         <h3>WashWorks LA ✔️</h3>
@@ -170,28 +182,24 @@
         <p>Eco-friendly services for driveways, siding, and patios.</p>
         <a href="#" class="message-button">Message</a>
       </div>
-
       <div class="tile">
         <h3>Blast & Shine ✔️</h3>
         <p>📍 Chatsworth, CA</p>
         <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
         <a href="#" class="message-button">Message</a>
       </div>
-
       <div class="tile">
         <h3>HydroPro Wash</h3>
         <p>📍 Van Nuys, CA</p>
         <p>Top-rated crew for residential and commercial power wash.</p>
         <a href="#" class="message-button">Message</a>
       </div>
-
       <div class="tile">
         <h3>Prime Jet Clean</h3>
         <p>📍 Simi Valley, CA</p>
         <p>Affordable pressure washing with a spotless finish.</p>
         <a href="#" class="message-button">Message</a>
       </div>
-
       <div class="tile">
         <h3>EcoSpray Solutions</h3>
         <p>📍 Reseda, CA</p>
