@@ -50,6 +50,18 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .fun-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 2px solid #00bfa5;
     }
     .fun-card:hover {
       transform: translateY(-6px);
@@ -130,16 +142,18 @@
     <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Window Washing Pros</h2>
     <div class="pro-grid">
       <div class="fun-card">
+        <img src="https://i.ibb.co/vjLNJMr/avatar1.png" alt="ClearView Windows Profile" />
         <h3>ClearView Windows <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Sherman Oaks, CA</p>
+        <p style="font-size: 0.85rem; color: #888;">📍 Sherman Oaks, CA • 2.3 miles away</p>
         <p style="color: #555;">Family-owned, eco-friendly solutions, serving LA county for over 10 years.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
       <div class="fun-card">
+        <img src="https://i.ibb.co/yhxBG4D/avatar2.png" alt="Shine Squad Profile" />
         <h3>Shine Squad <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Encino, CA</p>
+        <p style="font-size: 0.85rem; color: #888;">📍 Encino, CA • 3.8 miles away</p>
         <p style="color: #555;">Quick appointments, insured & bonded, great Yelp reviews.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
