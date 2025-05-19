@@ -73,7 +73,47 @@
       50% { opacity: 1; }
       100% { opacity: 0; }
     }
+    .faq-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .faq-section h2 {
+      text-align: center;
+      color: #045c52;
+      margin-bottom: 2rem;
+    }
+    .faq-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+    }
+    .faq-question {
+      font-weight: bold;
+      color: #00796b;
+    }
+    .faq-answer {
+      display: none;
+      padding-top: 0.5rem;
+      color: #333;
+    }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const items = document.querySelectorAll(".faq-item");
+      items.forEach(item => {
+        item.addEventListener("click", () => {
+          const answer = item.querySelector(".faq-answer");
+          const isOpen = answer.style.display === "block";
+          document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
+          answer.style.display = isOpen ? "none" : "block";
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -109,6 +149,22 @@
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">How much does window washing cost?</div>
+      <div class="faq-answer">Pricing varies by job size and location, but most services start at $99 for small homes and go up based on size and scope.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do I need to be home?</div>
+      <div class="faq-answer">Not always. As long as you can provide access and instructions, many pros can complete the work without needing you there.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Are your pros insured?</div>
+      <div class="faq-answer">Yes! All Cold Looms professionals are vetted, insured, and background-checked for your peace of mind.</div>
     </div>
   </section>
 
