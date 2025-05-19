@@ -1,10 +1,10 @@
-< html>
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Power Washing | Cold Looms</title>
+  <title>Power Washing</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -13,7 +13,7 @@
     }
     .main-layout {
       display: grid;
-      grid-template-columns: 250px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 2rem;
       max-width: 1400px;
       margin: 3rem auto;
@@ -21,21 +21,23 @@
     }
     .sidebar {
       background: #f9f9f9;
-      padding: 1.5rem;
-      border-radius: 12px;
+      padding: 2rem;
+      border-radius: 16px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .sidebar h3 {
+      font-size: 1.6rem;
       margin-top: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .filter-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
     .filter-group label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: bold;
+      font-size: 1.1rem;
     }
     .tile-grid {
       display: grid;
@@ -70,7 +72,8 @@
       display: inline-block;
       background-color: #ffffff;
       color: #333;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
@@ -92,7 +95,7 @@
   <section class="main-layout">
     <!-- Sidebar Filters -->
     <aside class="sidebar">
-      <h3>Filter Options</h3>
+      <h3>FILTER</h3>
       <div class="filter-group">
         <label>Service Type</label>
         <input type="checkbox" /> Residential<br />
