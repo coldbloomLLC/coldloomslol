@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,7 +25,7 @@
       font-size: 1.2rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
-    .pro-grid {
+    .tile-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
@@ -32,32 +33,47 @@
       max-width: 1200px;
       margin: auto;
     }
-    .fun-card {
-      background: #ffffff;
-      border-radius: 14px;
+    .tile {
+      border-radius: 16px;
       padding: 1.8rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
-    .fun-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    .tile.feature {
+      grid-column: span 2;
+      background: linear-gradient(to right, #00796b, #004d40);
+    }
+    .tile.washworks {
+      background: #00bfa5;
+    }
+    .tile.blastshine {
+      background: #009688;
+    }
+    .tile h3, .tile h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .tile p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
     }
     .message-button {
       margin-top: 1rem;
       display: inline-block;
-      background-color: #00bfa5;
-      color: white;
+      background-color: #ffffff;
+      color: #00796b;
       padding: 0.6rem 1.2rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.3s ease;
+      align-self: flex-start;
     }
     .message-button:hover {
-      background-color: #009688;
+      background-color: #e0f2f1;
     }
   </style>
 </head>
@@ -75,20 +91,31 @@
 
   <section>
     <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Power Washing Pros</h2>
-    <div class="pro-grid">
-      <div class="fun-card">
-        <h3>WashWorks LA <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 North Hollywood, CA</p>
-        <p style="color: #555;">Eco-friendly pressure wash services for driveways, siding, patios, and more.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+    <div class="tile-grid">
+      <!-- Featured Tile -->
+      <div class="tile feature">
+        <div>
+          <h2>Why Power Washing?</h2>
+          <p>Restore curb appeal, increase property value, and protect surfaces with routine power washing services. It’s more than just clean — it’s care.</p>
+        </div>
+        <a href="#" class="message-button">Explore More</a>
+      </div>
+
+      <!-- Provider 1 -->
+      <div class="tile washworks">
+        <h3>WashWorks LA ✔️</h3>
+        <p>📍 North Hollywood, CA</p>
+        <p>Eco-friendly pressure wash services for driveways, siding, patios, and more.</p>
+        <p>★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <div class="fun-card">
-        <h3>Blast & Shine <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Chatsworth, CA</p>
-        <p style="color: #555;">Fast, reliable, and affordable. Great for large surface cleanups and prep jobs.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+      <!-- Provider 2 -->
+      <div class="tile blastshine">
+        <h3>Blast & Shine ✔️</h3>
+        <p>📍 Chatsworth, CA</p>
+        <p>Fast, reliable, and affordable. Great for large surface cleanups and prep jobs.</p>
+        <p>★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
     </div>
