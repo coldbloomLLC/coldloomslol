@@ -11,16 +11,22 @@
       margin: 0;
       font-family: sans-serif;
     }
+    h1.page-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      color: #045c52;
+    }
     .main-layout {
       display: grid;
       grid-template-columns: 300px 1fr;
       gap: 2rem;
       max-width: 1400px;
-      margin: 3rem auto;
+      margin: 2rem auto;
       padding: 0 2rem;
     }
     .sidebar {
-      background: #f9f9f9;
+      background: #e0f2f1;
       padding: 2rem;
       border-radius: 16px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -29,6 +35,12 @@
       font-size: 1.6rem;
       margin-top: 0;
       margin-bottom: 1.5rem;
+      cursor: pointer;
+      background: #00796b;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-align: center;
     }
     .filter-group {
       margin-bottom: 2rem;
@@ -47,18 +59,15 @@
     .tile {
       border-radius: 16px;
       padding: 1.8rem;
-      color: white;
+      color: #004d40;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       min-height: 160px;
     }
-    .tile.washworks { background: linear-gradient(to right, #7b1fa2, #512da8); }
-    .tile.blastshine { background: linear-gradient(to right, #f4511e, #ef6c00); }
-    .tile.other1 { background: linear-gradient(to right, #8e24aa, #5e35b1); }
-    .tile.other2 { background: linear-gradient(to right, #fb8c00, #f57c00); }
-    .tile.other3 { background: linear-gradient(to right, #d32f2f, #c2185b); }
     .tile h3 {
       margin-top: 0;
       margin-bottom: 0.5rem;
@@ -70,8 +79,8 @@
     .message-button {
       margin-top: 1rem;
       display: inline-block;
-      background-color: #ffffff;
-      color: #333;
+      background-color: #00bfa5;
+      color: #fff;
       padding: 0.6rem 1.6rem;
       font-size: 1rem;
       border-radius: 9999px;
@@ -81,9 +90,21 @@
       align-self: flex-start;
     }
     .message-button:hover {
-      background-color: #f0f0f0;
+      background-color: #00796b;
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const filterToggle = document.querySelector(".sidebar h3");
+      const filterGroups = document.querySelectorAll(".filter-group");
+
+      filterToggle.addEventListener("click", () => {
+        filterGroups.forEach(group => {
+          group.style.display = group.style.display === "none" ? "block" : "none";
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -91,6 +112,8 @@
       <a href="index.html" class="nav-logo">Back to Home</a>
     </div>
   </nav>
+
+  <h1 class="page-title">Power Washing Pros</h1>
 
   <section class="main-layout">
     <!-- Sidebar Filters -->
@@ -110,35 +133,35 @@
 
     <!-- Grid Results -->
     <div class="tile-grid">
-      <div class="tile washworks">
+      <div class="tile">
         <h3>WashWorks LA ✔️</h3>
         <p>📍 North Hollywood, CA</p>
         <p>Eco-friendly services for driveways, siding, and patios.</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <div class="tile blastshine">
+      <div class="tile">
         <h3>Blast & Shine ✔️</h3>
         <p>📍 Chatsworth, CA</p>
         <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <div class="tile other1">
+      <div class="tile">
         <h3>HydroPro Wash</h3>
         <p>📍 Van Nuys, CA</p>
         <p>Top-rated crew for residential and commercial power wash.</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <div class="tile other2">
+      <div class="tile">
         <h3>Prime Jet Clean</h3>
         <p>📍 Simi Valley, CA</p>
         <p>Affordable pressure washing with a spotless finish.</p>
         <a href="#" class="message-button">Message</a>
       </div>
 
-      <div class="tile other3">
+      <div class="tile">
         <h3>EcoSpray Solutions</h3>
         <p>📍 Reseda, CA</p>
         <p>Green methods. Industrial-grade tools. Always on time.</p>
