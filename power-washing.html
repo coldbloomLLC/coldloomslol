@@ -214,7 +214,7 @@
   <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
   <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
     <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; text-decoration:none;">Back to Home</a>
-    <a href="#" class="sign-in" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
+    <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
   </div>
 </nav>
 
@@ -353,5 +353,19 @@ $1
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
+<div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
+  <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
+    <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
+    <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
+    <form>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+      <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
+    </form>
+  </div>
+</div>
+
 </body>
 </html>
