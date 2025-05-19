@@ -48,9 +48,17 @@
       background: linear-gradient(to right, #c62828, #ad1457);
     }
     .tile.feature.image {
+      grid-column: span 3;
       background: url('https://i.ibb.co/xHGVRvc/red-fabric.jpg');
       background-size: cover;
       background-position: center;
+    }
+    .tile.washworks,
+    .tile.blastshine,
+    .tile.other1,
+    .tile.other2,
+    .tile.other3 {
+      grid-column: span 2;
     }
     .tile.washworks {
       background: linear-gradient(to right, #7b1fa2, #512da8);
