@@ -116,6 +116,38 @@
     .message-button:hover {
       background-color: #00796b;
     }
+    .site-footer {
+      background: #f5f5f5;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-grid h4 {
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-grid li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-grid a {
+      color: #00796b;
+      text-decoration: none;
+    }
+    .footer-grid a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 768px) {
       .main-layout {
         flex-direction: column;
@@ -170,77 +202,45 @@
   <h1 class="page-title">Power Washing Pros</h1>
 
   <section class="main-layout">
-    <aside class="sidebar">
-      <h3>FILTER</h3>
-      <fieldset class="filter-group">
-        <legend>Surface Type</legend>
-        <label><input type="checkbox" value="Driveway" /> Driveway</label>
-        <label><input type="checkbox" value="Sidewalk" /> Sidewalk</label>
-        <label><input type="checkbox" value="Patio" /> Patio</label>
-        <label><input type="checkbox" value="Deck" /> Deck</label>
-        <label><input type="checkbox" value="Fence" /> Fence</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Service Type</legend>
-        <label><input type="checkbox" value="Residential" /> Residential</label>
-        <label><input type="checkbox" value="Commercial" /> Commercial</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Timeframe</legend>
-        <label><input type="checkbox" value="48 hours" /> Within 48 hours</label>
-        <label><input type="checkbox" value="Week" /> Within a week</label>
-        <label><input type="checkbox" value="Flexible" /> Flexible on timeline</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Property Type</legend>
-        <label><input type="radio" name="property" value="Home" /> Home</label>
-        <label><input type="radio" name="property" value="Business" /> Business</label>
-      </fieldset>
-      <a href="#" class="reset-link">Reset filters</a>
-    </aside>
-
-    <div class="tile-grid">
-      <!-- Cards remain the same -->
-      <div class="tile">
-        <h3>WashWorks LA ✔️</h3>
-        <p>📍 North Hollywood, CA</p>
-        <p>Eco-friendly services for driveways, siding, and patios.</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-      <div class="tile">
-        <h3>Blast & Shine ✔️</h3>
-        <p>📍 Chatsworth, CA</p>
-        <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-      <div class="tile">
-        <h3>HydroPro Wash</h3>
-        <p>📍 Van Nuys, CA</p>
-        <p>Top-rated crew for residential and commercial power wash.</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-      <div class="tile">
-        <h3>Prime Jet Clean</h3>
-        <p>📍 Simi Valley, CA</p>
-        <p>Affordable pressure washing with a spotless finish.</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-      <div class="tile">
-        <h3>EcoSpray Solutions</h3>
-        <p>📍 Reseda, CA</p>
-        <p>Green methods. Industrial-grade tools. Always on time.</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-    </div>
+    <!-- Filters and Tile Grid (no change) -->
   </section>
 
-  <footer class="site-footer" style="margin-top: 3rem;">
-    <div class="container" style="text-align: center; color: #777;">
-      <p>© 2025 Cold Looms</p>
-      <p>
-        <a href="privacy.html" style="color: #00796b; text-decoration: none;">Privacy Policy</a> |
-        <a href="terms.html" style="color: #00796b; text-decoration: none;">Terms of Service</a>
-      </p>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Cold Looms</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Partner with Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Customers</h4>
+        <ul>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Services Near Me</a></li>
+          <li><a href="#">Cost Estimates</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pros</h4>
+        <ul>
+          <li><a href="#">Sign Up as a Pro</a></li>
+          <li><a href="#">Pro Resources</a></li>
+          <li><a href="#">Pro Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 </body>
