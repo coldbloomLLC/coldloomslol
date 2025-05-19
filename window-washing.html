@@ -6,6 +6,11 @@
   <title>Window Washing | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
     .hero-section {
       padding: 6rem 2rem;
       text-align: center;
@@ -23,6 +28,8 @@
     .hero-section p {
       font-size: 1.2rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      max-width: 700px;
+      margin: auto;
     }
     .divider {
       height: 1px;
@@ -33,6 +40,18 @@
     .section-bg {
       background-color: #f7fdfd;
       padding: 4rem 2rem;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      color: #045c52;
+    }
+    .section-header p {
+      color: #666;
+      font-size: 1rem;
     }
     .search-bar {
       max-width: 400px;
@@ -59,7 +78,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
+      padding: 2rem 0;
       max-width: 1200px;
       margin: auto;
     }
@@ -105,7 +124,7 @@
     .testimonials {
       background: #f9f9f9;
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       animation: fadeIn 5s infinite alternate ease-in-out;
     }
     .testimonials h2 {
@@ -139,6 +158,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero-section">
     <h1>Window Washing Services</h1>
     <p>Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
@@ -146,21 +166,12 @@
 
   <div class="divider"></div>
 
-  <!-- Section 4: Testimonials -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>Success Stories</h2>
-      <blockquote>
-        “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
-      </blockquote>
-      <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
+  <!-- PRO LISTING SECTION -->
   <section class="section-bg">
-    <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Window Washing Pros</h2>
+    <div class="section-header">
+      <h2>Available Window Washing Pros</h2>
+      <p>Browse trusted, local pros and connect instantly.</p>
+    </div>
 
     <div class="search-bar">
       <input type="text" placeholder="Search local pros..." id="searchInput" />
@@ -188,6 +199,19 @@
     </div>
   </section>
 
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <p style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; color: #aaa;">What People Are Saying</p>
+    <h2>Success Stories</h2>
+    <blockquote>
+      “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
+    </blockquote>
+    <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="site-footer" style="margin-top: 3rem;">
     <div class="container" style="text-align: center; color: #777;">
       <p>© 2025 Cold Looms</p>
