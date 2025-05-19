@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -80,9 +79,25 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
-    $1
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, box-shadow;
+    .tile {
+      border-radius: 16px;
+      padding: 1.8rem;
+      color: #004d40;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      min-height: 160px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform, box-shadow;
+    }
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
     .tile h3 {
       margin-top: 0;
       margin-bottom: 0.5rem;
@@ -102,24 +117,10 @@
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.3s ease;
-      align-self: flex-start;
+      align-self: center;
     }
     .message-button:hover {
       background-color: #00796b;
-    }
-    .site-footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: #777;
-      font-size: 0.9rem;
-      padding: 1rem;
-    }
-    .site-footer a {
-      color: #00796b;
-      text-decoration: none;
-    }
-    .site-footer a:hover {
-      text-decoration: underline;
     }
     @media (max-width: 768px) {
       .main-layout {
@@ -135,12 +136,7 @@
         grid-template-columns: 1fr;
       }
     }
-  .tile:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-}
-
-$1
+  </style>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
@@ -180,90 +176,82 @@ $1
   <h1 class="page-title">Power Washing Pros</h1>
 
   <section class="main-layout">
-  <!-- Sidebar Filters -->
-  <aside class="sidebar">
-    <h3>FILTER</h3>
-    <fieldset class="filter-group">
-      <legend>Surface Type</legend>
-      <label><input type="checkbox" value="Driveway" /> Driveway</label>
-      <label><input type="checkbox" value="Sidewalk" /> Sidewalk</label>
-      <label><input type="checkbox" value="Patio" /> Patio</label>
-      <label><input type="checkbox" value="Deck" /> Deck</label>
-      <label><input type="checkbox" value="Fence" /> Fence</label>
-    </fieldset>
-    <fieldset class="filter-group">
-      <legend>Service Type</legend>
-      <label><input type="checkbox" value="Residential" /> Residential</label>
-      <label><input type="checkbox" value="Commercial" /> Commercial</label>
-    </fieldset>
-    <fieldset class="filter-group">
-      <legend>Timeframe</legend>
-      <label><input type="checkbox" value="48 hours" /> Within 48 hours</label>
-      <label><input type="checkbox" value="Week" /> Within a week</label>
-      <label><input type="checkbox" value="Flexible" /> Flexible on timeline</label>
-    </fieldset>
-    <fieldset class="filter-group">
-      <legend>Property Type</legend>
-      <label><input type="radio" name="property" value="Home" /> Home</label>
-      <label><input type="radio" name="property" value="Business" /> Business</label>
-    </fieldset>
-    <a href="#" class="reset-link">Reset filters</a>
-  </aside>
+    <!-- Sidebar Filters -->
+    <aside class="sidebar">
+      <h3>FILTER</h3>
+      <fieldset class="filter-group">
+        <legend>Surface Type</legend>
+        <label><input type="checkbox" value="Driveway" /> Driveway</label>
+        <label><input type="checkbox" value="Sidewalk" /> Sidewalk</label>
+        <label><input type="checkbox" value="Patio" /> Patio</label>
+        <label><input type="checkbox" value="Deck" /> Deck</label>
+        <label><input type="checkbox" value="Fence" /> Fence</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Service Type</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Timeframe</legend>
+        <label><input type="checkbox" value="48 hours" /> Within 48 hours</label>
+        <label><input type="checkbox" value="Week" /> Within a week</label>
+        <label><input type="checkbox" value="Flexible" /> Flexible on timeline</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Property Type</legend>
+        <label><input type="radio" name="property" value="Home" /> Home</label>
+        <label><input type="radio" name="property" value="Business" /> Business</label>
+      </fieldset>
+      <a href="#" class="reset-link">Reset filters</a>
+    </aside>
 
-  <!-- Grid Results -->
-  <div class="tile-grid">
-  <div class="tile" style="text-align:center;">
-    <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="WashWorks LA" style="width:64px; height:64px; border-radius:50%; margin:auto;">
-    <h3><strong>WashWorks LA</strong> <span style="color: #7e57c2;">✔️</span></h3>
-    <p>📍 North Hollywood, CA • 2.3 miles away</p>
-    <p>Eco-friendly services for driveways, siding, and patios.</p>
-    <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-    <a href="#" class="message-button">Message</a>
-  </div>
+    <!-- Grid Results -->
+    <div class="tile-grid">
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="WashWorks LA" style="width:64px; height:64px; border-radius:50%; margin:auto;">
+        <h3><strong>WashWorks LA</strong> <span style="color: #7e57c2;">✔️</span></h3>
+        <p>📍 North Hollywood, CA • 2.3 miles away</p>
+        <p>Eco-friendly services for driveways, siding, and patios.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Blast & Shine" style="width:64px; height:64px; border-radius:50%; margin:auto;">
+        <h3><strong>Blast & Shine</strong> <span style="color: #7e57c2;">✔️</span></h3>
+        <p>📍 Chatsworth, CA • 3.1 miles away</p>
+        <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="HydroPro Wash" style="width:64px; height:64px; border-radius:50%; margin:auto;">
+        <h3><strong>HydroPro Wash</strong></h3>
+        <p>📍 Van Nuys, CA • 2.6 miles away</p>
+        <p>Top-rated crew for residential and commercial power wash.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Prime Jet Clean" style="width:64px; height:64px; border-radius:50%; margin:auto;">
+        <h3><strong>Prime Jet Clean</strong></h3>
+        <p>📍 Simi Valley, CA • 4.8 miles away</p>
+        <p>Affordable pressure washing with a spotless finish.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="EcoSpray Solutions" style="width:64px; height:64px; border-radius:50%; margin:auto;">
+        <h3><strong>EcoSpray Solutions</strong></h3>
+        <p>📍 Reseda, CA • 3.7 miles away</p>
+        <p>Green methods. Industrial-grade tools. Always on time.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="tile" style="text-align:center;">
-    <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Blast & Shine" style="width:64px; height:64px; border-radius:50%; margin:auto;">
-    <h3><strong>Blast & Shine</strong> <span style="color: #7e57c2;">✔️</span></h3>
-    <p>📍 Chatsworth, CA • 3.1 miles away</p>
-    <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
-    <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-    <a href="#" class="message-button">Message</a>
-  </div>
-
-  <div class="tile" style="text-align:center;">
-    <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="HydroPro Wash" style="width:64px; height:64px; border-radius:50%; margin:auto;">
-    <h3><strong>HydroPro Wash</strong></h3>
-    <p>📍 Van Nuys, CA • 2.6 miles away</p>
-    <p>Top-rated crew for residential and commercial power wash.</p>
-    <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-    <a href="#" class="message-button">Message</a>
-  </div>
-
-  <div class="tile" style="text-align:center;">
-    <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Prime Jet Clean" style="width:64px; height:64px; border-radius:50%; margin:auto;">
-    <h3><strong>Prime Jet Clean</strong></h3>
-    <p>📍 Simi Valley, CA • 4.8 miles away</p>
-    <p>Affordable pressure washing with a spotless finish.</p>
-    <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-    <a href="#" class="message-button">Message</a>
-  </div>
-
-  <div class="tile" style="text-align:center;">
-    <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="EcoSpray Solutions" style="width:64px; height:64px; border-radius:50%; margin:auto;">
-    <h3><strong>EcoSpray Solutions</strong></h3>
-    <p>📍 Reseda, CA • 3.7 miles away</p>
-    <p>Green methods. Industrial-grade tools. Always on time.</p>
-    <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-    <a href="#" class="message-button">Message</a>
-  </div>
-</div>
-</section>
-
-  
-
-  <!-- Social and multi-column footer -->
-  
-
+  <!-- Multi-column footer -->
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:2rem; text-align:left;">
       <div>
@@ -301,30 +289,22 @@ $1
         </ul>
       </div>
     </div>
-  <footer class="site-footer">
-  <div class="container">
-    <p>© 2025 Cold Looms</p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Service</a>
-    </p>
+  </footer>
+
+  <!-- Social Icons Below Footer -->
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
+    </a>
+    <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
+    </a>
+    <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
+    </a>
+    <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
+    </a>
   </div>
-
-
-<div style="text-align:center; margin: 2rem 0;">
-  <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
-    <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-  </a>
-  <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
-    <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-  </a>
-  <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
-    <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
-  </a>
-  <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
-    <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
-  </a>
-</div>
-
-
+</body>
 </html>
