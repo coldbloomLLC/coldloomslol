@@ -59,16 +59,19 @@
     .message-button:hover {
       background-color: #009688;
     }
-    .video-container {
-      text-align: center;
+    .testimonial-banner {
+      background: #f9f9f9;
       padding: 2rem;
+      font-style: italic;
+      color: #444;
+      text-align: center;
+      font-size: 1.1rem;
+      animation: fadeIn 5s infinite alternate ease-in-out;
     }
-    .video-container iframe {
-      width: 100%;
-      max-width: 800px;
-      height: 450px;
-      border: none;
-      border-radius: 12px;
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
     }
   </style>
 </head>
@@ -84,9 +87,8 @@
     <p>Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
   </section>
 
-  <section class="video-container">
-    <h2 style="margin-bottom: 1rem; color: #045c52;">See Window Washing in Action</h2>
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+  <section class="testimonial-banner">
+    “They got my windows sparkling — booked and done within 24 hours!” – Daniel M., Reseda CA
   </section>
 
   <section>
