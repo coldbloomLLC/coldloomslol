@@ -7,6 +7,10 @@
   <title>Power Washing | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
     .hero-section {
       padding: 6rem 2rem;
       text-align: center;
@@ -25,13 +29,36 @@
       font-size: 1.2rem;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
+    .main-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    .sidebar {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .sidebar h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+    .filter-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
     .tile-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
     }
     .tile {
       border-radius: 16px;
@@ -43,39 +70,12 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       min-height: 160px;
     }
-    .tile.feature {
-      grid-column: span 3;
-      background: linear-gradient(to right, #c62828, #ad1457);
-    }
-    .tile.feature.image {
-      grid-column: span 3;
-      background: url('https://i.ibb.co/xHGVRvc/red-fabric.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .tile.washworks,
-    .tile.blastshine,
-    .tile.other1,
-    .tile.other2,
-    .tile.other3 {
-      grid-column: span 2;
-    }
-    .tile.washworks {
-      background: linear-gradient(to right, #7b1fa2, #512da8);
-    }
-    .tile.blastshine {
-      background: linear-gradient(to right, #f4511e, #ef6c00);
-    }
-    .tile.other1 {
-      background: linear-gradient(to right, #8e24aa, #5e35b1);
-    }
-    .tile.other2 {
-      background: linear-gradient(to right, #fb8c00, #f57c00);
-    }
-    .tile.other3 {
-      background: linear-gradient(to right, #d32f2f, #c2185b);
-    }
-    .tile h3, .tile h2 {
+    .tile.washworks { background: linear-gradient(to right, #7b1fa2, #512da8); }
+    .tile.blastshine { background: linear-gradient(to right, #f4511e, #ef6c00); }
+    .tile.other1 { background: linear-gradient(to right, #8e24aa, #5e35b1); }
+    .tile.other2 { background: linear-gradient(to right, #fb8c00, #f57c00); }
+    .tile.other3 { background: linear-gradient(to right, #d32f2f, #c2185b); }
+    .tile h3 {
       margin-top: 0;
       margin-bottom: 0.5rem;
     }
@@ -112,50 +112,57 @@
     <p>Blast away dirt, grime, and buildup with professional-grade power washing. Trusted pros. Fast turnaround. Book your clean today.</p>
   </section>
 
-  <section>
-    <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Power Washing Pros</h2>
+  <section class="main-layout">
+    <!-- Sidebar Filters -->
+    <aside class="sidebar">
+      <h3>Filter Options</h3>
+      <div class="filter-group">
+        <label>Service Type</label>
+        <input type="checkbox" /> Residential<br />
+        <input type="checkbox" /> Commercial
+      </div>
+      <div class="filter-group">
+        <label>Location</label>
+        <input type="checkbox" /> North Hollywood<br />
+        <input type="checkbox" /> Chatsworth
+      </div>
+    </aside>
+
+    <!-- Grid Results -->
     <div class="tile-grid">
-      <!-- Image Tile -->
-      <div class="tile feature image">
-        <a href="#" class="message-button">Explore</a>
-      </div>
-
-      <!-- Text Feature Tile -->
-      <div class="tile feature">
-        <h2>Why Power Washing?</h2>
-        <p>Protect your surfaces. Elevate curb appeal. Trusted pros, easy booking.</p>
-        <a href="#" class="message-button">Explore</a>
-      </div>
-
-      <!-- Additional small tiles -->
       <div class="tile washworks">
         <h3>WashWorks LA ✔️</h3>
         <p>📍 North Hollywood, CA</p>
         <p>Eco-friendly services for driveways, siding, and patios.</p>
+        <a href="#" class="message-button">Message</a>
       </div>
 
       <div class="tile blastshine">
         <h3>Blast & Shine ✔️</h3>
         <p>📍 Chatsworth, CA</p>
         <p>Reliable and fast cleaning. Great for surface prep jobs.</p>
+        <a href="#" class="message-button">Message</a>
       </div>
 
       <div class="tile other1">
         <h3>HydroPro Wash</h3>
         <p>📍 Van Nuys, CA</p>
         <p>Top-rated crew for residential and commercial power wash.</p>
+        <a href="#" class="message-button">Message</a>
       </div>
 
       <div class="tile other2">
         <h3>Prime Jet Clean</h3>
         <p>📍 Simi Valley, CA</p>
         <p>Affordable pressure washing with a spotless finish.</p>
+        <a href="#" class="message-button">Message</a>
       </div>
 
       <div class="tile other3">
         <h3>EcoSpray Solutions</h3>
         <p>📍 Reseda, CA</p>
         <p>Green methods. Industrial-grade tools. Always on time.</p>
+        <a href="#" class="message-button">Message</a>
       </div>
     </div>
   </section>
