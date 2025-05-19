@@ -63,8 +63,16 @@
       margin-bottom: 0.75rem;
       font-size: 1rem;
     }
-    .filter-group input[type="checkbox"] {
+    .filter-group input[type="checkbox"],
+    .filter-group input[type="radio"] {
       margin-right: 0.5rem;
+    }
+    .reset-link {
+      color: #00796b;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
     }
     .tile-grid {
       flex: 1;
@@ -125,7 +133,7 @@
   </style>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox']");
+      const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
       const tiles = document.querySelectorAll(".tile");
 
       checkboxes.forEach(checkbox => {
@@ -141,6 +149,14 @@
           });
         });
       });
+
+      const resetLink = document.querySelector(".reset-link");
+      if (resetLink) {
+        resetLink.addEventListener("click", () => {
+          checkboxes.forEach(box => box.checked = false);
+          tiles.forEach(tile => tile.style.display = "flex");
+        });
+      }
     });
   </script>
 </head>
@@ -157,25 +173,39 @@
     <aside class="sidebar">
       <h3>FILTER</h3>
       <fieldset class="filter-group">
-        <legend>When do you want to start?</legend>
-        <label><input type="checkbox" value="Within 48 hours" /> Within 48 hours</label>
-        <label><input type="checkbox" value="Within a week" /> Within a week</label>
-        <label><input type="checkbox" value="Flexible" /> Flexible on timeline</label>
-        <label><input type="checkbox" value="Specific date" /> Specific date(s)</label>
+        <legend>Project Type</legend>
+        <label><input type="checkbox" value="Repairs" /> Repairs</label>
+        <label><input type="checkbox" value="Installation" /> Installation</label>
+        <label><input type="checkbox" value="Maintenance" /> Maintenance</label>
+        <label><input type="checkbox" value="Assembly" /> Assembly</label>
+        <label><input type="checkbox" value="Painting" /> Painting</label>
       </fieldset>
       <fieldset class="filter-group">
-        <legend>Service Type</legend>
-        <label><input type="checkbox" value="Residential" /> Residential</label>
-        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+        <legend>Work Focus</legend>
+        <label><input type="checkbox" value="Doors" /> Doors</label>
+        <label><input type="checkbox" value="Windows" /> Windows</label>
+        <label><input type="checkbox" value="Walls (inside)" /> Walls (inside)</label>
+        <label><input type="checkbox" value="Walls (outside)" /> Walls (outside)</label>
+        <label><input type="checkbox" value="Gutters" /> Gutters</label>
       </fieldset>
       <fieldset class="filter-group">
-        <legend>Location</legend>
-        <label><input type="checkbox" value="North Hollywood" /> North Hollywood</label>
-        <label><input type="checkbox" value="Chatsworth" /> Chatsworth</label>
+        <legend>Project Location</legend>
+        <label><input type="checkbox" value="Bathroom" /> Bathroom</label>
+        <label><input type="checkbox" value="Kitchen" /> Kitchen</label>
+        <label><input type="checkbox" value="Living room" /> Living room</label>
+        <label><input type="checkbox" value="Bedroom" /> Bedroom</label>
+        <label><input type="checkbox" value="Basement" /> Basement</label>
       </fieldset>
+      <fieldset class="filter-group">
+        <legend>Property Type</legend>
+        <label><input type="radio" name="property" value="Home" /> Home</label>
+        <label><input type="radio" name="property" value="Business" /> Business</label>
+      </fieldset>
+      <a href="#" class="reset-link">Reset filters</a>
     </aside>
 
     <div class="tile-grid">
+      <!-- Cards remain the same -->
       <div class="tile">
         <h3>WashWorks LA ✔️</h3>
         <p>📍 North Hollywood, CA</p>
