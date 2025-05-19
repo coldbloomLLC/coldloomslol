@@ -59,61 +59,35 @@
     .message-button:hover {
       background-color: #009688;
     }
-    .testimonial-banner {
+    .testimonials {
       background: #f9f9f9;
-      padding: 2rem;
-      font-style: italic;
-      color: #444;
       text-align: center;
-      font-size: 1.1rem;
+      padding: 3rem 2rem;
       animation: fadeIn 5s infinite alternate ease-in-out;
+    }
+    .testimonials h2 {
+      font-size: 2rem;
+      color: #045c52;
+      margin-bottom: 1.5rem;
+    }
+    .testimonials blockquote {
+      font-size: 1.1rem;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+    }
+    .disclaimer {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 1rem;
     }
     @keyframes fadeIn {
       0% { opacity: 0; }
       50% { opacity: 1; }
       100% { opacity: 0; }
     }
-    .faq-section {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .faq-section h2 {
-      text-align: center;
-      color: #045c52;
-      margin-bottom: 2rem;
-    }
-    .faq-item {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      cursor: pointer;
-    }
-    .faq-question {
-      font-weight: bold;
-      color: #00796b;
-    }
-    .faq-answer {
-      display: none;
-      padding-top: 0.5rem;
-      color: #333;
-    }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const items = document.querySelectorAll(".faq-item");
-      items.forEach(item => {
-        item.addEventListener("click", () => {
-          const answer = item.querySelector(".faq-answer");
-          const isOpen = answer.style.display === "block";
-          document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
-          answer.style.display = isOpen ? "none" : "block";
-        });
-      });
-    });
-  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -127,8 +101,15 @@
     <p>Professional window cleaning services to brighten your home or business. Trusted pros. Fast response. Get started today.</p>
   </section>
 
-  <section class="testimonial-banner">
-    “They got my windows sparkling — booked and done within 24 hours!” – Daniel M., Reseda CA
+  <!-- Section 4: Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>Success Stories</h2>
+      <blockquote>
+        “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
+      </blockquote>
+      <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+    </div>
   </section>
 
   <section>
@@ -149,22 +130,6 @@
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
-    </div>
-  </section>
-
-  <section class="faq-section">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <div class="faq-question">How much does window washing cost?</div>
-      <div class="faq-answer">Pricing varies by job size and location, but most services start at $99 for small homes and go up based on size and scope.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Do I need to be home?</div>
-      <div class="faq-answer">Not always. As long as you can provide access and instructions, many pros can complete the work without needing you there.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Are your pros insured?</div>
-      <div class="faq-answer">Yes! All Cold Looms professionals are vetted, insured, and background-checked for your peace of mind.</div>
     </div>
   </section>
 
