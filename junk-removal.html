@@ -6,6 +6,22 @@
   <title>Junk Removal | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    .tag {
+      background: #e0f2f1;
+      color: #00796b;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      justify-content: flex-start;
+    }
     html, body {
       margin: 0;
       padding: 0;
@@ -76,22 +92,6 @@
       display: inline-block;
       margin-top: 1rem;
     }
-    .active-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      justify-content: flex-start;
-    }
-    .tag {
-      background: #e0f2f1;
-      color: #00796b;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      user-select: none;
-    }
     .tile-grid {
       flex: 1;
       display: grid;
@@ -109,9 +109,8 @@
       border: 1px solid #e0e0e0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease-in-out;
     }
     .tile:hover {
       transform: translateY(-6px);
@@ -140,6 +139,39 @@
     .message-button:hover {
       background-color: #00796b;
     }
+    @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .sidebar.active {
+        display: block;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .filter-toggle {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: none;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .filter-toggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -149,7 +181,6 @@
       <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
-
   <h1 class="page-title">Junk Removal Pros</h1>
   <section class="main-layout">
     <aside class="sidebar">
@@ -160,120 +191,179 @@
         <label><input type="checkbox" value="Appliances" /> Appliances</label>
         <label><input type="checkbox" value="Electronics" /> Electronics</label>
         <label><input type="checkbox" value="Yard Waste" /> Yard Waste</label>
-        <label><input type="checkbox" value="Construction" /> Construction Debris</label>
+        <label><input type="checkbox" value="Construction Debris" /> Construction Debris</label>
       </fieldset>
       <fieldset class="filter-group">
-        <legend>Urgency</legend>
+        <legend>Service</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
         <label><input type="checkbox" value="Same Day" /> Same Day</label>
-        <label><input type="checkbox" value="48 Hours" /> 48 Hours</label>
-        <label><input type="checkbox" value="Flexible" /> Flexible</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Load Size</legend>
-        <label><input type="checkbox" value="Small Pickup" /> Small Pickup</label>
-        <label><input type="checkbox" value="Medium Load" /> Medium Load</label>
-        <label><input type="checkbox" value="Full Truck" /> Full Truck</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Access</legend>
-        <label><input type="checkbox" value="Curbside Pickup" /> Curbside Pickup</label>
-        <label><input type="checkbox" value="Inside Home" /> Inside Home</label>
-        <label><input type="checkbox" value="Gated Area" /> Gated Area</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Service Extras</legend>
-        <label><input type="checkbox" value="Sweep & Clean" /> Sweep & Clean</label>
-        <label><input type="checkbox" value="Recycling Preferred" /> Recycling Preferred</label>
-        <label><input type="checkbox" value="Heavy Lifting Required" /> Heavy Lifting Required</label>
+        <label><input type="checkbox" value="Donation Pickup" /> Donation Pickup</label>
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
 
-    <div style="flex: 1;">
-      <div class="active-tags" id="active-tags"></div>
+    <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
+    <div class="active-tags" id="active-tags"></div>
       <div class="tile-grid">
-        <div class="tile">
-          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Quick Haul Crew">
-          <h3><strong>Quick Haul Crew</strong> <span style="color: #7e57c2;">✔️</span></h3>
-          <p>📍 Northridge, CA • 1.2 miles away</p>
-          <p>Same-day furniture and appliance removal. Fast & affordable.</p>
-          <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-          <a href="#" class="message-button">Message</a>
-        </div>
-        <div class="tile">
-          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Green Bin Junkers">
-          <h3><strong>Green Bin Junkers</strong></h3>
-          <p>📍 Van Nuys, CA • 3.0 miles away</p>
-          <p>Eco-friendly electronics and yard waste disposal. Weekend service.</p>
-          <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-          <a href="#" class="message-button">Message</a>
-        </div>
-        <div class="tile">
-          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="HaulPro Solutions">
-          <h3><strong>HaulPro Solutions</strong></h3>
-          <p>📍 Reseda, CA • 2.5 miles away</p>
-          <p>Construction debris experts. Licensed & insured.</p>
-          <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-          <a href="#" class="message-button">Message</a>
-        </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Quick Haul Pros">
+        <h3><strong>Quick Haul Pros</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p>📍 Sherman Oaks, CA</p>
+        <p>Same-day furniture and appliance removal. Homes & offices.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Green Junk Solutions">
+        <h3><strong>Green Junk Solutions</strong></h3>
+        <p>📍 Woodland Hills, CA</p>
+        <p>Eco-friendly electronics & yard waste pickup. Donation options.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Junk Busters LA">
+        <h3><strong>Junk Busters LA</strong></h3>
+        <p>📍 Burbank, CA</p>
+        <p>Construction debris and commercial cleanout services.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Donation Movers">
+        <h3><strong>Donation Movers</strong></h3>
+        <p>📍 Encino, CA</p>
+        <p>Donation pickups and residential junk removal. Fast & friendly!</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
       </div>
     </div>
   </section>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const tagContainer = document.getElementById("active-tags");
-      const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
-      const tiles = document.querySelectorAll(".tile");
+  <footer style="background:#f9f9f9; padding:3rem 1rem;">
+    <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
+      <div>
+        <h4 style="color:#045c52;">Cold Looms</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Partner with Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Customers</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Services Near Me</a></li>
+          <li><a href="#">Cost Estimates</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Pros</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">Sign Up as a Pro</a></li>
+          <li><a href="#">Pro Resources</a></li>
+          <li><a href="#">Pro Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Support</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">Help</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
+    </a>
+    <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
+    </a>
+    <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
+    </a>
+    <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
+    </a>
+  </div>
+  <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
+    <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
+      <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
+      <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+        <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tagContainer = document.getElementById("active-tags");
+    const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+    const tiles = document.querySelectorAll(".tile");
 
-      checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", () => {
-          const activeFilters = Array.from(checkboxes)
-            .filter(box => box.checked)
-            .map(box => box.value);
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const activeFilters = Array.from(checkboxes)
+          .filter(box => box.checked)
+          .map(box => box.value);
 
-          tiles.forEach(tile => {
-            const content = tile.textContent.toLowerCase();
-            const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
-            tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+        tiles.forEach(tile => {
+          const content = tile.textContent.toLowerCase();
+          const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
+          tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
 
-            const paragraphs = tile.querySelectorAll("p");
-            paragraphs.forEach(p => {
-              let text = p.textContent;
-              activeFilters.forEach(filter => {
-                const regex = new RegExp(`(${filter})`, 'gi');
-                text = text.replace(regex, '<mark>$1</mark>');
-              });
-              p.innerHTML = text;
+          const paragraphs = tile.querySelectorAll("p");
+          paragraphs.forEach(p => {
+            let text = p.textContent;
+            activeFilters.forEach(filter => {
+              const regex = new RegExp(`(${filter})`, 'gi');
+              text = text.replace(regex, '<mark>$1</mark>');
             });
+            p.innerHTML = text;
           });
+        });
 
-          tagContainer.innerHTML = "";
-          activeFilters.forEach(filter => {
-            const tag = document.createElement("span");
-            tag.className = "tag";
-            tag.textContent = filter + " ✕";
-            tag.onclick = () => {
-              checkboxes.forEach(box => {
-                if (box.value === filter) box.checked = false;
-              });
-              const event = new Event('change');
-              checkboxes[0].dispatchEvent(event);
-            };
-            tagContainer.appendChild(tag);
-          });
+        tagContainer.innerHTML = "";
+        activeFilters.forEach(filter => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = filter + " ✕";
+          tag.onclick = () => {
+            checkboxes.forEach(box => {
+              if (box.value === filter) box.checked = false;
+            });
+            const event = new Event('change');
+            checkboxes[0].dispatchEvent(event);
+          };
+          tagContainer.appendChild(tag);
         });
       });
-
-      const resetLink = document.querySelector(".reset-link");
-      if (resetLink) {
-        resetLink.addEventListener("click", () => {
-          checkboxes.forEach(box => box.checked = false);
-          tiles.forEach(tile => tile.style.display = "flex");
-          tagContainer.innerHTML = "";
-        });
-      }
     });
-  </script>
-</body>
+
+    const resetLink = document.querySelector(".reset-link");
+    if (resetLink) {
+      resetLink.addEventListener("click", () => {
+        checkboxes.forEach(box => box.checked = false);
+        tiles.forEach(tile => tile.style.display = "flex");
+        tagContainer.innerHTML = "";
+      });
+    }
+  });
+  function toggleFilters() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+  }
+</script>
 </html>
