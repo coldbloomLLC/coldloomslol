@@ -354,18 +354,20 @@ fetch('https://ipapi.co/json/')
   </div>
 </footer>
 <script>
-  fetch('https://ipapi.co/json/')
+<script>
+  fetch('https://ipinfo.io/json?token=5e0660f5e45ff0')
     .then(res => res.json())
     .then(data => {
       const citySpan = document.getElementById('user-city');
-      if (data.city && data.region) {
+      if (citySpan && data.city && data.region) {
         citySpan.textContent = `${data.city}, ${data.region}`;
-      } else if (data.city) {
+      } else if (citySpan && data.city) {
         citySpan.textContent = data.city;
       }
     })
     .catch(() => {
-      document.getElementById('user-city').textContent = "your area";
+      const fallback = document.getElementById('user-city');
+      if (fallback) fallback.textContent = "your area";
     });
 </script>
 
