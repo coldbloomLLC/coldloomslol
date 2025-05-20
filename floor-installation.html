@@ -6,103 +6,364 @@
   <title>Floor Installation | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .hero-section {
-      padding: 6rem 2rem;
-      text-align: center;
-      background: linear-gradient(to right, rgba(0, 121, 107, 0.4), rgba(0, 121, 107, 0.2)), url('https://i.postimg.cc/FK2jKTXF/Chat-GPT-Image-Apr-25-2025-07-40-58-AM.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #fff;
+    .tag {
+      background: #e0f2f1;
+      color: #00796b;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
     }
-    .hero-section h1 {
-      font-size: 2.8rem;
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-bottom: 1rem;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      justify-content: flex-start;
     }
-    .hero-section p {
-      font-size: 1.2rem;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      height: 100%;
     }
-    .pro-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+    h1.page-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      background: linear-gradient(to right, #00796b, #00bfa5);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 1600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .sidebar {
+      background: #e0f2f1;
       padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      min-height: 100vh;
+      width: 260px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 2rem;
     }
-    .fun-card {
-      background: #ffffff;
-      border-radius: 14px;
+    .sidebar h3 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      background: #00796b;
+      color: white;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .filter-group {
+      margin-bottom: 2.5rem;
+    }
+    .filter-group legend {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .filter-group label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .filter-group input {
+      margin-right: 0.5rem;
+    }
+    .reset-link {
+      color: #00796b;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .tile-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      background-color: #f9fdfc;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .tile {
+      border-radius: 16px;
       padding: 1.8rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      color: #004d40;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
     }
-    .fun-card:hover {
+    .tile:hover {
       transform: translateY(-6px);
       box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .tile img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: auto;
+      border: 3px solid #00bfa5;
+      padding: 2px;
     }
     .message-button {
       margin-top: 1rem;
       display: inline-block;
       background-color: #00bfa5;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
+      color: #fff;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
+      border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
     .message-button:hover {
-      background-color: #009688;
+      background-color: #00796b;
+    }
+    @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .sidebar.active {
+        display: block;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .filter-toggle {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: none;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .filter-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="nav-logo">Back to Home</a>
+  <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
+      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; text-decoration:none;">Back to Home</a>
+      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
+  <h1 class="page-title">Floor Installation Pros</h1>
+  <section class="main-layout">
+    <aside class="sidebar">
+      <h3>FILTER</h3>
+      <fieldset class="filter-group">
+        <legend>Floor Type</legend>
+        <label><input type="checkbox" value="Hardwood" /> Hardwood</label>
+        <label><input type="checkbox" value="Laminate" /> Laminate</label>
+        <label><input type="checkbox" value="Tile" /> Tile</label>
+        <label><input type="checkbox" value="Vinyl" /> Vinyl</label>
+        <label><input type="checkbox" value="Carpet" /> Carpet</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Service</legend>
+        <label><input type="checkbox" value="Installation" /> Installation</label>
+        <label><input type="checkbox" value="Repair" /> Repair</label>
+        <label><input type="checkbox" value="Refinishing" /> Refinishing</label>
+        <label><input type="checkbox" value="Removal" /> Removal</label>
+      </fieldset>
+      <a href="#" class="reset-link">Reset filters</a>
+    </aside>
 
-  <section class="hero-section">
-    <h1>Floor Installation Services</h1>
-    <p>Upgrade your space. We match you with expert installers for hardwood, vinyl, tile, and more — fast, clean, reliable.</p>
-  </section>
-
-  <section>
-    <h2 style="text-align: center; font-size: 2rem; margin-top: 2rem; color: #045c52;">Available Floor Installation Pros</h2>
-    <div class="pro-grid">
-      <div class="fun-card">
-        <h3>ProFloor Crew <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Reseda, CA</p>
-        <p style="color: #555;">Premium laminate and vinyl installs. Dust-free tools and fast turnaround.</p>
+    <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
+    <div class="active-tags" id="active-tags"></div>
+      <div class="tile-grid">
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Floor Masters">
+        <h3><strong>Floor Masters</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p>📍 Sherman Oaks, CA</p>
+        <p>Expert hardwood and laminate installation. Fast and dust-free process.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
-
-      <div class="fun-card">
-        <h3>NextGen Floors <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-size: 0.85rem; color: #888;">📍 Granada Hills, CA</p>
-        <p style="color: #555;">Licensed flooring experts — engineered wood, floating floors, and more.</p>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Tile Trendsetters">
+        <h3><strong>Tile Trendsetters</strong></h3>
+        <p>📍 Woodland Hills, CA</p>
+        <p>Specializing in tile and vinyl floor installs for homes & businesses.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Carpet Crew">
+        <h3><strong>Carpet Crew</strong></h3>
+        <p>📍 Burbank, CA</p>
+        <p>Carpet installation & removal. Clean, quick, and affordable.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Refinish Pros">
+        <h3><strong>Refinish Pros</strong></h3>
+        <p>📍 Encino, CA</p>
+        <p>Refinishing & repair for hardwood, tile, and laminate floors.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer" style="margin-top: 3rem;">
-    <div class="container" style="text-align: center; color: #777;">
-      <p>© 2025 Cold Looms</p>
-      <p>
-        <a href="privacy.html" style="color: #00796b; text-decoration: none;">Privacy Policy</a> |
-        <a href="terms.html" style="color: #00796b; text-decoration: none;">Terms of Service</a>
-      </p>
+  <footer style="background:#f9f9f9; padding:3rem 1rem;">
+    <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
+      <div>
+        <h4 style="color:#045c52;">Cold Looms</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Partner with Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Customers</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Services Near Me</a></li>
+          <li><a href="#">Cost Estimates</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Pros</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">Sign Up as a Pro</a></li>
+          <li><a href="#">Pro Resources</a></li>
+          <li><a href="#">Pro Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#045c52;">Support</h4>
+        <ul style="list-style:none; padding:0;">
+          <li><a href="#">Help</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
+    </a>
+    <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
+    </a>
+    <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
+    </a>
+    <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
+      <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
+    </a>
+  </div>
+  <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
+    <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
+      <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
+      <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+        <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
+      </form>
+    </div>
+  </div>
 </body>
-</html>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tagContainer = document.getElementById("active-tags");
+    const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+    const tiles = document.querySelectorAll(".tile");
 
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const activeFilters = Array.from(checkboxes)
+          .filter(box => box.checked)
+          .map(box => box.value);
+
+        tiles.forEach(tile => {
+          const content = tile.textContent.toLowerCase();
+          const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
+          tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+
+          const paragraphs = tile.querySelectorAll("p");
+          paragraphs.forEach(p => {
+            let text = p.textContent;
+            activeFilters.forEach(filter => {
+              const regex = new RegExp(`(${filter})`, 'gi');
+              text = text.replace(regex, '<mark>$1</mark>');
+            });
+            p.innerHTML = text;
+          });
+        });
+
+        tagContainer.innerHTML = "";
+        activeFilters.forEach(filter => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = filter + " ✕";
+          tag.onclick = () => {
+            checkboxes.forEach(box => {
+              if (box.value === filter) box.checked = false;
+            });
+            const event = new Event('change');
+            checkboxes[0].dispatchEvent(event);
+          };
+          tagContainer.appendChild(tag);
+        });
+      });
+    });
+
+    const resetLink = document.querySelector(".reset-link");
+    if (resetLink) {
+      resetLink.addEventListener("click", () => {
+        checkboxes.forEach(box => box.checked = false);
+        tiles.forEach(tile => tile.style.display = "flex");
+        tagContainer.innerHTML = "";
+      });
+    }
+  });
+  function toggleFilters() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+  }
+</script>
+</html>
