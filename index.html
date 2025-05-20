@@ -353,6 +353,21 @@ fetch('https://ipapi.co/json/')
     </div>
   </div>
 </footer>
+<script>
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const citySpan = document.getElementById('user-city');
+      if (data.city && data.region) {
+        citySpan.textContent = `${data.city}, ${data.region}`;
+      } else if (data.city) {
+        citySpan.textContent = data.city;
+      }
+    })
+    .catch(() => {
+      document.getElementById('user-city').textContent = "your area";
+    });
+</script>
 
 
 </body>
