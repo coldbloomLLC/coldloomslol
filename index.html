@@ -142,12 +142,22 @@
   <div style="max-width: 1400px; margin: auto; text-align: center;">
     <h2 style="font-size: 2rem; color: #045c52; font-weight: bold; margin-bottom: 2rem;">
       Popular services near <span id="user-city" style="color: #045c52;">your city</span>
+<script>
+fetch('https://ipapi.co/json/')
+  .then(res => res.json())
+  .then(data => {
+    if(data.city && data.region) {
+      document.getElementById('user-city').textContent = `${data.city}, ${data.region}`;
+    } else if(data.city) {
+      document.getElementById('user-city').textContent = data.city;
+    }
+  })
+  .catch(() => {
+    document.getElementById('user-city').textContent = "your area";
+  });
+</script>
     </h2>
     <div class="services-grid-desktop" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; justify-content: center;">
-      <!-- ...your tiles here... -->
-    </div>
-  </div>
-</section>
 
 
 
@@ -344,20 +354,7 @@
   </div>
 </footer>
 
-<script>
-fetch('https://ipapi.co/json/')
-  .then(res => res.json())
-  .then(data => {
-    if(data.city && data.region) {
-      document.getElementById('user-city').textContent = `${data.city}, ${data.region}`;
-    } else if(data.city) {
-      document.getElementById('user-city').textContent = data.city;
-    }
-  })
-  .catch(() => {
-    document.getElementById('user-city').textContent = "your area";
-  });
-</script>
+
 </body>
 </html>
 
