@@ -234,7 +234,18 @@ body {
     height: 160px;
   }
 }
-
+/* Tile hover animation for service tiles */
+.services-grid-desktop > div {
+  transition: 
+    transform 0.25s cubic-bezier(.16,1,.3,1), 
+    box-shadow 0.25s cubic-bezier(.16,1,.3,1);
+  will-change: transform, box-shadow;
+}
+.services-grid-desktop > div:hover {
+  transform: translateY(-10px) scale(1.04) rotateZ(-1deg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.14), 0 1.5px 8px rgba(0,0,0,0.09);
+  z-index: 2;
+}
 
 /* How It Works Section */
 .how-it-works h2 {
