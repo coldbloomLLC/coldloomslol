@@ -308,20 +308,20 @@
     </div>
   </footer>
   <script>
-    fetch('https://ipinfo.io/json?token=5e0660f5e45ff0')
-      .then(res => res.json())
-      .then(data => {
-        const citySpan = document.getElementById('user-city');
-        if (citySpan && data.city && data.region) {
-          citySpan.textContent = `${data.city}, ${data.region}`;
-        } else if (citySpan && data.city) {
-          citySpan.textContent = data.city;
-        }
-      })
-      .catch(() => {
-        const fallback = document.getElementById('user-city');
-        if (fallback) fallback.textContent = "your area";
-      });
-  </script>
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const citySpan = document.getElementById('user-city');
+      if (citySpan && data.city && data.region) {
+        citySpan.textContent = `${data.city}, ${data.region}`;
+      } else if (citySpan && data.city) {
+        citySpan.textContent = data.city;
+      }
+    })
+    .catch(() => {
+      const fallback = document.getElementById('user-city');
+      if (fallback) fallback.textContent = "your area";
+    });
+</script>
 </body>
 </html>
