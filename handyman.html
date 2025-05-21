@@ -6,42 +6,180 @@
   <title>Handyman Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ...[your existing CSS unchanged]... */
-    .location-box {
+    .tag {
       background: #e0f2f1;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      margin: 2rem auto 1rem auto;
-      max-width: 400px;
-      text-align: center;
-      font-size: 1.1rem;
       color: #00796b;
-    }
-    .location-box input[type="text"] {
-      padding: 0.4rem 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      margin-right: 0.7rem;
-      margin-top: 0.7rem;
-    }
-    .location-box button {
-      padding: 0.4rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      background: #00bfa5;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
       cursor: pointer;
-      margin-top: 0.7rem;
+      user-select: none;
     }
-    .no-pros {
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      justify-content: flex-start;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      height: 100%;
+    }
+    h1.page-title {
       text-align: center;
-      color: #d32f2f;
-      font-size: 1.2rem;
-      margin: 2rem 0 1rem 0;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      background: linear-gradient(to right, #00796b, #00bfa5);
+      -webkit-background-clip: text;
+      color: transparent;
     }
+    .main-layout {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 1600px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .sidebar {
+      background: #e0f2f1;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      min-height: 100vh;
+      width: 260px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 2rem;
+    }
+    .sidebar h3 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      background: #00796b;
+      color: white;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .filter-group {
+      margin-bottom: 2.5rem;
+    }
+    .filter-group legend {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .filter-group label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .filter-group input {
+      margin-right: 0.5rem;
+    }
+    .reset-link {
+      color: #00796b;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .tile-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      background-color: #f9fdfc;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .tile {
+      border-radius: 16px;
+      padding: 1.8rem;
+      color: #004d40;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .tile img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: auto;
+      border: 3px solid #00bfa5;
+      padding: 2px;
+    }
+    .message-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
+      color: #fff;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .message-button:hover {
+      background-color: #00796b;
+    }
+    @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .sidebar.active {
+        display: block;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .filter-toggle {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: none;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .filter-toggle {
+        display: block;
+      }
+    }
+    /* City display style */
+    .city-bar {
+      text-align:center; 
+      font-size:1.1rem; 
+      margin-bottom: 1rem; 
+      color:#045c52;
+    }
+    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -52,9 +190,7 @@
     </div>
   </nav>
   <h1 class="page-title">Handyman Pros</h1>
-  <div class="location-box" id="location-box">
-    Detecting your location...
-  </div>
+  <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
       <h3>FILTER</h3>
@@ -76,15 +212,45 @@
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
+
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
-    <div class="tile-grid" id="pros-grid">
-      <!-- Pros will be rendered here by JS -->
-    </div>
-    <div class="no-pros" id="no-pros" style="display:none;">
-      Sorry, no handyman pros found in your area.
+    <div class="tile-grid">
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fix-It Fast Handyman">
+        <h3><strong>Fix-It Fast Handyman</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Same-day repairs, mounting, and installation. Residential & commercial.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Assembly Pros">
+        <h3><strong>Assembly Pros</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Furniture assembly, TV mounting, and minor carpentry for any project.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Handy Electric & Plumbing">
+        <h3><strong>Handy Electric & Plumbing</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Licensed for electrical, plumbing, and general handyman services.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="OnCall Carpentry">
+        <h3><strong>OnCall Carpentry</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Custom carpentry, shelving, and home repairs. Fast & reliable.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
     </div>
   </section>
+
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -153,172 +319,23 @@
   </div>
 </body>
 <script>
-  // --- Pros Data with Location ---
-  const pros = [
-    {
-      name: "Fix-It Fast Handyman",
-      city: "Simi Valley",
-      area: "CA",
-      img: "https://i.ibb.co/JRZ5M3v/placeholder-profile.png",
-      desc: "Same-day repairs, mounting, and installation. Residential & commercial.",
-      rating: "★★★★★"
-    },
-    {
-      name: "Assembly Pros",
-      city: "Simi Valley",
-      area: "CA",
-      img: "https://i.ibb.co/JRZ5M3v/placeholder-profile.png",
-      desc: "Furniture assembly, TV mounting, and minor carpentry for any project.",
-      rating: "★★★★☆"
-    },
-    {
-      name: "OnCall Carpentry",
-      city: "Simi Valley",
-      area: "CA",
-      img: "https://i.ibb.co/JRZ5M3v/placeholder-profile.png",
-      desc: "Custom carpentry, shelving, and home repairs. Fast & reliable.",
-      rating: "★★★★☆"
-    },
-    {
-      name: "Handy Electric & Plumbing",
-      city: "Burbank",
-      area: "CA",
-      img: "https://i.ibb.co/JRZ5M3v/placeholder-profile.png",
-      desc: "Licensed for electrical, plumbing, and general handyman services.",
-      rating: "★★★★★"
-    },
-    {
-      name: "Sherman Oaks Handyman",
-      city: "Sherman Oaks",
-      area: "CA",
-      img: "https://i.ibb.co/JRZ5M3v/placeholder-profile.png",
-      desc: "Mounting, repairs, and installations for Sherman Oaks and nearby.",
-      rating: "★★★★★"
-    }
-  ];
-  let userCity = "";
-  let userArea = "";
-
-  // --- Location Detection and Manual Entry ---
-  function setLocationBox(city, area, manual = false) {
-    userCity = city;
-    userArea = area;
-    const box = document.getElementById('location-box');
-    box.innerHTML = `Showing pros near <b>${city}, ${area}</b> 
-      <br><span style="font-size: 0.95em;">(Not your area? Enter manually below.)</span>
-      <form id="manual-location-form" style="margin-top:1rem;">
-        <input type="text" id="manual-city" placeholder="City" required>
-        <input type="text" id="manual-area" placeholder="State e.g. CA" maxlength="2" style="width:40px;" required>
-        <button type="submit">Update</button>
-      </form>`;
-    document.getElementById("manual-location-form").onsubmit = function(e){
-      e.preventDefault();
-      setLocationBox(
-        document.getElementById("manual-city").value.trim(),
-        document.getElementById("manual-area").value.trim().toUpperCase(),
-        true
-      );
-      showPros();
-    }
-  }
-
-  function showManualLocationPrompt() {
-    const box = document.getElementById('location-box');
-    box.innerHTML = `
-      <span>Couldn't detect your location.<br>Enter your city and state:</span>
-      <form id="manual-location-form" style="margin-top:1rem;">
-        <input type="text" id="manual-city" placeholder="City" required>
-        <input type="text" id="manual-area" placeholder="State e.g. CA" maxlength="2" required>
-        <button type="submit">Update</button>
-      </form>
-    `;
-    document.getElementById("manual-location-form").onsubmit = function(e){
-      e.preventDefault();
-      setLocationBox(
-        document.getElementById("manual-city").value.trim(),
-        document.getElementById("manual-area").value.trim().toUpperCase(),
-        true
-      );
-      showPros();
-    }
-  }
-
-  function getCityFromCoords(lat, lon) {
-    // Use OpenStreetMap's Nominatim API for free geocoding
-    return fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-      .then(resp => resp.json())
-      .then(data => {
-        let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
-        let area = data.address.state || data.address.region || data.address.county || "";
-        // For CA, use state code
-        if (area === "California") area = "CA";
-        return { city, area };
-      });
-  }
-
-  function showPros() {
-    const grid = document.getElementById("pros-grid");
-    const noPros = document.getElementById("no-pros");
-    // Filter pros by userCity and userArea (case-insensitive, loose match)
-    const filtered = pros.filter(pro =>
-      pro.city.toLowerCase() === userCity.toLowerCase() && pro.area.toLowerCase() === userArea.toLowerCase()
-    );
-    grid.innerHTML = "";
-    if(filtered.length === 0) {
-      noPros.style.display = "block";
-    } else {
-      noPros.style.display = "none";
-      filtered.forEach(pro => {
-        grid.innerHTML += `
-          <div class="tile">
-            <img src="${pro.img}" alt="${pro.name}">
-            <h3><strong>${pro.name}</strong></h3>
-            <p>📍 ${pro.city}, ${pro.area}</p>
-            <p>${pro.desc}</p>
-            <p style="color: #ffaa00; font-size: 1.2rem;">${pro.rating}</p>
-            <a href="#" class="message-button">Message</a>
-          </div>
-        `;
-      });
-    }
-  }
-
-  // --- Filtering logic (unchanged) ---
   document.addEventListener("DOMContentLoaded", function () {
-    // Location detection
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async function(position) {
-        try {
-          const loc = await getCityFromCoords(position.coords.latitude, position.coords.longitude);
-          if(loc.city && loc.area) {
-            setLocationBox(loc.city, loc.area);
-            showPros();
-          } else {
-            showManualLocationPrompt();
-          }
-        } catch {
-          showManualLocationPrompt();
-        }
-      }, function() {
-        showManualLocationPrompt();
-      });
-    } else {
-      showManualLocationPrompt();
-    }
-
-    // Filtering (unchanged)
+    // --- FILTERING LOGIC (unchanged) ---
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
     const tiles = document.querySelectorAll(".tile");
+
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener("change", () => {
         const activeFilters = Array.from(checkboxes)
           .filter(box => box.checked)
           .map(box => box.value);
-        document.querySelectorAll('.tile').forEach(tile => {
+
+        tiles.forEach(tile => {
           const content = tile.textContent.toLowerCase();
           const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
           tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+
           const paragraphs = tile.querySelectorAll("p");
           paragraphs.forEach(p => {
             let text = p.textContent;
@@ -329,6 +346,7 @@
             p.innerHTML = text;
           });
         });
+
         tagContainer.innerHTML = "";
         activeFilters.forEach(filter => {
           const tag = document.createElement("span");
@@ -345,19 +363,21 @@
         });
       });
     });
+
     const resetLink = document.querySelector(".reset-link");
     if (resetLink) {
       resetLink.addEventListener("click", () => {
         checkboxes.forEach(box => box.checked = false);
-        document.querySelectorAll('.tile').forEach(tile => tile.style.display = "flex");
+        tiles.forEach(tile => tile.style.display = "flex");
         tagContainer.innerHTML = "";
       });
     }
 
-    // --- Simple client-side login ---
+    // --- SIMPLE CLIENT-SIDE LOGIN ---
     const loginForm = document.getElementById('login-form');
     const loginModal = document.getElementById('login-modal');
     const signInBtn = document.querySelector('.sign-in');
+
     function showSignedIn(email) {
       if (signInBtn) {
         signInBtn.textContent = "Signed in as " + email;
@@ -365,6 +385,7 @@
         signInBtn.style.opacity = "0.6";
       }
     }
+
     if (loginForm) {
       loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -374,11 +395,43 @@
         showSignedIn(email);
       });
     }
+
+    // On page load, restore sign-in state
     const savedEmail = localStorage.getItem("signedInEmail");
     if (savedEmail) {
       showSignedIn(savedEmail);
     }
+
+    // --- CITY DETECTOR ---
+    function updateCity(city) {
+      // Update display bar
+      const cityBar = document.getElementById('city-bar');
+      cityBar.innerHTML = city
+        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+      // Update all pro cards
+      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+    }
+    window.showCityPrompt = function() {
+      const entry = prompt("Enter your city (e.g. Northridge):");
+      if(entry) updateCity(entry.trim());
+    }
+    // Try geolocation and reverse geocode
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        const lat = pos.coords.latitude, lon = pos.coords.longitude;
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+          .then(resp=>resp.json()).then(data=>{
+            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+            if(!city && data.address.suburb) city = data.address.suburb;
+            updateCity(city || null);
+          }).catch(()=>updateCity(null));
+      }, function() { updateCity(null); });
+    } else {
+      updateCity(null);
+    }
   });
+
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
