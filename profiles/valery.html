@@ -9,48 +9,82 @@
   <link rel="icon" type="image/png" href="../images/favicon.png">
   <style>
     body {
-      font-family: sans-serif;
-      background: #f8f9fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa 0%, #f8f9fa 100%);
       margin: 0;
       padding: 0;
+      min-height: 100vh;
     }
     .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 900px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2.5rem 2rem 2rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(0,191,165,0.07), 0 1.5px 6px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .container:hover {
+      box-shadow: 0 8px 48px rgba(0,191,165,0.12), 0 2px 8px rgba(0,0,0,0.05);
     }
     .profile-header {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
     }
     .profile-header img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #00bfa5;
+      border: 4px solid #00bfa5;
+      box-shadow: 0 4px 16px rgba(0, 191, 165, 0.06);
+      background: #f8f9fa;
     }
     .profile-header h1 {
-      margin: 0;
+      margin: 0 0 0.3rem 0;
+      font-size: 2.1rem;
+      color: #263238;
     }
     .rating {
-      color: #00897b;
+      color: #00bfa5;
       font-weight: bold;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .profile-header p {
+      margin: 0.1rem 0 0 0;
+      color: #546e7a;
+      font-size: 1.08rem;
     }
     .profile-section {
-      margin-top: 2rem;
+      margin-top: 2.6rem;
+    }
+    .profile-section h2 {
+      font-size: 1.23rem;
+      color: #00796b;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.02em;
+      border-left: 4px solid #00bfa5;
+      padding-left: 0.7rem;
+    }
+    .profile-section p, .profile-section ul {
+      color: #37474f;
+      font-size: 1.08rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.8rem;
     }
     .overview-icons {
-      margin-top: 1rem;
+      margin-top: 1.1rem;
     }
     .overview-icons ul {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.1rem;
       padding: 0;
       margin: 0;
       list-style: none;
@@ -59,69 +93,124 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.95rem;
+      font-size: 1.03rem;
+      background: #f1fefc;
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      box-shadow: 0 1px 2px rgba(0,191,165,0.04);
+      transition: background 0.2s;
+    }
+    .overview-icons li:hover {
+      background: #e0f2f1;
+    }
+    .profile-hours {
+      margin: 0.2rem 0 0.9rem 0;
+      padding-left: 1.1rem;
+      color: #455a64;
     }
     .cta-buttons {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .cta-buttons a {
-      background: #00bfa5;
+      background: linear-gradient(90deg, #00bfa5 60%, #26c6da 100%);
       color: white;
-      padding: 0.6rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.7rem 1.7rem;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.2s;
+      font-size: 1.06rem;
+      box-shadow: 0 1.5px 6px rgba(0,191,165,0.09);
+      transition: background 0.21s, box-shadow 0.18s, transform 0.18s;
     }
     .cta-buttons a:hover, .cta-buttons a:focus {
-      background: #00796b;
+      background: linear-gradient(90deg, #00796b 60%, #00bfa5 100%);
+      box-shadow: 0 3px 12px rgba(0,191,165,0.13);
+      transform: translateY(-2px) scale(1.04);
     }
     form {
-      margin-top: 2rem;
+      margin-top: 2.2rem;
       background: #f1fefc;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.05);
+      padding: 1.8rem 1.2rem 1.2rem 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 7px rgba(0,191,165,0.06);
+      border: 1px solid #b2dfdb;
     }
     form label {
       font-weight: 600;
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
+      color: #00796b;
+      letter-spacing: 0.01em;
     }
     .required {
       color: #d32f2f;
-      font-size: 1.1em;
+      font-size: 1.12em;
       margin-left: 2px;
+      vertical-align: middle;
     }
     form input, form textarea {
       width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
+      padding: 0.84rem;
+      margin-bottom: 1.1rem;
+      border: 1.5px solid #b2dfdb;
+      border-radius: 7px;
+      font-size: 1.05rem;
+      background: #ffffff;
+      transition: border 0.17s;
+      font-family: inherit;
+    }
+    form input:focus, form textarea:focus {
+      border: 1.5px solid #00bfa5;
+      outline: none;
+      background: #f1fefc;
     }
     form button {
-      background-color: #00bfa5;
+      background: linear-gradient(90deg, #00bfa5 60%, #26c6da 100%);
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-size: 1rem;
+      padding: 0.83rem 1.8rem;
+      border-radius: 7px;
+      font-size: 1.09rem;
       font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,191,165,0.08);
+      transition: background 0.19s, box-shadow 0.17s, transform 0.15s;
     }
     form button:hover, form button:focus {
-      background-color: #00796b;
+      background: linear-gradient(90deg, #00796b 60%, #00bfa5 100%);
+      box-shadow: 0 4px 12px rgba(0,191,165,0.13);
+      transform: translateY(-2px) scale(1.03);
     }
     .form-message {
       margin-top: 1rem;
-      font-size: 1rem;
+      font-size: 1.07rem;
       color: #388e3c;
       display: none;
+      font-weight: 500;
+    }
+    small {
+      display: block;
+      margin-top: -0.7rem;
+      margin-bottom: 0.9rem;
+      color: #8e99a3;
+      font-size: 0.96rem;
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 1rem 0.5rem 1.5rem 0.5rem;
+      }
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .cta-buttons {
+        justify-content: center;
+      }
     }
   </style>
 </head>
