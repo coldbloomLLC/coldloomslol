@@ -6,264 +6,200 @@
   <title>House Cleaning Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    :root {
-      --primary: #00bfa5;
-      --primary-dark: #00796b;
-      --accent-bg: #e0f2f1;
-      --tile-bg: #fff;
-      --tile-border: #e0e0e0;
-      --star: #ffaa00;
-      --radius: 18px;
-      --box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    .tag {
+      background: #e0f2f1;
+      color: #00796b;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
     }
-
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      justify-content: flex-start;
+    }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f8fffd;
-      min-height: 100%;
+      font-family: sans-serif;
+      height: 100%;
     }
-    .navbar {
-      background:#f5f5f5; padding:1.1rem 0 1.1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.09);
-    }
-    .container {
-      display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;
-    }
-    .nav-logo, .sign-in {
-      color:var(--primary-dark);
-      font-weight:bold;
-      text-decoration:none;
-      font-size:1.3rem;
-    }
-    .sign-in { font-size:1rem; }
     h1.page-title {
       text-align: center;
-      font-size: 2.6rem;
-      margin-top: 2.3rem;
-      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      background: linear-gradient(to right, #00796b, #00bfa5);
       -webkit-background-clip: text;
       color: transparent;
-      font-weight: 800;
-      letter-spacing: -1px;
     }
-
     .main-layout {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
       justify-content: center;
       max-width: 1600px;
-      margin: 2.2rem auto 2rem auto;
+      margin: 2rem auto;
       padding: 0 1rem;
-      gap: 2.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
     }
     .sidebar {
-      background: var(--accent-bg);
-      padding: 1.6rem 1.3rem 1.6rem 1.3rem;
-      border-radius: var(--radius);
-      box-shadow: var(--box-shadow);
+      background: #e0f2f1;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       min-height: 100vh;
-      width: 250px;
+      width: 260px;
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
-      transition: box-shadow 0.15s;
     }
     .sidebar h3 {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       margin-top: 0;
-      margin-bottom: 1.7rem;
-      background: var(--primary-dark);
+      margin-bottom: 2rem;
+      background: #00796b;
       color: white;
-      padding: 0.7rem 1rem;
+      padding: 0.8rem 1rem;
       border-radius: 10px;
       text-align: center;
-      letter-spacing: 0.5px;
     }
     .filter-group {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
     .filter-group legend {
       font-weight: bold;
-      font-size: 1.06rem;
-      margin-bottom: .6rem;
-      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
     }
     .filter-group label {
       display: flex;
       align-items: center;
-      margin-bottom: 0.6rem;
-      font-size: 0.97rem;
-      cursor: pointer;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
     }
-    .filter-group input[type="checkbox"] {
-      accent-color: var(--primary-dark);
+    .filter-group input {
       margin-right: 0.5rem;
-      cursor: pointer;
-      width: 1.1em;
-      height: 1.1em;
     }
     .reset-link {
-      color: var(--primary-dark);
+      color: #00796b;
       font-weight: bold;
       text-decoration: none;
       display: inline-block;
-      margin-top: 1.2rem;
-      transition: color 0.2s;
+      margin-top: 1rem;
     }
-    .reset-link:hover { color: var(--primary); }
-
-    .active-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-      justify-content: flex-start;
-      margin-left: 0.2rem;
-    }
-    .tag {
-      background: var(--accent-bg);
-      color: var(--primary-dark);
-      padding: 0.33rem 0.92rem;
-      border-radius: 20px;
-      font-size: 0.93rem;
-      cursor: pointer;
-      user-select: none;
-      border: 1px solid var(--primary);
-      transition: background .2s, color .2s;
-    }
-    .tag:hover {
-      background: var(--primary-dark);
-      color: #fff;
-    }
-
     .tile-grid {
       flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
       background-color: #f9fdfc;
-      padding: 1.4rem;
-      border-radius: 14px;
+      padding: 1rem;
+      border-radius: 12px;
     }
     .tile {
-      border-radius: var(--radius);
-      padding: 2.1rem 1.2rem 1.4rem 1.2rem;
+      border-radius: 16px;
+      padding: 1.8rem;
       color: #004d40;
-      background: var(--tile-bg);
-      border: 1px solid var(--tile-border);
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
       display: flex;
       flex-direction: column;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: box-shadow 0.2s, transform 0.2s;
-      min-height: 320px;
-      position: relative;
+      transition: all 0.3s ease-in-out;
+      min-height: 300px;
     }
     .tile:hover {
-      transform: translateY(-8px) scale(1.025);
-      box-shadow: 0 10px 28px rgba(0,191,165,0.10);
-      border-color: var(--primary);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
     }
     .tile img {
-      width: 70px;
-      height: 70px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      margin: 0 auto 0.6rem auto;
-      border: 3px solid var(--primary);
+      margin: auto;
+      border: 3px solid #00bfa5;
       padding: 2px;
-      background: var(--accent-bg);
-      box-shadow: 0 2px 6px rgba(0,191,165,0.05);
-    }
-    .tile h3 {
-      font-size: 1.27rem;
-      margin-bottom: 0.2rem;
-      font-weight: 700;
-      margin-top: 0.12rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .tile .badge {
-      background: var(--primary-dark);
-      color: #fff;
-      font-size: 0.73rem;
-      border-radius: 12px;
-      padding: 0.18rem 0.7rem;
-      margin-left: 0.4rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      vertical-align: middle;
-      display: inline-block;
-    }
-    .tile p {
-      margin: 0.25rem 0 0.25rem 0;
-      font-size: 1rem;
-    }
-    .tile .stars {
-      color: var(--star);
-      font-size: 1.1rem;
-      margin: 0.25rem 0 0.7rem 0;
-      letter-spacing: 2px;
-      font-weight: 600;
     }
     .message-button {
-      margin-top: auto;
-      background-color: var(--primary);
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
       color: #fff;
-      padding: 0.62rem 1.3rem;
-      font-size: 1.03rem;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
+      transition: background-color 0.3s ease;
       border: none;
-      box-shadow: 0 2px 7px rgba(0,191,165,0.08);
       cursor: pointer;
-      transition: background 0.2s;
     }
-    .message-button:hover, .message-button:focus {
-      background-color: var(--primary-dark);
-      outline: none;
+    .message-button:hover {
+      background-color: #00796b;
     }
-    @media (max-width: 1100px) {
-      .sidebar { min-height: unset; position: static; width: 100%; }
-      .main-layout { flex-direction: column; align-items: stretch; }
+    .viewprofile-button {
+      margin-top: 0.6rem;
+      display: inline-block;
+      background: transparent;
+      color: #00796b;
+      border: 2px solid #00bfa5;
+      padding: 0.45rem 1.3rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
+    }
+    .viewprofile-button:hover, .viewprofile-button:focus {
+      background: #00bfa5;
+      color: #fff;
+      border-color: #00796b;
+    }
+    @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .sidebar.active {
+        display: block;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .filter-toggle {
-      background-color: var(--primary-dark);
+      background-color: #00796b;
       color: white;
       border: none;
       padding: 0.75rem 1.2rem;
       font-size: 1rem;
       border-radius: 10px;
-      margin: 1.4rem auto 1.2rem auto;
+      margin: 1rem auto;
       display: none;
       cursor: pointer;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.09);
-      width: 96%;
-      max-width: 380px;
     }
-    @media (max-width: 900px) {
-      .main-layout { flex-direction: column; align-items: stretch; }
-      .sidebar { display: none; width: 100%; }
-      .sidebar.active { display: block; width: 100%; }
-      .tile-grid { grid-template-columns: 1fr; }
-      .filter-toggle { display: block; }
+    @media (max-width: 768px) {
+      .filter-toggle {
+        display: block;
+      }
     }
-    /* Accessibility: focus for sidebar and buttons */
-    .sidebar:focus-within, .tile:focus-within { box-shadow: 0 0 0 2px var(--primary); }
-    .message-button:focus { outline: 2px solid var(--primary-dark); }
-    /* Footer, socials, modal: as in your original */
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="nav-logo">Cold Looms</a>
-      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'">Sign In</a>
+  <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
+      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
+      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
   <h1 class="page-title">House Cleaning Pros</h1>
@@ -292,40 +228,51 @@
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
+      <!-- Example tile for Valer Y -->
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Valer Y">
+        <h3><strong>Valer Y</strong></h3>
+        <p>📍 Los Angeles, CA</p>
+        <p>Standard and deep cleaning. Residential & commercial.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+        <a href="profile-valery.html" class="viewprofile-button">View Profile</a>
+      </div>
       <div class="tile">
         <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Sparkle Cleaners">
-        <h3>
-          <strong>Sparkle Cleaners</strong>
-          <span class="badge" title="Verified Pro">✔️</span>
-        </h3>
+        <h3><strong>Sparkle Cleaners</strong> <span style="color: #00bfa5;">✔️</span></h3>
         <p>📍 Sherman Oaks, CA</p>
-        <p>Same-day <span class="badge">Standard</span> and <span class="badge">Deep Cleaning</span>. Residential & commercial.</p>
-        <div class="stars">★★★★★</div>
+        <p>Same-day standard and deep cleaning. Residential & commercial.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
+        <a href="profile-sparkle.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
         <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Move Out Maids">
         <h3><strong>Move Out Maids</strong></h3>
         <p>📍 Woodland Hills, CA</p>
-        <p>Move in/out, <span class="badge">Eco-Friendly</span> options, flexible scheduling.</p>
-        <div class="stars">★★★★☆</div>
+        <p>Move in/out cleaning, eco-friendly options, flexible scheduling.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
+        <a href="profile-moveoutmaids.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
         <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Green Clean Pros">
         <h3><strong>Green Clean Pros</strong></h3>
         <p>📍 Burbank, CA</p>
-        <p><span class="badge">Eco-Friendly</span> products, recurring and post-construction cleaning available.</p>
-        <div class="stars">★★★★★</div>
+        <p>Eco-friendly products, recurring and post-construction cleaning available.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
+        <a href="profile-greencleanpros.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
         <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fresh Start Cleaning">
         <h3><strong>Fresh Start Cleaning</strong></h3>
         <p>📍 Encino, CA</p>
-        <p>Deep cleans, move in/out, and <span class="badge">Emergency</span> cleaning. Fast & reliable.</p>
-        <div class="stars">★★★★☆</div>
+        <p>Deep cleans, move in/out, and emergency cleaning. Fast & reliable.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
+        <a href="profile-freshstart.html" class="viewprofile-button">View Profile</a>
       </div>
     </div>
   </section>
@@ -395,6 +342,7 @@
       </form>
     </div>
   </div>
+</body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const tagContainer = document.getElementById("active-tags");
@@ -455,5 +403,4 @@
     sidebar.classList.toggle('active');
   }
 </script>
-</body>
 </html>
