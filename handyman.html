@@ -294,18 +294,13 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
-  <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
-    <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
-      <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
-      <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
-      </form>
-    </div>
+ <form id="login-form">
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
+  <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
+</form>
   </div>
 </body>
 <script>
