@@ -36,6 +36,16 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+    #city-bar {
+      background: #e0f2f1;
+      color: #00796b;
+      font-size: 1.12rem;
+      padding: 0.9rem 0;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid #c5ebe6;
+    }
     .main-layout {
       display: flex;
       flex-direction: row;
@@ -186,6 +196,7 @@
       <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
+  <div id="city-bar">Detecting your city...</div>
   <h1 class="page-title">House Cleaning Pros</h1>
   <section class="main-layout">
     <aside class="sidebar">
@@ -321,8 +332,33 @@
       </form>
     </div>
   </div>
-</body>
 <script>
+  // CITY DETECTOR
+  function updateCity(city) {
+    const cityBar = document.getElementById('city-bar');
+    cityBar.innerHTML = city
+      ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+      : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+    document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+  }
+  window.showCityPrompt = function() {
+    const entry = prompt("Enter your city (e.g. Northridge):");
+    if(entry) updateCity(entry.trim());
+  }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      const lat = pos.coords.latitude, lon = pos.coords.longitude;
+      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+        .then(resp=>resp.json()).then(data=>{
+          let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+          if(!city && data.address.suburb) city = data.address.suburb;
+          updateCity(city || null);
+        }).catch(()=>updateCity(null));
+    }, function() { updateCity(null); });
+  } else {
+    updateCity(null);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
@@ -377,9 +413,11 @@
       });
     }
   });
+
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
   }
 </script>
+</body>
 </html>
