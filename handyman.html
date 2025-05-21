@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Estimate | Cold Looms</title>
+  <title>Handyman Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ==== COPIED FROM YOUR handyman.html ==== */
     .tag {
       background: #e0f2f1;
       color: #00796b;
@@ -15,6 +14,13 @@
       font-size: 0.9rem;
       cursor: pointer;
       user-select: none;
+    }
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      justify-content: flex-start;
     }
     html, body {
       margin: 0;
@@ -62,16 +68,76 @@
       border-radius: 10px;
       text-align: center;
     }
-    .filter-toggle {
-      background-color: #00796b;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.2rem;
+    .filter-group {
+      margin-bottom: 2.5rem;
+    }
+    .filter-group legend {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .filter-group label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
       font-size: 1rem;
-      border-radius: 10px;
-      margin: 1rem auto;
-      display: none;
-      cursor: pointer;
+    }
+    .filter-group input {
+      margin-right: 0.5rem;
+    }
+    .reset-link {
+      color: #00796b;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .tile-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      background-color: #f9fdfc;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .tile {
+      border-radius: 16px;
+      padding: 1.8rem;
+      color: #004d40;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .tile img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: auto;
+      border: 3px solid #00bfa5;
+      padding: 2px;
+    }
+    .message-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background-color: #00bfa5;
+      color: #fff;
+      padding: 0.6rem 1.6rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .message-button:hover {
+      background-color: #00796b;
     }
     @media (max-width: 768px) {
       .main-layout {
@@ -86,102 +152,25 @@
       .sidebar.active {
         display: block;
       }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .tile-grid {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      background-color: #f9fdfc;
-      padding: 1rem;
-      border-radius: 12px;
-      min-width: 340px;
-    }
-
-    /* ==== ESTIMATE FLOW CUSTOM ==== */
-    .estimate-card {
-      background: #fff;
-      max-width: 420px;
-      margin: 2.5rem auto 0 auto;
-      border-radius: 18px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.09);
-      padding: 2.4rem 2rem 2.2rem 2rem;
-      position: relative;
-      transition: box-shadow 0.2s;
-      width: 100%;
-      min-width: 290px;
-    }
-    .estimate-title {
-      text-align: center;
-      font-size: 2.1rem;
-      font-weight: bold;
-      margin: 0 0 1.2rem 0;
-      background: linear-gradient(90deg,#00796b,#00bfa5 80%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .estimate-step-label {
-      font-size: 1.13rem; color: #045c52; text-align:center; margin-bottom: 1.7rem;
-    }
-    .estimate-choices {
-      display: flex; flex-direction: column; gap: 1.1rem; margin: 0 auto 0.5rem auto; max-width: 300px;
-    }
-    .estimate-choice {
-      background: #e0f2f1;
-      color: #00796b;
+    .filter-toggle {
+      background-color: #00796b;
+      color: white;
       border: none;
-      border-radius: 999px;
-      padding: 1rem 0;
-      font-size: 1.07rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.18s;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-    }
-    .estimate-choice.selected, .estimate-choice:focus, .estimate-choice:hover {
-      background: linear-gradient(90deg,#00bfa5,#00796b);
-      color: #fff;
-    }
-    .estimate-input {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border: 1.5px solid #b2dfdb;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
       border-radius: 10px;
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
-      box-sizing: border-box;
-      background: #f5f5f5;
-      color: #045c52;
-      transition: border 0.2s;
-    }
-    .estimate-next-btn {
-      margin: 1.2rem auto 0 auto;
-      display: block;
-      background: linear-gradient(90deg,#00bfa5,#00796b);
-      color: #fff;
-      padding: 0.85rem 2.1rem;
-      border-radius: 999px;
-      font-size: 1.09rem;
-      font-weight: bold;
-      border: none;
+      margin: 1rem auto;
+      display: none;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
     }
-    .estimate-next-btn:active { background: #00796b; }
-    .estimate-back {
-      position: absolute; left: 1.3rem; top: 1.35rem; font-size: 1.2rem; color: #00bfa5; background: none; border:none; cursor:pointer;
-    }
-    .estimate-summary {
-      background: #e0f2f1; color: #045c52; border-radius: 12px; padding: 1rem 1.2rem; font-size:1.07rem; margin:1rem 0 2rem 0;
-    }
-    .estimate-result {
-      text-align: center; color: #045c52; font-size: 1.14rem; margin-top:1.2rem;
-    }
-    .estimate-result b {color:#00796b;}
-    .estimate-card h2 {margin:1rem 0 1.1rem 0;}
-    @media (max-width: 600px) {
-      .estimate-card {padding: 1.4rem 0.7rem;}
-      .estimate-title {font-size: 1.5rem;}
+    @media (max-width: 768px) {
+      .filter-toggle {
+        display: block;
+      }
     }
     /* City display style */
     .city-bar {
@@ -200,66 +189,68 @@
       <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
-  <h1 class="page-title">Instant Estimate</h1>
+  <h1 class="page-title">Handyman Pros</h1>
   <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
-      <h3>ESTIMATE STEPS</h3>
-      <ol style="font-size:1.04rem; color:#045c52; margin:0 0 2rem 1.3rem; padding:0;">
-        <li id="sidebar-step1" style="margin-bottom:1.1rem;">Service</li>
-        <li id="sidebar-step2" style="margin-bottom:1.1rem;">Location</li>
-        <li id="sidebar-step3" style="margin-bottom:1.1rem;">Date</li>
-        <li id="sidebar-step4" style="margin-bottom:1.1rem;">Review</li>
-        <li id="sidebar-step5" style="margin-bottom:1.1rem;">Results</li>
-      </ol>
-      <div style="margin-top:2.5rem; color:#00796b; font-size:1.09rem;">
-        Questions?<br>
-        <a href="mailto:info@coldlooms.com" style="color:#00796b;">Contact Support</a>
-      </div>
+      <h3>FILTER</h3>
+      <fieldset class="filter-group">
+        <legend>Service Type</legend>
+        <label><input type="checkbox" value="Repairs" /> Repairs</label>
+        <label><input type="checkbox" value="Assembly" /> Assembly</label>
+        <label><input type="checkbox" value="Mounting" /> Mounting</label>
+        <label><input type="checkbox" value="Plumbing" /> Plumbing</label>
+        <label><input type="checkbox" value="Electrical" /> Electrical</label>
+        <label><input type="checkbox" value="Carpentry" /> Carpentry</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Property</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+        <label><input type="checkbox" value="Emergency" /> Emergency</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+      </fieldset>
+      <a href="#" class="reset-link">Reset filters</a>
     </aside>
-    <button class="filter-toggle" onclick="toggleFilters()">Toggle Steps</button>
+
+    <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
+    <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
-      <div class="estimate-card" id="estimateCard">
-        <button class="estimate-back" id="estimateBackBtn" style="display:none;">←</button>
-        <div id="step1" class="estimate-step">
-          <div class="estimate-title">Instant Estimate</div>
-          <div class="estimate-step-label">What do you need help with?</div>
-          <div class="estimate-choices">
-            <button class="estimate-choice" data-value="Junk Removal">Junk Removal</button>
-            <button class="estimate-choice" data-value="Furniture Assembly">Furniture Assembly</button>
-            <button class="estimate-choice" data-value="TV Mounting">TV Mounting</button>
-            <button class="estimate-choice" data-value="Other">Other</button>
-          </div>
-        </div>
-        <div id="step2" class="estimate-step" style="display:none;">
-          <div class="estimate-title">Instant Estimate</div>
-          <div class="estimate-step-label">Where are you located?</div>
-          <input class="estimate-input" id="estimateCity" placeholder="Enter your city or ZIP code" />
-          <button class="estimate-next-btn" id="toStep3">Next</button>
-        </div>
-        <div id="step3" class="estimate-step" style="display:none;">
-          <div class="estimate-title">Instant Estimate</div>
-          <div class="estimate-step-label">When do you need it?</div>
-          <div class="estimate-choices">
-            <button class="estimate-choice" data-value="Today">Today</button>
-            <button class="estimate-choice" data-value="Tomorrow">Tomorrow</button>
-            <button class="estimate-choice" data-value="This Week">This Week</button>
-            <button class="estimate-choice" data-value="Flexible">Flexible</button>
-          </div>
-        </div>
-        <div id="step4" class="estimate-step" style="display:none;">
-          <div class="estimate-title">Review</div>
-          <div class="estimate-summary" id="estimateSummary"></div>
-          <button class="estimate-next-btn" id="showMatchesBtn">Show My Matches</button>
-        </div>
-        <div id="step5" class="estimate-step" style="display:none;">
-          <div class="estimate-title">Results</div>
-          <div class="estimate-result" id="estimateResult"></div>
-          <button class="estimate-next-btn" onclick="window.location='handyman.html'">See Pros</button>
-        </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fix-It Fast Handyman">
+        <h3><strong>Fix-It Fast Handyman</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Same-day repairs, mounting, and installation. Residential & commercial.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Assembly Pros">
+        <h3><strong>Assembly Pros</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Furniture assembly, TV mounting, and minor carpentry for any project.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Handy Electric & Plumbing">
+        <h3><strong>Handy Electric & Plumbing</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Licensed for electrical, plumbing, and general handyman services.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="#" class="message-button">Message</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="OnCall Carpentry">
+        <h3><strong>OnCall Carpentry</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Custom carpentry, shelving, and home repairs. Fast & reliable.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="#" class="message-button">Message</a>
       </div>
     </div>
   </section>
+
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -312,7 +303,7 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
-  <!-- LOGIN MODAL (unchanged) -->
+  <!-- LOGIN MODAL -->
   <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
     <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
       <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
@@ -328,12 +319,65 @@
   </div>
 </body>
 <script>
-  // ==== CITY DETECTOR (copied) ====
   document.addEventListener("DOMContentLoaded", function () {
-    // --- SIMPLE CLIENT-SIDE LOGIN (copied) ---
+    // --- FILTERING LOGIC (unchanged) ---
+    const tagContainer = document.getElementById("active-tags");
+    const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+    const tiles = document.querySelectorAll(".tile");
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+        const activeFilters = Array.from(checkboxes)
+          .filter(box => box.checked)
+          .map(box => box.value);
+
+        tiles.forEach(tile => {
+          const content = tile.textContent.toLowerCase();
+          const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
+          tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+
+          const paragraphs = tile.querySelectorAll("p");
+          paragraphs.forEach(p => {
+            let text = p.textContent;
+            activeFilters.forEach(filter => {
+              const regex = new RegExp(`(${filter})`, 'gi');
+              text = text.replace(regex, '<mark>$1</mark>');
+            });
+            p.innerHTML = text;
+          });
+        });
+
+        tagContainer.innerHTML = "";
+        activeFilters.forEach(filter => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = filter + " ✕";
+          tag.onclick = () => {
+            checkboxes.forEach(box => {
+              if (box.value === filter) box.checked = false;
+            });
+            const event = new Event('change');
+            checkboxes[0].dispatchEvent(event);
+          };
+          tagContainer.appendChild(tag);
+        });
+      });
+    });
+
+    const resetLink = document.querySelector(".reset-link");
+    if (resetLink) {
+      resetLink.addEventListener("click", () => {
+        checkboxes.forEach(box => box.checked = false);
+        tiles.forEach(tile => tile.style.display = "flex");
+        tagContainer.innerHTML = "";
+      });
+    }
+
+    // --- SIMPLE CLIENT-SIDE LOGIN ---
     const loginForm = document.getElementById('login-form');
     const loginModal = document.getElementById('login-modal');
     const signInBtn = document.querySelector('.sign-in');
+
     function showSignedIn(email) {
       if (signInBtn) {
         signInBtn.textContent = "Signed in as " + email;
@@ -341,6 +385,7 @@
         signInBtn.style.opacity = "0.6";
       }
     }
+
     if (loginForm) {
       loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -350,18 +395,22 @@
         showSignedIn(email);
       });
     }
+
     // On page load, restore sign-in state
     const savedEmail = localStorage.getItem("signedInEmail");
     if (savedEmail) {
       showSignedIn(savedEmail);
     }
-    // --- CITY DETECTOR (copied) ---
+
+    // --- CITY DETECTOR ---
     function updateCity(city) {
       // Update display bar
       const cityBar = document.getElementById('city-bar');
       cityBar.innerHTML = city
         ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
         : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+      // Update all pro cards
+      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
     }
     window.showCityPrompt = function() {
       const entry = prompt("Enter your city (e.g. Northridge):");
@@ -383,69 +432,9 @@
     }
   });
 
-  // ==== ESTIMATE WIZARD LOGIC ====
-  let currentStep = 1;
-  let estimateData = { service: "", city: "", date: "" };
-  function showStep(step) {
-    for (let i = 1; i <= 5; i++) {
-      document.getElementById("step" + i).style.display = (i === step ? "block" : "none");
-      document.getElementById("sidebar-step" + i).style.fontWeight = (i === step ? "bold" : "normal");
-      document.getElementById("sidebar-step" + i).style.color = (i === step ? "#00bfa5" : "#045c52");
-    }
-    document.getElementById("estimateBackBtn").style.display = (step > 1 && step < 5) ? "block" : "none";
-    currentStep = step;
-  }
-  document.querySelectorAll("#step1 .estimate-choice").forEach(btn => {
-    btn.onclick = function() {
-      document.querySelectorAll("#step1 .estimate-choice").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      estimateData.service = btn.getAttribute("data-value");
-      setTimeout(()=>showStep(2), 120);
-      document.getElementById("estimateCity").focus();
-    };
-  });
-  document.getElementById("estimateCity").addEventListener("input", function() {
-    this.style.borderColor = "#b2dfdb";
-  });
-  document.getElementById("estimateCity").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") document.getElementById("toStep3").click();
-  });
-  document.getElementById("toStep3").onclick = function() {
-    let city = document.getElementById("estimateCity").value.trim();
-    if (!city) {
-      document.getElementById("estimateCity").style.borderColor = "#e53935";
-      document.getElementById("estimateCity").focus();
-      return;
-    }
-    estimateData.city = city;
-    showStep(3);
-  };
-  document.querySelectorAll("#step3 .estimate-choice").forEach(btn => {
-    btn.onclick = function() {
-      document.querySelectorAll("#step3 .estimate-choice").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      estimateData.date = btn.getAttribute("data-value");
-      document.getElementById("estimateSummary").innerHTML =
-        `You need <b>${estimateData.service}</b> in <b>${estimateData.city}</b> <br>When: <b>${estimateData.date}</b>`;
-      setTimeout(()=>showStep(4), 120);
-    };
-  });
-  document.getElementById("showMatchesBtn").onclick = function() {
-    // Simulate matches (replace logic as needed)
-    let matches = 4;
-    document.getElementById("estimateResult").innerHTML =
-      `We found <b>${matches}</b> pros available in <b>${estimateData.city}</b>!<br>Ready to book?`;
-    showStep(5);
-  };
-  document.getElementById("estimateBackBtn").onclick = function() {
-    if (currentStep > 1) showStep(currentStep - 1);
-  };
-  // Sidebar toggle (mobile)
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
   }
-  // Start on step 1
-  showStep(1);
 </script>
 </html>
