@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Valery Cleaning - Professional cleaning with over 10 years of experience in Simi Valley, CA. Book a service, see reviews, and request a quote.">
   <title>Valery Cleaning | Cold Looms</title>
   <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/favicon.png">
   <style>
     body {
       font-family: sans-serif;
@@ -36,19 +38,24 @@
       margin: 0;
     }
     .rating {
-      color: #00bfa5;
+      color: #00897b;
       font-weight: bold;
     }
     .profile-section {
       margin-top: 2rem;
     }
     .overview-icons {
+      margin-top: 1rem;
+    }
+    .overview-icons ul {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-top: 1rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
     }
-    .overview-icons div {
+    .overview-icons li {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -67,8 +74,9 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: background 0.2s;
     }
-    .cta-buttons a:hover {
+    .cta-buttons a:hover, .cta-buttons a:focus {
       background: #00796b;
     }
     form {
@@ -77,6 +85,16 @@
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 0 6px rgba(0,0,0,0.05);
+    }
+    form label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .required {
+      color: #d32f2f;
+      font-size: 1.1em;
+      margin-left: 2px;
     }
     form input, form textarea {
       width: 100%;
@@ -96,65 +114,93 @@
       font-weight: bold;
       cursor: pointer;
     }
-    form button:hover {
+    form button:hover, form button:focus {
       background-color: #00796b;
+    }
+    .form-message {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #388e3c;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container" role="main">
     <div class="profile-header">
-      <img src="../images/valery.jpg" alt="Valery">
+      <img src="../images/valery.jpg" alt="Portrait of Valery, professional cleaner">
       <div>
         <h1>Valery</h1>
-        <p class="rating">Exceptional 5.0 ★★★★★ (5 reviews)</p>
+        <p class="rating" aria-live="polite">Exceptional 5.0 ★★★★★ (5 reviews)</p>
         <p>Professional Cleaning — Over 10 Years of Experience</p>
       </div>
     </div>
 
-    <div class="profile-section">
-      <h2>Introduction</h2>
-      <p>I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach every job with professionalism, attention to detail, and care.</p>
-    </div>
+    <section class="profile-section" aria-labelledby="intro">
+      <h2 id="intro">Introduction</h2>
+      <p>I have over 10 years of experience in cleaning, including high-end homes. We are a small team of three — myself and two trusted assistants. We approach every job with professionalism, attention to detail, and care.</p>
+    </section>
 
-    <div class="profile-section">
-      <h2>Overview</h2>
+    <section class="profile-section" aria-labelledby="overview">
+      <h2 id="overview">Overview</h2>
       <div class="overview-icons">
-        <div>🏆 Hired 10 times</div>
-        <div>📍 Serves Simi Valley, CA</div>
-        <div>🛡️ Background checked</div>
-        <div>👥 3 employees</div>
-        <div>⏳ 2 years in business</div>
+        <ul>
+          <li>🏆 Hired 10 times</li>
+          <li>📍 Serves Simi Valley, CA</li>
+          <li>🛡️ Background checked</li>
+          <li>👥 3 employees</li>
+          <li>⏳ 2 years in business</li>
+        </ul>
       </div>
-    </div>
+    </section>
 
-    <div class="profile-section">
-      <h2>Business Hours</h2>
+    <section class="profile-section" aria-labelledby="hours">
+      <h2 id="hours">Business Hours</h2>
       <p>Sunday: 9:00 AM – 10:00 PM</p>
       <p>Monday: 12:00 PM – 10:00 PM</p>
       <p><em>Available most evenings — flexible scheduling</em></p>
-    </div>
+    </section>
 
-    <div class="profile-section">
-      <h2>Payment Methods</h2>
-      <p>Cash, Check, Venmo, and Zelle accepted.</p>
-    </div>
+    <section class="profile-section" aria-labelledby="payments">
+      <h2 id="payments">Payment Methods</h2>
+      <p>Cash, Check, Venmo, and Zelle accepted.
+        <a href="https://venmo.com/" target="_blank" rel="noopener">What is Venmo?</a>
+      </p>
+    </section>
 
-    <div class="profile-section">
-      <h2>Request a Quote</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="text" name="zip" placeholder="ZIP Code" required />
-        <textarea name="details" placeholder="What do you need cleaned?" rows="5" required></textarea>
+    <section class="profile-section" aria-labelledby="quote">
+      <h2 id="quote">Request a Quote</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST" autocomplete="on">
+        <label for="name">Your Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
+
+        <label for="email">Your Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email" />
+        <small>Your email will not be shared.</small>
+
+        <label for="zip">ZIP Code <span class="required">*</span></label>
+        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required autocomplete="postal-code" pattern="\d{5}" title="Enter a valid 5-digit ZIP code" />
+
+        <label for="details">What do you need cleaned? <span class="required">*</span></label>
+        <textarea id="details" name="details" placeholder="What do you need cleaned?" rows="5" required></textarea>
+
         <button type="submit">Submit Request</button>
+        <div class="form-message" id="form-message">Thank you! Your request has been sent.</div>
       </form>
-    </div>
+    </section>
 
-    <div class="cta-buttons">
+    <nav class="cta-buttons" aria-label="Page actions">
       <a href="../index.html">← Back</a>
       <a href="mailto:valery@coldlooms.com">Message</a>
-    </div>
-  </div>
+    </nav>
+  </main>
+  <script>
+    // OPTIONAL: Show a message when the form is submitted (client-side only)
+    document.querySelector('form').addEventListener('submit', function(e){
+      setTimeout(function(){
+        document.getElementById('form-message').style.display = 'block';
+      }, 500);
+    });
+  </script>
 </body>
 </html>
