@@ -19,7 +19,6 @@
     }
     body {
       min-height: 100vh;
-      box-sizing: border-box;
       font-family: 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(120deg, #e0f7fa 0%, #f8f9fa 100%);
       display: flex;
@@ -127,10 +126,37 @@
     .overview-icons li:hover {
       background: #e0f2f1;
     }
-    .profile-hours {
-      margin: 0.2rem 0 0.9rem 0;
-      padding-left: 1.1rem;
-      color: #455a64;
+    .gallery-section {
+      margin-top: 2.6rem;
+    }
+    .gallery-section h2 {
+      font-size: 1.21rem;
+      color: #00796b;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.02em;
+      border-left: 4px solid #00bfa5;
+      padding-left: 0.7rem;
+    }
+    .gallery-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      justify-content: center;
+    }
+    .gallery-row img {
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,191,165,0.07);
+      width: 210px;
+      max-width: 43vw;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 0.7rem;
+      background: #e0f7fa;
+      transition: transform 0.18s, box-shadow 0.19s;
+    }
+    .gallery-row img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 32px rgba(0,191,165,0.18);
     }
     .cta-buttons {
       margin-top: 2.5rem;
@@ -231,7 +257,6 @@
       color: #8e99a3;
       font-size: 0.96rem;
     }
-
     /* Responsive improvements */
     @media (max-width: 900px) {
       body, html {
@@ -261,6 +286,16 @@
         max-width: 95vw;
         min-width: 0;
       }
+      .gallery-row {
+        gap: 0.7rem;
+      }
+      .gallery-row img {
+        width: 44vw;
+        max-width: 95vw;
+        height: 22vw;
+        min-width: 120px;
+        min-height: 70px;
+      }
     }
     @media (max-width: 500px) {
       .container {
@@ -277,7 +312,8 @@
       .profile-header h1 {
         font-size: 1.4rem;
       }
-      .profile-section h2 {
+      .profile-section h2,
+      .gallery-section h2 {
         font-size: 1.1rem;
       }
       .overview-icons ul {
@@ -295,6 +331,12 @@
       form button {
         font-size: 0.97rem;
         padding: 0.7rem 1.1rem;
+      }
+      .gallery-row img {
+        width: 95vw;
+        height: 33vw;
+        min-width: 80px;
+        min-height: 45px;
       }
     }
   </style>
@@ -326,6 +368,16 @@
           <li>⏳ 2 years in business</li>
         </ul>
       </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="gallery">
+      <h2 id="gallery">Our Work</h2>
+      <div class="gallery-row">
+        <img src="../images/clean1.jpg" alt="Sparkling clean kitchen" />
+        <img src="../images/clean2.jpg" alt="Spotless living room after cleaning" />
+        <img src="../images/clean3.jpg" alt="Immaculate bathroom" />
+      </div>
+      <p style="text-align:center; color:#8e99a3; font-size:0.98rem;">See the difference! (More photos available upon request.)</p>
     </section>
 
     <section class="profile-section" aria-labelledby="hours">
