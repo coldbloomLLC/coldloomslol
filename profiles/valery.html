@@ -10,8 +10,8 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #ffffff;
-      color: #333;
+      background: #f4f8f9;
+      color: #222;
     }
     .container {
       width: 100vw;
@@ -22,30 +22,36 @@
     }
     .breadcrumb {
       font-size: 0.9rem;
-      color: #888;
+      color: #555;
       margin-bottom: 1rem;
     }
     .breadcrumb a {
       text-decoration: none;
-      color: #888;
+      color: #00796b;
     }
     .profile-header {
       display: flex;
       align-items: center;
       gap: 2rem;
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .profile-header img {
-      width: 96px;
-      height: 96px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
+      border: 3px solid #00bfa5;
     }
     .profile-header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin: 0;
+      color: #00796b;
     }
     .rating {
-      color: #00bfa5;
+      color: #ffaa00;
       font-weight: 600;
     }
     .tab-menu {
@@ -53,12 +59,13 @@
       gap: 2rem;
       margin-top: 0.5rem;
       font-size: 1rem;
-      color: #555;
-      border-bottom: 1px solid #eee;
+      color: #444;
+      border-bottom: 2px solid #00bfa5;
       padding-bottom: 0.5rem;
     }
     .tab-menu span {
       cursor: pointer;
+      font-weight: bold;
     }
     .inline-boxes {
       display: flex;
@@ -68,21 +75,27 @@
     }
     .inline-boxes > div {
       flex: 1;
-      background: #f9f9f9;
-      padding: 1rem;
-      border-radius: 8px;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
       border: 1px solid #e0e0e0;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .inline-boxes h3 {
+      color: #00796b;
+      margin-top: 0;
     }
     .overview-icons {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.5rem;
       font-size: 1rem;
     }
     .section-title {
       font-weight: bold;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
+      color: #00796b;
     }
     .photos-row {
       display: flex;
@@ -93,30 +106,40 @@
       height: 140px;
       width: 32%;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
     .quote-form {
-      background: #f1fefc;
-      padding: 1.5rem;
-      border-radius: 8px;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
       margin-top: 2rem;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+    }
+    .quote-form h3 {
+      color: #00796b;
+      margin-top: 0;
     }
     .quote-form input, .quote-form textarea {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.85rem;
       margin-bottom: 1rem;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1rem;
     }
     .quote-form button {
       background-color: #00bfa5;
       color: white;
-      padding: 0.75rem 2rem;
+      padding: 0.9rem 2rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: bold;
       font-size: 1rem;
+      cursor: pointer;
+    }
+    .quote-form button:hover {
+      background-color: #00796b;
     }
     .actions {
       display: flex;
@@ -126,11 +149,17 @@
     }
     .actions a {
       text-decoration: none;
-      padding: 0.6rem 1.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background: #fff;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #00bfa5;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #00bfa5;
       font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .actions a:hover {
+      background-color: #00bfa5;
+      color: white;
     }
   </style>
 </head>
