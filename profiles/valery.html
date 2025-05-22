@@ -238,49 +238,61 @@
       padding: 0.7rem;
       text-align: center;
     }
-    /* Footer Columns */
-    .footer-columns {
-      display: flex;
-      gap: 2.5rem;
-      justify-content: space-between;
-      background: #f5f5f5;
-      padding: 2.2rem 1.3rem 1.7rem 1.3rem;
-      border-radius: 16px 16px 0 0;
+    /* Responsive Footer Columns */
+    .site-footer {
+      background-color: #f8f8f8;
+      padding: 4rem 2rem 2rem 2rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
       margin-top: 3.5rem;
-      font-size: 1rem;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
     }
-    .footer-col {
-      flex: 1 1 200px;
-      min-width: 170px;
+    .site-footer .footer-row {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .site-footer .footer-row > div {
+      flex: 1 1 180px;
+      min-width: 160px;
+    }
+    .site-footer h4 {
+      color: #045c52;
+      font-size: 1.1rem;
       margin-bottom: 1rem;
     }
-    .footer-col h4 {
-      margin-top: 0;
-      color: #00bfa5;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.7rem;
-      font-size: 1.07rem;
-    }
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      color: #444;
-    }
-    .footer-col ul li {
+    .site-footer a {
+      display: block;
       margin-bottom: 0.5rem;
+      color: #333;
+      text-decoration: none;
       font-size: 0.99rem;
     }
-    .footer-col a {
-      color: #00796b;
-      text-decoration: none;
-    }
-    .footer-col a:hover {
+    .site-footer a:hover {
       text-decoration: underline;
+      color: #00bfa5;
+    }
+    .site-footer .footer-bottom {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .site-footer .footer-bottom p {
+      color: #666;
+      margin: 0.4rem 0;
+      font-size: 0.97rem;
+    }
+    .site-footer .footer-bottom a {
+      color: #666;
+      margin: 0 0.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .site-footer .footer-bottom a img {
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
     }
     @media (max-width: 1050px) {
       .container {
@@ -292,16 +304,16 @@
         max-width: 600px;
         margin: 0 auto;
       }
-      .footer-columns {
+      .site-footer .footer-row {
         border-radius: 0;
       }
     }
     @media (max-width: 900px) {
-      .footer-columns {
+      .site-footer .footer-row {
         flex-direction: column;
         gap: 1.3rem;
         border-radius: 0;
-        padding: 1.3rem 0.5rem 1rem 0.5rem;
+        padding: 0;
       }
     }
     @media (max-width: 800px) {
@@ -359,6 +371,9 @@
       }
       .inline-boxes {
         padding: 0.7rem;
+      }
+      .site-footer {
+        padding: 2rem 0.3rem 1.2rem 0.3rem;
       }
     }
   </style>
@@ -468,32 +483,47 @@
     </div>
   </div>
 
-  <!-- Footer Columns Section -->
-  <footer class="footer-columns">
-    <div class="footer-col">
-      <h4>Service Areas</h4>
-      <ul>
-        <li>Simi Valley</li>
-        <li>Moorpark</li>
-        <li>Thousand Oaks</li>
-        <li>Woodland Hills</li>
-      </ul>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-row">
+      <div>
+        <h4>Cold Looms</h4>
+        <a href="#">About</a>
+        <a href="#">Partner with Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+      </div>
+      <div>
+        <h4>Customers</h4>
+        <a href="#">How It Works</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Services Near Me</a>
+        <a href="#">Cost Estimates</a>
+      </div>
+      <div>
+        <h4>Pros</h4>
+        <a href="#">Sign Up as a Pro</a>
+        <a href="#">Pro Resources</a>
+        <a href="#">Pro Reviews</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Help</a>
+        <a href="https://coldlooms.github.io/LOL/privacy.html">Privacy Policy</a>
+        <a href="https://coldlooms.github.io/LOL/terms.html">Terms of Service</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Contact Info</h4>
-      <ul>
-        <li>Email: <a href="mailto:valery@coldlooms.com">valery@coldlooms.com</a></li>
-        <li>Phone: (555) 123-4567</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#">Request a Quote</a></li>
-        <li><a href="#">Photos</a></li>
-        <li><a href="#">Reviews</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>© 2025 LOL | Smart Outreach for Real Clients</p>
+      <p>
+        <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
+      </p>
+      <div style="margin-top: 1rem;">
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram"/></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook"/></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter"/></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail"/></a>
+      </div>
     </div>
   </footer>
 </body>
