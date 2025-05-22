@@ -41,20 +41,24 @@
     }
     .photos-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-    .photos-row img {
-      width: calc(33.333% - 0.67rem);
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .photo-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
     }
-    .photos-row img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    .photo-card:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -105,9 +109,15 @@
     <div>
       <p class="section-title">Projects and Media</p>
       <div class="photos-row">
-        <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
-        <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
-        <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Living room">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Living room">
+        </div>
       </div>
     </div>
 
