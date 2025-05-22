@@ -3,430 +3,210 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Valery Cleaning - Professional cleaning with over 10 years of experience in Simi Valley, CA. Book a service, see reviews, and request a quote.">
   <title>Valery Cleaning | Cold Looms</title>
   <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/png" href="../images/favicon.png">
   <style>
-    html, body {
-      height: 100%;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fafafa;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      width: 100vw;
-      max-width: 100vw;
-      overflow-x: hidden;
-    }
-    body {
-      min-height: 100vh;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(120deg, #e0f7fa 0%, #f8f9fa 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: #333;
     }
     .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1080px;
+      margin: 3rem auto;
       background: #fff;
-      padding: 2.5rem 2rem 2rem 2rem;
-      border-radius: 22px;
-      box-shadow: 0 6px 32px rgba(0,191,165,0.12), 0 2px 8px rgba(0,0,0,0.07);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      min-width: 0;
-      min-height: 92vh;
-      box-sizing: border-box;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
     .profile-header {
       display: flex;
       align-items: center;
-      gap: 2rem;
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
     }
     .profile-header img {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #00bfa5;
-      box-shadow: 0 4px 16px rgba(0, 191, 165, 0.07);
-      background: #f8f9fa;
-      max-width: 30vw;
-      min-width: 75px;
-      min-height: 75px;
+      border: 3px solid #00bfa5;
     }
     .profile-header h1 {
-      margin: 0 0 0.3rem 0;
-      font-size: 2.1rem;
-      color: #263238;
-      word-break: break-word;
+      margin: 0;
+      font-size: 1.75rem;
+      color: #004d40;
     }
     .rating {
       color: #00bfa5;
       font-weight: bold;
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-    }
-    .profile-header p {
-      margin: 0.1rem 0 0 0;
-      color: #546e7a;
-      font-size: 1.08rem;
+      margin-top: 0.4rem;
     }
     .profile-section {
-      margin-top: 2.6rem;
+      margin-top: 2rem;
     }
     .profile-section h2 {
-      font-size: 1.23rem;
       color: #00796b;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.02em;
-      border-left: 4px solid #00bfa5;
-      padding-left: 0.7rem;
-      word-break: break-word;
-    }
-    .profile-section p, .profile-section ul {
-      color: #37474f;
-      font-size: 1.08rem;
-      margin-top: 0.2rem;
-      margin-bottom: 0.8rem;
-      word-break: break-word;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.25rem;
     }
     .overview-icons {
-      margin-top: 1.1rem;
-    }
-    .overview-icons ul {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.1rem;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
     }
-    .overview-icons li {
+    .overview-icons div {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 1.03rem;
-      background: #f1fefc;
-      border-radius: 6px;
-      padding: 0.7rem 1rem;
-      box-shadow: 0 1px 2px rgba(0,191,165,0.04);
-      transition: background 0.2s;
-      word-break: break-word;
-      width: 100%;
-    }
-    .overview-icons li:hover {
-      background: #e0f2f1;
-    }
-    .gallery-section {
-      margin-top: 2.6rem;
-    }
-    .gallery-section h2 {
-      font-size: 1.21rem;
-      color: #00796b;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.02em;
-      border-left: 4px solid #00bfa5;
-      padding-left: 0.7rem;
-    }
-    .gallery-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.1rem;
-      justify-content: center;
-    }
-    .gallery-row img {
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,191,165,0.07);
-      width: 210px;
-      max-width: 43vw;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 0.7rem;
-      background: #e0f7fa;
-      transition: transform 0.18s, box-shadow 0.19s;
-    }
-    .gallery-row img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 32px rgba(0,191,165,0.18);
+      font-size: 0.95rem;
+      background: #f5f5f5;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
     }
     .cta-buttons {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
     .cta-buttons a {
-      background: linear-gradient(90deg, #00bfa5 60%, #26c6da 100%);
+      background: #00bfa5;
       color: white;
-      padding: 0.7rem 1.7rem;
-      border-radius: 8px;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.06rem;
-      box-shadow: 0 1.5px 6px rgba(0,191,165,0.09);
-      transition: background 0.21s, box-shadow 0.18s, transform 0.18s;
-      min-width: 120px;
-      text-align: center;
     }
-    .cta-buttons a:hover, .cta-buttons a:focus {
-      background: linear-gradient(90deg, #00796b 60%, #00bfa5 100%);
-      box-shadow: 0 3px 12px rgba(0,191,165,0.13);
-      transform: translateY(-2px) scale(1.04);
+    .cta-buttons a:hover {
+      background: #00796b;
     }
     form {
-      margin-top: 2.2rem;
+      margin-top: 1.5rem;
       background: #f1fefc;
-      padding: 1.8rem 1.2rem 1.2rem 1.2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 7px rgba(0,191,165,0.06);
-      border: 1px solid #b2dfdb;
-      width: 100%;
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
-      box-sizing: border-box;
-    }
-    form label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.4rem;
-      color: #00796b;
-      letter-spacing: 0.01em;
-    }
-    .required {
-      color: #d32f2f;
-      font-size: 1.12em;
-      margin-left: 2px;
-      vertical-align: middle;
+      padding: 1.5rem;
+      border-radius: 10px;
     }
     form input, form textarea {
       width: 100%;
-      padding: 0.84rem;
-      margin-bottom: 1.1rem;
-      border: 1.5px solid #b2dfdb;
-      border-radius: 7px;
-      font-size: 1.05rem;
-      background: #ffffff;
-      transition: border 0.17s;
-      font-family: inherit;
-      box-sizing: border-box;
-    }
-    form input:focus, form textarea:focus {
-      border: 1.5px solid #00bfa5;
-      outline: none;
-      background: #f1fefc;
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
     }
     form button {
-      background: linear-gradient(90deg, #00bfa5 60%, #26c6da 100%);
+      background-color: #00bfa5;
       color: white;
       border: none;
-      padding: 0.83rem 1.8rem;
-      border-radius: 7px;
-      font-size: 1.09rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,191,165,0.08);
-      transition: background 0.19s, box-shadow 0.17s, transform 0.15s;
     }
-    form button:hover, form button:focus {
-      background: linear-gradient(90deg, #00796b 60%, #00bfa5 100%);
-      box-shadow: 0 4px 12px rgba(0,191,165,0.13);
-      transform: translateY(-2px) scale(1.03);
+    form button:hover {
+      background-color: #00796b;
     }
-    .form-message {
+    .media-gallery {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       margin-top: 1rem;
-      font-size: 1.07rem;
-      color: #388e3c;
-      display: none;
-      font-weight: 500;
     }
-    small {
-      display: block;
-      margin-top: -0.7rem;
-      margin-bottom: 0.9rem;
-      color: #8e99a3;
-      font-size: 0.96rem;
+    .media-gallery img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
-    /* Responsive improvements */
-    @media (max-width: 900px) {
-      body, html {
-        width: 100vw;
-        max-width: 100vw;
-        overflow-x: hidden;
-      }
-      .container {
-        padding: 1rem 0.5rem 1.5rem 0.5rem;
-        border-radius: 0;
-        min-width: 0;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .profile-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-      .cta-buttons {
-        justify-content: center;
-      }
-      .overview-icons ul {
-        grid-template-columns: 1fr;
-      }
-      form {
-        max-width: 95vw;
-        min-width: 0;
-      }
-      .gallery-row {
-        gap: 0.7rem;
-      }
-      .gallery-row img {
-        width: 44vw;
-        max-width: 95vw;
-        height: 22vw;
-        min-width: 120px;
-        min-height: 70px;
-      }
+    .media-gallery img:hover {
+      transform: scale(1.05);
     }
-    @media (max-width: 500px) {
-      .container {
-        padding: 0.2rem 0 0.7rem 0;
-        border-radius: 0;
-        min-width: 0;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      .profile-header img {
-        width: 70px;
-        height: 70px;
-      }
-      .profile-header h1 {
-        font-size: 1.4rem;
-      }
-      .profile-section h2,
-      .gallery-section h2 {
-        font-size: 1.1rem;
-      }
-      .overview-icons ul {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
-      }
-      .cta-buttons a {
-        font-size: 0.95rem;
-        padding: 0.6rem 1.1rem;
-      }
-      form {
-        padding: 1.2rem 0.3rem 0.8rem 0.3rem;
-        font-size: 0.95rem;
-      }
-      form button {
-        font-size: 0.97rem;
-        padding: 0.7rem 1.1rem;
-      }
-      .gallery-row img {
-        width: 95vw;
-        height: 33vw;
-        min-width: 80px;
-        min-height: 45px;
-      }
+    .review-box {
+      background: #fff3e0;
+      padding: 1rem;
+      border-left: 4px solid #ffc107;
+      margin-top: 1rem;
+      border-radius: 8px;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-  <main class="container" role="main">
+  <div class="container">
     <div class="profile-header">
-      <img src="../images/valery.jpg" alt="Portrait of Valery, professional cleaner">
+      <img src="https://i.ibb.co/ZgpcRyb/valery.jpg" alt="Valery">
       <div>
         <h1>Valery</h1>
-        <p class="rating" aria-live="polite">Exceptional 5.0 ★★★★★ (5 reviews)</p>
+        <p class="rating">Exceptional 5.0 ★★★★★ (5 reviews)</p>
         <p>Professional Cleaning — Over 10 Years of Experience</p>
       </div>
     </div>
 
-    <section class="profile-section" aria-labelledby="intro">
-      <h2 id="intro">Introduction</h2>
-      <p>I have over 10 years of experience in cleaning, including high-end homes. We are a small team of three — myself and two trusted assistants. We approach every job with professionalism, attention to detail, and care.</p>
-    </section>
+    <div class="profile-section">
+      <h2>Introduction</h2>
+      <p>I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach every job with professionalism, attention to detail, and care.</p>
+    </div>
 
-    <section class="profile-section" aria-labelledby="overview">
-      <h2 id="overview">Overview</h2>
+    <div class="profile-section">
+      <h2>Overview</h2>
       <div class="overview-icons">
-        <ul>
-          <li>🏆 Hired 10 times</li>
-          <li>📍 Serves Simi Valley, CA</li>
-          <li>🛡️ Background checked</li>
-          <li>👥 3 employees</li>
-          <li>⏳ 2 years in business</li>
-        </ul>
+        <div>🏆 Hired 10 times</div>
+        <div>📍 Serves Simi Valley, CA</div>
+        <div>🛡️ Background checked</div>
+        <div>👥 3 employees</div>
+        <div>⏳ 2 years in business</div>
       </div>
-    </section>
+    </div>
 
-    <section class="gallery-section" aria-labelledby="gallery">
-      <h2 id="gallery">Our Work</h2>
-      <div class="gallery-row">
-        <img src="../images/clean1.jpg" alt="Sparkling clean kitchen" />
-        <img src="../images/clean2.jpg" alt="Spotless living room after cleaning" />
-        <img src="../images/clean3.jpg" alt="Immaculate bathroom" />
-      </div>
-      <p style="text-align:center; color:#8e99a3; font-size:0.98rem;">See the difference! (More photos available upon request.)</p>
-    </section>
-
-    <section class="profile-section" aria-labelledby="hours">
-      <h2 id="hours">Business Hours</h2>
+    <div class="profile-section">
+      <h2>Business Hours</h2>
       <p>Sunday: 9:00 AM – 10:00 PM</p>
       <p>Monday: 12:00 PM – 10:00 PM</p>
       <p><em>Available most evenings — flexible scheduling</em></p>
-    </section>
+    </div>
 
-    <section class="profile-section" aria-labelledby="payments">
-      <h2 id="payments">Payment Methods</h2>
-      <p>Cash, Check, Venmo, and Zelle accepted.
-        <a href="https://venmo.com/" target="_blank" rel="noopener">What is Venmo?</a>
-      </p>
-    </section>
+    <div class="profile-section">
+      <h2>Payment Methods</h2>
+      <p>Cash, Check, Venmo, and Zelle accepted.</p>
+    </div>
 
-    <section class="profile-section" aria-labelledby="quote">
-      <h2 id="quote">Request a Quote</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST" autocomplete="on">
-        <label for="name">Your Name <span class="required">*</span></label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
+    <div class="profile-section">
+      <h2>Projects and Media</h2>
+      <div class="media-gallery">
+        <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Sparkling kitchen">
+        <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Clean bathroom">
+        <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Organized living room">
+      </div>
+    </div>
 
-        <label for="email">Your Email <span class="required">*</span></label>
-        <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email" />
-        <small>Your email will not be shared.</small>
+    <div class="profile-section">
+      <h2>What Customers Are Saying</h2>
+      <div class="review-box">“Valery and her team left my place spotless — very professional and respectful.”</div>
+      <div class="review-box">“Fast, detailed, and reliable. Definitely booking again!”</div>
+    </div>
 
-        <label for="zip">ZIP Code <span class="required">*</span></label>
-        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required autocomplete="postal-code" pattern="\d{5}" title="Enter a valid 5-digit ZIP code" />
-
-        <label for="details">What do you need cleaned? <span class="required">*</span></label>
-        <textarea id="details" name="details" placeholder="What do you need cleaned?" rows="5" required></textarea>
-
+    <div class="profile-section">
+      <h2>Request a Quote</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="zip" placeholder="ZIP Code" required />
+        <textarea name="details" placeholder="What do you need cleaned?" rows="5" required></textarea>
         <button type="submit">Submit Request</button>
-        <div class="form-message" id="form-message">Thank you! Your request has been sent.</div>
       </form>
-    </section>
+    </div>
 
-    <nav class="cta-buttons" aria-label="Page actions">
+    <div class="cta-buttons">
       <a href="../index.html">← Back</a>
       <a href="mailto:valery@coldlooms.com">Message</a>
-    </nav>
-  </main>
-  <script>
-    // OPTIONAL: Show a message when the form is submitted (client-side only)
-    document.querySelector('form').addEventListener('submit', function(e){
-      setTimeout(function(){
-        document.getElementById('form-message').style.display = 'block';
-      }, 500);
-    });
-  </script>
+    </div>
+  </div>
 </body>
 </html>
