@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Valery Cleaning | Cold Looms</title>
   <link rel="stylesheet" href="../style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,171 +11,55 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #f7f9fc, #eef3f7);
+      background: #f8fbfd;
       color: #1a1a1a;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
-    .container {
-      width: 100vw;
-      max-width: 100vw;
-      margin: 0;
-      padding: 2rem 6vw;
+    * {
       box-sizing: border-box;
     }
-    .breadcrumb {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 1.5rem;
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 5vw;
+      animation: fadeIn 0.7s ease-in-out both;
     }
-    .breadcrumb a {
-      text-decoration: none;
-      color: #00856a;
-      font-weight: 500;
-    }
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      background: #ffffff;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-    }
-    .profile-header img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid #00bfa5;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-    .profile-header h1 {
-      font-size: 2.4rem;
-      margin: 0;
-      color: #003d33;
-    }
-    .rating {
-      color: #ffc107;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .tab-menu {
-      display: flex;
-      gap: 2rem;
-      margin-top: 0.75rem;
-      font-size: 1.05rem;
-      color: #4b4b4b;
-      border-bottom: 2px solid #e0f2f1;
-      padding-bottom: 0.6rem;
-      font-weight: 500;
-    }
-    .tab-menu span {
-      cursor: pointer;
-    }
-    .inline-boxes {
-      display: flex;
-      justify-content: space-between;
-      margin: 2.5rem 0;
-      gap: 2rem;
-    }
-    .inline-boxes > div {
-      flex: 1;
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid #dee2e6;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-    }
-    .inline-boxes h3 {
-      color: #00564f;
-      margin-top: 0;
-      font-size: 1.3rem;
-      border-bottom: 1px solid #e3f2f1;
-      padding-bottom: 0.5rem;
-    }
-    .overview-icons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      font-size: 1rem;
-      color: #333;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .section-title {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      color: #00796b;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      color: #004d40;
     }
     .photos-row {
       display: flex;
-      justify-content: space-between;
-      margin: 1.5rem 0;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    @media(min-width: 768px) {
+      .photos-row {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
     .photos-row img {
-      height: 170px;
-      width: 32%;
+      width: 100%;
+      height: 200px;
       object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid white;
     }
     .photos-row img:hover {
-      transform: scale(1.03);
-    }
-    .quote-form {
-      background: #ffffff;
-      padding: 2.5rem;
-      border-radius: 18px;
-      margin-top: 2.5rem;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
-    }
-    .quote-form h3 {
-      color: #003d33;
-      font-size: 1.5rem;
-      margin-top: 0;
-    }
-    .quote-form input, .quote-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.2rem;
-      border-radius: 10px;
-      border: 1px solid #dcdcdc;
-      font-size: 1rem;
-      background-color: #fafafa;
-    }
-    .quote-form button {
-      background-color: #00bfa5;
-      color: #fff;
-      padding: 1rem 2.8rem;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .quote-form button:hover {
-      background-color: #00796b;
-    }
-    .actions {
-      display: flex;
-      justify-content: flex-start;
-      gap: 1.2rem;
-      margin-top: 2.5rem;
-    }
-    .actions a {
-      text-decoration: none;
-      padding: 0.9rem 1.8rem;
-      border: 2px solid #00856a;
-      border-radius: 10px;
-      background: #ffffff;
-      color: #00856a;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    .actions a:hover {
-      background-color: #00856a;
-      color: #ffffff;
+      transform: scale(1.025);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     }
   </style>
 </head>
@@ -199,6 +83,7 @@
       </div>
     </div>
 
+    <!-- Overview / Hours / Payments -->
     <div class="inline-boxes">
       <div>
         <h3>Overview</h3>
@@ -221,8 +106,9 @@
       </div>
     </div>
 
+    <!-- Project photos -->
     <div>
-      <p class="section-title">Projects and media</p>
+      <p class="section-title">Projects and Media</p>
       <div class="photos-row">
         <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
         <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
@@ -230,6 +116,7 @@
       </div>
     </div>
 
+    <!-- Quote form -->
     <div class="quote-form">
       <h3>Request a Quote</h3>
       <form action="https://formspree.io/f/your-form-id" method="POST">
@@ -241,10 +128,45 @@
       </form>
     </div>
 
+    <!-- Testimonial Slider -->
+    <div class="testimonial-slider">
+      <div class="testimonial active">
+        <img src="https://i.ibb.co/KFXcwRn/user1.jpg" alt="Sarah">
+        <div>
+          <blockquote>“Valery and her team are amazing. My house has never looked better—she even cleaned the baseboards!”</blockquote>
+          <span>– Sarah M., Sherman Oaks</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <img src="https://i.ibb.co/0yN7sK2/user2.jpg" alt="Jason">
+        <div>
+          <blockquote>“On time, reliable, and left everything spotless. I highly recommend her to anyone who needs deep cleaning.”</blockquote>
+          <span>– Jason L., Woodland Hills</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <img src="https://i.ibb.co/XY4qDKB/user3.jpg" alt="Dani">
+        <div>
+          <blockquote>“Loved the eco-friendly products and professionalism. I’ll definitely be using Valery’s services again.”</blockquote>
+          <span>– Dani R., Simi Valley</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
     <div class="actions">
       <a href="mailto:valery@coldlooms.com">Message</a>
       <a href="../index.html">← Back</a>
     </div>
   </div>
+  <script>
+    const testimonials = document.querySelectorAll('.testimonial');
+    let current = 0;
+    setInterval(() => {
+      testimonials[current].classList.remove('active');
+      current = (current + 1) % testimonials.length;
+      testimonials[current].classList.add('active');
+    }, 6000);
+  </script>
 </body>
 </html>
