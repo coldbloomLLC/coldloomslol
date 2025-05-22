@@ -20,158 +20,235 @@
       box-sizing: border-box;
     }
     .container {
-      width: 100%;
-      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
       animation: fadeIn 0.7s ease-in-out both;
+    }
+    .main-column {
+      flex: 2;
+    }
+    .sidebar-column {
+      flex: 1;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: #f9f9f9;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .section-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-top: 3rem;
-      margin-bottom: 0.75rem;
-      color: #333;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.3rem;
-    }
-    .photos-row {
+    .profile-header {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .profile-header img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00bfa5;
+    }
+    .profile-header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+    .rating {
+      color: #00a97f;
+      font-weight: 500;
+      margin: 0.25rem 0;
+    }
+    .tab-menu {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+    .tab-menu span {
+      cursor: pointer;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+    }
+    .tab-menu span:hover {
+      background: #f0f0f0;
+    }
+    .sidebar-column input,
+    .sidebar-column select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .sidebar-column button {
+      background-color: #00bfa5;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .sidebar-column button:hover {
+      background-color: #009a8c;
+    }
+    .price-box {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .guarantee {
+      font-size: 0.85rem;
+      color: #555;
       margin-top: 1rem;
     }
-    .photo-card {
-      border: 1px solid #e0e0e0;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-      transition: box-shadow 0.3s ease;
+    .intro-section {
+      margin-top: 1.5rem;
     }
-    .photo-card:hover {
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    .intro-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
     }
-    .photo-card img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .inline-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .inline-boxes div {
+      flex: 1 1 200px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .action-buttons a {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      background: #00bfa5;
+      color: #fff;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .action-buttons a:hover {
+      background: #009a8c;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="breadcrumb">
-      <a href="../index.html">Cold Looms</a> // House Cleaning // Valery
-    </div>
-    <div class="profile-header">
-      <img src="https://i.ibb.co/ZgpcRyb/valery.jpg" alt="Valery">
-      <div>
-        <h1>Valery</h1>
-        <p class="rating">Exceptional 5.0 ★★★★★ (5 reviews)</p>
-        <p>Professional Cleaning — Over 10 Years of Experience</p>
-        <div class="tab-menu">
-          <span>About</span>
-          <span>Photos</span>
-          <span>Reviews</span>
-          <span>Credentials</span>
-        </div>
+    <div class="main-column">
+      <div class="breadcrumb">
+        <a href="../index.html">Cold Looms</a> // House Cleaning // Valery
       </div>
-    </div>
-
-    <!-- Overview / Hours / Payments -->
-    <div class="inline-boxes">
-      <div>
-        <h3>Overview</h3>
-        <div class="overview-icons">
-          <div>🏆 Hired 10 times</div>
-          <div>📍 Serves Simi Valley, CA</div>
-          <div>🛡️ Background checked</div>
-          <div>👥 3 employees</div>
-          <div>⏳ 2 years in business</div>
-        </div>
-      </div>
-      <div>
-        <h3>Business Hours</h3>
-        <p>Sun: 9:00 AM – 10:00 PM</p>
-        <p>Mon: 12:00 PM – 10:00 PM</p>
-      </div>
-      <div>
-        <h3>Payment Methods</h3>
-        <p>Cash, Check, Venmo, and Zelle</p>
-      </div>
-    </div>
-
-    <!-- Project photos -->
-    <div>
-      <p class="section-title">Projects and Media</p>
-      <div class="photos-row">
-        <div class="photo-card">
-          <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
-        </div>
-        <div class="photo-card">
-          <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
-        </div>
-        <div class="photo-card">
-          <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Living room">
-        </div>
-      </div>
-    </div>
-
-    <!-- Quote form -->
-    <div class="quote-form">
-      <h3>Request a Quote</h3>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="text" name="zip" placeholder="ZIP Code" required />
-        <textarea name="details" placeholder="What do you need cleaned?" rows="4" required></textarea>
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
-
-    <!-- Testimonial Slider -->
-    <div class="testimonial-slider">
-      <div class="testimonial active">
-        <img src="https://i.ibb.co/KFXcwRn/user1.jpg" alt="Sarah">
+      <div class="profile-header">
+        <img src="https://i.ibb.co/ZgpcRyb/valery.jpg" alt="Valery">
         <div>
-          <blockquote>“Valery and her team are amazing. My house has never looked better—she even cleaned the baseboards!”</blockquote>
-          <span>– Sarah M., Sherman Oaks</span>
+          <h1>Valery</h1>
+          <p class="rating">Exceptional 5.0 ★★★★★ (5 reviews)</p>
+          <p>Professional Cleaning — Over 10 Years of Experience</p>
+          <div class="tab-menu">
+            <span>About</span>
+            <span>Photos</span>
+            <span>Reviews</span>
+            <span>Credentials</span>
+          </div>
         </div>
       </div>
-      <div class="testimonial">
-        <img src="https://i.ibb.co/0yN7sK2/user2.jpg" alt="Jason">
+
+      <div class="intro-section">
+        <h3>Introduction</h3>
+        <p>I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach each home with care and professionalism.</p>
+      </div>
+
+      <div class="inline-boxes">
         <div>
-          <blockquote>“On time, reliable, and left everything spotless. I highly recommend her to anyone who needs deep cleaning.”</blockquote>
-          <span>– Jason L., Woodland Hills</span>
+          <h3>Overview</h3>
+          <div class="overview-icons">
+            <div>🏆 Hired 10 times</div>
+            <div>📍 Serves Simi Valley, CA</div>
+            <div>🛡️ Background checked</div>
+            <div>👥 3 employees</div>
+            <div>⏳ 2 years in business</div>
+          </div>
+        </div>
+        <div>
+          <h3>Business Hours</h3>
+          <p>Sun: 9:00 AM – 10:00 PM</p>
+          <p>Mon: 12:00 PM – 10:00 PM</p>
+        </div>
+        <div>
+          <h3>Payment Methods</h3>
+          <p>Cash, Check, Venmo, and Zelle</p>
         </div>
       </div>
-      <div class="testimonial">
-        <img src="https://i.ibb.co/XY4qDKB/user3.jpg" alt="Dani">
-        <div>
-          <blockquote>“Loved the eco-friendly products and professionalism. I’ll definitely be using Valery’s services again.”</blockquote>
-          <span>– Dani R., Simi Valley</span>
+
+      <div class="action-buttons">
+        <a href="#">Message</a>
+        <a href="#">Request a call</a>
+      </div>
+
+      <div>
+        <p class="section-title">Projects and Media</p>
+        <div class="photos-row">
+          <div class="photo-card">
+            <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
+          </div>
+          <div class="photo-card">
+            <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
+          </div>
+          <div class="photo-card">
+            <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Living room">
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Actions -->
-    <div class="actions">
-      <a href="mailto:valery@coldlooms.com">Message</a>
-      <a href="../index.html">← Back</a>
+    <div class="sidebar-column">
+      <div class="price-box">$100 <span style="font-weight: normal; color: #777; font-size: 0.9rem;">Starting price</span></div>
+      <input type="text" placeholder="Zip code" />
+      <select>
+        <option disabled selected>Frequency</option>
+        <option>One time</option>
+        <option>Weekly</option>
+        <option>Bi-weekly</option>
+      </select>
+      <select>
+        <option disabled selected>Number of bedrooms</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4+</option>
+      </select>
+      <select>
+        <option disabled selected>Cleaning type</option>
+        <option>Standard</option>
+        <option>Deep Clean</option>
+        <option>Move In/Out</option>
+      </select>
+      <button>Check availability</button>
+      <div class="guarantee">
+        🛡️ Responds within a <strong>day</strong><br>
+        ✔️ You're covered by our money-back guarantee.
+      </div>
     </div>
   </div>
-  <script>
-    const testimonials = document.querySelectorAll('.testimonial');
-    let current = 0;
-    setInterval(() => {
-      testimonials[current].classList.remove('active');
-      current = (current + 1) % testimonials.length;
-      testimonials[current].classList.add('active');
-    }, 6000);
-  </script>
 </body>
 </html>
