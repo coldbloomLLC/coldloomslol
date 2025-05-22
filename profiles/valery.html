@@ -9,9 +9,9 @@
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f8f9;
-      color: #222;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f6f7fb;
+      color: #1a1a1a;
     }
     .container {
       width: 100vw;
@@ -22,144 +22,154 @@
     }
     .breadcrumb {
       font-size: 0.9rem;
-      color: #555;
+      color: #6e6e6e;
       margin-bottom: 1rem;
     }
     .breadcrumb a {
       text-decoration: none;
-      color: #00796b;
+      color: #005a48;
+      font-weight: 500;
     }
     .profile-header {
       display: flex;
       align-items: center;
       gap: 2rem;
-      background-color: #ffffff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: linear-gradient(to right, #ffffff, #f1f3f4);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.05);
     }
     .profile-header img {
-      width: 100px;
-      height: 100px;
+      width: 108px;
+      height: 108px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #00bfa5;
+      border: 4px solid #0fb;
     }
     .profile-header h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin: 0;
-      color: #00796b;
+      color: #004d40;
     }
     .rating {
-      color: #ffaa00;
+      color: #f4a300;
       font-weight: 600;
     }
     .tab-menu {
       display: flex;
-      gap: 2rem;
-      margin-top: 0.5rem;
-      font-size: 1rem;
-      color: #444;
-      border-bottom: 2px solid #00bfa5;
-      padding-bottom: 0.5rem;
+      gap: 2.5rem;
+      margin-top: 0.7rem;
+      font-size: 1.05rem;
+      color: #333;
+      border-bottom: 2px solid #cceae4;
+      padding-bottom: 0.6rem;
+      font-weight: 500;
     }
     .tab-menu span {
       cursor: pointer;
-      font-weight: bold;
     }
     .inline-boxes {
       display: flex;
       justify-content: space-between;
-      margin: 2rem 0;
+      margin: 2.5rem 0;
       gap: 2rem;
     }
     .inline-boxes > div {
       flex: 1;
       background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+      border-radius: 14px;
+      border: 1px solid #e2e2e2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
     .inline-boxes h3 {
-      color: #00796b;
+      color: #00856a;
       margin-top: 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #d1f0ec;
+      padding-bottom: 0.4rem;
     }
     .overview-icons {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
       font-size: 1rem;
+      color: #3a3a3a;
     }
     .section-title {
       font-weight: bold;
       margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-      color: #00796b;
+      font-size: 1.2rem;
+      color: #00695c;
     }
     .photos-row {
       display: flex;
       justify-content: space-between;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
     .photos-row img {
-      height: 140px;
+      height: 160px;
       width: 32%;
       object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      border-radius: 14px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
     .quote-form {
       background: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
+      padding: 2.5rem;
+      border-radius: 14px;
       margin-top: 2rem;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
     .quote-form h3 {
-      color: #00796b;
+      color: #004d40;
+      font-size: 1.4rem;
       margin-top: 0;
     }
     .quote-form input, .quote-form textarea {
       width: 100%;
-      padding: 0.85rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #d0d0d0;
       font-size: 1rem;
+      background-color: #f9f9f9;
     }
     .quote-form button {
-      background-color: #00bfa5;
-      color: white;
-      padding: 0.9rem 2rem;
+      background-color: #0fb;
+      color: #003d33;
+      padding: 0.95rem 2.5rem;
       border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
     .quote-form button:hover {
-      background-color: #00796b;
+      background-color: #009e84;
+      color: white;
     }
     .actions {
       display: flex;
       justify-content: flex-start;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-top: 2rem;
     }
     .actions a {
       text-decoration: none;
-      padding: 0.75rem 1.5rem;
-      border: 2px solid #00bfa5;
-      border-radius: 6px;
+      padding: 0.85rem 1.7rem;
+      border: 2px solid #00856a;
+      border-radius: 8px;
       background: #ffffff;
-      color: #00bfa5;
-      font-weight: bold;
+      color: #00856a;
+      font-weight: 600;
+      font-size: 1rem;
       transition: all 0.3s ease;
     }
     .actions a:hover {
-      background-color: #00bfa5;
-      color: white;
+      background-color: #00856a;
+      color: #fff;
     }
   </style>
 </head>
