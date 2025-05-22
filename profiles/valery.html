@@ -30,6 +30,9 @@
     }
     .main-column {
       flex: 2;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
     }
     .sidebar-column {
       flex: 1;
@@ -37,10 +40,23 @@
       border-radius: 12px;
       padding: 1.5rem;
       background: #f9f9f9;
+      min-width: 275px;
+      max-width: 360px;
+      box-sizing: border-box;
+      align-self: flex-start;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    .breadcrumb {
+      font-size: 0.92rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+    }
+    .breadcrumb a {
+      color: #00bfa5;
+      text-decoration: none;
     }
     .profile-header {
       display: flex;
@@ -54,7 +70,8 @@
       height: 96px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #00bfa5;
+      border: 2.5px solid #00bfa5;
+      background: #f5f5f5;
     }
     .profile-header h1 {
       margin: 0;
@@ -72,45 +89,16 @@
       font-size: 0.95rem;
       color: #555;
       margin-top: 0.5rem;
+      flex-wrap: wrap;
     }
     .tab-menu span {
       cursor: pointer;
       padding: 0.3rem 0.5rem;
       border-radius: 6px;
+      transition: background 0.14s;
     }
     .tab-menu span:hover {
       background: #f0f0f0;
-    }
-    .sidebar-column input,
-    .sidebar-column select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .sidebar-column button {
-      background-color: #00bfa5;
-      color: white;
-      font-weight: bold;
-      padding: 0.75rem;
-      width: 100%;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .sidebar-column button:hover {
-      background-color: #009a8c;
-    }
-    .price-box {
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    .guarantee {
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 1rem;
     }
     .intro-section {
       margin-top: 1.5rem;
@@ -129,13 +117,29 @@
       border-radius: 12px;
       padding: 1.5rem;
     }
-    .inline-boxes div {
+    .inline-boxes > div {
       flex: 1 1 200px;
+      min-width: 170px;
+      margin-bottom: 1rem;
+    }
+    .inline-boxes h3 {
+      font-size: 1.08rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: #00796b;
+    }
+    .overview-icons div {
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .action-buttons {
       display: flex;
       gap: 1rem;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
     .action-buttons a {
       flex: 1;
@@ -143,12 +147,165 @@
       text-decoration: none;
       background: #00bfa5;
       color: #fff;
-      padding: 0.75rem;
+      padding: 0.75rem 0.3rem;
       border-radius: 8px;
       font-weight: bold;
+      font-size: 1.05rem;
+      transition: background 0.15s;
+      min-width: 130px;
     }
     .action-buttons a:hover {
       background: #009a8c;
+    }
+    .section-title {
+      font-size: 1.13rem;
+      margin: 2rem 0 0.7rem 0;
+      color: #00796b;
+      font-weight: 600;
+      border-left: 4px solid #00bfa5;
+      padding-left: 0.6rem;
+    }
+    .photos-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    .photo-card {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,191,165,0.08);
+      overflow: hidden;
+      width: 200px;
+      max-width: 44vw;
+      min-width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.17s, box-shadow 0.17s;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      background: #e0f7fa;
+    }
+    .photo-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 28px rgba(0,191,165,0.13);
+    }
+    /* Sidebar styles */
+    .price-box {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #00bfa5;
+    }
+    .sidebar-column input,
+    .sidebar-column select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #fff;
+    }
+    .sidebar-column button {
+      background-color: #00bfa5;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.06rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.7rem;
+      transition: background 0.14s;
+    }
+    .sidebar-column button:hover {
+      background-color: #009a8c;
+    }
+    .guarantee {
+      font-size: 0.93rem;
+      color: #555;
+      margin-top: 1rem;
+      background: #e0f7fa;
+      border-radius: 7px;
+      padding: 0.7rem;
+      text-align: center;
+    }
+    /* Responsive Design */
+    @media (max-width: 1050px) {
+      .container {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.2rem 0.5rem;
+      }
+      .sidebar-column {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+        gap: 1.3rem;
+        padding: 0.8rem 0.2rem;
+      }
+      .sidebar-column {
+        min-width: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+      .main-column {
+        width: 100%;
+      }
+      .photos-row {
+        gap: 0.6rem;
+      }
+      .photo-card {
+        width: 44vw;
+        min-width: 95px;
+      }
+      .photo-card img {
+        height: 22vw;
+        min-height: 70px;
+      }
+      .inline-boxes {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+    }
+    @media (max-width: 520px) {
+      .profile-header img {
+        width: 60px;
+        height: 60px;
+      }
+      .profile-header h1 {
+        font-size: 1.25rem;
+      }
+      .container {
+        padding: 0.2rem 0 0.6rem 0;
+      }
+      .photo-card {
+        width: 98vw;
+        min-width: 80px;
+      }
+      .photo-card img {
+        height: 28vw;
+        min-height: 48px;
+      }
+      .sidebar-column {
+        padding: 0.7rem;
+      }
+      .inline-boxes {
+        padding: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -175,7 +332,9 @@
 
       <div class="intro-section">
         <h3>Introduction</h3>
-        <p>I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach each home with care and professionalism.</p>
+        <p>
+          I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach each home with care and professionalism.
+        </p>
       </div>
 
       <div class="inline-boxes">
@@ -193,15 +352,18 @@
           <h3>Business Hours</h3>
           <p>Sun: 9:00 AM – 10:00 PM</p>
           <p>Mon: 12:00 PM – 10:00 PM</p>
+          <p style="color:#00796b;margin:0.3rem 0 0 0;"><em>Available most evenings — flexible scheduling</em></p>
         </div>
         <div>
           <h3>Payment Methods</h3>
-          <p>Cash, Check, Venmo, and Zelle</p>
+          <p>Cash, Check, Venmo, and Zelle<br>
+            <a href="https://venmo.com/" target="_blank" rel="noopener" style="color:#00bfa5;">What is Venmo?</a>
+          </p>
         </div>
       </div>
 
       <div class="action-buttons">
-        <a href="#">Message</a>
+        <a href="mailto:valery@coldlooms.com">Message</a>
         <a href="#">Request a call</a>
       </div>
 
@@ -209,15 +371,16 @@
         <p class="section-title">Projects and Media</p>
         <div class="photos-row">
           <div class="photo-card">
-            <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Kitchen">
+            <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Sparkling clean kitchen">
           </div>
           <div class="photo-card">
-            <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Bathroom">
+            <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Immaculate bathroom">
           </div>
           <div class="photo-card">
-            <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Living room">
+            <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Organized living room">
           </div>
         </div>
+        <p style="text-align:center; color:#8e99a3; font-size:0.98rem;">See the difference! (More photos available upon request.)</p>
       </div>
     </div>
 
