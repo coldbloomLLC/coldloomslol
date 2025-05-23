@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House Cleaning Services | Cold Looms</title>
+  <title>Handyman Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .tag {
@@ -203,19 +203,25 @@
       <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
-  <h1 class="page-title">House Cleaning Pros</h1>
+  <h1 class="page-title">Handyman Pros</h1>
   <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
       <h3>FILTER</h3>
       <fieldset class="filter-group">
         <legend>Service Type</legend>
-        <label><input type="checkbox" value="Standard Cleaning" /> Standard Cleaning</label>
-        <label><input type="checkbox" value="Deep Cleaning" /> Deep Cleaning</label>
-        <label><input type="checkbox" value="Move In/Out" /> Move In/Out</label>
-        <label><input type="checkbox" value="Eco-Friendly" /> Eco-Friendly</label>
-        <label><input type="checkbox" value="Post-Construction" /> Post-Construction</label>
-        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+        <label><input type="checkbox" value="Repairs" /> Repairs</label>
+        <label><input type="checkbox" value="Assembly" /> Assembly</label>
+        <label><input type="checkbox" value="Mounting" /> Mounting</label>
+        <label><input type="checkbox" value="Plumbing" /> Plumbing</label>
+        <label><input type="checkbox" value="Electrical" /> Electrical</label>
+        <label><input type="checkbox" value="Carpentry" /> Carpentry</label>
+        <label><input type="checkbox" value="Painting" /> Painting</label>
+        <label><input type="checkbox" value="Flooring" /> Flooring</label>
+        <label><input type="checkbox" value="Landscaping" /> Landscaping</label>
+        <label><input type="checkbox" value="Cleaning" /> Cleaning</label>
+        <label><input type="checkbox" value="Junk Removal" /> Junk Removal</label>
+        <label><input type="checkbox" value="Moving Help" /> Moving Help</label>
       </fieldset>
       <fieldset class="filter-group">
         <legend>Property</legend>
@@ -276,36 +282,35 @@
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
-      <!-- Example pro cards (customize for cleaning pros as needed) -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Sparkle Cleaning">
-        <h3><strong>Sparkle Cleaning</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fix-It Fast Handyman">
+        <h3><strong>Fix-It Fast Handyman</strong> <span style="color: #00bfa5;">✔️</span></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Same-day standard and deep cleaning. Residential & commercial. Licensed, Insured. 5+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
+        <p>Same-day repairs, mounting, and installation. Residential & commercial. Licensed, Insured. 5+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Eco Home Maids">
-        <h3><strong>Eco Home Maids</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Assembly Pros">
+        <h3><strong>Assembly Pros</strong></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Eco-friendly cleaning, move in/out, recurring service. Residential. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
+        <p>Furniture assembly, TV mounting, and minor carpentry for any project. Residential. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Rapid Response Cleaners">
-        <h3><strong>Rapid Response Cleaners</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Handy Electric & Plumbing">
+        <h3><strong>Handy Electric & Plumbing</strong></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Emergency and post-construction cleaning. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
+        <p>Licensed for electrical, plumbing, and general handyman services. Emergency. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
         <a href="#" class="message-button">Message</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Recurring Clean Co">
-        <h3><strong>Recurring Clean Co</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="OnCall Carpentry">
+        <h3><strong>OnCall Carpentry</strong></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Weekly, bi-weekly, and monthly cleaning. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
+        <p>Custom carpentry, shelving, and home repairs. Weekend. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
         <a href="#" class="message-button">Message</a>
       </div>
