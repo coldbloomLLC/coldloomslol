@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fence Painting | Cold Looms</title>
+  <title>Fence Painting Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .tag {
@@ -53,10 +53,11 @@
       border-radius: 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       min-height: 100vh;
-      width: 260px;
+      width: 280px;
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
+      font-size: 1rem;
     }
     .sidebar h3 {
       font-size: 1.8rem;
@@ -70,20 +71,25 @@
     }
     .filter-group {
       margin-bottom: 2.5rem;
+      border: none;
+      padding: 0;
     }
     .filter-group legend {
       font-weight: bold;
       margin-bottom: 1rem;
       font-size: 1.1rem;
+      color: #045c52;
     }
     .filter-group label {
       display: flex;
       align-items: center;
       margin-bottom: 0.75rem;
       font-size: 1rem;
+      cursor: pointer;
     }
     .filter-group input {
       margin-right: 0.5rem;
+      accent-color: #00bfa5;
     }
     .reset-link {
       color: #00796b;
@@ -124,20 +130,23 @@
       border: 3px solid #00bfa5;
       padding: 2px;
     }
-    .message-button {
+    .viewprofile-button {
       margin-top: 1rem;
       display: inline-block;
-      background-color: #00bfa5;
-      color: #fff;
+      background: transparent;
+      color: #00796b;
+      border: 2px solid #00bfa5;
       padding: 0.6rem 1.6rem;
-      font-size: 1rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
     }
-    .message-button:hover {
-      background-color: #00796b;
+    .viewprofile-button:hover, .viewprofile-button:focus {
+      background: #00bfa5;
+      color: #fff;
+      border-color: #00796b;
     }
     @media (max-width: 768px) {
       .main-layout {
@@ -172,74 +181,142 @@
         display: block;
       }
     }
+    .city-bar {
+      text-align:center; 
+      font-size:1.1rem; 
+      margin-bottom: 1rem; 
+      color:#045c52;
+    }
+    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
+    .filter-subgroup {
+      margin-bottom: 1.2rem;
+    }
+    .filter-subgroup legend {
+      font-weight: normal;
+      font-size: 1.02rem;
+      color: #009688;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
-  <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
-    <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-    <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
-  </div>
-</nav> 
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
+      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
+      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
+    </div>
+  </nav>
   <h1 class="page-title">Fence Painting Pros</h1>
+  <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
       <h3>FILTER</h3>
       <fieldset class="filter-group">
-        <legend>Fence Type</legend>
-        <label><input type="checkbox" value="Wood" /> Wood</label>
-        <label><input type="checkbox" value="Vinyl" /> Vinyl</label>
-        <label><input type="checkbox" value="Metal" /> Metal</label>
-        <label><input type="checkbox" value="Composite" /> Composite</label>
+        <legend>Service Type</legend>
+        <label><input type="checkbox" value="Fence Painting" /> Fence Painting</label>
+        <label><input type="checkbox" value="Staining" /> Staining</label>
+        <label><input type="checkbox" value="Pressure Washing" /> Pressure Washing</label>
+        <label><input type="checkbox" value="Wood Restoration" /> Wood Restoration</label>
+        <label><input type="checkbox" value="Color Consultation" /> Color Consultation</label>
+        <label><input type="checkbox" value="Deck Painting" /> Deck Painting</label>
+        <label><input type="checkbox" value="Fence Repair" /> Fence Repair</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
       </fieldset>
       <fieldset class="filter-group">
-        <legend>Service</legend>
-        <label><input type="checkbox" value="Staining" /> Staining</label>
-        <label><input type="checkbox" value="Painting" /> Painting</label>
-        <label><input type="checkbox" value="Power Washing" /> Power Washing</label>
-        <label><input type="checkbox" value="Repair" /> Repair</label>
+        <legend>Property</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+        <label><input type="checkbox" value="Emergency" /> Emergency</label>
+        <label><input type="checkbox" value="Recurring" /> Recurring</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Pro Credentials</legend>
+        <div class="filter-subgroup">
+          <legend>License</legend>
+          <label><input type="checkbox" value="Licensed" /> Licensed</label>
+          <label><input type="checkbox" value="Bonded" /> Bonded</label>
+          <label><input type="checkbox" value="Insured" /> Insured</label>
+        </div>
+        <div class="filter-subgroup">
+          <legend>Experience</legend>
+          <label><input type="checkbox" value="5+ Years Experience" /> 5+ Years</label>
+          <label><input type="checkbox" value="10+ Years Experience" /> 10+ Years</label>
+        </div>
+        <div class="filter-subgroup">
+          <legend>Rating</legend>
+          <label><input type="checkbox" value="★★★★★" /> 5 Stars</label>
+          <label><input type="checkbox" value="★★★★☆" /> 4+ Stars</label>
+        </div>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Availability</legend>
+        <label><input type="checkbox" value="Available Now" /> Available Now</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+        <label><input type="checkbox" value="Weekend" /> Weekend</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Payment Methods</legend>
+        <label><input type="checkbox" value="Cash" /> Cash</label>
+        <label><input type="checkbox" value="Credit Card" /> Credit Card</label>
+        <label><input type="checkbox" value="Venmo" /> Venmo</label>
+        <label><input type="checkbox" value="Zelle" /> Zelle</label>
+        <label><input type="checkbox" value="PayPal" /> PayPal</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Languages</legend>
+        <label><input type="checkbox" value="English" /> English</label>
+        <label><input type="checkbox" value="Spanish" /> Spanish</label>
+        <label><input type="checkbox" value="Mandarin" /> Mandarin</label>
+        <label><input type="checkbox" value="Tagalog" /> Tagalog</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Service Area</legend>
+        <label><input type="checkbox" value="Within 5 miles" /> Within 5 miles</label>
+        <label><input type="checkbox" value="Within 10 miles" /> Within 10 miles</label>
+        <label><input type="checkbox" value="Within 25 miles" /> Within 25 miles</label>
+        <label><input type="checkbox" value="Remote" /> Remote/Virtual</label>
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
-
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
-      <div class="tile-grid">
+    <div class="tile-grid">
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Perfect Fence Painters">
-        <h3><strong>Perfect Fence Painters</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p>📍 Sherman Oaks, CA</p>
-        <p>Expert wood and vinyl fence painting & staining. Free estimates.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fresh Fence Painters">
+        <h3><strong>Fresh Fence Painters</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Same-day fence painting, staining & repairs. Residential & commercial. Licensed, Insured. 5+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/freshfence.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Stain & Shine Co.">
-        <h3><strong>Stain & Shine Co.</strong></h3>
-        <p>📍 Woodland Hills, CA</p>
-        <p>Staining, painting, and power washing for all fence types.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Eco Wood Coats">
+        <h3><strong>Eco Wood Coats</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Eco-friendly stains, color consultation, pressure washing. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/ecowoodcoats.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="MetalGuard Painting">
-        <h3><strong>MetalGuard Painting</strong></h3>
-        <p>📍 Burbank, CA</p>
-        <p>Specialists in metal & composite fence painting and repairs.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Rapid Restore Painters">
+        <h3><strong>Rapid Restore Painters</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Emergency fence painting, wood restoration. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/rapidrestore.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fence Renewals">
-        <h3><strong>Fence Renewals</strong></h3>
-        <p>📍 Encino, CA</p>
-        <p>Full service: power washing, painting, and fence repair.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Recurring Fence Services">
+        <h3><strong>Recurring Fence Services</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Monthly/seasonal paint & stain, deck painting. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/recurringfence.html" class="viewprofile-button">View Profile</a>
       </div>
     </div>
   </section>
-
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -292,11 +369,12 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
+  <!-- LOGIN MODAL -->
   <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
     <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
       <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
       <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form>
+      <form id="login-form">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
         <label for="password">Password</label>
@@ -359,7 +437,63 @@
         tagContainer.innerHTML = "";
       });
     }
+
+    // SIMPLE CLIENT-SIDE LOGIN
+    const loginForm = document.getElementById('login-form');
+    const loginModal = document.getElementById('login-modal');
+    const signInBtn = document.querySelector('.sign-in');
+
+    function showSignedIn(email) {
+      if (signInBtn) {
+        signInBtn.textContent = "Signed in as " + email;
+        signInBtn.style.pointerEvents = "none";
+        signInBtn.style.opacity = "0.6";
+      }
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = loginForm.email.value;
+        localStorage.setItem("signedInEmail", email);
+        if (loginModal) loginModal.style.display = "none";
+        showSignedIn(email);
+      });
+    }
+
+    // On page load, restore sign-in state
+    const savedEmail = localStorage.getItem("signedInEmail");
+    if (savedEmail) {
+      showSignedIn(savedEmail);
+    }
+
+    // CITY DETECTOR
+    function updateCity(city) {
+      const cityBar = document.getElementById('city-bar');
+      cityBar.innerHTML = city
+        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+    }
+    window.showCityPrompt = function() {
+      const entry = prompt("Enter your city (e.g. Northridge):");
+      if(entry) updateCity(entry.trim());
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        const lat = pos.coords.latitude, lon = pos.coords.longitude;
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+          .then(resp=>resp.json()).then(data=>{
+            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+            if(!city && data.address.suburb) city = data.address.suburb;
+            updateCity(city || null);
+          }).catch(()=>updateCity(null));
+      }, function() { updateCity(null); });
+    } else {
+      updateCity(null);
+    }
   });
+
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
