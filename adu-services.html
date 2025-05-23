@@ -53,10 +53,11 @@
       border-radius: 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       min-height: 100vh;
-      width: 260px;
+      width: 280px;
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
+      font-size: 1rem;
     }
     .sidebar h3 {
       font-size: 1.8rem;
@@ -70,20 +71,25 @@
     }
     .filter-group {
       margin-bottom: 2.5rem;
+      border: none;
+      padding: 0;
     }
     .filter-group legend {
       font-weight: bold;
       margin-bottom: 1rem;
       font-size: 1.1rem;
+      color: #045c52;
     }
     .filter-group label {
       display: flex;
       align-items: center;
       margin-bottom: 0.75rem;
       font-size: 1rem;
+      cursor: pointer;
     }
     .filter-group input {
       margin-right: 0.5rem;
+      accent-color: #00bfa5;
     }
     .reset-link {
       color: #00796b;
@@ -124,20 +130,23 @@
       border: 3px solid #00bfa5;
       padding: 2px;
     }
-    .message-button {
+    .viewprofile-button {
       margin-top: 1rem;
       display: inline-block;
-      background-color: #00bfa5;
-      color: #fff;
+      background: transparent;
+      color: #00796b;
+      border: 2px solid #00bfa5;
       padding: 0.6rem 1.6rem;
-      font-size: 1rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
     }
-    .message-button:hover {
-      background-color: #00796b;
+    .viewprofile-button:hover, .viewprofile-button:focus {
+      background: #00bfa5;
+      color: #fff;
+      border-color: #00796b;
     }
     @media (max-width: 768px) {
       .main-layout {
@@ -172,59 +181,143 @@
         display: block;
       }
     }
+    .city-bar {
+      text-align:center; 
+      font-size:1.1rem; 
+      margin-bottom: 1rem; 
+      color:#045c52;
+    }
+    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
+    .filter-subgroup {
+      margin-bottom: 1.2rem;
+    }
+    .filter-subgroup legend {
+      font-weight: normal;
+      font-size: 1.02rem;
+      color: #009688;
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
- <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
-  <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
-    <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-    <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
-  </div>
-</nav>
-  <h1 class="page-title">ADU Construction & Services</h1>
+  <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
+      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
+      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
+    </div>
+  </nav>
+  <h1 class="page-title">ADU Services Pros</h1>
+  <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
       <h3>FILTER</h3>
       <fieldset class="filter-group">
-        <legend>ADU Type</legend>
-        <label><input type="checkbox" value="Modular" /> Modular</label>
+        <legend>Service Type</legend>
+        <label><input type="checkbox" value="ADU Design" /> ADU Design</label>
+        <label><input type="checkbox" value="ADU Construction" /> ADU Construction</label>
         <label><input type="checkbox" value="Garage Conversion" /> Garage Conversion</label>
-        <label><input type="checkbox" value="Backyard Unit" /> Backyard Unit</label>
-        <label><input type="checkbox" value="Custom Build" /> Custom Build</label>
+        <label><input type="checkbox" value="Permit Assistance" /> Permit Assistance</label>
+        <label><input type="checkbox" value="Site Prep" /> Site Prep</label>
+        <label><input type="checkbox" value="Plumbing" /> Plumbing</label>
+        <label><input type="checkbox" value="Electrical" /> Electrical</label>
+        <label><input type="checkbox" value="Landscaping" /> Landscaping</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
       </fieldset>
       <fieldset class="filter-group">
-        <legend>Services</legend>
-        <label><input type="checkbox" value="Permits" /> Permits</label>
-        <label><input type="checkbox" value="Solar" /> Solar</label>
-        <label><input type="checkbox" value="Fast-Track" /> Fast-Track</label>
-        <label><input type="checkbox" value="Inspection Support" /> Inspection Support</label>
+        <legend>Property</legend>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+        <label><input type="checkbox" value="Emergency" /> Emergency</label>
+        <label><input type="checkbox" value="Recurring" /> Recurring</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Pro Credentials</legend>
+        <div class="filter-subgroup">
+          <legend>License</legend>
+          <label><input type="checkbox" value="Licensed" /> Licensed</label>
+          <label><input type="checkbox" value="Bonded" /> Bonded</label>
+          <label><input type="checkbox" value="Insured" /> Insured</label>
+        </div>
+        <div class="filter-subgroup">
+          <legend>Experience</legend>
+          <label><input type="checkbox" value="5+ Years Experience" /> 5+ Years</label>
+          <label><input type="checkbox" value="10+ Years Experience" /> 10+ Years</label>
+        </div>
+        <div class="filter-subgroup">
+          <legend>Rating</legend>
+          <label><input type="checkbox" value="★★★★★" /> 5 Stars</label>
+          <label><input type="checkbox" value="★★★★☆" /> 4+ Stars</label>
+        </div>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Availability</legend>
+        <label><input type="checkbox" value="Available Now" /> Available Now</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
+        <label><input type="checkbox" value="Weekend" /> Weekend</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Payment Methods</legend>
+        <label><input type="checkbox" value="Cash" /> Cash</label>
+        <label><input type="checkbox" value="Credit Card" /> Credit Card</label>
+        <label><input type="checkbox" value="Venmo" /> Venmo</label>
+        <label><input type="checkbox" value="Zelle" /> Zelle</label>
+        <label><input type="checkbox" value="PayPal" /> PayPal</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Languages</legend>
+        <label><input type="checkbox" value="English" /> English</label>
+        <label><input type="checkbox" value="Spanish" /> Spanish</label>
+        <label><input type="checkbox" value="Mandarin" /> Mandarin</label>
+        <label><input type="checkbox" value="Tagalog" /> Tagalog</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Service Area</legend>
+        <label><input type="checkbox" value="Within 5 miles" /> Within 5 miles</label>
+        <label><input type="checkbox" value="Within 10 miles" /> Within 10 miles</label>
+        <label><input type="checkbox" value="Within 25 miles" /> Within 25 miles</label>
+        <label><input type="checkbox" value="Remote" /> Remote/Virtual</label>
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
-
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
-      <div class="tile-grid">
+    <div class="tile-grid">
       <div class="tile">
-        <img src="https://i.postimg.cc/X70ymZ4h/Chat-GPT-Image-Apr-25-2025-07-39-34-AM.png" alt="Modular Master Co.">
-        <h3><strong>Modular Master Co.</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p>📍 Glendale, CA</p>
-        <p>Design-build team specializing in backyard ADUs with all permits handled.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="ADU Design & Build Co">
+        <h3><strong>ADU Design & Build Co</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Full-service ADU design & construction. Permit assistance, site prep. Licensed, Insured. 10+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/adudesignbuild.html" class="viewprofile-button">View Profile</a>
       </div>
       <div class="tile">
-        <img src="https://i.postimg.cc/X70ymZ4h/Chat-GPT-Image-Apr-25-2025-07-39-34-AM.png" alt="Urban ADU Solutions">
-        <h3><strong>Urban ADU Solutions</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p>📍 Studio City, CA</p>
-        <p>Fast-track ADU additions with solar upgrades and city inspection support.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Garage Conversion Pros">
+        <h3><strong>Garage Conversion Pros</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Garage-to-ADU specialists, fast turnaround, bonded & insured. English, Tagalog. Cash, Venmo accepted.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/garageconversionpros.html" class="viewprofile-button">View Profile</a>
       </div>
-      <!-- Add more pros here using the same tile format -->
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="ADU Permit Solutions">
+        <h3><strong>ADU Permit Solutions</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>Permit assistance, planning, and site prep. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="profiles/adupermitsolutions.html" class="viewprofile-button">View Profile</a>
+      </div>
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Turnkey ADU Builders">
+        <h3><strong>Turnkey ADU Builders</strong></h3>
+        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
+        <p>End-to-end ADU solutions: design, construction, landscaping, and more. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="profiles/turnkeyadu.html" class="viewprofile-button">View Profile</a>
+      </div>
     </div>
   </section>
-
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -277,11 +370,12 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
+  <!-- LOGIN MODAL -->
   <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
     <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
       <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
       <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form>
+      <form id="login-form">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
         <label for="password">Password</label>
@@ -305,8 +399,8 @@
 
         tiles.forEach(tile => {
           const content = tile.textContent.toLowerCase();
-          const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
-          tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+          const isMatch = activeFilters.length === 0 || activeFilters.every(filter => content.includes(filter.toLowerCase()));
+          tile.style.display = isMatch ? "flex" : "none";
 
           const paragraphs = tile.querySelectorAll("p");
           paragraphs.forEach(p => {
@@ -344,7 +438,63 @@
         tagContainer.innerHTML = "";
       });
     }
+
+    // SIMPLE CLIENT-SIDE LOGIN
+    const loginForm = document.getElementById('login-form');
+    const loginModal = document.getElementById('login-modal');
+    const signInBtn = document.querySelector('.sign-in');
+
+    function showSignedIn(email) {
+      if (signInBtn) {
+        signInBtn.textContent = "Signed in as " + email;
+        signInBtn.style.pointerEvents = "none";
+        signInBtn.style.opacity = "0.6";
+      }
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = loginForm.email.value;
+        localStorage.setItem("signedInEmail", email);
+        if (loginModal) loginModal.style.display = "none";
+        showSignedIn(email);
+      });
+    }
+
+    // On page load, restore sign-in state
+    const savedEmail = localStorage.getItem("signedInEmail");
+    if (savedEmail) {
+      showSignedIn(savedEmail);
+    }
+
+    // CITY DETECTOR
+    function updateCity(city) {
+      const cityBar = document.getElementById('city-bar');
+      cityBar.innerHTML = city
+        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+    }
+    window.showCityPrompt = function() {
+      const entry = prompt("Enter your city (e.g. Northridge):");
+      if(entry) updateCity(entry.trim());
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        const lat = pos.coords.latitude, lon = pos.coords.longitude;
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+          .then(resp=>resp.json()).then(data=>{
+            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+            if(!city && data.address.suburb) city = data.address.suburb;
+            updateCity(city || null);
+          }).catch(()=>updateCity(null));
+      }, function() { updateCity(null); });
+    } else {
+      updateCity(null);
+    }
   });
+
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
