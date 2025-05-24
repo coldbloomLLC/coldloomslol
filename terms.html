@@ -4,117 +4,214 @@
   <meta charset="UTF-8" />
   <title>Terms of Service | LOL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Fonts for a playful vibe -->
+  <link href="https://fonts.googleapis.com/css?family=Fredoka:600|Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --gradient: linear-gradient(90deg, #00e5ff, #ff4b2b, #ffeb3b, #00e5ff 120%);
+      --primary: #00e5ff;
+      --accent: #ff4b2b;
+      --bg: #f9fafc;
+      --card-bg: #fffbea;
+      --shadow: 0 6px 24px rgba(0,0,0,0.10);
+    }
     * {
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background: var(--bg);
+      color: #212121;
+      min-height: 100vh;
+      background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
     }
-
     .wrapper {
       max-width: 800px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 3rem 1.5rem 1rem 1.5rem;
     }
-
     .card {
-      background-color: white;
-      padding: 2.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      background: var(--card-bg);
+      padding: 2.8rem 2.4rem 2.4rem 2.4rem;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      animation: floatCard 1.4s cubic-bezier(.45,.05,.55,.95);
     }
-
+    @keyframes floatCard {
+      from { opacity: 0; transform: translateY(50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
     h1 {
-      color: #009688;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      font-family: 'Fredoka', Arial, sans-serif;
+      font-size: 2.5rem;
       text-align: center;
-      letter-spacing: 1px;
-      animation: bounce 1.2s infinite alternate;
+      margin-bottom: 1.7rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7em;
+      animation: popin 1s cubic-bezier(.65,-0.07,.63,1.08);
     }
-
+    @keyframes popin {
+      0% { transform: scale(0.7) rotate(-5deg);}
+      100% { transform: scale(1) rotate(0);}
+    }
+    h1 .icon {
+      font-size: 1.3em;
+      filter: drop-shadow(2px 2px 0px #fff6);
+      animation: bounce 1.4s infinite alternate;
+    }
     @keyframes bounce {
-      from { transform: translateY(0); }
+      from { transform: translateY(0);}
       to { transform: translateY(-10px);}
     }
-
-    p {
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-      font-size: 1.08rem;
-      transition: color 0.2s;
+    .terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem 0;
     }
-
-    p:hover {
-      color: #009688;
+    .terms-list li {
+      font-size: 1.13rem;
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1em;
+      background: linear-gradient(90deg, #ffe08210 60%, transparent 100%);
+      border-radius: 10px;
+      padding: 0.7em 1em 0.7em 0.7em;
+      box-shadow: 0 1px 6px #00e5ff12;
+      transition: background 0.2s, box-shadow 0.2s;
     }
-
+    .terms-list li:hover {
+      background: linear-gradient(90deg, #fff9c4 70%, #ffccbc44 100%);
+      box-shadow: 0 4px 20px #ff4b2b24;
+    }
+    .terms-list .emoji {
+      font-size: 1.5em;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 2px #fff4);
+    }
     a {
-      color: #009688;
+      color: var(--accent);
       text-decoration: none;
       font-weight: bold;
       transition: color 0.2s;
+      word-break: break-all;
     }
-
     a:hover {
+      color: #e65100;
       text-decoration: underline;
-      color: #004d40;
     }
-
+    .contact {
+      text-align: center;
+      margin: 2rem 0 0.5rem 0;
+      font-size: 1.08rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #424242;
+    }
+    .contact .emoji {
+      font-size: 1.25em;
+      vertical-align: middle;
+      margin-right: 0.4em;
+      filter: drop-shadow(1px 1px 0px #fff9);
+    }
     footer {
       text-align: center;
-      font-size: 0.95rem;
-      color: #777;
+      font-size: 1rem;
+      color: #888;
+      margin-top: 2.3rem;
+      font-family: 'Fredoka', Arial, sans-serif;
+      letter-spacing: 0.7px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      font-weight: 600;
+      opacity: 0.94;
+      user-select: none;
+    }
+    /* Button */
+    .home-btn {
+      display: inline-block;
       margin-top: 2rem;
+      padding: 0.85rem 2.2rem;
+      background: linear-gradient(90deg, #00e5ff 30%, #ff4b2b 100%);
+      color: #fff;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 1.14rem;
+      font-family: 'Fredoka', Arial, sans-serif;
+      font-weight: bold;
       letter-spacing: 0.5px;
-      font-style: italic;
+      box-shadow: 0 4px 20px #ff4b2b33;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.12s;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
-
-    .emoji {
-      font-size: 1.25em;
-      margin-right: 8px;
-      vertical-align: middle;
+    .home-btn:hover {
+      background: linear-gradient(90deg, #ff4b2b 10%, #00e5ff 100%);
+      box-shadow: 0 7px 28px #00e5ff44;
+      transform: scale(1.05) rotate(-2deg);
     }
-
     @media (max-width: 600px) {
       .card {
-        padding: 2rem 1.2rem;
+        padding: 1.2rem 0.7rem 1.3rem 0.7rem;
+        border-radius: 13px;
       }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
+      h1 { font-size: 1.45rem;}
+      .terms-list li { font-size: 1.01rem; }
+      .home-btn { padding: 0.7rem 1.2rem; font-size: 1.01rem;}
     }
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <div class="card">
-      <h1>🚀 Terms of Service 🚀</h1>
-      <p><span class="emoji">🎉</span>Welcome to LOL! We’re thrilled to have you here. By using LOL, you’re joining a community where respect, fun, and professionalism go hand-in-hand. Use LOL for good vibes and awesome connections! 🌈</p>
-      <p><span class="emoji">⚖️</span>Play nice: Use the platform only for lawful purposes and keep your interactions positive and professional. Any abuse, spam, or mischief? <strong>Not cool!</strong> We reserve the right to show spammers the door, fast. 🚪💨</p>
-      <p><span class="emoji">💡</span>No magic wands: While we’re here to help you connect, LOL can’t guarantee job placements or fairy-tale endings every time. Matches depend on availability and local magic (aka criteria) 🧙‍♂️✨.</p>
-      <p><span class="emoji">🔄</span>We’re always leveling up! We might update these terms as LOL evolves. By sticking around, you’re agreeing to roll with any changes. Stay tuned for upgrades! 🛠️</p>
-      <p><span class="emoji">📬</span>Got questions, ideas, or just want to chat? Email us anytime at <a href="mailto:outreachdeskllc@gmail.com">outreachdeskllc@gmail.com</a>. We love hearing from the LOL community!</p>
-      <footer>© 2025 LOL | Smart Outreach for Real Clients 🚀<br>Thanks for being awesome! 🤩</footer>
+      <h1>
+        <span class="icon">⚡</span> LOL Terms of Service <span class="icon">🎈</span>
+      </h1>
+      <ul class="terms-list">
+        <li>
+          <span class="emoji">🤝</span>
+          By using <strong>LOL</strong>, you’re part of a vibrant, professional, and fun-loving community! Please use LOL only for <strong>lawful</strong> purposes and keep those interactions positive and respectful. Any abuse, spamming, or shenanigans will be met with a swift “LOL, bye!” 🚪✨
+        </li>
+        <li>
+          <span class="emoji">🎯</span>
+          <strong>No empty promises here!</strong> LOL can’t guarantee job placements or outcomes—matches depend on platform activity and a sprinkle of local magic. We’re here to connect awesome people, not cast spells (yet) 🧙‍♂️💫.
+        </li>
+        <li>
+          <span class="emoji">🚦</span>
+          <strong>Stay tuned!</strong> We may update these terms whenever we level up. By continuing to use LOL, you agree to roll with our latest changes. It’s always a good idea to check back for any new twists!
+        </li>
+      </ul>
+      <div class="contact">
+        <span class="emoji">📬</span>
+        Questions or ideas? Email us anytime at
+        <a href="mailto:outreachdeskllc@gmail.com">outreachdeskllc@gmail.com</a>
+        —we love hearing from the LOL fam!
+      </div>
+      <footer>
+        © 2025 LOL | Smart Outreach for Real Clients 🌟
+        <br>
+        Thanks for keeping it awesome!
+      </footer>
     </div>
   </div>
-  <div style="text-align: center; margin-top: 2rem;">
-    <a href="index.html" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #009688; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; box-shadow: 0 3px 8px rgba(0,150,136,0.09); transition: background 0.2s;">
-      ← Go Back to Home
-    </a>
+  <div style="text-align: center;">
+    <a href="index.html" class="home-btn">← Go Back to Home</a>
   </div>
-
 </body>
 </html>
