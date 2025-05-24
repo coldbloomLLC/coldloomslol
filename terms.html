@@ -35,28 +35,51 @@
       font-size: 2rem;
       margin-bottom: 1.5rem;
       text-align: center;
+      letter-spacing: 1px;
+      animation: bounce 1.2s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px);}
     }
 
     p {
       line-height: 1.6;
       margin-bottom: 1.2rem;
-      font-size: 1rem;
+      font-size: 1.08rem;
+      transition: color 0.2s;
+    }
+
+    p:hover {
+      color: #009688;
     }
 
     a {
       color: #009688;
       text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
     }
 
     a:hover {
       text-decoration: underline;
+      color: #004d40;
     }
 
     footer {
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #777;
       margin-top: 2rem;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .emoji {
+      font-size: 1.25em;
+      margin-right: 8px;
+      vertical-align: middle;
     }
 
     @media (max-width: 600px) {
@@ -69,7 +92,7 @@
       }
 
       p {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -78,17 +101,20 @@
 
   <div class="wrapper">
     <div class="card">
-      <h1>Terms of Service</h1>
-      <p>By using LOL, you agree to use the platform only for lawful purposes and professional interactions. Abuse, spamming, or misrepresentation may result in removal from the platform.</p>
-      <p>We do not guarantee job placement or service outcome. Matches are based on availability and local criteria.</p>
-      <p>We may update these terms at any time. Continued use of the site means you accept any changes.</p>
-      <p>If you have any concerns, contact us at <a href="mailto:outreachdeskllc@gmail.com">outreachdeskllc@gmail.com</a>.</p>
-      <footer>© 2025 LOL | Smart Outreach for Real Clients</footer>
+      <h1>🚀 Terms of Service 🚀</h1>
+      <p><span class="emoji">🎉</span>Welcome to LOL! We’re thrilled to have you here. By using LOL, you’re joining a community where respect, fun, and professionalism go hand-in-hand. Use LOL for good vibes and awesome connections! 🌈</p>
+      <p><span class="emoji">⚖️</span>Play nice: Use the platform only for lawful purposes and keep your interactions positive and professional. Any abuse, spam, or mischief? <strong>Not cool!</strong> We reserve the right to show spammers the door, fast. 🚪💨</p>
+      <p><span class="emoji">💡</span>No magic wands: While we’re here to help you connect, LOL can’t guarantee job placements or fairy-tale endings every time. Matches depend on availability and local magic (aka criteria) 🧙‍♂️✨.</p>
+      <p><span class="emoji">🔄</span>We’re always leveling up! We might update these terms as LOL evolves. By sticking around, you’re agreeing to roll with any changes. Stay tuned for upgrades! 🛠️</p>
+      <p><span class="emoji">📬</span>Got questions, ideas, or just want to chat? Email us anytime at <a href="mailto:outreachdeskllc@gmail.com">outreachdeskllc@gmail.com</a>. We love hearing from the LOL community!</p>
+      <footer>© 2025 LOL | Smart Outreach for Real Clients 🚀<br>Thanks for being awesome! 🤩</footer>
     </div>
   </div>
-<div style="text-align: center; margin-top: 2rem;">
-  <a href="index.html" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #009688; color: white; border-radius: 6px; text-decoration: none;">← Go Back to Home</a>
-</div>
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="index.html" style="display: inline-block; padding: 0.75rem 1.5rem; background-color: #009688; color: white; border-radius: 6px; text-decoration: none; font-weight: bold; box-shadow: 0 3px 8px rgba(0,150,136,0.09); transition: background 0.2s;">
+      ← Go Back to Home
+    </a>
+  </div>
 
 </body>
 </html>
