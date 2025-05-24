@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <title>Terms of Service | LOL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Google Fonts for a playful vibe -->
+  <!-- Playful Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fredoka:600|Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gradient: linear-gradient(90deg, #00e5ff, #ff4b2b, #ffeb3b, #00e5ff 120%);
+      --gradient: linear-gradient(90deg,#00e5ff,#ff4b2b,#ffeb3b,#00e5ff 120%);
       --primary: #00e5ff;
       --accent: #ff4b2b;
       --bg: #f9fafc;
@@ -26,11 +26,15 @@
       color: #212121;
       min-height: 100vh;
       background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     .wrapper {
       max-width: 800px;
       margin: 0 auto;
       padding: 3rem 1.5rem 1rem 1.5rem;
+      flex: 1;
     }
     .card {
       background: var(--card-bg);
@@ -166,6 +170,56 @@
       box-shadow: 0 7px 28px #00e5ff44;
       transform: scale(1.05) rotate(-2deg);
     }
+    /* Columns Footer Section */
+    .columns-footer {
+      width: 100%;
+      background: #f7f7fa;
+      margin-top: 3rem;
+      padding: 2.5rem 0 1.5rem 0;
+      border-top: 3px solid #00e5ff22;
+      box-shadow: 0 -3px 18px #00968811;
+    }
+    .columns-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .column {
+      min-width: 180px;
+      flex: 1 1 220px;
+    }
+    .column h3 {
+      font-family: 'Fredoka', Arial, sans-serif;
+      font-size: 1.08rem;
+      color: #009688;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
+    }
+    .column ul {
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .column ul li {
+      margin: 0.45em 0;
+    }
+    .column a {
+      color: #ff4b2b;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.16s;
+    }
+    .column a:hover {
+      color: #009688;
+      text-decoration: underline;
+    }
+    @media (max-width: 800px) {
+      .columns-container { flex-direction: column; gap: 1.5rem;}
+      .column { min-width: unset; }
+    }
     @media (max-width: 600px) {
       .card {
         padding: 1.2rem 0.7rem 1.3rem 0.7rem;
@@ -174,6 +228,7 @@
       h1 { font-size: 1.45rem;}
       .terms-list li { font-size: 1.01rem; }
       .home-btn { padding: 0.7rem 1.2rem; font-size: 1.01rem;}
+      .columns-footer { padding: 1.3rem 0 0.6rem 0;}
     }
   </style>
 </head>
@@ -209,9 +264,37 @@
         Thanks for keeping it awesome!
       </footer>
     </div>
+    <div style="text-align:center;">
+      <a href="https://coldloomslol.com" class="home-btn">← Go Back to Home</a>
+    </div>
   </div>
-  <div style="text-align: center;">
-    <a href="index.html" class="home-btn">← Go Back to Home</a>
+  <!-- Columns Footer Section -->
+  <div class="columns-footer">
+    <div class="columns-container">
+      <div class="column">
+        <h3>LOL Platform</h3>
+        <ul>
+          <li><a href="https://coldloomslol.com">Home</a></li>
+          <li><a href="https://coldloomslol.com/about.html">About</a></li>
+          <li><a href="https://coldloomslol.com/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="https://coldloomslol.com/terms.html">Terms of Service</a></li>
+          <li><a href="https://coldloomslol.com/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:outreachdeskllc@gmail.com">Email Support</a></li>
+          <li><a href="https://twitter.com/">Twitter</a></li>
+          <li><a href="https://linkedin.com/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </body>
 </html>
