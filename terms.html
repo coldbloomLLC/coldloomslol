@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Terms of Service | LOL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the Terms of Service for LOL, the smart outreach platform for real clients.">
   <link href="https://fonts.googleapis.com/css?family=Fredoka:600|Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
-    /* [Styles unchanged for brevity – keep your original CSS here] */
     :root {
       --gradient: linear-gradient(90deg,#00e5ff,#ff4b2b,#ffeb3b,#00e5ff 120%);
       --primary: #00e5ff;
@@ -23,71 +23,80 @@
       color: #212121;
       min-height: 100vh;
       background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
-      display: flex; flex-direction: column; min-height: 100vh;
+      display: flex; flex-direction: column;
     }
-    .wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 1rem 1.5rem;
-      flex: 1;
-    }
-    .card {
-      background: var(--card-bg);
-      padding: 2.8rem 2.4rem 2.4rem 2.4rem;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      animation: floatCard 1.4s cubic-bezier(.45,.05,.55,.95);
-    }
-    @keyframes floatCard {
-      from { opacity: 0; transform: translateY(50px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    h1 {
-      font-family: 'Fredoka', Arial, sans-serif;
-      font-size: 2.5rem;
+    header {
+      width: 100%;
+      background: var(--gradient);
+      padding: 1.2rem 0;
+      box-shadow: 0 2px 10px #00e5ff26;
       text-align: center;
-      margin-bottom: 1.7rem;
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Fredoka', Arial, sans-serif;
+      font-size: 2.7rem;
+      letter-spacing: 2px;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      letter-spacing: 2px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.7em;
       animation: popin 1s cubic-bezier(.65,-0.07,.63,1.08);
+    }
+    header .icon {
+      font-size: 1.35em;
+      filter: drop-shadow(2px 2px 0px #fff6);
+      animation: bounce 1.4s infinite alternate;
     }
     @keyframes popin {
       0% { transform: scale(0.7) rotate(-5deg);}
       100% { transform: scale(1) rotate(0);}
     }
-    h1 .icon {
-      font-size: 1.3em;
-      filter: drop-shadow(2px 2px 0px #fff6);
-      animation: bounce 1.4s infinite alternate;
-    }
     @keyframes bounce {
       from { transform: translateY(0);}
       to { transform: translateY(-10px);}
     }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2.5rem 0 0 0;
+      background: none;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 2.8rem 2.7rem 2.4rem 2.7rem;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      width: 100%;
+      animation: floatCard 1.2s cubic-bezier(.45,.05,.55,.95);
+    }
+    @keyframes floatCard {
+      from { opacity: 0; transform: translateY(50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
     .terms-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 1.2rem 0;
+      margin: 0 0 2.1rem 0;
     }
     .terms-list li {
-      font-size: 1.13rem;
-      margin-bottom: 1.3rem;
+      font-size: 1.22rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: flex-start;
-      gap: 1em;
+      gap: 1.1em;
       background: linear-gradient(90deg, #ffe08210 60%, transparent 100%);
       border-radius: 10px;
-      padding: 0.7em 1em 0.7em 0.7em;
+      padding: 1em 1.3em 1em 1em;
       box-shadow: 0 1px 6px #00e5ff12;
       transition: background 0.2s, box-shadow 0.2s;
     }
@@ -107,14 +116,14 @@
       transition: color 0.2s;
       word-break: break-all;
     }
-    a:hover {
+    a:hover, .column a:hover {
       color: #e65100;
       text-decoration: underline;
     }
     .contact {
       text-align: center;
       margin: 2rem 0 0.5rem 0;
-      font-size: 1.08rem;
+      font-size: 1.15rem;
       font-family: 'Montserrat', Arial, sans-serif;
       color: #424242;
     }
@@ -124,31 +133,15 @@
       margin-right: 0.4em;
       filter: drop-shadow(1px 1px 0px #fff9);
     }
-    footer {
-      text-align: center;
-      font-size: 1rem;
-      color: #888;
-      margin-top: 2.3rem;
-      font-family: 'Fredoka', Arial, sans-serif;
-      letter-spacing: 0.7px;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-      font-weight: 600;
-      opacity: 0.94;
-      user-select: none;
-    }
     .home-btn {
       display: inline-block;
       margin-top: 2rem;
-      padding: 0.85rem 2.2rem;
+      padding: 1rem 2.5rem;
       background: linear-gradient(90deg, #00e5ff 30%, #ff4b2b 100%);
       color: #fff;
       border-radius: 9px;
       text-decoration: none;
-      font-size: 1.14rem;
+      font-size: 1.18rem;
       font-family: 'Fredoka', Arial, sans-serif;
       font-weight: bold;
       letter-spacing: 0.5px;
@@ -173,7 +166,7 @@
       box-shadow: 0 -3px 18px #00968811;
     }
     .columns-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -182,11 +175,11 @@
     }
     .column {
       min-width: 180px;
-      flex: 1 1 220px;
+      flex: 1 1 240px;
     }
     .column h3 {
       font-family: 'Fredoka', Arial, sans-serif;
-      font-size: 1.08rem;
+      font-size: 1.12rem;
       color: #009688;
       margin-bottom: 0.7rem;
       letter-spacing: 1px;
@@ -205,17 +198,31 @@
       font-size: 1rem;
       transition: color 0.16s;
     }
-    .column a:hover {
-      color: #009688;
-      text-decoration: underline;
+    footer {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #888;
+      margin-top: 3rem;
+      font-family: 'Fredoka', Arial, sans-serif;
+      letter-spacing: 0.7px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      font-weight: 600;
+      opacity: 0.94;
+      user-select: none;
     }
-    @media (max-width: 800px) {
+    @media (max-width: 1050px) {
       .columns-container { flex-direction: column; gap: 1.5rem;}
       .column { min-width: unset; }
+      .card { padding: 2.1rem 1rem 1.2rem 1rem;}
     }
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
+      main { padding-top: 0.7rem;}
       .card { padding: 1.2rem 0.7rem 1.3rem 0.7rem; border-radius: 13px; }
-      h1 { font-size: 1.45rem;}
+      header h1 { font-size: 1.45rem;}
       .terms-list li { font-size: 1.01rem; }
       .home-btn { padding: 0.7rem 1.2rem; font-size: 1.01rem;}
       .columns-footer { padding: 1.3rem 0 0.6rem 0;}
@@ -223,66 +230,76 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="card">
-      <h1>
-        <span class="icon">⚡</span> LOL Terms of Service <span class="icon">🎈</span>
-      </h1>
-      <ul class="terms-list">
+  <header>
+    <h1>
+      <span class="icon">⚡</span> LOL Terms of Service <span class="icon">🎈</span>
+    </h1>
+  </header>
+  <main>
+    <section class="card" aria-labelledby="tos-title">
+      <ul class="terms-list" aria-label="Terms of Service">
         <li>
-          <span class="emoji">🤝</span>
+          <span class="emoji" aria-hidden="true">🤝</span>
           By using <strong>LOL</strong>, you’re part of a vibrant, professional, and fun-loving community! Please use LOL only for <strong>lawful</strong> purposes and keep those interactions positive and respectful. Any abuse, spamming, or shenanigans will be met with a swift “LOL, bye!” 🚪✨
         </li>
         <li>
-          <span class="emoji">🎯</span>
+          <span class="emoji" aria-hidden="true">🎯</span>
           <strong>No empty promises here!</strong> LOL can’t guarantee job placements or outcomes—matches depend on platform activity and a sprinkle of local magic. We’re here to connect awesome people, not cast spells (yet) 🧙‍♂️💫.
         </li>
         <li>
-          <span class="emoji">🚦</span>
+          <span class="emoji" aria-hidden="true">🚦</span>
           <strong>Stay tuned!</strong> We may update these terms whenever we level up. By continuing to use LOL, you agree to roll with our latest changes. It’s always a good idea to check back for any new twists!
+        </li>
+        <li>
+          <span class="emoji" aria-hidden="true">🔒</span>
+          Your privacy matters. Please review our <a href="/coldloomslol/privacy.html">Privacy Policy</a> to see how your information is handled.
+        </li>
+        <li>
+          <span class="emoji" aria-hidden="true">🛠️</span>
+          If you have questions or spot a bug, reach out to us! We’re here to help and always improving.
         </li>
       </ul>
       <div class="contact">
-        <span class="emoji">📬</span>
+        <span class="emoji" aria-hidden="true">📬</span>
         Questions or ideas? Email us anytime at
         <a href="mailto:outreachdeskllc@gmail.com">outreachdeskllc@gmail.com</a>
         —we love hearing from the LOL fam!
+      </div>
+      <div style="text-align:center;">
+        <a href="/coldloomslol/" class="home-btn" aria-label="Go back to Home">← Go Back to Home</a>
       </div>
       <footer>
         © 2025 LOL | Smart Outreach for Real Clients 🌟<br>
         Thanks for keeping it awesome!
       </footer>
-    </div>
-    <div style="text-align:center;">
-      <!-- Use project root for GitHub Pages project site -->
-      <a href="/coldloomslol/" class="home-btn">← Go Back to Home</a>    
-    </div>
-    <div class="columns-footer">
-      <div class="columns-container">
-        <div class="column">
-          <h3>LOL Platform</h3>
-          <ul>
-            <li><a href="/coldloomslol/">Home</a></li>
-            <li><a href="/coldloomslol/about.html">About</a></li>
-            <li><a href="/coldloomslol/contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="column">
-          <h3>Legal</h3>
-          <ul>
-            <li><a href="/coldloomslol/terms.html">Terms of Service</a></li>
-            <li><a href="/coldloomslol/privacy.html">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="column">
-          <h3>Connect</h3>
-          <ul>
-            <li><a href="mailto:outreachdeskllc@gmail.com">Email Support</a></li>
-            <li><a href="https://twitter.com/">Twitter</a></li>
-            <li><a href="https://linkedin.com/">LinkedIn</a></li>
-          </ul>
-        </div>
+    </section>
+  </main>
+  <div class="columns-footer" role="navigation" aria-label="Site links">
+    <div class="columns-container">
+      <div class="column">
+        <h3>LOL Platform</h3>
+        <ul>
+          <li><a href="/coldloomslol/">Home</a></li>
+          <li><a href="/coldloomslol/about.html">About</a></li>
+          <li><a href="/coldloomslol/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/coldloomslol/terms.html">Terms of Service</a></li>
+          <li><a href="/coldloomslol/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:outreachdeskllc@gmail.com">Email Support</a></li>
+          <li><a href="https://twitter.com/">Twitter</a></li>
+          <li><a href="https://linkedin.com/">LinkedIn</a></li>
+        </ul>
       </div>
     </div>
+  </div>
 </body>
 </html>
