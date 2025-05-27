@@ -82,7 +82,7 @@
       transition: background .13s, color .13s, box-shadow .16s;
     }
     .nav-signin:hover, .nav-signin:focus {background: var(--primary-dark);}
-    /* ---- ADDED: Dynamic Animated Gradient Background for hero ---- */
+    /* ---- ADDED: Soft Animated Gradient Hero Background ---- */
     .hero {
       min-height: 70vh;
       display: flex; flex-wrap: wrap; align-items: center; gap: 4rem;
@@ -98,15 +98,27 @@
       position: absolute;
       z-index: 0;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(120deg, #0ee2b8 0%, #45b6fe 40%, #00796b 100%);
-      background-size: 200% 200%;
-      animation: hero-gradient-animate 7s ease-in-out infinite alternate;
-      opacity: 0.18;
+      background: radial-gradient(ellipse at 20% 40%, #0ee2b8 0%, transparent 60%) 0 0 no-repeat,
+                  radial-gradient(ellipse at 80% 60%, #45b6fe 0%, transparent 70%) 0 0 no-repeat,
+                  linear-gradient(120deg, #0ee2b8 0%, #45b6fe 40%, #00796b 100%);
+      background-size: 100% 100%, 100% 100%, 200% 200%;
+      opacity: 0.22;
+      animation: hero-bg-animate 16s ease-in-out infinite alternate;
       pointer-events: none;
     }
-    @keyframes hero-gradient-animate {
-      0% { background-position: 0% 50%;}
-      100% { background-position: 100% 50%;}
+    @keyframes hero-bg-animate {
+      0% {
+        background-position: 0% 0%, 100% 100%, 0% 50%;
+        opacity: 0.19;
+      }
+      50% {
+        background-position: 10% 10%, 90% 90%, 100% 50%;
+        opacity: 0.25;
+      }
+      100% {
+        background-position: 0% 40%, 100% 60%, 0% 80%;
+        opacity: 0.19;
+      }
     }
     /* ---- END animated gradient ---- */
     .hero-main {
