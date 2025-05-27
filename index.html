@@ -146,13 +146,26 @@
     }
     .services-section h2 {font-size: 2.1rem; color: var(--primary); font-weight: 700;}
     .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+}
+
+.services-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.services-grid::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.service-tile {
+  flex: 0 0 auto;
+  width: 220px; /* consistent tile width */
 }
     .service-tile {
       cursor: pointer; background: var(--card); border-radius: var(--radius);
