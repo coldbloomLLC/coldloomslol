@@ -108,8 +108,6 @@
       opacity: 1;
       transform: scaleX(1);
     }
-
-    /* Modern Tech Font for Headings */
     h1, h2, h3, .footer-col h4 {
       font-family: var(--tech), var(--mono), var(--sans);
       letter-spacing: 0.02em;
@@ -131,8 +129,6 @@
     @keyframes neon-move {
       to {background-position: right;}
     }
-
-    /* Glassmorphism Card Look */
     .glass {
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(14px);
@@ -144,8 +140,6 @@
     .glass:hover {
       box-shadow: 0 8px 48px #0ee2b833, 0 1.5px 24px #7d4ffe55;
     }
-
-    /* Neon/Gradient Button Glow */
     .cta-btn, .nav-signin, .cta-form button {
       box-shadow: 0 0 16px #45b6fe33, 0 0 32px #7d4ffe33;
       position: relative;
@@ -170,8 +164,6 @@
     .cta-btn:active, .cta-form button:active, .nav-signin:active {
       transform: scale(.98);
     }
-
-    /* Soft Animated Gradient Hero Background */
     .hero {
       min-height: 70vh;
       display: flex; flex-wrap: wrap; align-items: center; gap: 4rem;
@@ -225,7 +217,6 @@
       font-size: 1.38rem; color: var(--primary);
       max-width: 450px; margin: 1.3rem 0 2.7rem 0; font-weight: 600;
     }
-    /* Animated "Powered by AI" badge */
     .ai-badge {
       display:inline-flex; align-items:center; gap:0.4em;
       font-family:var(--mono); font-weight:700;
@@ -262,8 +253,6 @@
     section.reveal.visible {
       animation: sectionSlideUp 1s cubic-bezier(.4,1.2,.4,1);
     }
-
-    /* Service Tiles and Card Polish */
     .services-section {
       background: #fff;
       padding: 4rem 2rem 3rem 2rem;
@@ -322,8 +311,6 @@
     }
     .service-tile img {width: 80px; margin: 0 auto 0.7rem auto;}
     .service-tile h3 {font-size: 1.03rem; font-weight: 600; color: var(--primary); margin: 0.4rem 0 0 0;}
-
-    /* Section Dividers */
     .section-divider {
       display:block;
       width:100%;
@@ -333,8 +320,6 @@
       padding:0;
       background:none;
     }
-
-    /* Process Section */
     .process-section {
       background: #fff; padding: 4rem 2rem 3rem 2rem;
       max-width: 1100px; margin: 2.5rem auto 0 auto; border-radius: var(--radius);
@@ -397,8 +382,8 @@
       transition: background 0.18s, color 0.18s;
       letter-spacing: 0.01em;
       box-shadow: 0 2px 12px #00796b33;
-      position: relative; /* ADDED for ripple */
-      overflow: hidden;   /* ADDED for ripple */
+      position: relative;
+      overflow: hidden;
     }
     .cta-form button:hover, .cta-form button:focus {background: var(--primary-dark);}
     .site-footer {background:#f8fafd;padding:3.5rem 2rem 2rem 2rem;color:var(--text-dim);font-size:1rem;border-radius:var(--radius) var(--radius) 0 0;box-shadow:0 -2px 18px #00796b0a;margin-top:3rem;}
@@ -437,7 +422,6 @@
       .nav-content {flex-direction:column;gap:1rem;}
       #chat-widget {right: 14px; bottom: 14px;}
     }
-    /* Floating Chat Widget */
     #chat-widget {
       position:fixed;
       bottom:32px;right:32px;z-index:2000;
@@ -458,16 +442,13 @@
       box-shadow: 0 0 22px #45b6fe99, 0 2px 12px #7d4ffe33;
       filter: brightness(1.17);
     }
-    /* Minimal Particle Background Layer */
     #tech-particles {
       position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:0.17;
     }
   </style>
 </head>
 <body>
-<!-- Particle Background -->
 <canvas id="tech-particles"></canvas>
-
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <nav class="navbar" aria-label="Main Navigation">
   <div class="nav-content">
@@ -512,7 +493,6 @@
       <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
     </div>
   </section>
-  <!-- SVG Divider -->
   <svg width="100%" height="54" viewBox="0 0 1440 54" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-divider"><path d="M0,0 C480,54 960,0 1440,54 L1440,54 L0,54 Z" fill="#e0f2f1" /></svg>
   <!-- SERVICES -->
   <section class="services-section reveal glass">
@@ -560,7 +540,6 @@
       </div>
     </div>
   </section>
-  <!-- SVG Divider -->
   <svg width="100%" height="54" viewBox="0 0 1440 54" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-divider"><path d="M0,54 C480,0 960,54 1440,0 L1440,54 L0,54 Z" fill="#fff" /></svg>
   <!-- PROCESS -->
   <section class="process-section reveal glass">
@@ -583,7 +562,6 @@
       </div>
     </div>
   </section>
-  <!-- TESTIMONIALS -->
   <section class="testimonials reveal glass" aria-label="User Testimonials">
     <h2>Success Stories</h2>
     <blockquote>
@@ -591,7 +569,6 @@
     </blockquote>
     <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
   </section>
-  <!-- SVG Divider -->
   <svg width="100%" height="54" viewBox="0 0 1440 54" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-divider"><path d="M0,0 C720,54 720,0 1440,54 L1440,54 L0,54 Z" fill="#e0f2f1" /></svg>
   <!-- CTA / FORM -->
   <section class="cta-section reveal glass" id="contact" aria-label="Contact Form">
@@ -625,7 +602,6 @@
     </div>
   </section>
 </main>
-<!-- Floating Chat Widget -->
 <div id="chat-widget" tabindex="0" aria-label="Chat with Support">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
     <circle cx="12" cy="12" r="10" stroke="#7d4ffe" stroke-width="2"/>
@@ -733,11 +709,9 @@
       navigator.serviceWorker.register('service-worker.js');
     });
   }
-  // Floating Chat Widget logic
   document.getElementById('chat-widget').addEventListener('click',function(){
     alert('Chat support coming soon! For now, email rentservicesllc@gmail.com');
   });
-
   // Minimal animated particle background
   window.addEventListener('DOMContentLoaded', function(){
     const c = document.getElementById('tech-particles');
