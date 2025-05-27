@@ -145,28 +145,22 @@
       text-align: center;
     }
     .services-section h2 {font-size: 2.1rem; color: var(--primary); font-weight: 700;}
-    .services-grid {
+   .services-grid {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1.5rem;
-  padding: 1rem 0;
-  scroll-behavior: smooth;
-}
-
-.services-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.services-grid::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
+  padding: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .service-tile {
-  flex: 0 0 auto;
-  width: 220px; /* consistent tile width */
+  flex: 1 1 calc(10% - 1.5rem); /* shrink to fit all 10 tiles per row */
+  min-width: 150px;
+  max-width: 220px;
 }
+
     .service-tile {
       cursor: pointer; background: var(--card); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 1.5rem 1rem; text-align: center;
