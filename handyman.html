@@ -36,6 +36,16 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+    #city-bar {
+      background: #e0f2f1;
+      color: #00796b;
+      font-size: 1.12rem;
+      padding: 0.9rem 0;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid #c5ebe6;
+    }
     .main-layout {
       display: flex;
       flex-direction: row;
@@ -53,11 +63,10 @@
       border-radius: 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       min-height: 100vh;
-      width: 280px;
+      width: 260px;
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
-      font-size: 1rem;
     }
     .sidebar h3 {
       font-size: 1.8rem;
@@ -71,25 +80,20 @@
     }
     .filter-group {
       margin-bottom: 2.5rem;
-      border: none;
-      padding: 0;
     }
     .filter-group legend {
       font-weight: bold;
       margin-bottom: 1rem;
       font-size: 1.1rem;
-      color: #045c52;
     }
     .filter-group label {
       display: flex;
       align-items: center;
       margin-bottom: 0.75rem;
       font-size: 1rem;
-      cursor: pointer;
     }
     .filter-group input {
       margin-right: 0.5rem;
-      accent-color: #00bfa5;
     }
     .reset-link {
       color: #00796b;
@@ -117,6 +121,7 @@
       flex-direction: column;
       text-align: center;
       transition: all 0.3s ease-in-out;
+      min-height: 230px;
     }
     .tile:hover {
       transform: translateY(-6px);
@@ -129,21 +134,25 @@
       margin: auto;
       border: 3px solid #00bfa5;
       padding: 2px;
+      object-fit: cover;
     }
-    .message-button {
-      margin-top: 1rem;
+    .viewprofile-button {
+      margin-top: 0.6rem;
       display: inline-block;
-      background-color: #00bfa5;
-      color: #fff;
-      padding: 0.6rem 1.6rem;
-      font-size: 1rem;
+      background: transparent;
+      color: #00796b;
+      border: 2px solid #00bfa5;
+      padding: 0.45rem 1.3rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
     }
-    .message-button:hover {
-      background-color: #00796b;
+    .viewprofile-button:hover, .viewprofile-button:focus {
+      background: #00bfa5;
+      color: #fff;
+      border-color: #00796b;
     }
     @media (max-width: 768px) {
       .main-layout {
@@ -178,22 +187,6 @@
         display: block;
       }
     }
-    .city-bar {
-      text-align:center; 
-      font-size:1.1rem; 
-      margin-bottom: 1rem; 
-      color:#045c52;
-    }
-    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
-    .filter-subgroup {
-      margin-bottom: 1.2rem;
-    }
-    .filter-subgroup legend {
-      font-weight: normal;
-      font-size: 1.02rem;
-      color: #009688;
-      margin-bottom: 0.5rem;
-    }
   </style>
 </head>
 <body>
@@ -203,119 +196,82 @@
       <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
     </div>
   </nav>
+  <div id="city-bar">Detecting your city...</div>
   <h1 class="page-title">Handyman Pros</h1>
-  <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
     <aside class="sidebar">
       <h3>FILTER</h3>
       <fieldset class="filter-group">
         <legend>Service Type</legend>
-        <label><input type="checkbox" value="Repairs" /> Repairs</label>
-        <label><input type="checkbox" value="Assembly" /> Assembly</label>
-        <label><input type="checkbox" value="Mounting" /> Mounting</label>
+        <label><input type="checkbox" value="General Repairs" /> General Repairs</label>
+        <label><input type="checkbox" value="Furniture Assembly" /> Furniture Assembly</label>
+        <label><input type="checkbox" value="TV Mounting" /> TV Mounting</label>
         <label><input type="checkbox" value="Plumbing" /> Plumbing</label>
         <label><input type="checkbox" value="Electrical" /> Electrical</label>
-        <label><input type="checkbox" value="Carpentry" /> Carpentry</label>
         <label><input type="checkbox" value="Painting" /> Painting</label>
-        <label><input type="checkbox" value="Flooring" /> Flooring</label>
-        <label><input type="checkbox" value="Landscaping" /> Landscaping</label>
-        <label><input type="checkbox" value="Cleaning" /> Cleaning</label>
-        <label><input type="checkbox" value="Junk Removal" /> Junk Removal</label>
-        <label><input type="checkbox" value="Moving Help" /> Moving Help</label>
+        <label><input type="checkbox" value="Emergency" /> Emergency</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
       </fieldset>
       <fieldset class="filter-group">
         <legend>Property</legend>
         <label><input type="checkbox" value="Residential" /> Residential</label>
         <label><input type="checkbox" value="Commercial" /> Commercial</label>
-        <label><input type="checkbox" value="Emergency" /> Emergency</label>
         <label><input type="checkbox" value="Recurring" /> Recurring</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Pro Credentials</legend>
-        <div class="filter-subgroup">
-          <legend>License</legend>
-          <label><input type="checkbox" value="Licensed" /> Licensed</label>
-          <label><input type="checkbox" value="Bonded" /> Bonded</label>
-          <label><input type="checkbox" value="Insured" /> Insured</label>
-        </div>
-        <div class="filter-subgroup">
-          <legend>Experience</legend>
-          <label><input type="checkbox" value="5+ Years Experience" /> 5+ Years</label>
-          <label><input type="checkbox" value="10+ Years Experience" /> 10+ Years</label>
-        </div>
-        <div class="filter-subgroup">
-          <legend>Rating</legend>
-          <label><input type="checkbox" value="★★★★★" /> 5 Stars</label>
-          <label><input type="checkbox" value="★★★★☆" /> 4+ Stars</label>
-        </div>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Availability</legend>
-        <label><input type="checkbox" value="Available Now" /> Available Now</label>
-        <label><input type="checkbox" value="Same Day" /> Same Day</label>
-        <label><input type="checkbox" value="Weekend" /> Weekend</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Payment Methods</legend>
-        <label><input type="checkbox" value="Cash" /> Cash</label>
-        <label><input type="checkbox" value="Credit Card" /> Credit Card</label>
-        <label><input type="checkbox" value="Venmo" /> Venmo</label>
-        <label><input type="checkbox" value="Zelle" /> Zelle</label>
-        <label><input type="checkbox" value="PayPal" /> PayPal</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Languages</legend>
-        <label><input type="checkbox" value="English" /> English</label>
-        <label><input type="checkbox" value="Spanish" /> Spanish</label>
-        <label><input type="checkbox" value="Mandarin" /> Mandarin</label>
-        <label><input type="checkbox" value="Tagalog" /> Tagalog</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Service Area</legend>
-        <label><input type="checkbox" value="Within 5 miles" /> Within 5 miles</label>
-        <label><input type="checkbox" value="Within 10 miles" /> Within 10 miles</label>
-        <label><input type="checkbox" value="Within 25 miles" /> Within 25 miles</label>
-        <label><input type="checkbox" value="Remote" /> Remote/Virtual</label>
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
+
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
+      <!-- Example Handyman Tile 1 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fix-It Fast Handyman">
-        <h3><strong>Fix-It Fast Handyman</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Same-day repairs, mounting, and installation. Residential & commercial. Licensed, Insured. 5+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
+        <img src="images/mike-handyman.jpg" alt="Mike's Handyman">
+        <h3><strong>Mike's Handyman</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p>📍 Northridge, CA</p>
+        <p>15+ Years Experience, General Repairs, Electrical, Plumbing</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/mike.html" class="viewprofile-button">View Profile</a>
       </div>
+      <!-- Example Handyman Tile 2 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Assembly Pros">
-        <h3><strong>Assembly Pros</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Furniture assembly, TV mounting, and minor carpentry for any project. Residential. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
-      </div>
-      <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Handy Electric & Plumbing">
-        <h3><strong>Handy Electric & Plumbing</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Licensed for electrical, plumbing, and general handyman services. Emergency. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Handy Pros LA">
+        <h3><strong>Handy Pros LA</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p>📍 Sherman Oaks, CA</p>
+        <p>Furniture assembly, TV mounting, painting. Same Day Available.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/handyprosla.html" class="viewprofile-button">View Profile</a>
       </div>
+      <!-- Example Handyman Tile 3 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="OnCall Carpentry">
-        <h3><strong>OnCall Carpentry</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Custom carpentry, shelving, and home repairs. Weekend. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="QuickFix Handyman">
+        <h3><strong>QuickFix Handyman</strong></h3>
+        <p>📍 Woodland Hills, CA</p>
+        <p>Emergency repairs, plumbing, residential & commercial.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/quickfix.html" class="viewprofile-button">View Profile</a>
+      </div>
+      <!-- Example Handyman Tile 4 -->
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="All Around Handyman">
+        <h3><strong>All Around Handyman</strong></h3>
+        <p>📍 Burbank, CA</p>
+        <p>Electrical, general repairs, recurring maintenance.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="profiles/allaround.html" class="viewprofile-button">View Profile</a>
+      </div>
+      <!-- Example Handyman Tile 5 -->
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="ProFix Solutions">
+        <h3><strong>ProFix Solutions</strong></h3>
+        <p>📍 Encino, CA</p>
+        <p>Painting, TV mounting, furniture assembly. Fast & reliable.</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <a href="profiles/profix.html" class="viewprofile-button">View Profile</a>
       </div>
     </div>
   </section>
+
   <footer style="background:#f9f9f9; padding:3rem 1rem;">
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -368,12 +324,11 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
-  <!-- LOGIN MODAL -->
   <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
     <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
       <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
       <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form id="login-form">
+      <form>
         <label for="email">Email</label>
         <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
         <label for="password">Password</label>
@@ -382,8 +337,33 @@
       </form>
     </div>
   </div>
-</body>
 <script>
+  // CITY DETECTOR
+  function updateCity(city) {
+    const cityBar = document.getElementById('city-bar');
+    cityBar.innerHTML = city
+      ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+      : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+    document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+  }
+  window.showCityPrompt = function() {
+    const entry = prompt("Enter your city (e.g. Northridge):");
+    if(entry) updateCity(entry.trim());
+  }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      const lat = pos.coords.latitude, lon = pos.coords.longitude;
+      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+        .then(resp=>resp.json()).then(data=>{
+          let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+          if(!city && data.address.suburb) city = data.address.suburb;
+          updateCity(city || null);
+        }).catch(()=>updateCity(null));
+    }, function() { updateCity(null); });
+  } else {
+    updateCity(null);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
@@ -430,66 +410,12 @@
 
     const resetLink = document.querySelector(".reset-link");
     if (resetLink) {
-      resetLink.addEventListener("click", () => {
+      resetLink.addEventListener("click", (e) => {
+        e.preventDefault();
         checkboxes.forEach(box => box.checked = false);
         tiles.forEach(tile => tile.style.display = "flex");
         tagContainer.innerHTML = "";
       });
-    }
-
-    // SIMPLE CLIENT-SIDE LOGIN
-    const loginForm = document.getElementById('login-form');
-    const loginModal = document.getElementById('login-modal');
-    const signInBtn = document.querySelector('.sign-in');
-
-    function showSignedIn(email) {
-      if (signInBtn) {
-        signInBtn.textContent = "Signed in as " + email;
-        signInBtn.style.pointerEvents = "none";
-        signInBtn.style.opacity = "0.6";
-      }
-    }
-
-    if (loginForm) {
-      loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = loginForm.email.value;
-        localStorage.setItem("signedInEmail", email);
-        if (loginModal) loginModal.style.display = "none";
-        showSignedIn(email);
-      });
-    }
-
-    // On page load, restore sign-in state
-    const savedEmail = localStorage.getItem("signedInEmail");
-    if (savedEmail) {
-      showSignedIn(savedEmail);
-    }
-
-    // CITY DETECTOR
-    function updateCity(city) {
-      const cityBar = document.getElementById('city-bar');
-      cityBar.innerHTML = city
-        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
-        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
-      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
-    }
-    window.showCityPrompt = function() {
-      const entry = prompt("Enter your city (e.g. Northridge):");
-      if(entry) updateCity(entry.trim());
-    }
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        const lat = pos.coords.latitude, lon = pos.coords.longitude;
-        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-          .then(resp=>resp.json()).then(data=>{
-            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
-            if(!city && data.address.suburb) city = data.address.suburb;
-            updateCity(city || null);
-          }).catch(()=>updateCity(null));
-      }, function() { updateCity(null); });
-    } else {
-      updateCity(null);
     }
   });
 
@@ -498,4 +424,5 @@
     sidebar.classList.toggle('active');
   }
 </script>
+</body>
 </html>
