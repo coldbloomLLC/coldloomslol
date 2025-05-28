@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Floor Installation | Cold Looms</title>
+  <title>Floor Installation Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .tag {
@@ -36,6 +36,16 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+    #city-bar {
+      background: #e0f2f1;
+      color: #00796b;
+      font-size: 1.12rem;
+      padding: 0.9rem 0;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid #c5ebe6;
+    }
     .main-layout {
       display: flex;
       flex-direction: row;
@@ -46,6 +56,7 @@
       padding: 0 1rem;
       gap: 2rem;
       flex-wrap: wrap;
+      position: relative;
     }
     .sidebar {
       background: #e0f2f1;
@@ -57,6 +68,11 @@
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
+      z-index: 2000;
+      transition: transform 0.3s;
+    }
+    .sidebar .close-sidebar {
+      display: none;
     }
     .sidebar h3 {
       font-size: 1.8rem;
@@ -111,6 +127,7 @@
       flex-direction: column;
       text-align: center;
       transition: all 0.3s ease-in-out;
+      min-height: 230px;
     }
     .tile:hover {
       transform: translateY(-6px);
@@ -123,38 +140,25 @@
       margin: auto;
       border: 3px solid #00bfa5;
       padding: 2px;
+      object-fit: cover;
     }
-    .message-button {
-      margin-top: 1rem;
+    .viewprofile-button {
+      margin-top: 0.6rem;
       display: inline-block;
-      background-color: #00bfa5;
-      color: #fff;
-      padding: 0.6rem 1.6rem;
-      font-size: 1rem;
+      background: transparent;
+      color: #00796b;
+      border: 2px solid #00bfa5;
+      padding: 0.45rem 1.3rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      cursor: pointer;
     }
-    .message-button:hover {
-      background-color: #00796b;
-    }
-    @media (max-width: 768px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-      .sidebar {
-        display: none;
-        width: 100%;
-        margin-bottom: 2rem;
-      }
-      .sidebar.active {
-        display: block;
-      }
-      .tile-grid {
-        grid-template-columns: 1fr;
-      }
+    .viewprofile-button:hover, .viewprofile-button:focus {
+      background: #00bfa5;
+      color: #fff;
+      border-color: #00796b;
     }
     .filter-toggle {
       background-color: #00796b;
@@ -168,75 +172,136 @@
       cursor: pointer;
     }
     @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        position: fixed;
+        left: 0; top: 0;
+        width: 85vw;
+        max-width: 340px;
+        height: 100vh;
+        z-index: 2000;
+        box-shadow: 2px 0 20px rgba(0,0,0,0.12);
+        padding-top: 3rem;
+        overflow-y: auto;
+        transition: transform 0.3s;
+        transform: translateX(-100%);
+      }
+      .sidebar.active {
+        display: block;
+        transform: translateX(0);
+      }
+      .sidebar .close-sidebar {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 1.7rem;
+        color: #00796b;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
       .filter-toggle {
         display: block;
+      }
+    }
+    @media (min-width: 769px) {
+      .sidebar .close-sidebar {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
   <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
-  <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
-    <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-    <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
-  </div>
-</nav>
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
+      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
+      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
+    </div>
+  </nav>
+  <div id="city-bar">Detecting your city...</div>
   <h1 class="page-title">Floor Installation Pros</h1>
   <section class="main-layout">
     <aside class="sidebar">
+      <button class="close-sidebar" onclick="toggleFilters()" aria-label="Close Filters">&times;</button>
       <h3>FILTER</h3>
       <fieldset class="filter-group">
         <legend>Floor Type</legend>
         <label><input type="checkbox" value="Hardwood" /> Hardwood</label>
         <label><input type="checkbox" value="Laminate" /> Laminate</label>
-        <label><input type="checkbox" value="Tile" /> Tile</label>
         <label><input type="checkbox" value="Vinyl" /> Vinyl</label>
+        <label><input type="checkbox" value="Tile" /> Tile</label>
         <label><input type="checkbox" value="Carpet" /> Carpet</label>
+        <label><input type="checkbox" value="Engineered Wood" /> Engineered Wood</label>
+        <label><input type="checkbox" value="Eco-Friendly" /> Eco-Friendly</label>
+        <label><input type="checkbox" value="Heated Floors" /> Heated Floors</label>
       </fieldset>
       <fieldset class="filter-group">
         <legend>Service</legend>
         <label><input type="checkbox" value="Installation" /> Installation</label>
         <label><input type="checkbox" value="Repair" /> Repair</label>
-        <label><input type="checkbox" value="Refinishing" /> Refinishing</label>
         <label><input type="checkbox" value="Removal" /> Removal</label>
+        <label><input type="checkbox" value="Residential" /> Residential</label>
+        <label><input type="checkbox" value="Commercial" /> Commercial</label>
+        <label><input type="checkbox" value="Same Day" /> Same Day</label>
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
 
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
-      <div class="tile-grid">
+    <div class="tile-grid">
+      <!-- Example Floor Installer Tile 1 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Floor Masters">
-        <h3><strong>Floor Masters</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <img src="images/jay-floors.jpg" alt="Jay's Flooring Pros">
+        <h3><strong>Jay's Flooring Pros</strong> <span style="color: #00bfa5;">✔️</span></h3>
+        <p>📍 Northridge, CA</p>
+        <p>20+ Years Experience. Hardwood, Laminate, Vinyl Installation & Repair</p>
+        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <a href="profiles/jayfloors.html" class="viewprofile-button">View Profile</a>
+      </div>
+      <!-- Example Floor Installer Tile 2 -->
+      <div class="tile">
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Prime Tile & Wood">
+        <h3><strong>Prime Tile & Wood</strong> <span style="color: #00bfa5;">✔️</span></h3>
         <p>📍 Sherman Oaks, CA</p>
-        <p>Expert hardwood and laminate installation. Fast and dust-free process.</p>
+        <p>Tile, laminate, and engineered wood. Heated floors and eco-friendly options.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/primetile.html" class="viewprofile-button">View Profile</a>
       </div>
+      <!-- Example Floor Installer Tile 3 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Tile Trendsetters">
-        <h3><strong>Tile Trendsetters</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Fast Floors">
+        <h3><strong>Fast Floors</strong></h3>
         <p>📍 Woodland Hills, CA</p>
-        <p>Specializing in tile and vinyl floor installs for homes & businesses.</p>
+        <p>Same day vinyl and carpet installation. Residential & commercial.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/fastfloors.html" class="viewprofile-button">View Profile</a>
       </div>
+      <!-- Example Floor Installer Tile 4 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Carpet Crew">
-        <h3><strong>Carpet Crew</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="EcoFloor Installers">
+        <h3><strong>EcoFloor Installers</strong></h3>
         <p>📍 Burbank, CA</p>
-        <p>Carpet installation & removal. Clean, quick, and affordable.</p>
+        <p>Eco-friendly hardwood, laminate, and tile. Installation & removal.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/ecofloor.html" class="viewprofile-button">View Profile</a>
       </div>
+      <!-- Example Floor Installer Tile 5 -->
       <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Refinish Pros">
-        <h3><strong>Refinish Pros</strong></h3>
+        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="All Star Carpet & Flooring">
+        <h3><strong>All Star Carpet & Flooring</strong></h3>
         <p>📍 Encino, CA</p>
-        <p>Refinishing & repair for hardwood, tile, and laminate floors.</p>
+        <p>Carpet, vinyl, hardwood. Installation, repair, and removal.</p>
         <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="#" class="message-button">Message</a>
+        <a href="profiles/allstarcarpet.html" class="viewprofile-button">View Profile</a>
       </div>
     </div>
   </section>
@@ -306,8 +371,34 @@
       </form>
     </div>
   </div>
-</body>
 <script>
+  // CITY DETECTOR
+  function updateCity(city) {
+    const cityBar = document.getElementById('city-bar');
+    cityBar.innerHTML = city
+      ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+      : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+    document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+  }
+  window.showCityPrompt = function() {
+    const entry = prompt("Enter your city (e.g. Northridge):");
+    if(entry) updateCity(entry.trim());
+  }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      const lat = pos.coords.latitude, lon = pos.coords.longitude;
+      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+        .then(resp=>resp.json()).then(data=>{
+          let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+          if(!city && data.address.suburb) city = data.address.suburb;
+          updateCity(city || null);
+        }).catch(()=>updateCity(null));
+    }, function() { updateCity(null); });
+  } else {
+    updateCity(null);
+  }
+
+  // FILTER LOGIC
   document.addEventListener("DOMContentLoaded", function () {
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
@@ -324,15 +415,23 @@
           const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
           tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
 
+          // Remove previous highlights
           const paragraphs = tile.querySelectorAll("p");
           paragraphs.forEach(p => {
-            let text = p.textContent;
-            activeFilters.forEach(filter => {
-              const regex = new RegExp(`(${filter})`, 'gi');
-              text = text.replace(regex, '<mark>$1</mark>');
-            });
-            p.innerHTML = text;
+            p.innerHTML = p.textContent;
           });
+
+          // Add new highlights only if the tile is visible
+          if (tile.style.display !== "none") {
+            paragraphs.forEach(p => {
+              let text = p.textContent;
+              activeFilters.forEach(filter => {
+                const regex = new RegExp(`(${filter})`, 'gi');
+                text = text.replace(regex, '<mark>$1</mark>');
+              });
+              p.innerHTML = text;
+            });
+          }
         });
 
         tagContainer.innerHTML = "";
@@ -354,16 +453,54 @@
 
     const resetLink = document.querySelector(".reset-link");
     if (resetLink) {
-      resetLink.addEventListener("click", () => {
+      resetLink.addEventListener("click", (e) => {
+        e.preventDefault();
         checkboxes.forEach(box => box.checked = false);
         tiles.forEach(tile => tile.style.display = "flex");
         tagContainer.innerHTML = "";
+        // Remove highlights
+        tiles.forEach(tile => {
+          tile.querySelectorAll("p").forEach(p => { p.innerHTML = p.textContent; });
+        });
       });
     }
   });
+
+  // Sidebar toggle logic
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
+    // Prevent background scroll when sidebar is open (mobile)
+    if(sidebar.classList.contains('active')) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   }
+
+  // Close sidebar if click outside (mobile)
+  document.addEventListener('click', function(e){
+    const sidebar = document.querySelector('.sidebar');
+    const filterBtn = document.querySelector('.filter-toggle');
+    if(
+      window.innerWidth <= 768 &&
+      sidebar.classList.contains('active') &&
+      !sidebar.contains(e.target) &&
+      e.target !== filterBtn
+    ) {
+      toggleFilters();
+    }
+  });
+
+  // ESC key closes sidebar (mobile)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar.classList.contains('active')) {
+        toggleFilters();
+      }
+    }
+  });
 </script>
+</body>
 </html>
