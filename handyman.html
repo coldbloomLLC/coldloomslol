@@ -56,6 +56,7 @@
       padding: 0 1rem;
       gap: 2rem;
       flex-wrap: wrap;
+      position: relative;
     }
     .sidebar {
       background: #e0f2f1;
@@ -67,6 +68,11 @@
       flex-shrink: 0;
       position: sticky;
       top: 2rem;
+      z-index: 2000;
+      transition: transform 0.3s;
+    }
+    .sidebar .close-sidebar {
+      display: none;
     }
     .sidebar h3 {
       font-size: 1.8rem;
@@ -154,23 +160,6 @@
       color: #fff;
       border-color: #00796b;
     }
-    @media (max-width: 768px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-      .sidebar {
-        display: none;
-        width: 100%;
-        margin-bottom: 2rem;
-      }
-      .sidebar.active {
-        display: block;
-      }
-      .tile-grid {
-        grid-template-columns: 1fr;
-      }
-    }
     .filter-toggle {
       background-color: #00796b;
       color: white;
@@ -183,8 +172,49 @@
       cursor: pointer;
     }
     @media (max-width: 768px) {
+      .main-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        display: none;
+        position: fixed;
+        left: 0; top: 0;
+        width: 85vw;
+        max-width: 340px;
+        height: 100vh;
+        z-index: 2000;
+        box-shadow: 2px 0 20px rgba(0,0,0,0.12);
+        padding-top: 3rem;
+        overflow-y: auto;
+        transition: transform 0.3s;
+        transform: translateX(-100%);
+      }
+      .sidebar.active {
+        display: block;
+        transform: translateX(0);
+      }
+      .sidebar .close-sidebar {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 1.7rem;
+        color: #00796b;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .tile-grid {
+        grid-template-columns: 1fr;
+      }
       .filter-toggle {
         display: block;
+      }
+    }
+    @media (min-width: 769px) {
+      .sidebar .close-sidebar {
+        display: none;
       }
     }
   </style>
@@ -200,6 +230,7 @@
   <h1 class="page-title">Handyman Pros</h1>
   <section class="main-layout">
     <aside class="sidebar">
+      <button class="close-sidebar" onclick="toggleFilters()" aria-label="Close Filters">&times;</button>
       <h3>FILTER</h3>
       <fieldset class="filter-group">
         <legend>Service Type</legend>
@@ -364,6 +395,7 @@
     updateCity(null);
   }
 
+  // FILTER LOGIC
   document.addEventListener("DOMContentLoaded", function () {
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
@@ -380,15 +412,23 @@
           const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
           tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
 
+          // Remove previous highlights
           const paragraphs = tile.querySelectorAll("p");
           paragraphs.forEach(p => {
-            let text = p.textContent;
-            activeFilters.forEach(filter => {
-              const regex = new RegExp(`(${filter})`, 'gi');
-              text = text.replace(regex, '<mark>$1</mark>');
-            });
-            p.innerHTML = text;
+            p.innerHTML = p.textContent;
           });
+
+          // Add new highlights only if the tile is visible
+          if (tile.style.display !== "none") {
+            paragraphs.forEach(p => {
+              let text = p.textContent;
+              activeFilters.forEach(filter => {
+                const regex = new RegExp(`(${filter})`, 'gi');
+                text = text.replace(regex, '<mark>$1</mark>');
+              });
+              p.innerHTML = text;
+            });
+          }
         });
 
         tagContainer.innerHTML = "";
@@ -415,14 +455,49 @@
         checkboxes.forEach(box => box.checked = false);
         tiles.forEach(tile => tile.style.display = "flex");
         tagContainer.innerHTML = "";
+        // Remove highlights
+        tiles.forEach(tile => {
+          tile.querySelectorAll("p").forEach(p => { p.innerHTML = p.textContent; });
+        });
       });
     }
   });
 
+  // Sidebar toggle logic
   function toggleFilters() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
+    // Prevent background scroll when sidebar is open (mobile)
+    if(sidebar.classList.contains('active')) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   }
+
+  // Close sidebar if click outside (mobile)
+  document.addEventListener('click', function(e){
+    const sidebar = document.querySelector('.sidebar');
+    const filterBtn = document.querySelector('.filter-toggle');
+    if(
+      window.innerWidth <= 768 &&
+      sidebar.classList.contains('active') &&
+      !sidebar.contains(e.target) &&
+      e.target !== filterBtn
+    ) {
+      toggleFilters();
+    }
+  });
+
+  // ESC key closes sidebar (mobile)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar.classList.contains('active')) {
+        toggleFilters();
+      }
+    }
+  });
 </script>
 </body>
 </html>
