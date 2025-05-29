@@ -197,6 +197,8 @@
       color: #009688;
       margin-bottom: 0.5rem;
     }
+    /* HIDE LoadRunners by default */
+    #loadrunners-tile { display: none; }
   </style>
 </head>
 <body>
@@ -284,8 +286,8 @@
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
-      <!-- LOADRUNNERS (formerly "Junk Haul Express") -->
-      <div class="tile">
+      <!-- LOADRUNNERS (conditionally shown) -->
+      <div class="tile" id="loadrunners-tile">
         <img src="https://i.ibb.co/cKSvS8Wg/load.png" alt="load" border="0">
         <p class="city-marker" style="font-weight:bold; margin-bottom:0.2rem;">
           📍 Chatsworth/San Fernando Valley, CA
@@ -473,13 +475,32 @@
       showSignedIn(savedEmail);
     }
 
-    // CITY DETECTOR
+    // CITY DETECTOR & LOADRUNNERS SHOW/HIDE
+    function shouldShowLoadrunners(city) {
+      if (!city) return false;
+      const normalized = city.trim().toLowerCase();
+      return (
+        normalized.includes("chatsworth") ||
+        normalized.includes("san fernando valley") ||
+        // Accept "san fernando" as a shortcut
+        (normalized.includes("san fernando") && normalized.includes("valley"))
+      );
+    }
     function updateCity(city) {
       const cityBar = document.getElementById('city-bar');
       cityBar.innerHTML = city
         ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
         : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
       document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+      // Show/hide LoadRunners tile based on city
+      const loadrunners = document.getElementById('loadrunners-tile');
+      if (loadrunners) {
+        if (shouldShowLoadrunners(city)) {
+          loadrunners.style.display = "flex";
+        } else {
+          loadrunners.style.display = "none";
+        }
+      }
     }
     window.showCityPrompt = function() {
       const entry = prompt("Enter your city (e.g. Northridge):");
