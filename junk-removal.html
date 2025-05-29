@@ -197,15 +197,151 @@
       color: #009688;
       margin-bottom: 0.5rem;
     }
+    /* --- MODAL DIALOG STYLES from index.html --- */
+    .popup-modal[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.31);
+      z-index: 9999;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .popup-modal .popup-content {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.18);
+      max-width: 98vw;
+      width: 370px;
+      padding: 2.2rem 1.7rem 1.4rem 1.7rem;
+      position: relative;
+      text-align: center;
+      font-family: inherit;
+    }
+    .popup-modal .popup-content h2 {
+      color: #045c52;
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-family: inherit;
+      font-size: 1.38rem;
+    }
+    .popup-modal .popup-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .popup-modal .popup-content input, 
+    .popup-modal .popup-content select,
+    .popup-modal .popup-content textarea {
+      margin-bottom: 0.65rem;
+      border-radius: 7px;
+      border: 1.2px solid #00796b33;
+      padding: 0.8rem 0.9rem;
+      font-size: 1rem;
+      background: #f6fafd;
+      color: #222;
+      font-family: inherit;
+      min-height: 44px;
+    }
+    .popup-modal .popup-content textarea {min-height: 70px;}
+    .popup-modal .popup-content button[type="submit"] {
+      background: #00796b;
+      color: #fff;
+      padding: 0.85rem 0;
+      font-size: 1.04rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 14px #00796b33;
+      min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"] {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      transition: color .15s;
+      min-width: 44px; min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"]:hover { color: #045c52;}
+    .popup-modal .success-message {
+      color: #045c52;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 900px) {
+      .popup-modal .popup-content {width: 95vw;}
+    }
   </style>
 </head>
 <body>
   <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
       <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
+      <button class="nav-signin" aria-haspopup="dialog" aria-controls="login-dialog" onclick="openDialog(event)" style="color:#00796b; font-weight:bold; background:none; border:none; font-size:1rem; cursor:pointer;">Sign In</button>
     </div>
   </nav>
+
+  <!-- Popup Modal for Lead Capture Questionnaire -->
+  <dialog id="lead-popup" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
+      <h2>Get Matched Quickly!<br><span style="font-size:1rem;font-weight:normal;color:#00796b;">Tell us what you need</span></h2>
+      <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on">
+        <label for="popup-name">Full Name</label>
+        <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
+
+        <label for="popup-email">Email Address</label>
+        <input type="email" id="popup-email" name="email" placeholder="Email Address" required />
+
+        <label for="popup-phone">Phone Number</label>
+        <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required />
+
+        <label for="popup-service">Service Needed</label>
+        <select id="popup-service" name="service" required>
+          <option value="" disabled selected>Select a service</option>
+          <option>Junk Removal</option>
+          <option>Furniture Hauling</option>
+          <option>Appliance Removal</option>
+          <option>Yard Waste</option>
+          <option>Construction Debris</option>
+          <option>Donation Pickup</option>
+          <option>E-waste</option>
+          <option>Cleanouts</option>
+          <option>Same Day</option>
+          <option>Commercial</option>
+          <option>Residential</option>
+          <option>Other</option>
+        </select>
+
+        <label for="popup-message">Briefly describe your project or needs</label>
+        <textarea id="popup-message" name="message" placeholder="Your message..." required></textarea>
+
+        <button type="submit">Get My Quote</button>
+      </form>
+      <div class="success-message" id="lead-success" style="display:none;"></div>
+    </div>
+  </dialog>
+  <!-- Sign In Modal -->
+  <dialog id="login-dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button onclick="closeDialog()" aria-label="Close dialog" style="float:right;font-size:1.3rem;background:none;border:none;">&times;</button>
+    <h2 id="modal-title" style="margin-top:0;font-size:1.2rem;color:#045c52;">Sign In</h2>
+    <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
+    <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
+  </dialog>
+
   <h1 class="page-title">Junk Removal Pros</h1>
   <div class="city-bar" id="city-bar">Detecting your city...</div>
   <section class="main-layout">
@@ -284,7 +420,7 @@
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
-      <!-- LOADRUNNERS (formerly "Junk Haul Express") -->
+      <!-- LOADRUNNERS -->
       <div class="tile">
         <img src="https://i.ibb.co/cKSvS8Wg/load.png" alt="load" border="0">
         <p class="city-marker" style="font-weight:bold; margin-bottom:0.2rem;">
@@ -375,134 +511,149 @@
       <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
     </a>
   </div>
-  <!-- LOGIN MODAL -->
-  <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
-    <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
-      <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
-      <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form id="login-form">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
-      </form>
-    </div>
-  </div>
-</body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const tagContainer = document.getElementById("active-tags");
-    const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
-    const tiles = document.querySelectorAll(".tile");
-
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener("change", () => {
-        const activeFilters = Array.from(checkboxes)
-          .filter(box => box.checked)
-          .map(box => box.value);
-
-        tiles.forEach(tile => {
-          const content = tile.textContent.toLowerCase();
-          const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
-          tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
-
-          const paragraphs = tile.querySelectorAll("p");
-          paragraphs.forEach(p => {
-            let text = p.textContent;
-            activeFilters.forEach(filter => {
-              const regex = new RegExp(`(${filter})`, 'gi');
-              text = text.replace(regex, '<mark>$1</mark>');
-            });
-            p.innerHTML = text;
-          });
-        });
-
-        tagContainer.innerHTML = "";
-        activeFilters.forEach(filter => {
-          const tag = document.createElement("span");
-          tag.className = "tag";
-          tag.textContent = filter + " ✕";
-          tag.onclick = () => {
-            checkboxes.forEach(box => {
-              if (box.value === filter) box.checked = false;
-            });
-            const event = new Event('change');
-            checkboxes[0].dispatchEvent(event);
-          };
-          tagContainer.appendChild(tag);
-        });
-      });
-    });
-
-    const resetLink = document.querySelector(".reset-link");
-    if (resetLink) {
-      resetLink.addEventListener("click", () => {
-        checkboxes.forEach(box => box.checked = false);
-        tiles.forEach(tile => tile.style.display = "flex");
-        tagContainer.innerHTML = "";
-      });
+  <script>
+    // --- MODAL LOGIC (modern <dialog> structure, from index.html) ---
+    function openDialog(e) {
+      if (e) e.preventDefault();
+      const dialog = document.getElementById('login-dialog');
+      dialog.showModal();
+      setTimeout(() => dialog.querySelector('button[onclick="closeDialog()"]').focus(), 100);
     }
-
-    // SIMPLE CLIENT-SIDE LOGIN
-    const loginForm = document.getElementById('login-form');
-    const loginModal = document.getElementById('login-modal');
-    const signInBtn = document.querySelector('.sign-in');
-
-    function showSignedIn(email) {
-      if (signInBtn) {
-        signInBtn.textContent = "Signed in as " + email;
-        signInBtn.style.pointerEvents = "none";
-        signInBtn.style.opacity = "0.6";
+    function closeDialog() {
+      document.getElementById('login-dialog').close();
+    }
+    // Popup logic for lead questionnaire
+    function openLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.showModal === "function") {
+        popup.showModal();
+      } else if (popup) {
+        popup.setAttribute('open', 'true');
+        popup.style.display = 'flex';
       }
     }
-
-    if (loginForm) {
-      loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = loginForm.email.value;
-        localStorage.setItem("signedInEmail", email);
-        if (loginModal) loginModal.style.display = "none";
-        showSignedIn(email);
+    function closeLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.close === "function") {
+        popup.close();
+      } else if (popup) {
+        popup.removeAttribute('open');
+        popup.style.display = 'none';
+      }
+    }
+    // On load, show popup after slight delay (0.7s)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(openLeadPopup, 700);
+    });
+    // Lead form submission logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var leadForm = document.getElementById('lead-form');
+      var successMsg = document.getElementById('lead-success');
+      if (leadForm) {
+        leadForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(leadForm);
+          fetch(leadForm.action, {
+            method: "POST",
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              leadForm.style.display = 'none';
+              successMsg.textContent = "Thank you! Your request has been received.";
+              successMsg.style.display = "block";
+              setTimeout(closeLeadPopup, 3500);
+            } else {
+              response.json().then(function(data){
+                successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
+                successMsg.style.display = "block";
+              });
+            }
+          }).catch(function(){
+            successMsg.textContent = "There was a problem submitting the form. Please try again.";
+            successMsg.style.display = "block";
+          });
+        });
+      }
+      // Filter logic
+      const tagContainer = document.getElementById("active-tags");
+      const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+      const tiles = document.querySelectorAll(".tile");
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", () => {
+          const activeFilters = Array.from(checkboxes)
+            .filter(box => box.checked)
+            .map(box => box.value);
+          tiles.forEach(tile => {
+            const content = tile.textContent.toLowerCase();
+            const isMatch = activeFilters.every(filter => content.includes(filter.toLowerCase()));
+            tile.style.display = activeFilters.length === 0 || isMatch ? "flex" : "none";
+            const paragraphs = tile.querySelectorAll("p");
+            paragraphs.forEach(p => {
+              let text = p.textContent;
+              activeFilters.forEach(filter => {
+                const regex = new RegExp(`(${filter})`, 'gi');
+                text = text.replace(regex, '<mark>$1</mark>');
+              });
+              p.innerHTML = text;
+            });
+          });
+          tagContainer.innerHTML = "";
+          activeFilters.forEach(filter => {
+            const tag = document.createElement("span");
+            tag.className = "tag";
+            tag.textContent = filter + " ✕";
+            tag.onclick = () => {
+              checkboxes.forEach(box => {
+                if (box.value === filter) box.checked = false;
+              });
+              const event = new Event('change');
+              checkboxes[0].dispatchEvent(event);
+            };
+            tagContainer.appendChild(tag);
+          });
+        });
       });
+      const resetLink = document.querySelector(".reset-link");
+      if (resetLink) {
+        resetLink.addEventListener("click", () => {
+          checkboxes.forEach(box => box.checked = false);
+          tiles.forEach(tile => tile.style.display = "flex");
+          tagContainer.innerHTML = "";
+        });
+      }
+      // CITY DETECTOR
+      function updateCity(city) {
+        const cityBar = document.getElementById('city-bar');
+        cityBar.innerHTML = city
+          ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
+          : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
+        document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
+      }
+      window.showCityPrompt = function() {
+        const entry = prompt("Enter your city (e.g. Northridge):");
+        if(entry) updateCity(entry.trim());
+      }
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          const lat = pos.coords.latitude, lon = pos.coords.longitude;
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+            .then(resp=>resp.json()).then(data=>{
+              let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
+              if(!city && data.address.suburb) city = data.address.suburb;
+              updateCity(city || null);
+            }).catch(()=>updateCity(null));
+        }, function() { updateCity(null); });
+      } else {
+        updateCity(null);
+      }
+    });
+    function toggleFilters() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('active');
     }
-
-    // On page load, restore sign-in state
-    const savedEmail = localStorage.getItem("signedInEmail");
-    if (savedEmail) {
-      showSignedIn(savedEmail);
-    }
-
-    // CITY DETECTOR
-    function updateCity(city) {
-      const cityBar = document.getElementById('city-bar');
-      cityBar.innerHTML = city
-        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
-        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
-      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
-    }
-    window.showCityPrompt = function() {
-      const entry = prompt("Enter your city (e.g. Northridge):");
-      if(entry) updateCity(entry.trim());
-    }
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        const lat = pos.coords.latitude, lon = pos.coords.longitude;
-        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-          .then(resp=>resp.json()).then(data=>{
-            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
-            if(!city && data.address.suburb) city = data.address.suburb;
-            updateCity(city || null);
-          }).catch(()=>updateCity(null));
-      }, function() { updateCity(null); });
-    } else {
-      updateCity(null);
-    }
-  });
-
-  function toggleFilters() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('active');
-  }
-</script>
+  </script>
+</body>
 </html>
