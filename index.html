@@ -49,6 +49,7 @@
       background: var(--primary); color: #fff; z-index: 1000; transition: left .2s;
     }
     .skip-link:focus {left: 24px; top: 18px; width:auto; height:auto; padding:0.8em 1.2em; border-radius:6px;outline:2px solid var(--primary-dark);}
+    /* NAVBAR */
     .navbar {
       background: #fff;
       box-shadow: 0 1px 5px rgba(0,0,0,0.06);
@@ -69,7 +70,10 @@
       transition: color .18s;
     }
     .nav-logo img {height: 36px; border-radius: 9px;}
-    .nav-links {display: flex; gap: 1.5rem; align-items: center;}
+    .nav-links {
+      display: flex; gap: 1.5rem; align-items: center;
+      transition: all .18s;
+    }
     .nav-link, .nav-signin {
       font-size: 1.04rem; letter-spacing: 0.01em; font-family: var(--mono);
       padding: 0.45em 1.1em; border-radius: 8px;
@@ -135,154 +139,294 @@
       }
       .nav-mobile-toggle { display: block; }
     }
-
-    /* HERO SECTION (HALF/HALF SPLIT) */
-    .hero-container {
-      display: flex;
-      align-items: stretch;
-      min-height: 74vh;
-      width: 100%;
-      max-width: 1400px;
-      margin: 2.7rem auto 2rem auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.08);
-      overflow: hidden;
-      position: relative;
-      border: 2px solid #e0f2f1;
-    }
-    .hero-left,
-    .hero-right {
-      flex: 1 1 50%;
-      display: flex;
-      flex-direction: column;
+    /* END NAVBAR */
+    .hero {
+      min-height: 70vh;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 4rem;
+      padding: 6rem 2rem 2rem 2rem;
       justify-content: center;
-      align-items: flex-start;
-      padding: 4.5rem 3rem;
-      min-width: 0;
-      min-height: 400px;
+      background: #fff;
       position: relative;
     }
-    .hero-left {
-      background: #fff;
-      z-index: 2;
-      align-items: flex-start;
-      border-right: 1.5px solid #e0f2f1;
-      justify-content: center;
+    .hero-main {
+      flex: 1 1 370px; min-width: 260px;
+      z-index: 2; position: relative;
+      animation: fadeInDown 1.1s cubic-bezier(.4,1.2,.4,1);
     }
-    .hero-title {
-      font-size: 3.2rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: #045c52;
-      margin-bottom: 0.7rem;
-      line-height: 1.07;
-      text-shadow: 0 2px 12px #0ee2b810;
+    .hero-main h1 {
+      font-size: 3.3rem; font-weight: 900; letter-spacing: -0.03em;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem; line-height: 1.07;
     }
-    .hero-subtitle {
-      font-size: 1.4rem;
-      color: #00796b;
-      margin: 1.1rem 0 2.5rem 0;
-      font-weight: 600;
-      max-width: 440px;
+    .hero-main p {
+      font-size: 1.38rem; color: var(--primary);
+      max-width: 450px; margin: 1.3rem 0 2.7rem 0; font-weight: 600;
     }
-    .hero-cta-btn {
-      background: #00796b;
-      color: #fff;
-      font-size: 1.22rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 32px;
-      padding: 1.13em 2.7em;
-      margin-bottom: 2.1rem;
+    .cta-btn {
+      background: var(--primary);
+      color: #fff; font-size: 1.19rem; font-weight: bold; border: none;
+      border-radius: 32px; padding: 1.13em 2.7em;
       box-shadow: 0 8px 32px #0ee2b824;
       transition: background .18s, transform .18s, box-shadow .17s;
-      cursor: pointer;
-      letter-spacing: 0.02em;
+      cursor: pointer; letter-spacing: 0.02em;
+      animation: pulse 2.3s infinite cubic-bezier(.4,1.2,.4,1);
       outline: none;
       min-width: 44px;
       min-height: 44px;
-      animation: pulse 2.3s infinite cubic-bezier(.4,1.2,.4,1);
     }
-    .hero-cta-btn:hover, .hero-cta-btn:focus {
-      background: #045c52;
-      transform: translateY(-1px) scale(1.03);
-    }
-    .hero-local-tag {
-      background: #00796b;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.01rem;
-      letter-spacing: 0.02em;
-      border-radius: 4px;
-      padding: 0.18em 0.7em;
-      margin-top: 1.2rem;
-      display: inline-block;
-      opacity: 0.92;
-    }
-    .hero-right {
-      background: linear-gradient(120deg, #e0f2f1 15%, #fff 100%);
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 3rem 2rem;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-      border-left: none;
-    }
-    .hero-main-img {
-      max-width: 400px;
-      width: 95%;
-      box-shadow: 0 10px 50px #0ee2b825;
-      background: #f8f8f8;
-      padding: 32px;
-      border-radius: 50%;
-      animation: logoGlow 2.5s infinite alternate cubic-bezier(0.4,1.2,0.4,1), float 3.9s ease-in-out infinite alternate;
-    }
-    @keyframes float {to{transform: translateY(-20px);}}
-    @keyframes logoGlow {0%{filter:drop-shadow(0 0 0 #00796b)} 100%{filter:drop-shadow(0 0 22px #00796b)}}
+    .cta-btn:hover, .cta-btn:focus { background: var(--primary-dark);}
     @keyframes pulse {
       0%,100% {box-shadow: 0 0 16px #0ee2b833;}
       60% {box-shadow: 0 0 40px #0ee2b844;}
     }
-    @media (max-width: 1200px) {
-      .hero-container {max-width: 98vw;}
-      .hero-left, .hero-right {padding: 2.5rem 1.3rem;}
-      .hero-title { font-size: 2.1rem;}
-      .hero-main-img {max-width: 240px;padding:12px;}
+    .hero-logo-float {
+      flex: 1 1 260px; min-width: 200px; text-align: center;
+      animation: float 3.9s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+    .hero-logo-float img {
+      max-width: 270px; box-shadow: 0 10px 50px #0ee2b825;
+      animation: logoGlow 2.5s infinite alternate cubic-bezier(0.4,1.2,0.4,1);
+      background: #f8f8f8;
+      padding: 16px; border-radius: 50%;
+    }
+    @keyframes float {to{transform: translateY(-20px);}}
+    @keyframes logoGlow {0%{filter:drop-shadow(0 0 0 #00796b)} 100%{filter:drop-shadow(0 0 22px #00796b)}}
+    @keyframes fadeInDown {from{opacity:0;transform:translateY(-38px);}to{opacity:1;transform:translateY(0);}}
+    .reveal {opacity: 0; transform: translateY(48px); transition: opacity .8s cubic-bezier(.4,1.2,.4,1), transform .7s cubic-bezier(.4,1.2,.4,1);}
+    .reveal.visible {opacity: 1; transform: none;}
+    .services-section {
+      background: #fff;
+      padding: 4rem 2rem 3rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 2rem auto 0 auto;
+      max-width: 1250px;
+      text-align: center;
+    }
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .service-tile {
+      flex: 1 1 calc(10% - 1.5rem);
+      min-width: 150px;
+      max-width: 220px;
+      cursor: pointer; background: var(--card); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 1.5rem 1rem; text-align: center;
+      transition: box-shadow .18s, transform .18s, background .18s;
+      position: relative; will-change: transform;
+      border: 2px solid transparent;
+      overflow: hidden;
+      min-height: 44px;
+    }
+    .service-tile::before {
+      content: ""; display: block; position: absolute; left: -60%; top: 0; width: 120%; height: 100%;
+      background: linear-gradient(120deg, #00796b22 0%, transparent 70%);
+      z-index: 0; opacity: 0; transition: opacity .23s;
+    }
+    .service-tile:hover::before,
+    .service-tile:focus::before {opacity: 1;}
+    .service-tile:hover, .service-tile:focus {
+      box-shadow: 0 12px 44px #00796b14;
+      transform: translateY(-5px) scale(1.04);
+      border: 2px solid var(--primary);
+      background: var(--accent);
+    }
+    .service-tile img {width: 80px; margin: 0 auto 0.7rem auto;}
+    .service-tile h3 {font-size: 1.03rem; font-weight: 600; color: var(--primary); margin: 0.4rem 0 0 0;}
+    .process-section {
+      background: #fff; padding: 4rem 2rem 3rem 2rem;
+      max-width: 1100px; margin: 2.5rem auto 0 auto; border-radius: var(--radius);
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .process-steps {display: flex; flex-wrap: wrap; gap: 2.3rem; justify-content: center;}
+    .process-step {
+      flex: 1 1 210px; min-width: 180px; text-align: center;
+      background: var(--accent);
+      border-radius: 13px;
+      box-shadow: 0 2px 12px #00796b11;
+      transition: transform .16s, box-shadow .16s;
+      padding: 2rem 1.1rem 1.1rem 1.1rem;
+      margin: 0.4rem 0;
+    }
+    .process-step:hover, .process-step:focus {transform: translateY(-7px) scale(1.03);}
+    .process-step img {height: 54px; margin-bottom: 1.2rem;}
+    .process-step h3 {font-size: 1.13rem; font-weight: bold; margin-bottom: 0.6rem; color: var(--primary);}
+    .process-step p {font-size: 1.04rem; color: var(--text-dim);}
+    .testimonials {margin:3rem auto 0 auto;max-width:900px;background:#fff;box-shadow:var(--shadow);border-radius:var(--radius);text-align:center;padding:3rem 2rem 2rem 2rem;}
+    .testimonials h2 {color:var(--primary);font-size:1.5rem;}
+    blockquote { font-size: 1.19rem; color: #333; font-style: italic; margin: 1.5rem auto; max-width: 520px;}
+    .disclaimer { color: #888; text-align: center; font-size: 0.96rem; margin-top: 0.7rem;}
+    /* CTA FORM - BOTTOM "Get Matched" */
+    .cta-section {
+      background: #fff; padding: 4rem 2rem; border-radius: var(--radius);
+      max-width: 1200px; margin: 2.5rem auto 0 auto; box-shadow: var(--shadow);
+    }
+    .cta-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 3.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .cta-text {flex: 1; min-width: 260px; max-width: 420px;}
+    .cta-form {
+      flex: 1; min-width: 260px; max-width: 400px; background: #fff;
+      padding: 2rem; border-radius: 13px; box-shadow: var(--shadow); font-size: 1.04rem;
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .cta-form label {font-weight: 700; margin-bottom: 0.18rem;}
+    .cta-form input, .cta-form textarea, .cta-form select {
+      width: 100%; padding: 1rem 1.1rem; margin-bottom: 1rem; border: 1.5px solid #00796b33; border-radius: 7px; font-size: 1.13rem; resize: vertical; background: #f6fafd;
+      color:var(--text);
+      font-family: var(--sans);
+      min-height: 48px;
+    }
+    .cta-form textarea {min-height: 90px;}
+    .cta-form button {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      padding: 1.05rem 0;
+      font-size: 1.11rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      transition: background 0.18s, color 0.18s;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 12px #00796b33;
+      min-height: 48px;
+    }
+    .cta-form button:hover, .cta-form button:focus {background: var(--primary-dark);}
+    .site-footer {background:#fff;padding:3.5rem 2rem 2rem 2rem;color:var(--text-dim);font-size:1rem;border-radius:var(--radius) var(--radius) 0 0;box-shadow:0 -2px 18px #00796b0a;margin-top:3rem;}
+    .footer-flex {max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;}
+    .footer-col {flex:1 1 180px;min-width:140px;}
+    .footer-col h4 {color:var(--primary);font-size:1.1rem;margin-bottom:1rem;}
+    .footer-col a {display:block;margin-bottom:0.5rem;color:var(--text-dim);}
+    .footer-bottom {text-align:center;margin-top:2.5rem;font-size:0.98rem;color:#888;}
+    .footer-social a img {vertical-align:middle;}
+    .footer-social a {margin:0 0.45rem;}
+    #scrollToTopBtn {
+      position: fixed; bottom: 32px; right: 32px;
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 2rem;
+      display: none; align-items: center; justify-content: center; z-index: 100;
+      box-shadow: 0 2px 18px #00796b20;
+      cursor: pointer; transition: background 0.15s;
+      min-width: 44px; min-height: 44px;
+    }
+    #scrollToTopBtn:focus, #scrollToTopBtn:hover {background: var(--primary-dark);}
+    .popup-modal[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.31);
+      z-index: 9999;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .popup-modal .popup-content {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.18);
+      max-width: 98vw;
+      width: 370px;
+      padding: 2.2rem 1.7rem 1.4rem 1.7rem;
+      position: relative;
+      text-align: center;
+      font-family: var(--sans);
+    }
+    .popup-modal .popup-content h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-family: var(--mono);
+      font-size: 1.38rem;
+    }
+    .popup-modal .popup-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .popup-modal .popup-content input, 
+    .popup-modal .popup-content select,
+    .popup-modal .popup-content textarea {
+      margin-bottom: 0.65rem;
+      border-radius: 7px;
+      border: 1.2px solid #00796b33;
+      padding: 0.8rem 0.9rem;
+      font-size: 1rem;
+      background: #f6fafd;
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 44px;
+    }
+    .popup-modal .popup-content textarea {min-height: 70px;}
+    .popup-modal .popup-content button[type="submit"] {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.85rem 0;
+      font-size: 1.04rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 14px #00796b33;
+      min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"] {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      transition: color .15s;
+      min-width: 44px; min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"]:hover { color: var(--primary-dark);}
+    .popup-modal .success-message {
+      color: var(--primary-dark);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
     }
     @media (max-width: 900px) {
-      .hero-title {font-size: 1.7rem;}
-      .hero-main-img {max-width: 180px; padding:10px;}
-      .hero-container {min-height: unset;}
-      .hero-left, .hero-right {padding: 2rem 0.5rem;}
+      .hero, .cta-flex, .process-steps {flex-direction:column;gap:2.3rem;}
+      .footer-flex {flex-direction:column;gap:1.2rem;}
+      .nav-content {flex-direction:row;gap:1rem;}
+      .popup-modal .popup-content {width: 95vw;}
+      .cta-section {padding: 2rem 0.6rem;}
+      .cta-form {max-width: 99vw; min-width: 0; width: 100%; padding: 1.1rem;}
+      .cta-text {max-width: 99vw; min-width: 0; width: 100%;}
     }
-    @media (max-width: 750px) {
-      .hero-container {
-        flex-direction: column;
-        min-height: unset;
-        margin-top: 1rem;
-        margin-bottom: 1.2rem;
-        border-radius: 18px;
-        border: none;
-      }
-      .hero-left, .hero-right {
-        flex: unset;
-        width: 100%;
-        min-width: 0;
-        padding: 2rem 1rem 1.5rem 1rem;
-        align-items: center;
-        text-align: center;
-        border: none !important;
-      }
-      .hero-title {font-size: 1.3rem;}
-      .hero-subtitle {font-size: 1.07rem;}
-      .hero-main-img {max-width: 120px; padding:6px;}
+    @media (max-width: 600px) {
+      .nav-content {padding: 1rem 0.7rem;}
+      .cta-section {padding: 1.2rem 0.2rem;}
+      .cta-form {padding: 0.6rem;}
+      .cta-form input, .cta-form textarea, .cta-form select {font-size: 1rem;}
     }
-    /* BELOW: Unchanged CSS for all other sections ... (services, process, testimonials, CTA, footer, popups, etc.) */
+    @media (max-width: 400px) {
+      .cta-form, .cta-text, .services-section, .process-section {padding: 0.4rem !important;}
+      .cta-form input, .cta-form textarea, .cta-form select {padding: 0.7rem 0.6rem;}
+    }
   </style>
 </head>
 <body>
@@ -303,174 +447,7 @@
     </div>
   </div>
 </nav>
-<!-- HERO SECTION (half/half design) -->
-<section class="hero-container" id="main-content">
-  <div class="hero-left">
-    <h1 class="hero-title">Real Pros. Right Near You.</h1>
-    <p class="hero-subtitle">Cold Looms connects you to professionals in your area—fast and reliable.</p>
-    <a href="#contact" class="hero-cta-btn">Get Started</a>
-    <div class="hero-local-tag">Local Matching</div>
-  </div>
-  <div class="hero-right">
-    <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" class="hero-main-img" loading="lazy" decoding="async" />
-  </div>
-</section>
-
-<!-- SERVICES SECTION -->
-<section class="services-section reveal">
-  <h2>Popular services near <span id="user-city" style="color:var(--primary);">your city</span></h2>
-  <div class="services-grid">
-    <div class="service-tile" tabindex="0" onclick="location.href='window-washing.html'">
-      <img src="https://i.ibb.co/C57mWGkV/Chat-GPT-Image-Apr-18-2025-01-54-07-PM.png" alt="Window Washing" loading="lazy" decoding="async">
-      <h3>Window Washing</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='power-washing.html'">
-      <img src="https://i.ibb.co/Df1F32pW/Chat-GPT-Image-Apr-18-2025-10-08-22-AM.png" alt="Power Washing" loading="lazy" decoding="async">
-      <h3>Power Washing</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='house-cleaning.html'">
-      <img src="https://i.ibb.co/ch0GNqXB/Chat-GPT-Image-Apr-18-2025-10-13-50-AM.png" alt="House Cleaning" loading="lazy" decoding="async">
-      <h3>House Cleaning</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='handyman.html'">
-      <img src="https://i.ibb.co/mC7W236y/Chat-GPT-Image-Apr-18-2025-02-26-44-PM.png" alt="Handyman" loading="lazy" decoding="async">
-      <h3>Handyman</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='pool-cleaning.html'">
-      <img src="https://i.postimg.cc/YSrtcHsQ/Chat-GPT-Image-Apr-25-2025-07-45-00-AM.png" alt="Pool Cleaning" loading="lazy" decoding="async">
-      <h3>Pool Cleaning</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='junk-removal.html'">
-      <img src="https://i.postimg.cc/WbhYtfQg/Chat-GPT-Image-Apr-25-2025-07-42-56-AM.png" alt="Junk Removal" loading="lazy" decoding="async">
-      <h3>Junk Removal</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='fence-painting.html'">
-      <img src="https://i.ibb.co/tMS54rt8/Chat-GPT-Image-Apr-18-2025-02-32-26-PM.png" alt="Fence Painting" loading="lazy" decoding="async">
-      <h3>Fence Painting</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='gutter-cleaning.html'">
-      <img src="https://i.postimg.cc/rsmQCZpX/GUTTER-CLEANING.png" alt="Gutter Cleaning" loading="lazy" decoding="async">
-      <h3>Gutter Cleaning</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='adu-services.html'">
-      <img src="https://i.postimg.cc/X70ymZ4h/Chat-GPT-Image-Apr-25-2025-07-39-34-AM.png" alt="ADU Services" loading="lazy" decoding="async">
-      <h3>ADU Services</h3>
-    </div>
-    <div class="service-tile" tabindex="0" onclick="location.href='floor-installation.html'">
-      <img src="https://i.postimg.cc/FK2jKTXF/Chat-GPT-Image-Apr-25-2025-07-40-58-AM.png" alt="Floor Installation" loading="lazy" decoding="async">
-      <h3>Floor Installation</h3>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS SECTION -->
-<section class="process-section reveal">
-  <h2 style="font-size:2.1rem;color:var(--primary);font-weight:bold;margin-bottom:2.2rem;">How Our System Works</h2>
-  <div class="process-steps">
-    <div class="process-step">
-      <img src="https://i.postimg.cc/NjDkZLZj/Chat-GPT-Image-Apr-24-2025-12-15-29-PM.png" alt="Step 1: Tell us what you need" loading="lazy" decoding="async" />
-      <h3>Step 1<br>Tell us what you need</h3>
-      <p>Remodels, repairs, or anything else—just describe your project.</p>
-    </div>
-    <div class="process-step">
-      <img src="https://i.postimg.cc/XYp85npH/Chat-GPT-Image-Apr-24-2025-12-18-44-PM.png" alt="Step 2: Match with local pros" loading="lazy" decoding="async" />
-      <h3>Step 2<br>AI-matches you with local pros</h3>
-      <p>Our platform instantly connects you with the best, available professionals.</p>
-    </div>
-    <div class="process-step">
-      <img src="https://i.postimg.cc/B6HRdBpW/Chat-GPT-Image-Apr-24-2025-12-20-45-PM.png" alt="Step 3: Choose who to hire" loading="lazy" decoding="async" />
-      <h3>Step 3<br><em>You choose who to hire</em></h3>
-      <p>Compare, chat, and choose. Only you decide who gets the job done.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS SECTION -->
-<section class="testimonials reveal" aria-label="User Testimonials">
-  <h2>Success Stories</h2>
-  <blockquote>
-    “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
-  </blockquote>
-  <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
-</section>
-
-<!-- CTA / FORM SECTION -->
-<section class="cta-section reveal" id="contact" aria-label="Contact Form">
-  <div class="cta-flex">
-    <div class="cta-text">
-      <h2>Find the Right Pro in Minutes.</h2>
-      <p>Tell us what you need done – we’ll match you with ready-to-work professionals in your area.</p>
-      <img src="https://i.postimg.cc/wTzDY31N/Chat-GPT-Image-Apr-24-2025-09-55-22-AM.png" alt="Worker illustration" loading="lazy" decoding="async" />
-    </div>
-    <form action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" aria-label="Get matched form" class="cta-form">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" placeholder="Your Name" required />
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="Email Address" required />
-
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
-
-      <label for="address">Street Address</label>
-      <input type="text" id="address" name="address" placeholder="Street Address" required />
-
-      <label for="zip">ZIP Code</label>
-      <input type="text" id="zip" name="zip" placeholder="ZIP Code" required />
-
-      <label for="message">Tell us what you need or offer...</label>
-      <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER SECTION -->
-<footer class="site-footer" aria-label="Footer">
-  <div class="footer-flex">
-    <div class="footer-col">
-      <h4>Cold Looms</h4>
-      <a href="#">About</a>
-      <a href="#">Partner with Us</a>
-      <a href="#">Careers</a>
-      <a href="#">Blog</a>
-    </div>
-    <div class="footer-col">
-      <h4>Customers</h4>
-      <a href="#">How It Works</a>
-      <a href="#">Sign Up</a>
-      <a href="#">Services Near Me</a>
-      <a href="#">Cost Estimates</a>
-    </div>
-    <div class="footer-col">
-      <h4>Pros</h4>
-      <a href="#">Sign Up as a Pro</a>
-      <a href="#">Pro Resources</a>
-      <a href="#">Pro Reviews</a>
-    </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <a href="#">Help</a>
-      <a href="https://coldlooms.github.io/LOL/privacy.html">Privacy Policy</a>
-      <a href="https://coldlooms.github.io/LOL/terms.html">Terms of Service</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Cold Looms | Smart Outreach for Real Clients</p>
-    <p>
-      <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
-    </p>
-    <div class="footer-social" style="margin-top:1rem;">
-      <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram" /></a>
-      <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook" /></a>
-      <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter" /></a>
-      <a href="#" aria-label="Gmail"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail" /></a>
-    </div>
-  </div>
-</footer>
-
-<!-- POPUP MODALS -->
+<!-- Popup Modal for Lead Capture Questionnaire -->
 <dialog id="lead-popup" class="popup-modal">
   <div class="popup-content">
     <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
@@ -515,7 +492,170 @@
   <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
   <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
 </dialog>
+<main id="main-content" tabindex="-1">
 
+<section class="hero-container reveal">
+  <div class="hero-main">
+    <h1>Real Pros. Right Near You.</h1>
+    <p>Cold Looms connects you to professionals in your area—fast and reliable.</p>
+    <a href="#contact" class="cta-btn">Get Started</a>
+    <div style="margin-top:2rem;font-size:0.98rem;color:#aaa;font-family:var(--mono);letter-spacing:0.02em;">
+      <span style="background:var(--primary);color:#fff;padding:0.18em 0.7em;border-radius:4px;">Local Matching</span>
+    </div>
+  </div>
+  <div class="hero-logo-float">
+    <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
+  </div>
+</section>
+  <!-- SERVICES -->
+  <section class="services-section reveal">
+    <h2>Popular services near <span id="user-city" style="color:var(--primary);">your city</span></h2>
+    <div class="services-grid">
+      <div class="service-tile" tabindex="0" onclick="location.href='window-washing.html'">
+        <img src="https://i.ibb.co/C57mWGkV/Chat-GPT-Image-Apr-18-2025-01-54-07-PM.png" alt="Window Washing" loading="lazy" decoding="async">
+        <h3>Window Washing</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='power-washing.html'">
+        <img src="https://i.ibb.co/Df1F32pW/Chat-GPT-Image-Apr-18-2025-10-08-22-AM.png" alt="Power Washing" loading="lazy" decoding="async">
+        <h3>Power Washing</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='house-cleaning.html'">
+        <img src="https://i.ibb.co/ch0GNqXB/Chat-GPT-Image-Apr-18-2025-10-13-50-AM.png" alt="House Cleaning" loading="lazy" decoding="async">
+        <h3>House Cleaning</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='handyman.html'">
+        <img src="https://i.ibb.co/mC7W236y/Chat-GPT-Image-Apr-18-2025-02-26-44-PM.png" alt="Handyman" loading="lazy" decoding="async">
+        <h3>Handyman</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='pool-cleaning.html'">
+        <img src="https://i.postimg.cc/YSrtcHsQ/Chat-GPT-Image-Apr-25-2025-07-45-00-AM.png" alt="Pool Cleaning" loading="lazy" decoding="async">
+        <h3>Pool Cleaning</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='junk-removal.html'">
+        <img src="https://i.postimg.cc/WbhYtfQg/Chat-GPT-Image-Apr-25-2025-07-42-56-AM.png" alt="Junk Removal" loading="lazy" decoding="async">
+        <h3>Junk Removal</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='fence-painting.html'">
+        <img src="https://i.ibb.co/tMS54rt8/Chat-GPT-Image-Apr-18-2025-02-32-26-PM.png" alt="Fence Painting" loading="lazy" decoding="async">
+        <h3>Fence Painting</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='gutter-cleaning.html'">
+        <img src="https://i.postimg.cc/rsmQCZpX/GUTTER-CLEANING.png" alt="Gutter Cleaning" loading="lazy" decoding="async">
+        <h3>Gutter Cleaning</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='adu-services.html'">
+        <img src="https://i.postimg.cc/X70ymZ4h/Chat-GPT-Image-Apr-25-2025-07-39-34-AM.png" alt="ADU Services" loading="lazy" decoding="async">
+        <h3>ADU Services</h3>
+      </div>
+      <div class="service-tile" tabindex="0" onclick="location.href='floor-installation.html'">
+        <img src="https://i.postimg.cc/FK2jKTXF/Chat-GPT-Image-Apr-25-2025-07-40-58-AM.png" alt="Floor Installation" loading="lazy" decoding="async">
+        <h3>Floor Installation</h3>
+      </div>
+    </div>
+  </section>
+  <!-- PROCESS -->
+  <section class="process-section reveal">
+    <h2 style="font-size:2.1rem;color:var(--primary);font-weight:bold;margin-bottom:2.2rem;">How Our System Works</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <img src="https://i.postimg.cc/NjDkZLZj/Chat-GPT-Image-Apr-24-2025-12-15-29-PM.png" alt="Step 1: Tell us what you need" loading="lazy" decoding="async" />
+        <h3>Step 1<br>Tell us what you need</h3>
+        <p>Remodels, repairs, or anything else—just describe your project.</p>
+      </div>
+      <div class="process-step">
+        <img src="https://i.postimg.cc/XYp85npH/Chat-GPT-Image-Apr-24-2025-12-18-44-PM.png" alt="Step 2: Match with local pros" loading="lazy" decoding="async" />
+        <h3>Step 2<br>AI-matches you with local pros</h3>
+        <p>Our platform instantly connects you with the best, available professionals.</p>
+      </div>
+      <div class="process-step">
+        <img src="https://i.postimg.cc/B6HRdBpW/Chat-GPT-Image-Apr-24-2025-12-20-45-PM.png" alt="Step 3: Choose who to hire" loading="lazy" decoding="async" />
+        <h3>Step 3<br><em>You choose who to hire</em></h3>
+        <p>Compare, chat, and choose. Only you decide who gets the job done.</p>
+      </div>
+    </div>
+  </section>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials reveal" aria-label="User Testimonials">
+    <h2>Success Stories</h2>
+    <blockquote>
+      “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
+    </blockquote>
+    <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+  </section>
+  <!-- CTA / FORM -->
+  <section class="cta-section reveal" id="contact" aria-label="Contact Form">
+    <div class="cta-flex">
+      <div class="cta-text">
+        <h2>Find the Right Pro in Minutes.</h2>
+        <p>Tell us what you need done – we’ll match you with ready-to-work professionals in your area.</p>
+        <img src="https://i.postimg.cc/wTzDY31N/Chat-GPT-Image-Apr-24-2025-09-55-22-AM.png" alt="Worker illustration" loading="lazy" decoding="async" />
+      </div>
+      <form action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" aria-label="Get matched form" class="cta-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+
+        <label for="address">Street Address</label>
+        <input type="text" id="address" name="address" placeholder="Street Address" required />
+
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required />
+
+        <label for="message">Tell us what you need or offer...</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" aria-label="Footer">
+  <div class="footer-flex">
+    <div class="footer-col">
+      <h4>Cold Looms</h4>
+      <a href="#">About</a>
+      <a href="#">Partner with Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Customers</h4>
+      <a href="#">How It Works</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Services Near Me</a>
+      <a href="#">Cost Estimates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Pros</h4>
+      <a href="#">Sign Up as a Pro</a>
+      <a href="#">Pro Resources</a>
+      <a href="#">Pro Reviews</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help</a>
+      <a href="https://coldlooms.github.io/LOL/privacy.html">Privacy Policy</a>
+      <a href="https://coldlooms.github.io/LOL/terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Cold Looms | Smart Outreach for Real Clients</p>
+    <p>
+      <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
+    </p>
+    <div class="footer-social" style="margin-top:1rem;">
+      <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram" /></a>
+      <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook" /></a>
+      <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter" /></a>
+      <a href="#" aria-label="Gmail"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail" /></a>
+    </div>
+  </div>
+</footer>
 <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
 <script>
   // Mobile nav toggle
