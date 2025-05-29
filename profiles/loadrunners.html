@@ -17,6 +17,25 @@
       scroll-behavior: smooth;
     }
     * { box-sizing: border-box; }
+    .top-redirect-bar {
+      width: 100%;
+      background: #00bfa5;
+      text-align: center;
+      padding: 0.85rem 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      z-index: 100;
+    }
+    .top-redirect-bar a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.18s, text-decoration 0.18s;
+    }
+    .top-redirect-bar a:hover {
+      color: #f9f9f9;
+      text-decoration: underline;
+    }
     .container {
       display: flex;
       justify-content: space-between;
@@ -63,13 +82,27 @@
       padding-bottom: 1.5rem;
       border-bottom: 1px solid #e0e0e0;
     }
+    .profile-header .logo-link {
+      display: inline-block;
+      border-radius: 50%;
+      /* For focus style accessibility */
+      outline: none;
+    }
+    .profile-header .logo-link:focus {
+      box-shadow: 0 0 0 3px #00bfa533;
+    }
     .profile-header img {
-      width: 96px;
-      height: 96px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 2.5px solid #00bfa5;
       background: #f5f5f5;
+      transition: box-shadow 0.2s;
+      display: block;
+    }
+    .profile-header .logo-link:hover img {
+      box-shadow: 0 4px 18px #00bfa578;
     }
     .profile-header h1, .profile-header h1 a {
       margin: 0;
@@ -249,6 +282,10 @@
         padding: 0.32em 0.7em 0.32em 0.6em;
         min-width: 70px;
       }
+      .profile-header img {
+        width: 140px;
+        height: 140px;
+      }
     }
     @media (max-width: 520px) {
       .social-row {
@@ -264,6 +301,10 @@
         width: 18px;
         height: 18px;
         margin-right: 5px;
+      }
+      .profile-header img {
+        width: 140px;
+        height: 140px;
       }
     }
     .price-box {
@@ -388,13 +429,18 @@
   </style>
 </head>
 <body>
+  <div class="top-redirect-bar">
+    <a href="https://loadrunnersjunk.com" target="_blank" rel="noopener">LoadRunners Junk Removal</a>
+  </div>
   <div class="container">
     <div class="main-column">
       <div class="breadcrumb">
         <a href="../index.html">Cold Looms</a> // Junk Removal // LoadRunners
       </div>
       <div class="profile-header">
-        <img src="https://i.ibb.co/cKSvS8Wg/load.png" alt="LoadRunners">
+        <a href="https://loadrunnersjunk.com" target="_blank" rel="noopener" class="logo-link">
+          <img src="https://i.ibb.co/cKSvS8Wg/load.png" alt="LoadRunners logo">
+        </a>
         <div>
           <h1>
             <a href="https://loadrunnersjunk.com" target="_blank" rel="noopener">LoadRunners Junk Removal</a>
