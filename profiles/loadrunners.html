@@ -85,7 +85,6 @@
     .profile-header .logo-link {
       display: inline-block;
       border-radius: 50%;
-      /* For focus style accessibility */
       outline: none;
     }
     .profile-header .logo-link:focus {
@@ -203,11 +202,26 @@
       border-left: 4px solid #00bfa5;
       padding-left: 0.6rem;
     }
+    /* Horizontal scroll for Projects and Media */
     .photos-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 1.1rem;
       margin-bottom: 0.8rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #00bfa5 #f5f5f5;
+      padding-bottom: 0.6rem;
+    }
+    .photos-row::-webkit-scrollbar {
+      height: 8px;
+      background: #f5f5f5;
+    }
+    .photos-row::-webkit-scrollbar-thumb {
+      background: #00bfa5;
+      border-radius: 6px;
     }
     .photo-card {
       border-radius: 10px;
@@ -215,12 +229,13 @@
       box-shadow: 0 2px 10px rgba(0,191,165,0.08);
       overflow: hidden;
       width: 200px;
-      max-width: 44vw;
-      min-width: 120px;
+      min-width: 200px;
+      max-width: 90vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: transform 0.17s, box-shadow 0.17s;
+      flex-shrink: 0;
     }
     .photo-card img {
       width: 100%;
@@ -305,6 +320,13 @@
       .profile-header img {
         width: 140px;
         height: 140px;
+      }
+      .photos-row {
+        gap: 0.7rem;
+      }
+      .photo-card {
+        width: 70vw;
+        min-width: 170px;
       }
     }
     .price-box {
