@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- Enhanced viewport for iOS fit and scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="description" content="Cold Looms — Smart Outreach for Real Clients. Get matched with vetted pros instantly." />
   <meta name="theme-color" content="#fff" />
   <title>Cold Looms | Smart Outreach for Real Clients</title>
@@ -39,6 +40,8 @@
       font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
+      /* Prevents iOS horizontal scroll */
+      overflow-x: hidden;
     }
     *, *::before, *::after { box-sizing: border-box; }
     a { color: var(--primary-dark); text-decoration: none; }
@@ -53,6 +56,8 @@
       box-shadow: 0 1px 5px rgba(0,0,0,0.06);
       width: 100%;
       position: sticky; top: 0; z-index: 20;
+      /* For iOS notch */
+      padding-top: env(safe-area-inset-top);
     }
     .nav-content {
       max-width: 1200px; margin: auto;
@@ -113,6 +118,8 @@
       cursor: pointer; letter-spacing: 0.02em;
       animation: pulse 2.3s infinite cubic-bezier(.4,1.2,.4,1);
       outline: none;
+      min-width: 44px; /* iOS touch target */
+      min-height: 44px;
     }
     .cta-btn:hover, .cta-btn:focus { background: var(--primary-dark);}
     @keyframes pulse {
@@ -144,27 +151,26 @@
       max-width: 1250px;
       text-align: center;
     }
-   .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 2rem 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.service-tile {
-  flex: 1 1 calc(10% - 1.5rem); /* shrink to fit all 10 tiles per row */
-  min-width: 150px;
-  max-width: 220px;
-}
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
     .service-tile {
+      flex: 1 1 calc(10% - 1.5rem);
+      min-width: 150px;
+      max-width: 220px;
       cursor: pointer; background: var(--card); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 1.5rem 1rem; text-align: center;
       transition: box-shadow .18s, transform .18s, background .18s;
       position: relative; will-change: transform;
       border: 2px solid transparent;
       overflow: hidden;
+      min-height: 44px;
     }
     .service-tile::before {
       content: ""; display: block; position: absolute; left: -60%; top: 0; width: 120%; height: 100%;
@@ -220,10 +226,12 @@
     }
     .cta-form label {font-weight: 700; margin-bottom: 0.18rem;}
     .cta-form input, .cta-form textarea, .cta-form select {
-      width: 100%; padding: 0.86rem 0.9rem; margin-bottom: 1rem; border: 1.2px solid #00796b33; border-radius: 7px; font-size: 1rem; resize: vertical; background: #f6fafd;
+      width: 100%; padding: 0.86rem 0.9rem; margin-bottom: 1rem; border: 1.2px solid #00796b33; border-radius: 7px; font-size: 1.1rem; resize: vertical; background: #f6fafd;
       color:var(--text);
       font-family: var(--sans);
+      min-height: 44px; /* iOS touch target */
     }
+    .cta-form textarea {min-height: 80px;}
     .cta-form button {
       width: 100%;
       background: var(--primary);
@@ -238,6 +246,7 @@
       transition: background 0.18s, color 0.18s;
       letter-spacing: 0.01em;
       box-shadow: 0 2px 12px #00796b33;
+      min-height: 44px; /* iOS touch target */
     }
     .cta-form button:hover, .cta-form button:focus {background: var(--primary-dark);}
     .site-footer {background:#fff;padding:3.5rem 2rem 2rem 2rem;color:var(--text-dim);font-size:1rem;border-radius:var(--radius) var(--radius) 0 0;box-shadow:0 -2px 18px #00796b0a;margin-top:3rem;}
@@ -255,9 +264,9 @@
       display: none; align-items: center; justify-content: center; z-index: 100;
       box-shadow: 0 2px 18px #00796b20;
       cursor: pointer; transition: background 0.15s;
+      min-width: 44px; min-height: 44px;
     }
     #scrollToTopBtn:focus, #scrollToTopBtn:hover {background: var(--primary-dark);}
-    /* Popup modal styles */
     .popup-modal[open] {
       display: flex;
       flex-direction: column;
@@ -305,7 +314,9 @@
       background: #f6fafd;
       color: var(--text);
       font-family: var(--sans);
+      min-height: 44px; /* iOS touch target */
     }
+    .popup-modal .popup-content textarea {min-height: 70px;}
     .popup-modal .popup-content button[type="submit"] {
       background: var(--primary);
       color: #fff;
@@ -318,6 +329,7 @@
       margin-top: 0.7rem;
       transition: background 0.18s, color 0.18s;
       box-shadow: 0 2px 14px #00796b33;
+      min-height: 44px;
     }
     .popup-modal .popup-content button[type="button"] {
       position: absolute;
@@ -329,6 +341,7 @@
       color: #aaa;
       cursor: pointer;
       transition: color .15s;
+      min-width: 44px; min-height: 44px;
     }
     .popup-modal .popup-content button[type="button"]:hover { color: var(--primary-dark);}
     .popup-modal .success-message {
@@ -337,11 +350,31 @@
       margin-top: 1.5rem;
       font-size: 1.1rem;
     }
+    /* iOS and mobile layout fixes */
     @media (max-width: 900px) {
       .hero, .cta-flex, .process-steps {flex-direction:column;gap:2.3rem;}
       .footer-flex {flex-direction:column;gap:1.2rem;}
       .nav-content {flex-direction:column;gap:1rem;}
       .popup-modal .popup-content {width: 95vw;}
+      .services-grid {flex-wrap: wrap;gap: 1rem;}
+      .service-tile {min-width: 120px;max-width: 100%;flex-basis: calc(50% - 1rem);}
+    }
+    @media (max-width: 600px) {
+      .nav-content {padding: 1rem 0.7rem;}
+      .hero {padding: 2.5rem 0.5rem 2rem 0.5rem;}
+      .hero-main h1 {font-size: 2.1rem;}
+      .hero-main p {font-size: 1.01rem;}
+      .cta-text h2, .services-section h2, .process-section h2 {font-size: 1.19rem;}
+      .cta-section {padding: 2rem 0.4rem;}
+      .process-section {padding: 2.2rem 0.7rem 1.6rem 0.7rem;}
+      .services-section {padding: 2.1rem 0.7rem 1.3rem 0.7rem;}
+      .testimonials {padding: 1.2rem 0.6rem 1.1rem 0.6rem;}
+      .popup-modal .popup-content {width: 99vw;max-width: 99vw;padding:1.2rem 0.7rem;}
+      .cta-form {padding: 1.1rem;}
+    }
+    @media (max-width: 400px) {
+      .popup-modal .popup-content, .cta-form, .cta-text, .services-section, .process-section {padding: 0.5rem !important;}
+      .hero-main h1 {font-size: 1.3rem;}
     }
   </style>
 </head>
@@ -408,6 +441,7 @@
   <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
 </dialog>
 <main id="main-content" tabindex="-1">
+
 <section class="hero-container reveal">
   <div class="hero-main">
     <h1>Real Pros. Right Near You.</h1>
