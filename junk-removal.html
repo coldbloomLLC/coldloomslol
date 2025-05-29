@@ -49,7 +49,6 @@
       background: var(--primary); color: #fff; z-index: 1000; transition: left .2s;
     }
     .skip-link:focus {left: 24px; top: 18px; width:auto; height:auto; padding:0.8em 1.2em; border-radius:6px;outline:2px solid var(--primary-dark);}
-    /* NAVBAR */
     .navbar {
       background: #fff;
       box-shadow: 0 1px 5px rgba(0,0,0,0.06);
@@ -139,7 +138,6 @@
       }
       .nav-mobile-toggle { display: block; }
     }
-    /* HERO */
     .hero {
       min-height: 65vh;
       display: flex; flex-wrap: wrap; align-items: center; gap: 4rem;
@@ -195,7 +193,6 @@
     @keyframes fadeInDown {from{opacity:0;transform:translateY(-38px);}to{opacity:1;transform:translateY(0);}}
     .reveal {opacity: 0; transform: translateY(48px); transition: opacity .8s cubic-bezier(.4,1.2,.4,1), transform .7s cubic-bezier(.4,1.2,.4,1);}
     .reveal.visible {opacity: 1; transform: none;}
-    /* SERVICES GRID */
     .services-section {
       background: #fff;
       padding: 4rem 2rem 3rem 2rem;
@@ -241,7 +238,6 @@
     }
     .service-tile img {width: 90px; margin: 0 auto 0.7rem auto;}
     .service-tile h3 {font-size: 1.13rem; font-weight: 600; color: var(--primary); margin: 0.4rem 0 0 0;}
-    /* PROCESS */
     .process-section {
       background: #fff; padding: 4rem 2rem 3rem 2rem;
       max-width: 950px; margin: 2.5rem auto 0 auto; border-radius: var(--radius);
@@ -261,12 +257,10 @@
     .process-step img {height: 54px; margin-bottom: 1.2rem;}
     .process-step h3 {font-size: 1.13rem; font-weight: bold; margin-bottom: 0.6rem; color: var(--primary);}
     .process-step p {font-size: 1.04rem; color: var(--text-dim);}
-    /* TESTIMONIALS */
     .testimonials {margin:3rem auto 0 auto;max-width:850px;background:#fff;box-shadow:var(--shadow);border-radius:var(--radius);text-align:center;padding:3rem 2rem 2rem 2rem;}
     .testimonials h2 {color:var(--primary);font-size:1.3rem;}
     blockquote { font-size: 1.13rem; color: #333; font-style: italic; margin: 1.5rem auto; max-width: 520px;}
     .disclaimer { color: #888; text-align: center; font-size: 0.96rem; margin-top: 0.7rem;}
-    /* CTA FORM - BOTTOM "Get Matched" */
     .cta-section {
       background: #fff; padding: 4rem 2rem; border-radius: var(--radius);
       max-width: 1000px; margin: 2.5rem auto 0 auto; box-shadow: var(--shadow);
@@ -345,6 +339,89 @@
     @media (max-width: 400px) {
       .cta-form, .cta-text, .services-section, .process-section {padding: 0.4rem !important;}
       .cta-form input, .cta-form textarea, .cta-form select {padding: 0.7rem 0.6rem;}
+    }
+    .popup-modal[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.31);
+      z-index: 9999;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .popup-modal .popup-content {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.18);
+      max-width: 98vw;
+      width: 370px;
+      padding: 2.2rem 1.7rem 1.4rem 1.7rem;
+      position: relative;
+      text-align: center;
+      font-family: var(--sans);
+    }
+    .popup-modal .popup-content h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-family: var(--mono);
+      font-size: 1.38rem;
+    }
+    .popup-modal .popup-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .popup-modal .popup-content input, 
+    .popup-modal .popup-content select,
+    .popup-modal .popup-content textarea {
+      margin-bottom: 0.65rem;
+      border-radius: 7px;
+      border: 1.2px solid #00796b33;
+      padding: 0.8rem 0.9rem;
+      font-size: 1rem;
+      background: #f6fafd;
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 44px;
+    }
+    .popup-modal .popup-content textarea {min-height: 70px;}
+    .popup-modal .popup-content button[type="submit"] {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.85rem 0;
+      font-size: 1.04rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 14px #00796b33;
+      min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"] {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      transition: color .15s;
+      min-width: 44px; min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"]:hover { color: var(--primary-dark);}
+    .popup-modal .success-message {
+      color: var(--primary-dark);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
     }
   </style>
 </head>
@@ -581,7 +658,6 @@
 </footer>
 <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
 <script>
-  // Mobile nav toggle
   function toggleMobileNav() {
     const navLinks = document.getElementById('main-nav-links');
     if (navLinks.classList.contains('show')) {
@@ -592,7 +668,6 @@
       document.body.style.overflow = "hidden";
     }
   }
-  // Close nav if clicked outside
   document.addEventListener('click', function(e) {
     const navLinks = document.getElementById('main-nav-links');
     if (navLinks && navLinks.classList.contains('show')) {
@@ -602,7 +677,6 @@
       }
     }
   });
-  // Animated scroll reveal
   function revealOnScroll() {
     document.querySelectorAll('.reveal').forEach(el => {
       const rect = el.getBoundingClientRect();
@@ -611,13 +685,11 @@
   }
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('DOMContentLoaded', revealOnScroll);
-  // Scroll to top and sticky nav
   window.addEventListener('scroll', () => {
     document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 20);
     document.getElementById('scrollToTopBtn').style.display = window.scrollY > 120 ? 'flex' : 'none';
   });
   document.getElementById('scrollToTopBtn').onclick = () => window.scrollTo({top:0, behavior:'smooth'});
-  // Modal logic using <dialog>
   function openDialog(e) {
     e.preventDefault();
     const dialog = document.getElementById('login-dialog');
@@ -627,7 +699,6 @@
   function closeDialog() {
     document.getElementById('login-dialog').close();
   }
-  // Popup logic for lead questionnaire
   function openLeadPopup() {
     const popup = document.getElementById('lead-popup');
     if (popup && typeof popup.showModal === "function") {
@@ -646,11 +717,9 @@
       popup.style.display = 'none';
     }
   }
-  // On load, show popup after slight delay (0.7s)
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(openLeadPopup, 700);
   });
-  // Lead form submission logic
   document.addEventListener('DOMContentLoaded', function() {
     var leadForm = document.getElementById('lead-form');
     var successMsg = document.getElementById('lead-success');
