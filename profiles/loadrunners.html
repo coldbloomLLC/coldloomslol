@@ -132,7 +132,6 @@
       flex-wrap: wrap;
       gap: 2rem;
       margin-top: 2rem;
-      /* background and border removed */
       border-radius: 0;
       padding: 0;
       border: none;
@@ -322,16 +321,6 @@
       margin-bottom: 1rem;
       color: #00bfa5;
     }
-    .sidebar-column input,
-    .sidebar-column select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      background: #fff;
-    }
     .sidebar-column button {
       background-color: #00bfa5;
       color: white;
@@ -358,82 +347,115 @@
       padding: 0.7rem;
       text-align: center;
     }
-    .site-footer {
-      background-color: #f8f8f8;
-      padding: 4rem 2rem 2rem 2rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      margin-top: 3.5rem;
+
+    /* Popup Modal Styles */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.33);
+      justify-content: center;
+      align-items: center;
     }
-    .site-footer .footer-row {
-      max-width: 1200px;
-      margin: auto;
+    .modal-bg.active {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
     }
-    .site-footer .footer-row > div {
-      flex: 1 1 180px;
-      min-width: 160px;
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      max-width: 95vw;
+      width: 340px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+      padding: 2rem 1.5rem 1.3rem 1.5rem;
+      position: relative;
+      animation: fadeIn 0.3s;
     }
-    .site-footer h4 {
-      color: #045c52;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-    .site-footer a {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #333;
-      text-decoration: none;
-      font-size: 0.99rem;
-    }
-    .site-footer a:hover {
-      text-decoration: underline;
-      color: #00bfa5;
-    }
-    .site-footer .footer-bottom {
+    .modal h2 {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-size: 1.24rem;
+      color: #00796b;
+      font-weight: 600;
       text-align: center;
-      margin-top: 3rem;
     }
-    .site-footer .footer-bottom p {
-      color: #666;
-      margin: 0.4rem 0;
-      font-size: 0.97rem;
+    .modal label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.55rem;
+      color: #333;
+      font-size: 1rem;
     }
-    .site-footer .footer-bottom a {
-      color: #666;
-      margin: 0 0.5rem;
-      display: inline-block;
-      vertical-align: middle;
+    .modal input[type="text"],
+    .modal select {
+      width: 100%;
+      padding: 0.55rem;
+      margin-bottom: 1.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #fff;
+      box-sizing: border-box;
     }
-    .site-footer .footer-bottom a img {
-      vertical-align: middle;
-      width: 24px;
-      height: 24px;
+    .modal .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
     }
-    @media (max-width: 1050px) {
-      .container {
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 1.2rem 0.5rem;
-      }
-      .sidebar-column {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      .site-footer .footer-row {
-        border-radius: 0;
-      }
+    .modal .modal-actions button {
+      flex: 1;
+      border: none;
+      border-radius: 7px;
+      font-size: 1rem;
+      padding: 0.6rem;
+      cursor: pointer;
+      font-weight: 600;
+      background: #00bfa5;
+      color: #fff;
+      transition: background 0.17s;
     }
-    @media (max-width: 900px) {
-      .site-footer .footer-row {
-        flex-direction: column;
-        gap: 1.3rem;
-        border-radius: 0;
-        padding: 0;
-      }
+    .modal .modal-actions button[disabled] {
+      background: #bbb;
+      cursor: not-allowed;
+    }
+    .modal .close-modal {
+      position: absolute;
+      top: 12px; right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      color: #888;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .modal .close-modal:hover {
+      color: #00796b;
+    }
+    .modal .summary {
+      background: #e0f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      color: #00796b;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+    .quick-intake-btn {
+      background: #fff;
+      color: #00bfa5;
+      border: 2px solid #00bfa5;
+      font-weight: bold;
+      border-radius: 7px;
+      font-size: 1.03rem;
+      width: 100%;
+      padding: 0.65rem 0;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .quick-intake-btn:hover {
+      background: #00bfa5;
+      color: #fff;
     }
   </style>
 </head>
@@ -523,7 +545,9 @@
     </div>
 
     <div class="sidebar-column">
+      <button class="quick-intake-btn" onclick="openModal()">Quick Intake</button>
       <div class="price-box">$95 <span style="font-weight: normal; color: #777; font-size: 0.9rem;">Minimum load</span></div>
+      <!-- The "Check availability" section remains untouched -->
       <input type="text" placeholder="Zip code" />
       <select>
         <option disabled selected>Service Type</option>
@@ -548,6 +572,54 @@
         🛡️ Fast response — usually within 2 hours<br>
         ✔️ Licensed, insured, and satisfaction guaranteed!
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Popup for Multi-step Dynamic Intake Form -->
+  <div class="modal-bg" id="modal-bg">
+    <div class="modal" id="modal">
+      <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
+      <form id="intakeForm" onsubmit="event.preventDefault(); nextStep();">
+        <h2 id="modal-title">Quick Intake</h2>
+        <div id="step-1" class="form-step">
+          <label for="zip">Zip code</label>
+          <input type="text" id="zip" name="zip" maxlength="10" required pattern="\\d{5}(-\\d{4})?" autocomplete="postal-code" />
+        </div>
+        <div id="step-2" class="form-step" style="display:none;">
+          <label for="serviceType">Service Type</label>
+          <select id="serviceType" name="serviceType" required>
+            <option value="" disabled selected>Select type</option>
+            <option>Junk Removal</option>
+            <option>Furniture Hauling</option>
+            <option>Appliance Removal</option>
+            <option>Construction Debris</option>
+            <option>Cleanout</option>
+          </select>
+        </div>
+        <div id="step-3" class="form-step" style="display:none;">
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType" name="propertyType" required>
+            <option value="" disabled selected>Select type</option>
+            <option>Residential</option>
+            <option>Commercial</option>
+          </select>
+        </div>
+        <div id="step-4" class="form-step" style="display:none;">
+          <label for="speed">Speed</label>
+          <select id="speed" name="speed" required>
+            <option value="" disabled selected>Select speed</option>
+            <option>Same Day</option>
+            <option>Schedule Ahead</option>
+          </select>
+        </div>
+        <div id="form-summary" style="display:none;">
+          <div class="summary" id="summary-text"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="prevBtn" onclick="prevStep()" style="display:none;background:#bbb;">Back</button>
+          <button type="submit" id="nextBtn">Next</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -615,5 +687,92 @@
       </div>
     </div>
   </footer>
+  <script>
+    let currentStep = 1;
+    function openModal() {
+      document.getElementById('modal-bg').classList.add('active');
+      resetForm();
+    }
+    function closeModal() {
+      document.getElementById('modal-bg').classList.remove('active');
+    }
+    function showStep(step) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('step-' + i).style.display = (i === step) ? 'block' : 'none';
+      }
+      document.getElementById('form-summary').style.display = (step === 5) ? 'block' : 'none';
+      document.getElementById('prevBtn').style.display = (step > 1 && step < 5) ? 'inline-block' : 'none';
+      document.getElementById('nextBtn').textContent = (step === 4) ? 'Submit' : (step === 5 ? 'Finish' : 'Next');
+      document.getElementById('nextBtn').disabled = false;
+    }
+    function nextStep() {
+      if (currentStep === 1) {
+        const zip = document.getElementById('zip').value.trim();
+        if (!zip.match(/^\d{5}(-\d{4})?$/)) {
+          alert("Please enter a valid zip code.");
+          return;
+        }
+      }
+      if (currentStep === 2) {
+        if (!document.getElementById('serviceType').value) {
+          alert("Please select a service type.");
+          return;
+        }
+      }
+      if (currentStep === 3) {
+        if (!document.getElementById('propertyType').value) {
+          alert("Please select a property type.");
+          return;
+        }
+      }
+      if (currentStep === 4) {
+        if (!document.getElementById('speed').value) {
+          alert("Please select a speed.");
+          return;
+        }
+        // Show summary
+        showSummary();
+        currentStep++;
+        showStep(currentStep);
+        return;
+      }
+      if (currentStep < 4) {
+        currentStep++;
+        showStep(currentStep);
+      } else if (currentStep === 5) {
+        closeModal();
+      }
+    }
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+    function resetForm() {
+      document.getElementById('intakeForm').reset();
+      currentStep = 1;
+      showStep(currentStep);
+    }
+    function showSummary() {
+      const zip = document.getElementById('zip').value.trim();
+      const serviceType = document.getElementById('serviceType').value;
+      const propertyType = document.getElementById('propertyType').value;
+      const speed = document.getElementById('speed').value;
+      document.getElementById('summary-text').textContent =
+        `Zip code: ${zip}
+Service Type: ${serviceType}
+Property Type: ${propertyType}
+Speed: ${speed}`;
+    }
+    window.onclick = function(event) {
+      if (event.target === document.getElementById('modal-bg')) {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
 </body>
 </html>
