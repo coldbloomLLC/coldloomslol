@@ -199,6 +199,70 @@
     }
     /* HIDE LoadRunners by default */
     #loadrunners-tile { display: none; }
+
+    /* POPUP AD STYLES */
+    .popup-ad {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 95%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 30px rgba(0, 185, 165, 0.2), 0 2px 8px rgba(0,0,0,0.08);
+      padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+      text-align: center;
+      animation: popupIn .4s cubic-bezier(.23,1.01,.32,1);
+    }
+    .popup-ad h3 {
+      color: #00796b;
+      margin: 0 0 1.2rem 0;
+      font-size: 1.35rem;
+    }
+    .popup-ad ul {
+      text-align: left;
+      margin: 0 auto 1.2rem auto;
+      padding-left: 1.2em;
+      color: #045c52;
+      font-size: 1.05rem;
+    }
+    .popup-ad .popup-close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 1.3rem;
+      color: #00bfa5;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color .2s;
+    }
+    .popup-ad .popup-close:hover {
+      color: #00796b;
+    }
+    .popup-ad .popup-action-btn {
+      background: #00bfa5;
+      color: #fff;
+      border: none;
+      border-radius: 99px;
+      padding: 0.7rem 1.7rem;
+      font-weight: bold;
+      font-size: 1.08rem;
+      margin-top: 0.8rem;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .popup-ad .popup-action-btn:hover {
+      background: #00796b;
+    }
+    @keyframes popupIn {
+      0% { transform: translate(-50%,-50%) scale(0.92); opacity:0; }
+      100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+    }
   </style>
 </head>
 <body>
@@ -391,9 +455,51 @@
       </form>
     </div>
   </div>
+
+  <!-- DYNAMIC POPUP AD -->
+  <div class="popup-ad" id="popup-ad" role="dialog" aria-modal="true" aria-labelledby="popup-ad-title">
+    <button class="popup-close" id="popup-ad-close" aria-label="Close">&times;</button>
+    <h3 id="popup-ad-title">Need fast junk removal?</h3>
+    <div style="margin-bottom:1.1rem;color:#045c52;font-size:1.09em;">
+      We can help with:
+      <ul>
+        <li>Junk Removal</li>
+        <li>Furniture Hauling</li>
+        <li>Appliance Removal</li>
+        <li>Yard Waste Disposal</li>
+        <li>Construction Debris</li>
+        <li>Donation Pickup</li>
+        <li>E-waste</li>
+        <li>Cleanouts &amp; Same Day Service</li>
+        <li>Residential &amp; Commercial Jobs</li>
+      </ul>
+      <div style="font-weight:bold;">Get a fast quote or find a pro now!</div>
+    </div>
+    <button class="popup-action-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});">Get Started</button>
+  </div>
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // --- DYNAMIC POPUP AD LOGIC ---
+    setTimeout(function() {
+      var popup = document.getElementById('popup-ad');
+      if (popup) popup.style.display = 'block';
+    }, 3000);
+    var popupCloseBtn = document.getElementById('popup-ad-close');
+    if (popupCloseBtn) {
+      popupCloseBtn.onclick = function() {
+        var popup = document.getElementById('popup-ad');
+        if (popup) popup.style.display = 'none';
+      };
+    }
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape") {
+        var popup = document.getElementById('popup-ad');
+        if (popup) popup.style.display = 'none';
+      }
+    });
+    // --- END POPUP AD LOGIC ---
+
     const tagContainer = document.getElementById("active-tags");
     const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
     const tiles = document.querySelectorAll(".tile");
