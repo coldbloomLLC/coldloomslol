@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Valery Cleaning | Cold Looms</title>
+  <title>Valery’s Cleaning | Cold Looms</title>
   <link rel="stylesheet" href="../style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -16,9 +16,7 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     .container {
       display: flex;
       justify-content: space-between;
@@ -39,7 +37,7 @@
       border: 1px solid #ddd;
       border-radius: 12px;
       padding: 1.5rem;
-      background: #f9f9f9;
+      background: #fff;
       min-width: 275px;
       max-width: 360px;
       box-sizing: border-box;
@@ -64,19 +62,40 @@
       gap: 1.5rem;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid #e0e0e0;
+      background: #fff;
+    }
+    .profile-header .logo-link {
+      display: inline-block;
+      border-radius: 50%;
+      outline: none;
+    }
+    .profile-header .logo-link:focus {
+      box-shadow: 0 0 0 3px #00bfa533;
     }
     .profile-header img {
-      width: 96px;
-      height: 96px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 2.5px solid #00bfa5;
-      background: #f5f5f5;
+      background: #fff;
+      transition: box-shadow 0.2s;
+      display: block;
     }
-    .profile-header h1 {
+    .profile-header .logo-link:hover img {
+      box-shadow: 0 4px 18px #00bfa578;
+    }
+    .profile-header h1, .profile-header h1 a {
       margin: 0;
       font-size: 1.75rem;
       font-weight: 600;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .profile-header h1 a:hover {
+      color: #00bfa5;
+      text-decoration: underline;
     }
     .rating {
       color: #00a97f;
@@ -113,14 +132,16 @@
       flex-wrap: wrap;
       gap: 2rem;
       margin-top: 2rem;
-      background: #f5f5f5;
-      border-radius: 12px;
-      padding: 1.5rem;
+      border-radius: 0;
+      padding: 0;
+      border: none;
+      background: none;
     }
     .inline-boxes > div {
       flex: 1 1 200px;
       min-width: 170px;
       margin-bottom: 1rem;
+      background: #fff;
     }
     .inline-boxes h3 {
       font-size: 1.08rem;
@@ -167,35 +188,133 @@
     }
     .photos-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 1.1rem;
       margin-bottom: 0.8rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #00bfa5 #fff;
+      padding-bottom: 0.6rem;
+    }
+    .photos-row::-webkit-scrollbar {
+      height: 8px;
+      background: #fff;
+    }
+    .photos-row::-webkit-scrollbar-thumb {
+      background: #00bfa5;
+      border-radius: 6px;
     }
     .photo-card {
       border-radius: 10px;
       background: #fff;
-      box-shadow: 0 2px 10px rgba(0,191,165,0.08);
+      box-shadow: 0 2px 10px rgba(0,191,165,0.06);
       overflow: hidden;
       width: 200px;
-      max-width: 44vw;
-      min-width: 120px;
+      min-width: 200px;
+      max-width: 90vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: transform 0.17s, box-shadow 0.17s;
+      flex-shrink: 0;
     }
     .photo-card img {
       width: 100%;
       height: 140px;
       object-fit: cover;
       display: block;
-      background: #e0f7fa;
+      background: #fff;
     }
     .photo-card:hover {
       transform: scale(1.04);
-      box-shadow: 0 6px 28px rgba(0,191,165,0.13);
+      box-shadow: 0 6px 28px rgba(0,191,165,0.10);
     }
-    /* Sidebar styles */
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
+      margin: 2.5rem 0 1.4rem 0;
+    }
+    .social-row a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1.09rem;
+      gap: 0.33em;
+      color: #444;
+      font-weight: 500;
+      background: #fff;
+      border-radius: 7px;
+      padding: 0.38em 0.9em 0.38em 0.7em;
+      transition: background 0.15s, color 0.15s;
+      min-width: 90px;
+      justify-content: center;
+      border: 1px solid #eee;
+    }
+    .social-row a.yelp-link {
+      background: #d32323;
+      color: #fff;
+      border: none;
+    }
+    .social-row a.yelp-link:hover {
+      background: #a31515;
+      color: #fff;
+    }
+    .social-row a:hover {
+      background: #00bfa5;
+      color: #fff;
+      border: none;
+    }
+    .social-row img {
+      width: 22px;
+      height: 22px;
+      margin-right: 7px;
+    }
+    @media (max-width: 800px) {
+      .social-row {
+        gap: 0.7rem;
+        margin: 2rem 0 1.1rem 0;
+      }
+      .social-row a {
+        font-size: 1rem;
+        padding: 0.32em 0.7em 0.32em 0.6em;
+        min-width: 70px;
+      }
+      .profile-header img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    @media (max-width: 520px) {
+      .social-row {
+        gap: 0.6rem;
+        margin: 1.3rem 0 0.7rem 0;
+      }
+      .social-row a {
+        font-size: 0.95rem;
+        padding: 0.28em 0.5em 0.28em 0.5em;
+        min-width: 60px;
+      }
+      .social-row img {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+      }
+      .profile-header img {
+        width: 140px;
+        height: 140px;
+      }
+      .photos-row {
+        gap: 0.7rem;
+      }
+      .photo-card {
+        width: 70vw;
+        min-width: 170px;
+      }
+    }
     .price-box {
       font-weight: bold;
       font-size: 1.2rem;
@@ -238,7 +357,6 @@
       padding: 0.7rem;
       text-align: center;
     }
-    /* Responsive Footer Columns */
     .site-footer {
       background-color: #f8f8f8;
       padding: 4rem 2rem 2rem 2rem;
@@ -316,80 +434,24 @@
         padding: 0;
       }
     }
-    @media (max-width: 800px) {
-      .container {
-        flex-direction: column;
-        gap: 1.3rem;
-        padding: 0.8rem 0.2rem;
-      }
-      .sidebar-column {
-        min-width: 0;
-        width: 100%;
-        padding: 1rem;
-      }
-      .main-column {
-        width: 100%;
-      }
-      .photos-row {
-        gap: 0.6rem;
-      }
-      .photo-card {
-        width: 44vw;
-        min-width: 95px;
-      }
-      .photo-card img {
-        height: 22vw;
-        min-height: 70px;
-      }
-      .inline-boxes {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-      }
-    }
-    @media (max-width: 520px) {
-      .profile-header img {
-        width: 60px;
-        height: 60px;
-      }
-      .profile-header h1 {
-        font-size: 1.25rem;
-      }
-      .container {
-        padding: 0.2rem 0 0.6rem 0;
-      }
-      .photo-card {
-        width: 98vw;
-        min-width: 80px;
-      }
-      .photo-card img {
-        height: 28vw;
-        min-height: 48px;
-      }
-      .sidebar-column {
-        padding: 0.7rem;
-      }
-      .inline-boxes {
-        padding: 0.7rem;
-      }
-      .site-footer {
-        padding: 2rem 0.3rem 1.2rem 0.3rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="main-column">
       <div class="breadcrumb">
-        <a href="../index.html">Cold Looms</a> // House Cleaning // Valery
+        <a href="../index.html">Cold Looms</a> // Cleaning Services // Valery’s Cleaning
       </div>
       <div class="profile-header">
-        <img src="https://i.ibb.co/ZgpcRyb/valery.jpg" alt="Valery">
+        <a href="https://valeryscleaning.com" target="_blank" rel="noopener" class="logo-link">
+          <img src="https://i.ibb.co/7j0R6wY/valeryscleaning-logo.png" alt="Valery’s Cleaning logo">
+        </a>
         <div>
-          <h1>Valery</h1>
-          <p class="rating">Exceptional 5.0 ★★★★★ (5 reviews)</p>
-          <p>Professional Cleaning — Over 10 Years of Experience</p>
+          <h1>
+            <a href="https://valeryscleaning.com" target="_blank" rel="noopener">Valery’s Cleaning</a>
+          </h1>
+          <p class="rating">Top Rated 5.0 ★★★★★ (40 reviews)</p>
+          <p>Professional Cleaning — San Fernando Valley, CA</p>
           <div class="tab-menu">
             <span>About</span>
             <span>Photos</span>
@@ -402,7 +464,7 @@
       <div class="intro-section">
         <h3>Introduction</h3>
         <p>
-          I have over 10 years of experience in cleaning, including working in high-end homes. We are a small team of three — myself and two trusted assistants. We approach each home with care and professionalism.
+          Valery’s Cleaning provides thorough, reliable cleaning services for homes and businesses. Our experienced team offers regular cleaning, deep cleaning, move-in/move-out services, and custom cleanings to fit your needs. We pride ourselves on attention to detail, friendly service, and customer satisfaction every visit.
         </p>
       </div>
 
@@ -410,77 +472,95 @@
         <div>
           <h3>Overview</h3>
           <div class="overview-icons">
-            <div>🏆 Hired 10 times</div>
-            <div>📍 Serves Simi Valley, CA</div>
-            <div>🛡️ Background checked</div>
-            <div>👥 3 employees</div>
-            <div>⏳ 2 years in business</div>
+            <div>🧼 Residential & commercial cleaning</div>
+            <div>📍 San Fernando Valley, CA</div>
+            <div>🛡️ Licensed & Insured</div>
+            <div>👩‍🔬 Woman-owned & operated</div>
           </div>
         </div>
         <div>
           <h3>Business Hours</h3>
-          <p>Sun: 9:00 AM – 10:00 PM</p>
-          <p>Mon: 12:00 PM – 10:00 PM</p>
-          <p style="color:#00796b;margin:0.3rem 0 0 0;"><em>Available most evenings — flexible scheduling</em></p>
+          <p>Mon: 8am – 6pm</p>
+          <p>Tue: 8am – 6pm</p>
+          <p>Wed: 8am – 6pm</p>
+          <p style="color:#00bfa5; font-weight:bold;">Open now</p>
+          <p>Thu: 8am – 6pm</p>
+          <p>Fri: 8am – 6pm</p>
+          <p>Sat: 9am – 4pm</p>
+          <p>Sun: Closed</p>
         </div>
         <div>
-          <h3>Payment Methods</h3>
-          <p>Cash, Check, Venmo, and Zelle<br>
-            <a href="https://venmo.com/" target="_blank" rel="noopener" style="color:#00bfa5;">What is Venmo?</a>
-          </p>
+          <h3>Accepted Payment</h3>
+          <p>Cash, Credit Card, Zelle, Venmo</p>
         </div>
       </div>
 
       <div class="action-buttons">
-        <a href="mailto:valery@coldlooms.com">Message</a>
-        <a href="#">Request a call</a>
+        <a href="tel:8185554321">Call 818-555-4321</a>
+        <a href="mailto:info@valeryscleaning.com">Email</a>
+        <a href="https://valeryscleaning.com" target="_blank">Visit Website</a>
       </div>
 
       <div>
         <p class="section-title">Projects and Media</p>
         <div class="photos-row">
           <div class="photo-card">
-            <img src="https://i.ibb.co/fDghRf4/sparkle-kitchen.jpg" alt="Sparkling clean kitchen">
+            <img src="https://i.ibb.co/7j0R6wY/valeryscleaning-logo.png" alt="Valery’s Cleaning Team">
           </div>
           <div class="photo-card">
-            <img src="https://i.ibb.co/d2J7nDm/shiny-bathroom.jpg" alt="Immaculate bathroom">
+            <img src="https://i.ibb.co/3RkYbW7/greencleanpro-office.png" alt="Valery’s Cleaning Office">
           </div>
           <div class="photo-card">
-            <img src="https://i.ibb.co/MGp6PB4/organized-livingroom.jpg" alt="Organized living room">
+            <img src="https://i.ibb.co/LCbZCYV/moveoutmaids-detail.png" alt="Valery’s Cleaning Detail">
+          </div>
+          <div class="photo-card">
+            <img src="https://i.ibb.co/HB9bF0G/moveoutmaids-apartment.png" alt="Valery’s Cleaning Apartment">
           </div>
         </div>
-        <p style="text-align:center; color:#8e99a3; font-size:0.98rem;">See the difference! (More photos available upon request.)</p>
+        <p style="text-align:center; color:#8e99a3; font-size:0.98rem;">See the difference — our team delivers a spotless clean every time! (More photos available upon request.)</p>
       </div>
     </div>
 
     <div class="sidebar-column">
-      <div class="price-box">$100 <span style="font-weight: normal; color: #777; font-size: 0.9rem;">Starting price</span></div>
-      <input type="text" placeholder="Zip code" />
-      <select>
-        <option disabled selected>Frequency</option>
-        <option>One time</option>
-        <option>Weekly</option>
-        <option>Bi-weekly</option>
+      <div class="price-box">$100 <span style="font-weight: normal; color: #777; font-size: 0.9rem;">Minimum service</span></div>
+      <input type="text" placeholder="Zip code" id="zipInput" />
+      <select id="serviceTypeSelect">
+        <option disabled selected>Service Type</option>
+        <option>Regular Cleaning</option>
+        <option>Deep Cleaning</option>
+        <option>Move-In/Move-Out</option>
+        <option>Office Cleaning</option>
+        <option>Custom Cleaning</option>
       </select>
-      <select>
-        <option disabled selected>Number of bedrooms</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4+</option>
+      <select id="propertyTypeSelect">
+        <option disabled selected>Property Type</option>
+        <option>Residential</option>
+        <option>Commercial</option>
       </select>
-      <select>
-        <option disabled selected>Cleaning type</option>
-        <option>Standard</option>
-        <option>Deep Clean</option>
-        <option>Move In/Out</option>
+      <select id="speedSelect">
+        <option disabled selected>Speed</option>
+        <option>Same Day</option>
+        <option>Schedule Ahead</option>
       </select>
-      <button>Check availability</button>
+      <button id="checkAvailabilityBtn">Check availability</button>
       <div class="guarantee">
-        🛡️ Responds within a <strong>day</strong><br>
-        ✔️ You're covered by our money-back guarantee.
+        🛡️ Fast response — usually within 2 hours<br>
+        ✔️ Licensed, insured, and satisfaction guaranteed!
       </div>
     </div>
+  </div>
+
+  <!-- Social & Review Links at the bottom -->
+  <div class="social-row">
+    <a class="yelp-link" href="https://www.yelp.com/biz/valerys-cleaning-san-fernando-valley" target="_blank" rel="noopener">
+      <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="Yelp"> Yelp
+    </a>
+    <a href="https://www.instagram.com/valeryscleaning/" target="_blank" title="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"> Instagram
+    </a>
+    <a href="https://www.facebook.com/valeryscleaning/" target="_blank" title="Facebook">
+      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"> Facebook
+    </a>
   </div>
 
   <!-- Footer -->
@@ -516,15 +596,52 @@
     <div class="footer-bottom">
       <p>© 2025 LOL | Smart Outreach for Real Clients</p>
       <p>
-        <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
+        <a href="mailto:info@valeryscleaning.com">info@valeryscleaning.com</a>
       </p>
       <div style="margin-top: 1rem;">
-        <a href="#"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter"/></a>
-        <a href="#"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail"/></a>
+        <a class="yelp-link" href="https://www.yelp.com/biz/valerys-cleaning-san-fernando-valley" target="_blank" rel="noopener">
+          <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="Yelp"/>
+        </a>
+        <a href="https://www.instagram.com/valeryscleaning/" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram"/>
+        </a>
+        <a href="https://www.facebook.com/valeryscleaning/" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook"/>
+        </a>
+        <a href="mailto:info@valeryscleaning.com">
+          <img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail"/>
+        </a>
       </div>
     </div>
   </footer>
+  <script>
+    document.getElementById('checkAvailabilityBtn').addEventListener('click', function() {
+      var zip = document.getElementById('zipInput').value;
+      var service = document.getElementById('serviceTypeSelect').value;
+      var property = document.getElementById('propertyTypeSelect').value;
+      var speed = document.getElementById('speedSelect').value;
+
+      var message = 'New Valery’s Cleaning availability request:\n'
+        + 'Zip: ' + zip + '\n'
+        + 'Service: ' + service + '\n'
+        + 'Property: ' + property + '\n'
+        + 'Speed: ' + speed;
+
+      // Use fetch to call a SMS gateway (like Twilio) via a backend endpoint you must implement separately.
+      // This is a placeholder for demonstration purposes ONLY.
+      fetch('https://api.coldlooms.com/send-sms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: '+18185554321',
+          message: message
+        })
+      }).then(function(response) {
+        alert('Thank you! We received your request and will reply soon by text.');
+      }).catch(function(error) {
+        alert('Sorry, there was a problem sending your request.');
+      });
+    });
+  </script>
 </body>
 </html>
