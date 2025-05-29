@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Enhanced viewport for iOS fit and scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="description" content="Cold Looms — Smart Outreach for Real Clients. Get matched with vetted pros instantly." />
   <meta name="theme-color" content="#fff" />
@@ -40,7 +39,6 @@
       font-family: var(--sans);
       background: var(--bg);
       color: var(--text);
-      /* Prevents iOS horizontal scroll */
       overflow-x: hidden;
     }
     *, *::before, *::after { box-sizing: border-box; }
@@ -51,12 +49,12 @@
       background: var(--primary); color: #fff; z-index: 1000; transition: left .2s;
     }
     .skip-link:focus {left: 24px; top: 18px; width:auto; height:auto; padding:0.8em 1.2em; border-radius:6px;outline:2px solid var(--primary-dark);}
+    /* NAVBAR */
     .navbar {
       background: #fff;
       box-shadow: 0 1px 5px rgba(0,0,0,0.06);
       width: 100%;
       position: sticky; top: 0; z-index: 20;
-      /* For iOS notch */
       padding-top: env(safe-area-inset-top);
     }
     .nav-content {
@@ -72,7 +70,10 @@
       transition: color .18s;
     }
     .nav-logo img {height: 36px; border-radius: 9px;}
-    .nav-links {display: flex; gap: 1.5rem; align-items: center;}
+    .nav-links {
+      display: flex; gap: 1.5rem; align-items: center;
+      transition: all .18s;
+    }
     .nav-link, .nav-signin {
       font-size: 1.04rem; letter-spacing: 0.01em; font-family: var(--mono);
       padding: 0.45em 1.1em; border-radius: 8px;
@@ -85,8 +86,60 @@
       background: var(--primary); color: #fff; font-weight: 700; border: none;
       box-shadow: 0 2px 18px #0ee2b822; cursor: pointer;
       transition: background .13s, color .13s, box-shadow .16s;
+      min-width: 44px; min-height: 44px;
     }
     .nav-signin:hover, .nav-signin:focus {background: var(--primary-dark);}
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      margin-left: 1rem;
+      cursor: pointer;
+      z-index: 30;
+    }
+    @media (max-width: 700px) {
+      .nav-content {flex-direction: row; padding: 1.1rem 1rem;}
+      .nav-logo {font-size: 1.05rem;}
+      .nav-links {
+        position: fixed;
+        top: 62px;
+        left: 0;
+        width: 100vw;
+        background: #fff;
+        box-shadow: 0 2px 18px #00796b10;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        display: none;
+        z-index: 999;
+      }
+      .nav-links.show { display: flex; }
+      .nav-link, .nav-signin {
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+        padding: 1.15em 0;
+        font-size: 1.11rem;
+        text-align: left;
+        border-bottom: 1px solid #e0f2f1;
+      }
+      .nav-signin {
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        box-shadow: 0 2px 18px #0ee2b822;
+        cursor: pointer;
+        border-radius: 0 0 8px 8px;
+        margin-bottom: 0;
+      }
+      .nav-mobile-toggle { display: block; }
+    }
+    /* END NAVBAR */
     .hero {
       min-height: 70vh;
       display: flex; flex-wrap: wrap; align-items: center; gap: 4rem;
@@ -118,7 +171,7 @@
       cursor: pointer; letter-spacing: 0.02em;
       animation: pulse 2.3s infinite cubic-bezier(.4,1.2,.4,1);
       outline: none;
-      min-width: 44px; /* iOS touch target */
+      min-width: 44px;
       min-height: 44px;
     }
     .cta-btn:hover, .cta-btn:focus { background: var(--primary-dark);}
@@ -210,34 +263,39 @@
     .testimonials h2 {color:var(--primary);font-size:1.5rem;}
     blockquote { font-size: 1.19rem; color: #333; font-style: italic; margin: 1.5rem auto; max-width: 520px;}
     .disclaimer { color: #888; text-align: center; font-size: 0.96rem; margin-top: 0.7rem;}
+    /* CTA FORM - BOTTOM "Get Matched" */
     .cta-section {
       background: #fff; padding: 4rem 2rem; border-radius: var(--radius);
       max-width: 1200px; margin: 2.5rem auto 0 auto; box-shadow: var(--shadow);
     }
-    .cta-flex {display: flex; flex-direction: row; gap: 3.5rem; justify-content: center; flex-wrap: wrap; align-items: flex-start;}
+    .cta-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 3.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
     .cta-text {flex: 1; min-width: 260px; max-width: 420px;}
-    .cta-text h2 {font-size: 2.1rem; color: var(--primary); margin-bottom: 1.1rem; font-weight: 700;}
-    .cta-text p {font-size: 1.06rem; color: var(--text-dim);}
-    .cta-text img {max-width: 220px; margin-top: 1.5rem;}
     .cta-form {
-      flex: 1; min-width: 260px; max-width: 370px; background: #fff;
+      flex: 1; min-width: 260px; max-width: 400px; background: #fff;
       padding: 2rem; border-radius: 13px; box-shadow: var(--shadow); font-size: 1.04rem;
       display: flex; flex-direction: column; gap: 0.3rem;
     }
     .cta-form label {font-weight: 700; margin-bottom: 0.18rem;}
     .cta-form input, .cta-form textarea, .cta-form select {
-      width: 100%; padding: 0.86rem 0.9rem; margin-bottom: 1rem; border: 1.2px solid #00796b33; border-radius: 7px; font-size: 1.1rem; resize: vertical; background: #f6fafd;
+      width: 100%; padding: 1rem 1.1rem; margin-bottom: 1rem; border: 1.5px solid #00796b33; border-radius: 7px; font-size: 1.13rem; resize: vertical; background: #f6fafd;
       color:var(--text);
       font-family: var(--sans);
-      min-height: 44px; /* iOS touch target */
+      min-height: 48px;
     }
-    .cta-form textarea {min-height: 80px;}
+    .cta-form textarea {min-height: 90px;}
     .cta-form button {
       width: 100%;
       background: var(--primary);
       color: #fff;
-      padding: 1rem;
-      font-size: 1.07rem;
+      padding: 1.05rem 0;
+      font-size: 1.11rem;
       font-weight: bold;
       border: none;
       border-radius: 7px;
@@ -246,7 +304,7 @@
       transition: background 0.18s, color 0.18s;
       letter-spacing: 0.01em;
       box-shadow: 0 2px 12px #00796b33;
-      min-height: 44px; /* iOS touch target */
+      min-height: 48px;
     }
     .cta-form button:hover, .cta-form button:focus {background: var(--primary-dark);}
     .site-footer {background:#fff;padding:3.5rem 2rem 2rem 2rem;color:var(--text-dim);font-size:1rem;border-radius:var(--radius) var(--radius) 0 0;box-shadow:0 -2px 18px #00796b0a;margin-top:3rem;}
@@ -314,7 +372,7 @@
       background: #f6fafd;
       color: var(--text);
       font-family: var(--sans);
-      min-height: 44px; /* iOS touch target */
+      min-height: 44px;
     }
     .popup-modal .popup-content textarea {min-height: 70px;}
     .popup-modal .popup-content button[type="submit"] {
@@ -350,31 +408,24 @@
       margin-top: 1.5rem;
       font-size: 1.1rem;
     }
-    /* iOS and mobile layout fixes */
     @media (max-width: 900px) {
       .hero, .cta-flex, .process-steps {flex-direction:column;gap:2.3rem;}
       .footer-flex {flex-direction:column;gap:1.2rem;}
-      .nav-content {flex-direction:column;gap:1rem;}
+      .nav-content {flex-direction:row;gap:1rem;}
       .popup-modal .popup-content {width: 95vw;}
-      .services-grid {flex-wrap: wrap;gap: 1rem;}
-      .service-tile {min-width: 120px;max-width: 100%;flex-basis: calc(50% - 1rem);}
+      .cta-section {padding: 2rem 0.6rem;}
+      .cta-form {max-width: 99vw; min-width: 0; width: 100%; padding: 1.1rem;}
+      .cta-text {max-width: 99vw; min-width: 0; width: 100%;}
     }
     @media (max-width: 600px) {
       .nav-content {padding: 1rem 0.7rem;}
-      .hero {padding: 2.5rem 0.5rem 2rem 0.5rem;}
-      .hero-main h1 {font-size: 2.1rem;}
-      .hero-main p {font-size: 1.01rem;}
-      .cta-text h2, .services-section h2, .process-section h2 {font-size: 1.19rem;}
-      .cta-section {padding: 2rem 0.4rem;}
-      .process-section {padding: 2.2rem 0.7rem 1.6rem 0.7rem;}
-      .services-section {padding: 2.1rem 0.7rem 1.3rem 0.7rem;}
-      .testimonials {padding: 1.2rem 0.6rem 1.1rem 0.6rem;}
-      .popup-modal .popup-content {width: 99vw;max-width: 99vw;padding:1.2rem 0.7rem;}
-      .cta-form {padding: 1.1rem;}
+      .cta-section {padding: 1.2rem 0.2rem;}
+      .cta-form {padding: 0.6rem;}
+      .cta-form input, .cta-form textarea, .cta-form select {font-size: 1rem;}
     }
     @media (max-width: 400px) {
-      .popup-modal .popup-content, .cta-form, .cta-text, .services-section, .process-section {padding: 0.5rem !important;}
-      .hero-main h1 {font-size: 1.3rem;}
+      .cta-form, .cta-text, .services-section, .process-section {padding: 0.4rem !important;}
+      .cta-form input, .cta-form textarea, .cta-form select {padding: 0.7rem 0.6rem;}
     }
   </style>
 </head>
@@ -386,7 +437,8 @@
       <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Logo" loading="lazy" decoding="async" />
       Cold Looms
     </a>
-    <div class="nav-links">
+    <button class="nav-mobile-toggle" aria-label="Open navigation" onclick="toggleMobileNav()">☰</button>
+    <div class="nav-links" id="main-nav-links">
       <a href="LOL.html" target="_blank" rel="noopener noreferrer" class="nav-link">About Us</a>
       <a href="#contact" class="nav-link">Get Started</a>
       <a href="https://coldlooms.github.io/LOL/privacy.html" class="nav-link" rel="noopener noreferrer">Privacy</a>
@@ -455,7 +507,6 @@
     <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
   </div>
 </section>
-  </section>
   <!-- SERVICES -->
   <section class="services-section reveal">
     <h2>Popular services near <span id="user-city" style="color:var(--primary);">your city</span></h2>
@@ -607,6 +658,27 @@
 </footer>
 <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
 <script>
+  // Mobile nav toggle
+  function toggleMobileNav() {
+    const navLinks = document.getElementById('main-nav-links');
+    if (navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      document.body.style.overflow = "";
+    } else {
+      navLinks.classList.add('show');
+      document.body.style.overflow = "hidden";
+    }
+  }
+  // Close nav if clicked outside (for better iOS UX)
+  document.addEventListener('click', function(e) {
+    const navLinks = document.getElementById('main-nav-links');
+    if (navLinks && navLinks.classList.contains('show')) {
+      if (!navLinks.contains(e.target) && !e.target.classList.contains('nav-mobile-toggle')) {
+        navLinks.classList.remove('show');
+        document.body.style.overflow = "";
+      }
+    }
+  });
   // Animated scroll reveal
   function revealOnScroll() {
     document.querySelectorAll('.reveal').forEach(el => {
