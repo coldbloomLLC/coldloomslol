@@ -197,7 +197,6 @@
       color: #009688;
       margin-bottom: 0.5rem;
     }
-    /* --- MODAL DIALOG STYLES from index.html --- */
     .popup-modal[open] {
       display: flex;
       flex-direction: column;
@@ -284,6 +283,43 @@
     @media (max-width: 900px) {
       .popup-modal .popup-content {width: 95vw;}
     }
+    .tailored-btn {
+      background: #045c52;
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      margin: 1.5rem 0 1rem 0;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 14px #00796b33;
+      display: block;
+    }
+    .tailored-btn:hover, .tailored-btn:focus {
+      background: #00bfa5;
+      color: #fff;
+    }
+    .connect-btn {
+      background: #00bfa5;
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      margin-right: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 14px #00bfa555;
+      display: inline-block;
+    }
+    .connect-btn:hover, .connect-btn:focus {
+      background: #00796b;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -341,6 +377,52 @@
     <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
     <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
   </dialog>
+
+  <!-- NEW: Tailored Questions Modal -->
+  <dialog id="tailored-questions-dialog" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close tailored dialog" onclick="closeTailoredDialog()" style="position:absolute;top:1.1rem;right:1.1rem;font-size:1.6rem;background:none;border:none;color:#aaa;min-width:44px;min-height:44px;">&times;</button>
+      <h2 style="color:#045c52;">Tailored Quote Request</h2>
+      <form id="tailored-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on">
+        <div id="tailored-questions"></div>
+        <label for="tailored-name">Full Name</label>
+        <input type="text" id="tailored-name" name="name" placeholder="Your Name" required />
+
+        <label for="tailored-email">Email Address</label>
+        <input type="email" id="tailored-email" name="email" placeholder="Email Address" required />
+
+        <label for="tailored-phone">Phone Number</label>
+        <input type="tel" id="tailored-phone" name="phone" placeholder="Phone Number" required />
+
+        <button type="submit">Send Request</button>
+      </form>
+      <div class="success-message" id="tailored-success" style="display:none;"></div>
+    </div>
+  </dialog>
+  <!-- End Tailored Modal -->
+
+  <!-- NEW: Connect With Pro Modal -->
+  <dialog id="connect-pro-dialog" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close connect pro dialog" onclick="closeConnectProDialog()" style="position:absolute;top:1.1rem;right:1.1rem;font-size:1.6rem;background:none;border:none;color:#aaa;min-width:44px;min-height:44px;">&times;</button>
+      <h2 style="color:#045c52;">Connect With a Junk Removal Pro</h2>
+      <form id="connect-pro-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on">
+        <div id="connect-pro-summary" style="margin-bottom:1rem;text-align:left;"></div>
+        <label for="connect-name">Full Name</label>
+        <input type="text" id="connect-name" name="name" placeholder="Your Name" required />
+
+        <label for="connect-email">Email Address</label>
+        <input type="email" id="connect-email" name="email" placeholder="Email Address" required />
+
+        <label for="connect-phone">Phone Number</label>
+        <input type="tel" id="connect-phone" name="phone" placeholder="Phone Number" required />
+
+        <button type="submit">Connect Me</button>
+      </form>
+      <div class="success-message" id="connect-pro-success" style="display:none;"></div>
+    </div>
+  </dialog>
+  <!-- End Connect With Pro Modal -->
 
   <h1 class="page-title">Junk Removal Pros</h1>
   <div class="city-bar" id="city-bar">Detecting your city...</div>
@@ -418,6 +500,10 @@
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
     <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+      <button class="tailored-btn" onclick="openTailoredDialog()">Get Tailored Quote</button>
+      <button class="connect-btn" onclick="openConnectProDialog()">Connect With a Pro</button>
+    </div>
     <div class="active-tags" id="active-tags"></div>
     <div class="tile-grid">
       <!-- LOADRUNNERS -->
@@ -541,12 +627,145 @@
         popup.style.display = 'none';
       }
     }
-    // On load, show popup after slight delay (0.7s)
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(openLeadPopup, 700);
-    });
-    // Lead form submission logic
+
+    // NEW: Tailored Questions Modal Logic
+    function openTailoredDialog() {
+      // Get checked filters
+      const allCheckboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+      const selected = Array.from(allCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+      const tailoredQuestions = document.getElementById('tailored-questions');
+      tailoredQuestions.innerHTML = '';
+      if (selected.length === 0) {
+        tailoredQuestions.innerHTML = '<p style="color:#d32f2f;">Please select at least one filter to tailor your quote request.</p>';
+      } else {
+        tailoredQuestions.innerHTML = '<h3 style="font-size:1.15rem; color:#00796b; margin-bottom:0.7rem;">About Your Needs</h3>';
+        selected.forEach(filter => {
+          tailoredQuestions.innerHTML += `
+            <div style="text-align:left;margin-bottom:1rem;">
+              <label style="font-weight:bold;color:#045c52;">${filter}:</label>
+              <input type="hidden" name="filters[]" value="${filter}">
+              <input type="text" name="details_${filter.replace(/\s+/g,'_').toLowerCase()}" placeholder="Details about ${filter} (optional)" style="width:100%;margin-top:0.3rem;">
+            </div>
+          `;
+        });
+        tailoredQuestions.innerHTML += `
+          <label for="tailored-message" style="text-align:left;display:block;font-weight:bold;color:#045c52;">Additional Details</label>
+          <textarea id="tailored-message" name="message" placeholder="Tell us more about your project, location, timing, etc." style="width:100%;min-height:70px;margin-bottom:1.2rem;"></textarea>
+        `;
+      }
+      const dialog = document.getElementById('tailored-questions-dialog');
+      dialog.showModal();
+      setTimeout(() => {
+        const firstInput = dialog.querySelector('input:not([type=hidden]), textarea');
+        if (firstInput) firstInput.focus();
+      }, 100);
+    }
+    function closeTailoredDialog() {
+      const dialog = document.getElementById('tailored-questions-dialog');
+      dialog.close();
+      document.getElementById('tailored-form').reset();
+      document.getElementById('tailored-questions').innerHTML = '';
+      document.getElementById('tailored-success').style.display = 'none';
+    }
+
+    // NEW: Connect With Pro Modal Logic
+    function openConnectProDialog() {
+      // Get checked filters
+      const allCheckboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
+      const selected = Array.from(allCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+      const summaryDiv = document.getElementById('connect-pro-summary');
+      if (selected.length === 0) {
+        summaryDiv.innerHTML = '<p style="color:#d32f2f;">Please select at least one filter so we can connect you with the right pro.</p>';
+      } else {
+        summaryDiv.innerHTML = `
+          <div style="font-weight:bold;margin-bottom:0.4rem;color:#045c52;">Your Selected Preferences:</div>
+          <ul style="margin:0 0 1em 1.2em;padding:0;color:#00796b;font-size:1.04rem;">
+            ${selected.map(f => `<li>${f}</li>`).join('')}
+          </ul>
+          <input type="hidden" name="selected_filters" value="${selected.join(', ')}">
+        `;
+      }
+      const dialog = document.getElementById('connect-pro-dialog');
+      dialog.showModal();
+      setTimeout(() => {
+        const firstInput = dialog.querySelector('input:not([type=hidden])');
+        if (firstInput) firstInput.focus();
+      }, 100);
+    }
+    function closeConnectProDialog() {
+      const dialog = document.getElementById('connect-pro-dialog');
+      dialog.close();
+      document.getElementById('connect-pro-form').reset();
+      document.getElementById('connect-pro-summary').innerHTML = '';
+      document.getElementById('connect-pro-success').style.display = 'none';
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+      // Tailored form submit logic
+      var tailoredForm = document.getElementById('tailored-form');
+      var tailoredSuccess = document.getElementById('tailored-success');
+      if (tailoredForm) {
+        tailoredForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(tailoredForm);
+          fetch(tailoredForm.action, {
+            method: "POST",
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              tailoredForm.style.display = 'none';
+              tailoredSuccess.textContent = "Thank you! Your tailored request has been submitted.";
+              tailoredSuccess.style.display = "block";
+              setTimeout(closeTailoredDialog, 3500);
+              setTimeout(() => { tailoredForm.style.display = 'block'; }, 4000);
+            } else {
+              response.json().then(function(data){
+                tailoredSuccess.textContent = data.error || "There was a problem submitting the form. Please try again.";
+                tailoredSuccess.style.display = "block";
+              });
+            }
+          }).catch(function(){
+            tailoredSuccess.textContent = "There was a problem submitting the form. Please try again.";
+            tailoredSuccess.style.display = "block";
+          });
+        });
+      }
+      // Connect With Pro form submit logic
+      var connectForm = document.getElementById('connect-pro-form');
+      var connectSuccess = document.getElementById('connect-pro-success');
+      if (connectForm) {
+        connectForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(connectForm);
+          fetch(connectForm.action, {
+            method: "POST",
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              connectForm.style.display = 'none';
+              connectSuccess.textContent = "Thank you! A local pro will reach out to you soon with your best match.";
+              connectSuccess.style.display = "block";
+              setTimeout(closeConnectProDialog, 3500);
+              setTimeout(() => { connectForm.style.display = 'block'; }, 4000);
+            } else {
+              response.json().then(function(data){
+                connectSuccess.textContent = data.error || "There was a problem submitting the form. Please try again.";
+                connectSuccess.style.display = "block";
+              });
+            }
+          }).catch(function(){
+            connectSuccess.textContent = "There was a problem submitting the form. Please try again.";
+            connectSuccess.style.display = "block";
+          });
+        });
+      }
+      // Lead form submission logic (existing)
       var leadForm = document.getElementById('lead-form');
       var successMsg = document.getElementById('lead-success');
       if (leadForm) {
@@ -654,6 +873,10 @@
       const sidebar = document.querySelector('.sidebar');
       sidebar.classList.toggle('active');
     }
+    // Show lead popup after delay
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(openLeadPopup, 700);
+    });
   </script>
 </body>
 </html>
