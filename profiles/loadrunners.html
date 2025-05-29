@@ -622,17 +622,26 @@
       var property = document.getElementById('propertyTypeSelect').value;
       var speed = document.getElementById('speedSelect').value;
 
-      var subject = encodeURIComponent('New LoadRunners availability request');
-      var body =
-        encodeURIComponent(
-          'New LoadRunners availability request:\n'
-          + 'Zip: ' + zip + '\n'
-          + 'Service: ' + service + '\n'
-          + 'Property: ' + property + '\n'
-          + 'Speed: ' + speed
-        );
+      var message = 'New LoadRunners availability request:\n'
+        + 'Zip: ' + zip + '\n'
+        + 'Service: ' + service + '\n'
+        + 'Property: ' + property + '\n'
+        + 'Speed: ' + speed;
 
-      window.location.href = 'mailto:brandon.luminato@gmail.com?subject=' + subject + '&body=' + body;
+      // Use fetch to call a SMS gateway (like Twilio) via a backend endpoint you must implement separately.
+      // This is a placeholder for demonstration purposes ONLY.
+      fetch('https://api.coldlooms.com/send-sms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: '+18186245720',
+          message: message
+        })
+      }).then(function(response) {
+        alert('Thank you! We received your request and will reply soon by text.');
+      }).catch(function(error) {
+        alert('Sorry, there was a problem sending your request.');
+      });
     });
   </script>
 </body>
