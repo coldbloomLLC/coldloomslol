@@ -524,8 +524,8 @@
 
     <div class="sidebar-column">
       <div class="price-box">$95 <span style="font-weight: normal; color: #777; font-size: 0.9rem;">Minimum load</span></div>
-      <input type="text" placeholder="Zip code" />
-      <select>
+      <input type="text" placeholder="Zip code" id="zipInput" />
+      <select id="serviceTypeSelect">
         <option disabled selected>Service Type</option>
         <option>Junk Removal</option>
         <option>Furniture Hauling</option>
@@ -533,17 +533,17 @@
         <option>Construction Debris</option>
         <option>Cleanout</option>
       </select>
-      <select>
+      <select id="propertyTypeSelect">
         <option disabled selected>Property Type</option>
         <option>Residential</option>
         <option>Commercial</option>
       </select>
-      <select>
+      <select id="speedSelect">
         <option disabled selected>Speed</option>
         <option>Same Day</option>
         <option>Schedule Ahead</option>
       </select>
-      <button>Check availability</button>
+      <button id="checkAvailabilityBtn">Check availability</button>
       <div class="guarantee">
         🛡️ Fast response — usually within 2 hours<br>
         ✔️ Licensed, insured, and satisfaction guaranteed!
@@ -615,5 +615,34 @@
       </div>
     </div>
   </footer>
+  <script>
+    document.getElementById('checkAvailabilityBtn').addEventListener('click', function() {
+      var zip = document.getElementById('zipInput').value;
+      var service = document.getElementById('serviceTypeSelect').value;
+      var property = document.getElementById('propertyTypeSelect').value;
+      var speed = document.getElementById('speedSelect').value;
+
+      var message = 'New LoadRunners availability request:'
+        + '\\nZip: ' + zip
+        + '\\nService: ' + service
+        + '\\nProperty: ' + property
+        + '\\nSpeed: ' + speed;
+
+      // Use fetch to call a SMS gateway (like Twilio) via a backend endpoint you must implement separately.
+      // This is a placeholder for demonstration purposes ONLY.
+      fetch('https://api.coldlooms.com/send-sms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: '+18186245720',
+          message: message
+        })
+      }).then(function(response) {
+        alert('Thank you! We received your request and will reply soon by text.');
+      }).catch(function(error) {
+        alert('Sorry, there was a problem sending your request.');
+      });
+    });
+  </script>
 </body>
 </html>
