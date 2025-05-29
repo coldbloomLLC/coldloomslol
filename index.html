@@ -144,7 +144,6 @@
       max-width: 1250px;
       text-align: center;
     }
-    .services-section h2 {font-size: 2.1rem; color: var(--primary); font-weight: 700;}
    .services-grid {
   display: flex;
   flex-wrap: wrap;
@@ -154,13 +153,11 @@
   max-width: 100%;
   box-sizing: border-box;
 }
-
 .service-tile {
   flex: 1 1 calc(10% - 1.5rem); /* shrink to fit all 10 tiles per row */
   min-width: 150px;
   max-width: 220px;
 }
-
     .service-tile {
       cursor: pointer; background: var(--card); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 1.5rem 1rem; text-align: center;
@@ -222,7 +219,7 @@
       display: flex; flex-direction: column; gap: 0.3rem;
     }
     .cta-form label {font-weight: 700; margin-bottom: 0.18rem;}
-    .cta-form input, .cta-form textarea {
+    .cta-form input, .cta-form textarea, .cta-form select {
       width: 100%; padding: 0.86rem 0.9rem; margin-bottom: 1rem; border: 1.2px solid #00796b33; border-radius: 7px; font-size: 1rem; resize: vertical; background: #f6fafd;
       color:var(--text);
       font-family: var(--sans);
@@ -260,10 +257,91 @@
       cursor: pointer; transition: background 0.15s;
     }
     #scrollToTopBtn:focus, #scrollToTopBtn:hover {background: var(--primary-dark);}
+    /* Popup modal styles */
+    .popup-modal[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.31);
+      z-index: 9999;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .popup-modal .popup-content {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.18);
+      max-width: 98vw;
+      width: 370px;
+      padding: 2.2rem 1.7rem 1.4rem 1.7rem;
+      position: relative;
+      text-align: center;
+      font-family: var(--sans);
+    }
+    .popup-modal .popup-content h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-family: var(--mono);
+      font-size: 1.38rem;
+    }
+    .popup-modal .popup-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .popup-modal .popup-content input, 
+    .popup-modal .popup-content select,
+    .popup-modal .popup-content textarea {
+      margin-bottom: 0.65rem;
+      border-radius: 7px;
+      border: 1.2px solid #00796b33;
+      padding: 0.8rem 0.9rem;
+      font-size: 1rem;
+      background: #f6fafd;
+      color: var(--text);
+      font-family: var(--sans);
+    }
+    .popup-modal .popup-content button[type="submit"] {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.85rem 0;
+      font-size: 1.04rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 14px #00796b33;
+    }
+    .popup-modal .popup-content button[type="button"] {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      transition: color .15s;
+    }
+    .popup-modal .popup-content button[type="button"]:hover { color: var(--primary-dark);}
+    .popup-modal .success-message {
+      color: var(--primary-dark);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
     @media (max-width: 900px) {
       .hero, .cta-flex, .process-steps {flex-direction:column;gap:2.3rem;}
       .footer-flex {flex-direction:column;gap:1.2rem;}
       .nav-content {flex-direction:column;gap:1rem;}
+      .popup-modal .popup-content {width: 95vw;}
     }
   </style>
 </head>
@@ -284,6 +362,45 @@
     </div>
   </div>
 </nav>
+<!-- Popup Modal for Lead Capture Questionnaire -->
+<dialog id="lead-popup" class="popup-modal">
+  <div class="popup-content">
+    <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
+    <h2>Get Matched Quickly!<br><span style="font-size:1rem;font-weight:normal;color:var(--primary);">Tell us what you need</span></h2>
+    <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on">
+      <label for="popup-name">Full Name</label>
+      <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
+
+      <label for="popup-email">Email Address</label>
+      <input type="email" id="popup-email" name="email" placeholder="Email Address" required />
+
+      <label for="popup-phone">Phone Number</label>
+      <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required />
+
+      <label for="popup-service">Service Needed</label>
+      <select id="popup-service" name="service" required>
+        <option value="" disabled selected>Select a service</option>
+        <option>Window Washing</option>
+        <option>Power Washing</option>
+        <option>House Cleaning</option>
+        <option>Handyman</option>
+        <option>Pool Cleaning</option>
+        <option>Junk Removal</option>
+        <option>Fence Painting</option>
+        <option>Gutter Cleaning</option>
+        <option>ADU Services</option>
+        <option>Floor Installation</option>
+        <option>Other</option>
+      </select>
+
+      <label for="popup-message">Briefly describe your project or needs</label>
+      <textarea id="popup-message" name="message" placeholder="Your message..." required></textarea>
+
+      <button type="submit">Get My Quote</button>
+    </form>
+    <div class="success-message" id="lead-success" style="display:none;"></div>
+  </div>
+</dialog>
 <dialog id="login-dialog" aria-modal="true" aria-labelledby="modal-title">
   <button onclick="closeDialog()" aria-label="Close dialog" style="float:right;font-size:1.3rem;background:none;border:none;">&times;</button>
   <h2 id="modal-title" style="margin-top:0;font-size:1.2rem;color:var(--primary);font-family:var(--mono);">Sign In</h2>
@@ -291,7 +408,6 @@
   <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
 </dialog>
 <main id="main-content" tabindex="-1">
-
 <section class="hero-container reveal">
   <div class="hero-main">
     <h1>Real Pros. Right Near You.</h1>
@@ -305,8 +421,6 @@
     <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
   </div>
 </section>
-
-  
   </section>
   <!-- SERVICES -->
   <section class="services-section reveal">
@@ -504,6 +618,62 @@
       navigator.serviceWorker.register('service-worker.js');
     });
   }
+  // Popup logic for lead questionnaire
+  function openLeadPopup() {
+    const popup = document.getElementById('lead-popup');
+    if (popup && typeof popup.showModal === "function") {
+      popup.showModal();
+    } else if (popup) {
+      popup.setAttribute('open', 'true');
+      popup.style.display = 'flex';
+    }
+  }
+  function closeLeadPopup() {
+    const popup = document.getElementById('lead-popup');
+    if (popup && typeof popup.close === "function") {
+      popup.close();
+    } else if (popup) {
+      popup.removeAttribute('open');
+      popup.style.display = 'none';
+    }
+  }
+  // On load, show popup after slight delay (0.7s)
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(openLeadPopup, 700);
+  });
+  // Lead form submission logic
+  document.addEventListener('DOMContentLoaded', function() {
+    var leadForm = document.getElementById('lead-form');
+    var successMsg = document.getElementById('lead-success');
+    if (leadForm) {
+      leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new FormData(leadForm);
+        fetch(leadForm.action, {
+          method: "POST",
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(function(response) {
+          if (response.ok) {
+            leadForm.style.display = 'none';
+            successMsg.textContent = "Thank you! Your request has been received.";
+            successMsg.style.display = "block";
+            setTimeout(closeLeadPopup, 3500);
+          } else {
+            response.json().then(function(data){
+              successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
+              successMsg.style.display = "block";
+            });
+          }
+        }).catch(function(){
+          successMsg.textContent = "There was a problem submitting the form. Please try again.";
+          successMsg.style.display = "block";
+        });
+      });
+    }
+  });
 </script>
 </body>
 </html>
