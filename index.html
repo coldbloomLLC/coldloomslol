@@ -239,13 +239,94 @@
       background: var(--accent);
       color: #fff;
     }
-    footer {
+    /* Updated footer styles to fit new structure */
+    .site-footer {
       background: #101820;
       color: #fff;
-      text-align: center;
-      padding: 1.25rem 0;
-      margin-top: 2rem;
+      padding: 2.5rem 1rem 1rem 1rem;
       font-size: 1rem;
+      margin-top: 2rem;
+    }
+    .footer-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto 1rem auto;
+      text-align: left;
+    }
+    .footer-col {
+      flex: 1 1 150px;
+      min-width: 180px;
+      margin-bottom: 1rem;
+    }
+    .footer-col h4 {
+      color: #f5b100;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+    .footer-col a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      border-top: 1px solid #22303a;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+    .footer-social a {
+      margin: 0 0.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform 0.2s;
+    }
+    .footer-social a:hover {
+      transform: scale(1.15);
+    }
+    #scrollToTopBtn {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 2rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      transition: background 0.2s;
+    }
+    #scrollToTopBtn:hover {
+      background: var(--accent);
+      color: #101820;
+    }
+    @media (max-width: 900px) {
+      .footer-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .footer-col {
+        min-width: unset;
+      }
     }
     @media (max-width: 600px) {
       .hero-title { font-size: 2rem; }
@@ -255,6 +336,10 @@
       header { flex-direction: column; align-items: flex-start; }
       nav { margin-top: 0.5rem; }
       .cta { padding: 1.5rem 0.5rem; }
+      .footer-flex { flex-direction: column; gap: 0; }
+      .footer-col { margin-bottom: 1.5rem; }
+      .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
+      #scrollToTopBtn { right: 1rem; bottom: 1.25rem; width: 42px; height: 42px; font-size: 1.5rem; }
     }
   </style>
 </head>
@@ -276,7 +361,7 @@
     </form>
     <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="People at work" class="hero-img">
   </section>
-    <section class="services" id="services">
+  <section class="services" id="services">
     <div class="services-title">Popular Services</div>
     <div class="services-grid">
       <div class="service-card">
@@ -352,8 +437,191 @@
     <div class="cta-desc">Join thousands of happy customers. Get matched with reliable local pros today.</div>
     <button class="cta-btn">Get Started</button>
   </section>
-  <footer>
-    &copy; 2025 Cold Looms. Inspired by Thumbtack. All rights reserved.
+  <!-- Updated Footer Start -->
+  <footer class="site-footer" aria-label="Footer">
+    <div class="footer-flex">
+      <div class="footer-col">
+        <h4>Cold Looms</h4>
+        <a href="#">About</a>
+        <a href="#">Partner with Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Customers</h4>
+        <a href="#">How It Works</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Services Near Me</a>
+        <a href="#">Cost Estimates</a>
+      </div>
+      <div class="footer-col">
+        <h4>Pros</h4>
+        <a href="#">Sign Up as a Pro</a>
+        <a href="#">Pro Resources</a>
+        <a href="#">Pro Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help</a>
+        <a href="https://coldlooms.github.io/LOL/privacy.html">Privacy Policy</a>
+        <a href="https://coldlooms.github.io/LOL/terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Cold Looms | Smart Outreach for Real Clients</p>
+      <p>
+        <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
+      </p>
+      <div class="footer-social" style="margin-top:1rem;">
+        <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram" /></a>
+        <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook" /></a>
+        <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter" /></a>
+        <a href="#" aria-label="Gmail"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail" /></a>
+      </div>
+    </div>
   </footer>
+  <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+  <script>
+    // Mobile nav toggle
+    function toggleMobileNav() {
+      const navLinks = document.getElementById('main-nav-links');
+      if (navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+        document.body.style.overflow = "";
+      } else {
+        navLinks.classList.add('show');
+        document.body.style.overflow = "hidden";
+      }
+    }
+    // Close nav if clicked outside
+    document.addEventListener('click', function(e) {
+      const navLinks = document.getElementById('main-nav-links');
+      if (navLinks && navLinks.classList.contains('show')) {
+        if (!navLinks.contains(e.target) && !e.target.classList.contains('nav-mobile-toggle')) {
+          navLinks.classList.remove('show');
+          document.body.style.overflow = "";
+        }
+      }
+    });
+    // Animated scroll reveal
+    function revealOnScroll() {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.94) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+    // FAQ accordion logic
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const item = btn.closest('.faq-item');
+          const open = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+          document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', "false"));
+          if (!open) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', "true");
+          }
+        });
+      });
+    });
+
+    // Scroll to top and sticky nav
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 20);
+      document.getElementById('scrollToTopBtn').style.display = window.scrollY > 120 ? 'flex' : 'none';
+    });
+    document.getElementById('scrollToTopBtn').onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+    // City detection
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        const citySpan = document.getElementById('user-city');
+        if (citySpan && data.city && data.region) {
+          citySpan.textContent = data.city + ', ' + data.region;
+        } else if (citySpan && data.city) {
+          citySpan.textContent = data.city;
+        }
+      }).catch(() => {
+        const fallback = document.getElementById('user-city');
+        if (fallback) fallback.textContent = "your area";
+      });
+    // Modal logic using <dialog>
+    function openDialog(e) {
+      e.preventDefault();
+      const dialog = document.getElementById('login-dialog');
+      dialog.showModal();
+      setTimeout(() => dialog.querySelector('button[onclick="closeDialog()"]').focus(), 100);
+    }
+    function closeDialog() {
+      document.getElementById('login-dialog').close();
+    }
+    // PWA: register service worker if supported
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+    // Popup logic for lead questionnaire
+    function openLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.showModal === "function") {
+        popup.showModal();
+      } else if (popup) {
+        popup.setAttribute('open', 'true');
+        popup.style.display = 'flex';
+      }
+    }
+    function closeLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.close === "function") {
+        popup.close();
+      } else if (popup) {
+        popup.removeAttribute('open');
+        popup.style.display = 'none';
+      }
+    }
+    // On load, show popup after slight delay (0.7s)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(openLeadPopup, 700);
+    });
+    // Lead form submission logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var leadForm = document.getElementById('lead-form');
+      var successMsg = document.getElementById('lead-success');
+      if (leadForm) {
+        leadForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(leadForm);
+          fetch(leadForm.action, {
+            method: "POST",
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              leadForm.style.display = 'none';
+              successMsg.textContent = "Thank you! Your request has been received.";
+              successMsg.style.display = "block";
+              setTimeout(closeLeadPopup, 3500);
+            } else {
+              response.json().then(function(data){
+                successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
+                successMsg.style.display = "block";
+              });
+            }
+          }).catch(function(){
+            successMsg.textContent = "There was a problem submitting the form. Please try again.";
+            successMsg.style.display = "block";
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
