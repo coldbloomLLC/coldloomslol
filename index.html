@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="description" content="Cold Looms — Smart Outreach for Real Clients. Get matched with vetted pros instantly." />
   <meta name="theme-color" content="#fff" />
@@ -421,21 +421,33 @@
       background: var(--accent);
       color: #101820;
     }
-    @media (max-width: 900px) {
-      .footer-flex {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-      }
-      .footer-col {
-        min-width: unset;
-      }
+    /* Popup Modal styles */
+    .popup-modal::backdrop {
+      background: rgba(0,0,0,0.26);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .popup-modal {
+      border: none;
+      background: none;
+      padding: 0;
+      border-radius: var(--radius);
+      z-index: 1004;
+    }
+    .popup-content {
+      min-width: 320px;
+      max-width: 96vw;
+      padding: 2.5rem 1.5rem;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px #0002;
+      position: relative;
     }
     @media (max-width: 600px) {
-      .footer-flex { flex-direction: column; gap: 0; }
-      .footer-col { margin-bottom: 1.5rem; }
-      .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
-      #scrollToTopBtn { right: 1rem; bottom: 1.25rem; width: 42px; height: 42px; font-size: 1.5rem; }
+      .popup-content {
+        padding: 1.5rem 0.5rem !important;
+        min-width: unset !important;
+      }
     }
   </style>
 </head>
@@ -599,6 +611,45 @@
     </div>
   </footer>
   <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+
+  <!-- Popup Modal for Lead Capture Questionnaire -->
+  <dialog id="lead-popup" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close popup" onclick="closeLeadPopup()" style="position:absolute;top:1rem;right:1rem;font-size:2rem;background:none;border:none;color:var(--primary);cursor:pointer;">&times;</button>
+      <h2 style="color:var(--primary);font-weight:900;font-family:'Inter',sans-serif;font-size:1.6rem;margin:0 0 0.5rem 0;">Get Matched Quickly!<br>
+        <span style="font-size:1rem;font-weight:normal;color:var(--primary);">Tell us what you need</span>
+      </h2>
+      <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" style="display:flex;flex-direction:column;gap:0.7rem;">
+        <label for="popup-name">Full Name</label>
+        <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
+        <label for="popup-email">Email Address</label>
+        <input type="email" id="popup-email" name="email" placeholder="Email Address" required />
+        <label for="popup-phone">Phone Number</label>
+        <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required />
+        <label for="popup-service">Service Needed</label>
+        <select id="popup-service" name="service" required>
+          <option value="" disabled selected>Select a service</option>
+          <option>Window Washing</option>
+          <option>Power Washing</option>
+          <option>House Cleaning</option>
+          <option>Handyman</option>
+          <option>Pool Cleaning</option>
+          <option>Junk Removal</option>
+          <option>Fence Painting</option>
+          <option>Gutter Cleaning</option>
+          <option>ADU Services</option>
+          <option>Floor Installation</option>
+          <option>Other</option>
+        </select>
+        <label for="popup-message">Briefly describe your project or needs</label>
+        <textarea id="popup-message" name="message" placeholder="Your message..." required></textarea>
+        <button type="submit" style="background:var(--primary);color:#fff;font-weight:800;font-size:1.1rem;padding:1rem 0;border:none;border-radius:var(--radius);margin-top:0.5rem;cursor:pointer;transition:background 0.2s;">Get My Quote</button>
+      </form>
+      <div class="success-message" id="lead-success" style="display:none;color:var(--primary);font-weight:700;font-size:1.15em;text-align:center;margin-top:1.2rem;"></div>
+    </div>
+  </dialog>
+  <!-- End Popup Modal -->
+
   <script>
     // Mobile nav toggle
     function toggleMobileNav() {
