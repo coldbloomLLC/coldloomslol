@@ -70,6 +70,17 @@
       padding: 4rem 1rem 3rem 1rem;
       background: linear-gradient(120deg, #f5faff 60%, #d6ebff 100%);
     }
+    .hero-logo-float {
+      margin-bottom: 1.5rem;
+    }
+    .hero-logo-float img {
+      max-width: 120px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px #0001;
+    }
     .hero-title {
       font-size: 2.5rem;
       font-weight: 700;
@@ -204,7 +215,6 @@
       font-weight: 600;
       font-size: 1rem;
     }
-    /* NEW CTA SECTION STYLES */
     .cta-section {
       background: var(--primary);
       color: #fff;
@@ -333,7 +343,6 @@
       .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
       #scrollToTopBtn { right: 1rem; bottom: 1.25rem; width: 42px; height: 42px; font-size: 1.5rem; }
     }
-    /* Footer styles remain unchanged... */
     .site-footer {
       background: #101820;
       color: #fff;
@@ -440,6 +449,9 @@
     </nav>
   </header>
   <section class="hero">
+    <div class="hero-logo-float">
+      <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
+    </div>
     <div class="hero-title">Find trusted pros for every project</div>
     <div class="hero-desc">From home repairs to creative gigs, Cold Looms helps you connect with top local professionals.<br>Get matched in minutes. Get it done right.</div>
     <form class="hero-search" onsubmit="return false;">
