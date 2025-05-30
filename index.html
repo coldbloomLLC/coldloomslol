@@ -157,95 +157,137 @@
       font-size: 1rem;
       color: #444;
     }
-    .testimonials {
+
+    /* --- NEW TESTIMONIALS and CTA SECTION STYLES --- */
+    .testimonials.reveal, .cta-section.reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s cubic-bezier(.47,1.64,.41,.8), transform 0.6s cubic-bezier(.47,1.64,.41,.8);
+      will-change: opacity, transform;
+      margin-top: 3rem;
+    }
+    .testimonials.reveal.visible, .cta-section.reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .testimonials.reveal {
       background: var(--muted);
-      padding: 3rem 1rem;
-    }
-    .testimonials-title {
+      padding: 3rem 1rem 2rem 1rem;
       text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .testimonial-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px #0001;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .testimonial-text {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    .testimonial-user {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #eee;
-    }
-    .testimonial-name {
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .cta {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 2rem;
       border-radius: var(--radius);
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 2.5rem auto 0 auto;
+      box-shadow: 0 2px 8px #0001;
     }
-    .cta-title {
+    .testimonials.reveal h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.1rem;
+    }
+    .testimonials.reveal blockquote {
+      font-size: 1.2rem;
+      color: #333;
+      font-style: italic;
+      margin: 0 auto 1.3rem auto;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .testimonials.reveal .disclaimer {
+      font-size: 0.98rem;
+      color: #777;
+      margin-top: 0.7rem;
+    }
+    .cta-section {
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius);
+      max-width: 1100px;
+      margin: 2.5rem auto 0 auto;
+      box-shadow: 0 2px 12px #0002;
+      padding: 2.5rem 1rem 2.5rem 1rem;
+    }
+    .cta-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .cta-text {
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 420px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .cta-text h2 {
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      color: #fff;
     }
-    .cta-desc {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+    .cta-text p {
+      font-size: 1.15rem;
+      margin-bottom: 1.3rem;
+      color: #e8f4fd;
     }
-    .cta-btn {
+    .cta-text img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px #0001;
+      margin-top: 1.1rem;
+    }
+    .cta-form {
+      flex: 1 1 320px;
+      min-width: 260px;
       background: #fff;
-      color: var(--primary);
+      color: #222;
+      border-radius: var(--radius);
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 8px #0003;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      max-width: 420px;
+    }
+    .cta-form label {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: #008cfa;
+    }
+    .cta-form input,
+    .cta-form textarea {
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 0.7rem 0.9rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #f8f9fa;
+      color: #222;
+      resize: vertical;
+    }
+    .cta-form textarea {
+      min-height: 80px;
+      max-height: 180px;
+    }
+    .cta-form button {
+      background: var(--primary);
+      color: #fff;
       border: none;
       border-radius: var(--radius);
-      padding: 1rem 2.2rem;
+      padding: 0.95rem 0;
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      margin-top: 0.7rem;
+      transition: background 0.2s;
     }
-    .cta-btn:hover {
+    .cta-form button:hover {
       background: var(--accent);
-      color: #fff;
-    }
-    /* Updated footer styles to fit new structure */
-    .site-footer {
-      background: #101820;
-      color: #fff;
-      padding: 2.5rem 1rem 1rem 1rem;
-      font-size: 1rem;
-      margin-top: 2rem;
+      color: #101820;
     }
     .footer-flex {
       display: flex;
@@ -327,19 +369,26 @@
       .footer-col {
         min-width: unset;
       }
+      .cta-flex {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .cta-text, .cta-form {
+        max-width: unset;
+      }
     }
     @media (max-width: 600px) {
       .hero-title { font-size: 2rem; }
       .services-title,
-      .testimonials-title,
-      .cta-title { font-size: 1.3rem; }
+      .cta-text h2,
+      .testimonials.reveal h2 { font-size: 1.3rem; }
       header { flex-direction: column; align-items: flex-start; }
       nav { margin-top: 0.5rem; }
-      .cta { padding: 1.5rem 0.5rem; }
+      .cta-section { padding: 1.5rem 0.5rem; }
       .footer-flex { flex-direction: column; gap: 0; }
       .footer-col { margin-bottom: 1.5rem; }
-      .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
       #scrollToTopBtn { right: 1rem; bottom: 1.25rem; width: 42px; height: 42px; font-size: 1.5rem; }
+      .testimonials.reveal, .cta-section { margin: 1.3rem auto 0 auto; }
     }
   </style>
 </head>
@@ -406,38 +455,40 @@
       </div>
     </div>
   </section>
-  <section class="testimonials" id="testimonials">
-    <div class="testimonials-title">What Our Customers Say</div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-text">“Cold Looms matched me with a fantastic painter. The job was quick, affordable, and looks amazing!”</div>
-        <div class="testimonial-user">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg" class="testimonial-avatar" alt="User">
-          <span class="testimonial-name">Jessica T.</span>
-        </div>
+  <!-- NEW TESTIMONIALS SECTION -->
+  <section class="testimonials reveal" aria-label="User Testimonials">
+    <h2>Success Stories</h2>
+    <blockquote>
+      “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
+    </blockquote>
+    <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+  </section>
+  <!-- NEW CTA / CONTACT SECTION -->
+  <section class="cta-section reveal" id="contact" aria-label="Contact Form">
+    <div class="cta-flex">
+      <div class="cta-text">
+        <h2>Find the Right Pro in Minutes.</h2>
+        <p>Tell us what you need done – we’ll match you with ready-to-work professionals in your area.</p>
+        <img src="https://i.postimg.cc/wTzDY31N/Chat-GPT-Image-Apr-24-2025-09-55-22-AM.png" alt="Worker illustration" loading="lazy" decoding="async" />
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-text">“I needed a handyman on short notice. Cold Looms delivered, and the repairs were perfect.”</div>
-        <div class="testimonial-user">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-avatar" alt="User">
-          <span class="testimonial-name">Michael B.</span>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-text">“The cleaning crew I found through Cold Looms was outstanding. Highly recommended!”</div>
-        <div class="testimonial-user">
-          <img src="https://randomuser.me/api/portraits/women/43.jpg" class="testimonial-avatar" alt="User">
-          <span class="testimonial-name">Renee F.</span>
-        </div>
-      </div>
+      <form action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" aria-label="Get matched form" class="cta-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+        <label for="address">Street Address</label>
+        <input type="text" id="address" name="address" placeholder="Street Address" required />
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required />
+        <label for="message">Tell us what you need or offer...</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   </section>
-  <section class="cta" id="contact">
-    <div class="cta-title">Ready to start your next project?</div>
-    <div class="cta-desc">Join thousands of happy customers. Get matched with reliable local pros today.</div>
-    <button class="cta-btn">Get Started</button>
-  </section>
-  <!-- Updated Footer Start -->
+  <!-- FOOTER -->
   <footer class="site-footer" aria-label="Footer">
     <div class="footer-flex">
       <div class="footer-col">
@@ -482,28 +533,7 @@
   </footer>
   <button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
   <script>
-    // Mobile nav toggle
-    function toggleMobileNav() {
-      const navLinks = document.getElementById('main-nav-links');
-      if (navLinks.classList.contains('show')) {
-        navLinks.classList.remove('show');
-        document.body.style.overflow = "";
-      } else {
-        navLinks.classList.add('show');
-        document.body.style.overflow = "hidden";
-      }
-    }
-    // Close nav if clicked outside
-    document.addEventListener('click', function(e) {
-      const navLinks = document.getElementById('main-nav-links');
-      if (navLinks && navLinks.classList.contains('show')) {
-        if (!navLinks.contains(e.target) && !e.target.classList.contains('nav-mobile-toggle')) {
-          navLinks.classList.remove('show');
-          document.body.style.overflow = "";
-        }
-      }
-    });
-    // Animated scroll reveal
+    // Scroll reveal for .reveal elements
     function revealOnScroll() {
       document.querySelectorAll('.reveal').forEach(el => {
         const rect = el.getBoundingClientRect();
@@ -512,116 +542,11 @@
     }
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('DOMContentLoaded', revealOnScroll);
-
-    // FAQ accordion logic
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.faq-question').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          const item = btn.closest('.faq-item');
-          const open = item.classList.contains('open');
-          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-          document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', "false"));
-          if (!open) {
-            item.classList.add('open');
-            btn.setAttribute('aria-expanded', "true");
-          }
-        });
-      });
-    });
-
-    // Scroll to top and sticky nav
+    // Scroll to top button
     window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 20);
       document.getElementById('scrollToTopBtn').style.display = window.scrollY > 120 ? 'flex' : 'none';
     });
     document.getElementById('scrollToTopBtn').onclick = () => window.scrollTo({top:0, behavior:'smooth'});
-    // City detection
-    fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        const citySpan = document.getElementById('user-city');
-        if (citySpan && data.city && data.region) {
-          citySpan.textContent = data.city + ', ' + data.region;
-        } else if (citySpan && data.city) {
-          citySpan.textContent = data.city;
-        }
-      }).catch(() => {
-        const fallback = document.getElementById('user-city');
-        if (fallback) fallback.textContent = "your area";
-      });
-    // Modal logic using <dialog>
-    function openDialog(e) {
-      e.preventDefault();
-      const dialog = document.getElementById('login-dialog');
-      dialog.showModal();
-      setTimeout(() => dialog.querySelector('button[onclick="closeDialog()"]').focus(), 100);
-    }
-    function closeDialog() {
-      document.getElementById('login-dialog').close();
-    }
-    // PWA: register service worker if supported
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
-      });
-    }
-    // Popup logic for lead questionnaire
-    function openLeadPopup() {
-      const popup = document.getElementById('lead-popup');
-      if (popup && typeof popup.showModal === "function") {
-        popup.showModal();
-      } else if (popup) {
-        popup.setAttribute('open', 'true');
-        popup.style.display = 'flex';
-      }
-    }
-    function closeLeadPopup() {
-      const popup = document.getElementById('lead-popup');
-      if (popup && typeof popup.close === "function") {
-        popup.close();
-      } else if (popup) {
-        popup.removeAttribute('open');
-        popup.style.display = 'none';
-      }
-    }
-    // On load, show popup after slight delay (0.7s)
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(openLeadPopup, 700);
-    });
-    // Lead form submission logic
-    document.addEventListener('DOMContentLoaded', function() {
-      var leadForm = document.getElementById('lead-form');
-      var successMsg = document.getElementById('lead-success');
-      if (leadForm) {
-        leadForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          var data = new FormData(leadForm);
-          fetch(leadForm.action, {
-            method: "POST",
-            body: data,
-            headers: {
-              'Accept': 'application/json'
-            }
-          }).then(function(response) {
-            if (response.ok) {
-              leadForm.style.display = 'none';
-              successMsg.textContent = "Thank you! Your request has been received.";
-              successMsg.style.display = "block";
-              setTimeout(closeLeadPopup, 3500);
-            } else {
-              response.json().then(function(data){
-                successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
-                successMsg.style.display = "block";
-              });
-            }
-          }).catch(function(){
-            successMsg.textContent = "There was a problem submitting the form. Please try again.";
-            successMsg.style.display = "block";
-          });
-        });
-      }
-    });
   </script>
 </body>
 </html>
