@@ -204,42 +204,136 @@
       font-weight: 600;
       font-size: 1rem;
     }
-    .cta {
+    /* NEW CTA SECTION STYLES */
+    .cta-section {
       background: var(--primary);
       color: #fff;
-      text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 2rem;
       border-radius: var(--radius);
+      margin: 2.5rem auto 0 auto;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 0;
+      box-shadow: 0 2px 12px #0002;
     }
-    .cta-title {
+    .cta-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 0;
+    }
+    .cta-text {
+      flex: 1 1 330px;
+      min-width: 280px;
+      padding: 2.5rem 2rem 2.5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(0,0,0,0.05);
+      border-top-left-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+    }
+    .cta-text h2 {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 900;
       margin-bottom: 1rem;
-    }
-    .cta-desc {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-    .cta-btn {
-      background: #fff;
-      color: var(--primary);
-      border: none;
-      border-radius: var(--radius);
-      padding: 1rem 2.2rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .cta-btn:hover {
-      background: var(--accent);
       color: #fff;
     }
-    /* Updated footer styles to fit new structure */
+    .cta-text p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      color: #e7eaf1;
+    }
+    .cta-text img {
+      max-width: 185px;
+      margin-top: 1rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px #0001;
+    }
+    .cta-form {
+      flex: 1 1 350px;
+      min-width: 260px;
+      padding: 2.5rem 2.5rem 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+      color: #222;
+      border-top-right-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+    }
+    .cta-form label {
+      font-weight: 600;
+      margin-top: 0.8rem;
+      margin-bottom: 0.25rem;
+      color: #222;
+    }
+    .cta-form input,
+    .cta-form textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      background: #f5faff;
+      color: #222;
+      outline: none;
+    }
+    .cta-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .cta-form button[type="submit"] {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 1rem 0;
+      border: none;
+      border-radius: var(--radius);
+      margin-top: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-form button[type="submit"]:hover {
+      background: #0070c0;
+    }
+    .disclaimer {
+      font-size: 0.98rem;
+      margin-top: 0.5rem;
+      color: #ffe08e;
+      opacity: 0.9;
+    }
+    @media (max-width: 900px) {
+      .cta-flex {
+        flex-direction: column;
+      }
+      .cta-text,
+      .cta-form {
+        border-radius: 0;
+        border-top-left-radius: var(--radius);
+        border-top-right-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+        padding: 2rem 1.5rem;
+      }
+      .cta-section {
+        margin-top: 2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2rem; }
+      .services-title,
+      .testimonials-title,
+      .cta-text h2 { font-size: 1.3rem; }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 0.5rem; }
+      .cta-section { padding: 0; }
+      .footer-flex { flex-direction: column; gap: 0; }
+      .footer-col { margin-bottom: 1.5rem; }
+      .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
+      #scrollToTopBtn { right: 1rem; bottom: 1.25rem; width: 42px; height: 42px; font-size: 1.5rem; }
+    }
+    /* Footer styles remain unchanged... */
     .site-footer {
       background: #101820;
       color: #fff;
@@ -329,13 +423,6 @@
       }
     }
     @media (max-width: 600px) {
-      .hero-title { font-size: 2rem; }
-      .services-title,
-      .testimonials-title,
-      .cta-title { font-size: 1.3rem; }
-      header { flex-direction: column; align-items: flex-start; }
-      nav { margin-top: 0.5rem; }
-      .cta { padding: 1.5rem 0.5rem; }
       .footer-flex { flex-direction: column; gap: 0; }
       .footer-col { margin-bottom: 1.5rem; }
       .site-footer { padding-left: 0.5rem; padding-right: 0.5rem; }
@@ -432,11 +519,33 @@
       </div>
     </div>
   </section>
-  <section class="cta" id="contact">
-    <div class="cta-title">Ready to start your next project?</div>
-    <div class="cta-desc">Join thousands of happy customers. Get matched with reliable local pros today.</div>
-    <button class="cta-btn">Get Started</button>
+  <!-- NEW CTA SECTION -->
+  <section class="cta-section reveal" id="contact" aria-label="Contact Form">
+    <div class="cta-flex">
+      <div class="cta-text">
+        <h2>Find the Right Pro in Minutes.</h2>
+        <p>Tell us what you need done – we’ll match you with ready-to-work professionals in your area.</p>
+        <img src="https://i.postimg.cc/wTzDY31N/Chat-GPT-Image-Apr-24-2025-09-55-22-AM.png" alt="Worker illustration" loading="lazy" decoding="async" />
+        <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+      </div>
+      <form action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" aria-label="Get matched form" class="cta-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required />
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+        <label for="address">Street Address</label>
+        <input type="text" id="address" name="address" placeholder="Street Address" required />
+        <label for="zip">ZIP Code</label>
+        <input type="text" id="zip" name="zip" placeholder="ZIP Code" required />
+        <label for="message">Tell us what you need or offer...</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </section>
+  <!-- END NEW CTA SECTION -->
   <!-- Updated Footer Start -->
   <footer class="site-footer" aria-label="Footer">
     <div class="footer-flex">
