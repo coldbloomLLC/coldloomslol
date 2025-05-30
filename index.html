@@ -1,1 +1,339 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cold Looms - Find Trusted Local Pros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #008cfa;
+      --accent: #f5b100;
+      --bg: #fff;
+      --text: #222;
+      --muted: #f8f9fa;
+      --border: #e3e4e8;
+      --radius: 10px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem 3rem 1rem;
+      background: linear-gradient(120deg, #f5faff 60%, #d6ebff 100%);
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+    .hero-search {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    .hero-search input {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius) 0 0 var(--radius);
+      font-size: 1rem;
+      outline: none;
+    }
+    .hero-search button {
+      padding: 0.85rem 1.5rem;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .hero-search button:hover {
+      background: #0070c0;
+    }
+    .hero-img {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px #0001;
+      object-fit: cover;
+    }
+    .services {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .services-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--muted);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px #0001;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 24px #0002;
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .service-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .service-desc {
+      font-size: 1rem;
+      color: #444;
+    }
+    .testimonials {
+      background: var(--muted);
+      padding: 3rem 1rem;
+    }
+    .testimonials-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px #0001;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .testimonial-text {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #eee;
+    }
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .cta {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 2rem;
+      border-radius: var(--radius);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .cta-desc {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      background: #fff;
+      color: var(--primary);
+      border: none;
+      border-radius: var(--radius);
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    footer {
+      background: #101820;
+      color: #fff;
+      text-align: center;
+      padding: 1.25rem 0;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2rem; }
+      .services-title,
+      .testimonials-title,
+      .cta-title { font-size: 1.3rem; }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 0.5rem; }
+      .cta { padding: 1.5rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Cold Looms</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-title">Find trusted pros for every project</div>
+    <div class="hero-desc">From home repairs to creative gigs, Cold Looms helps you connect with top local professionals.<br>Get matched in minutes. Get it done right.</div>
+    <form class="hero-search" onsubmit="return false;">
+      <input type="text" placeholder="What service do you need? (e.g., Plumber, Photographer)">
+      <button type="submit">Search</button>
+    </form>
+    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="People at work" class="hero-img">
+  </section>
+  <section class="services" id="services">
+    <div class="services-title">Popular Services</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <div class="service-title">Handyman</div>
+        <div class="service-desc">Repairs, installations, and everything in-between by skilled professionals.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <div class="service-title">Cleaning</div>
+        <div class="service-desc">Home, office, and specialty cleaning done right, every time.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <div class="service-title">Painting</div>
+        <div class="service-desc">Interior and exterior painting with a flawless finish.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📷</div>
+        <div class="service-title">Photography</div>
+        <div class="service-desc">Capture your moments with local creative professionals.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <div class="service-title">Web Design</div>
+        <div class="service-desc">Modern websites and digital solutions tailored for your business.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪴</div>
+        <div class="service-title">Landscaping</div>
+        <div class="service-desc">Transform your outdoor space with expert design and care.</div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-title">What Our Customers Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-text">“Cold Looms matched me with a fantastic painter. The job was quick, affordable, and looks amazing!”</div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" class="testimonial-avatar" alt="User">
+          <span class="testimonial-name">Jessica T.</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">“I needed a handyman on short notice. Cold Looms delivered, and the repairs were perfect.”</div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-avatar" alt="User">
+          <span class="testimonial-name">Michael B.</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">“The cleaning crew I found through Cold Looms was outstanding. Highly recommended!”</div>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/43.jpg" class="testimonial-avatar" alt="User">
+          <span class="testimonial-name">Renee F.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta" id="contact">
+    <div class="cta-title">Ready to start your next project?</div>
+    <div class="cta-desc">Join thousands of happy customers. Get matched with reliable local pros today.</div>
+    <button class="cta-btn">Get Started</button>
+  </section>
+  <footer>
+    &copy; 2025 Cold Looms. Inspired by Thumbtack. All rights reserved.
+  </footer>
+</body>
+</html>
