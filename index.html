@@ -493,6 +493,53 @@
       .cta-form, .cta-text, .services-section, .process-section, .faq-section {padding: 0.4rem !important;}
       .cta-form input, .cta-form textarea, .cta-form select {padding: 0.7rem 0.6rem;}
     }
+    /* Thumbtack-style stacked cards for Popular Services on desktop */
+    @media (min-width: 900px) {
+      .popular-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 2.2rem;
+        justify-items: center;
+        padding: 2.5rem 0;
+      }
+      .popular-services-grid .service-tile {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 22px rgba(60,60,60,0.12);
+        padding: 2.1rem 1.25rem 1.3rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 210px;
+        max-width: 260px;
+        min-height: 295px;
+        transition: box-shadow 0.18s, transform 0.18s;
+        cursor: pointer;
+      }
+      .popular-services-grid .service-tile:hover {
+        box-shadow: 0 8px 36px rgba(60,60,60,0.16);
+        transform: translateY(-6px) scale(1.045);
+        background: #e0f2f1;
+      }
+      .popular-services-grid .service-tile img {
+        width: 110px;
+        height: 110px;
+        object-fit: contain;
+        border-radius: 13px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 2px 10px rgba(80,80,80,0.07);
+        background: #f8f8f8;
+        display: block;
+      }
+      .popular-services-grid .service-tile h3 {
+        margin: 0;
+        font-size: 1.12rem;
+        font-weight: 700;
+        color: #00796b;
+        text-align: center;
+        letter-spacing: 0.01em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -570,9 +617,9 @@
   </div>
 </section>
 
-<!-- POPULAR SERVICES (NO BIG BOX) -->
+<!-- POPULAR SERVICES (STACKED DESIGN) -->
 <h2 style="text-align:center;margin-top:2rem;">Popular services near <span id="user-city" style="color:var(--primary);">your city</span></h2>
-<div class="services-grid" style="margin-bottom:2.5rem;">
+<div class="services-grid popular-services-grid" style="margin-bottom:2.5rem;">
   <div class="service-tile" tabindex="0" onclick="location.href='window-washing.html'">
     <img src="https://i.ibb.co/C57mWGkV/Chat-GPT-Image-Apr-18-2025-01-54-07-PM.png" alt="Window Washing" loading="lazy" decoding="async">
     <h3>Window Washing</h3>
