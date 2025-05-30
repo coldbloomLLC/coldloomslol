@@ -299,6 +299,79 @@
       min-height: 48px;
     }
     .cta-form button:hover, .cta-form button:focus {background: var(--primary-dark);}
+    /* FAQ section */
+    .faq-section {
+      max-width: 900px;
+      margin: 3.5rem auto 0 auto;
+      padding: 2.7rem 1.5rem 3rem 1.5rem;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .faq-section h2 {
+      color: var(--primary);
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 2.2rem;
+    }
+    .faq-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .faq-item {
+      margin-bottom: 1.2rem;
+      border-radius: 9px;
+      background: var(--accent);
+      box-shadow: 0 2px 16px #00796b0c;
+      overflow: hidden;
+      transition: box-shadow .18s;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: none;
+      color: var(--primary-dark);
+      font-size: 1.15rem;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      padding: 1.2rem 1.8rem 1.2rem 1.2rem;
+      cursor: pointer;
+      transition: background .14s;
+      text-align: left;
+      gap: 0.8rem;
+    }
+    .faq-question:focus-visible {
+      background: var(--primary);
+      color: #fff;
+    }
+    .faq-question span.faq-arrow {
+      margin-left: auto;
+      font-size: 1.4rem;
+      transition: transform .24s;
+      color: #666;
+    }
+    .faq-item.open .faq-question span.faq-arrow {
+      transform: rotate(90deg);
+      color: var(--primary);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #fdfdfd;
+      color: #333;
+      font-size: 1.04rem;
+      padding: 0 1.7rem;
+      transition: max-height .32s cubic-bezier(.35,1.5,.45,1.1), padding .22s;
+    }
+    .faq-item.open .faq-answer {
+      padding: 1rem 1.7rem 1.5rem 1.7rem;
+      max-height: 400px;
+      transition: max-height .32s cubic-bezier(.35,1.5,.45,1.1), padding .22s;
+    }
     .site-footer {background:#fff;padding:3.5rem 2rem 2rem 2rem;color:var(--text-dim);font-size:1rem;border-radius:var(--radius) var(--radius) 0 0;box-shadow:0 -2px 18px #00796b0a;margin-top:3rem;}
     .footer-flex {max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;}
     .footer-col {flex:1 1 180px;min-width:140px;}
@@ -408,6 +481,7 @@
       .cta-section {padding: 2rem 0.6rem;}
       .cta-form {max-width: 99vw; min-width: 0; width: 100%; padding: 1.1rem;}
       .cta-text {max-width: 99vw; min-width: 0; width: 100%;}
+      .faq-section {padding: 1.1rem 0.2rem 2rem 0.2rem;}
     }
     @media (max-width: 600px) {
       .nav-content {padding: 1rem 0.7rem;}
@@ -416,7 +490,7 @@
       .cta-form input, .cta-form textarea, .cta-form select {font-size: 1rem;}
     }
     @media (max-width: 400px) {
-      .cta-form, .cta-text, .services-section, .process-section {padding: 0.4rem !important;}
+      .cta-form, .cta-text, .services-section, .process-section, .faq-section {padding: 0.4rem !important;}
       .cta-form input, .cta-form textarea, .cta-form select {padding: 0.7rem 0.6rem;}
     }
   </style>
@@ -439,6 +513,7 @@
     </div>
   </div>
 </nav>
+<!-- Popup Modal for Lead Capture Questionnaire -->
 <dialog id="lead-popup" class="popup-modal">
   <div class="popup-content">
     <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
@@ -591,7 +666,69 @@
     </form>
   </div>
 </section>
-</main>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How does Cold Looms match me with professionals?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We use location and project details to instantly connect you with the best available, vetted local pros in your area. Just tell us what you need, and we’ll handle the rest!
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Is Cold Looms free for customers?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Yes! Using Cold Looms to request quotes and connect with professionals is completely free for customers.
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How quickly will I hear from a pro?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Most customers receive replies from interested pros within minutes, often within the hour!
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Who are the professionals on Cold Looms?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Every pro is reviewed and vetted for experience and reliability. We work with local experts in a wide variety of fields, from cleaning and repairs to home improvement.
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Can I become a pro on Cold Looms?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Absolutely! If you’re a skilled professional looking for more clients, <a href="#contact">contact us today</a> and we’ll help you get started.
+        </p>
+      </div>
+    </li>
+  </ul>
+</section>
+
 <footer class="site-footer" aria-label="Footer">
   <div class="footer-flex">
     <div class="footer-col">
@@ -666,6 +803,23 @@
   }
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+  // FAQ accordion logic
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', "false"));
+        if (!open) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', "true");
+        }
+      });
+    });
+  });
+
   // Scroll to top and sticky nav
   window.addEventListener('scroll', () => {
     document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 20);
