@@ -498,4 +498,443 @@
   </style>
 </head>
 <body>
-<!-- Your HTML content goes here (unchanged) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="navbar" aria-label="Main Navigation">
+  <div class="nav-content">
+    <a href="index.html" class="nav-logo">
+      <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Logo" loading="lazy" decoding="async" />
+      Cold Looms
+    </a>
+    <button class="nav-mobile-toggle" aria-label="Open navigation" onclick="toggleMobileNav()">☰</button>
+    <div class="nav-links" id="main-nav-links">
+      <a href="LOL.html" target="_blank" rel="noopener noreferrer" class="nav-link">About Us</a>
+      <a href="#contact" class="nav-link">Get Started</a>
+      <a href="https://coldlooms.github.io/LOL/privacy.html" class="nav-link" rel="noopener noreferrer">Privacy</a>
+      <a href="https://coldlooms.github.io/LOL/terms.html" class="nav-link" rel="noopener noreferrer">Terms</a>
+      <button class="nav-signin" aria-haspopup="dialog" aria-controls="login-dialog" onclick="openDialog(event)">Sign In</button>
+    </div>
+  </div>
+</nav>
+<!-- Popup Modal for Lead Capture Questionnaire -->
+<dialog id="lead-popup" class="popup-modal">
+  <div class="popup-content">
+    <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
+    <h2>Get Matched Quickly!<br><span style="font-size:1rem;font-weight:normal;color:var(--primary);">Tell us what you need</span></h2>
+    <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on">
+      <label for="popup-name">Full Name</label>
+      <input type="text" id="popup-name" name="name" placeholder="Your Name" required />
+      <label for="popup-email">Email Address</label>
+      <input type="email" id="popup-email" name="email" placeholder="Email Address" required />
+      <label for="popup-phone">Phone Number</label>
+      <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required />
+      <label for="popup-service">Service Needed</label>
+      <select id="popup-service" name="service" required>
+        <option value="" disabled selected>Select a service</option>
+        <option>Window Washing</option>
+        <option>Power Washing</option>
+        <option>House Cleaning</option>
+        <option>Handyman</option>
+        <option>Pool Cleaning</option>
+        <option>Junk Removal</option>
+        <option>Fence Painting</option>
+        <option>Gutter Cleaning</option>
+        <option>ADU Services</option>
+        <option>Floor Installation</option>
+        <option>Other</option>
+      </select>
+      <label for="popup-message">Briefly describe your project or needs</label>
+      <textarea id="popup-message" name="message" placeholder="Your message..." required></textarea>
+      <button type="submit">Get My Quote</button>
+    </form>
+    <div class="success-message" id="lead-success" style="display:none;"></div>
+  </div>
+</dialog>
+<dialog id="login-dialog" aria-modal="true" aria-labelledby="modal-title">
+  <button onclick="closeDialog()" aria-label="Close dialog" style="float:right;font-size:1.3rem;background:none;border:none;">&times;</button>
+  <h2 id="modal-title" style="margin-top:0;font-size:1.2rem;color:var(--primary);font-family:var(--mono);">Sign In</h2>
+  <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
+  <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
+</dialog>
+<main id="main-content" tabindex="-1">
+
+<!-- HERO SECTION -->
+<section class="hero reveal">
+  <div class="hero-main">
+    <h1>Real Pros. Right Near You.</h1>
+    <p>Cold Looms connects you to professionals in your area—fast and reliable.</p>
+    <a href="#contact" class="cta-btn">Get Started</a>
+    <div style="margin-top:2rem;font-size:0.98rem;color:#aaa;font-family:var(--mono);letter-spacing:0.02em;">
+      <span style="background:var(--primary);color:#fff;padding:0.18em 0.7em;border-radius:4px;">Local Matching</span>
+    </div>
+  </div>
+  <div class="hero-logo-float">
+    <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
+  </div>
+</section>
+
+<!-- POPULAR SERVICES (NO BIG BOX) -->
+<h2 style="text-align:center;margin-top:2rem;">Popular services near <span id="user-city" style="color:var(--primary);">your city</span></h2>
+<div class="services-grid" style="margin-bottom:2.5rem;">
+  <div class="service-tile" tabindex="0" onclick="location.href='window-washing.html'">
+    <img src="https://i.ibb.co/C57mWGkV/Chat-GPT-Image-Apr-18-2025-01-54-07-PM.png" alt="Window Washing" loading="lazy" decoding="async">
+    <h3>Window Washing</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='power-washing.html'">
+    <img src="https://i.ibb.co/Df1F32pW/Chat-GPT-Image-Apr-18-2025-10-08-22-AM.png" alt="Power Washing" loading="lazy" decoding="async">
+    <h3>Power Washing</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='house-cleaning.html'">
+    <img src="https://i.ibb.co/ch0GNqXB/Chat-GPT-Image-Apr-18-2025-10-13-50-AM.png" alt="House Cleaning" loading="lazy" decoding="async">
+    <h3>House Cleaning</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='handyman.html'">
+    <img src="https://i.ibb.co/mC7W236y/Chat-GPT-Image-Apr-18-2025-02-26-44-PM.png" alt="Handyman" loading="lazy" decoding="async">
+    <h3>Handyman</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='pool-cleaning.html'">
+    <img src="https://i.postimg.cc/YSrtcHsQ/Chat-GPT-Image-Apr-25-2025-07-45-00-AM.png" alt="Pool Cleaning" loading="lazy" decoding="async">
+    <h3>Pool Cleaning</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='junk-removal.html'">
+    <img src="https://i.postimg.cc/WbhYtfQg/Chat-GPT-Image-Apr-25-2025-07-42-56-AM.png" alt="Junk Removal" loading="lazy" decoding="async">
+    <h3>Junk Removal</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='fence-painting.html'">
+    <img src="https://i.ibb.co/tMS54rt8/Chat-GPT-Image-Apr-18-2025-02-32-26-PM.png" alt="Fence Painting" loading="lazy" decoding="async">
+    <h3>Fence Painting</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='gutter-cleaning.html'">
+    <img src="https://i.postimg.cc/rsmQCZpX/GUTTER-CLEANING.png" alt="Gutter Cleaning" loading="lazy" decoding="async">
+    <h3>Gutter Cleaning</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='adu-services.html'">
+    <img src="https://i.postimg.cc/X70ymZ4h/Chat-GPT-Image-Apr-25-2025-07-39-34-AM.png" alt="ADU Services" loading="lazy" decoding="async">
+    <h3>ADU Services</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='floor-installation.html'">
+    <img src="https://i.postimg.cc/FK2jKTXF/Chat-GPT-Image-Apr-25-2025-07-40-58-AM.png" alt="Floor Installation" loading="lazy" decoding="async">
+    <h3>Floor Installation</h3>
+  </div>
+</div>
+
+<!-- SERVICES YOU MIGHT ALSO LIKE (NEW SECTION) -->
+<h2 style="text-align:center;margin-top:2rem;">Services You Might Also Like</h2>
+<div class="services-grid" style="margin-bottom:2.5rem;">
+  <div class="service-tile" tabindex="0" onclick="location.href='carpet-cleaning.html'">
+    <img src="https://i.ibb.co/prPLtzWF/carpetcleaning.png" alt="Carpet Cleaning" loading="lazy" decoding="async" style="width:140px;height:auto;">
+    <h3>Carpet Cleaning</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='pet-sitting.html'">
+    <img src="https://i.ibb.co/hFNZWhrp/pet-sitting.png" alt="Pet Sitting" loading="lazy" decoding="async" style="width:140px;height:auto;">
+    <h3>Pet Sitting</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='moving-help.html'">
+    <img src="https://i.ibb.co/wZqSy6vQ/moving-help.png" alt="Moving Help" loading="lazy" decoding="async" style="width:140px;height:auto;">
+    <h3>Moving Help</h3>
+  </div>
+  <div class="service-tile" tabindex="0" onclick="location.href='painting.html'">
+    <img src="https://i.ibb.co/Yp0tKpT/Chat-GPT-Image-Apr-18-2025-10-39-20-AM.png" alt="Painting" loading="lazy" decoding="async" style="width:200px;height:auto;">
+    <h3>Painting</h3>
+  </div>
+</div>
+
+<!-- HOW OUR SYSTEM WORKS (NO BIG BOX, NO BORDER) -->
+<h2 style="text-align:center;margin-top:3rem;font-size:2.1rem;color:var(--primary);font-weight:bold;margin-bottom:2.2rem;">How Our System Works</h2>
+<div class="process-steps" style="margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:2.3rem;justify-content:center;">
+  <div class="process-step">
+    <img src="https://i.postimg.cc/NjDkZLZj/Chat-GPT-Image-Apr-24-2025-12-15-29-PM.png" alt="Step 1: Tell us what you need" loading="lazy" decoding="async" />
+    <h3>Step 1<br>Tell us what you need</h3>
+    <p>Remodels, repairs, or anything else—just describe your project.</p>
+  </div>
+  <div class="process-step">
+    <img src="https://i.postimg.cc/XYp85npH/Chat-GPT-Image-Apr-24-2025-12-18-44-PM.png" alt="Step 2: Match with local pros" loading="lazy" decoding="async" />
+    <h3>Step 2<br>AI-matches you with local pros</h3>
+    <p>Our platform instantly connects you with the best, available professionals.</p>
+  </div>
+  <div class="process-step">
+    <img src="https://i.postimg.cc/B6HRdBpW/Chat-GPT-Image-Apr-24-2025-12-20-45-PM.png" alt="Step 3: Choose who to hire" loading="lazy" decoding="async" />
+    <h3>Step 3<br><em>You choose who to hire</em></h3>
+    <p>Compare, chat, and choose. Only you decide who gets the job done.</p>
+  </div>
+</div>
+
+<section class="testimonials reveal" aria-label="User Testimonials">
+  <h2>Success Stories</h2>
+  <blockquote>
+    “One of our first users said they landed two jobs within a day. That’s what we’re here for — fast, real results.”
+  </blockquote>
+  <p class="disclaimer">*Feedback based on early user experience. Individual results may vary.</p>
+</section>
+<section class="cta-section reveal" id="contact" aria-label="Contact Form">
+  <div class="cta-flex">
+    <div class="cta-text">
+      <h2>Find the Right Pro in Minutes.</h2>
+      <p>Tell us what you need done – we’ll match you with ready-to-work professionals in your area.</p>
+      <img src="https://i.postimg.cc/wTzDY31N/Chat-GPT-Image-Apr-24-2025-09-55-22-AM.png" alt="Worker illustration" loading="lazy" decoding="async" />
+    </div>
+    <form action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" aria-label="Get matched form" class="cta-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Email Address" required />
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+      <label for="address">Street Address</label>
+      <input type="text" id="address" name="address" placeholder="Street Address" required />
+      <label for="zip">ZIP Code</label>
+      <input type="text" id="zip" name="zip" placeholder="ZIP Code" required />
+      <label for="message">Tell us what you need or offer...</label>
+      <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How does Cold Looms match me with professionals?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We use location and project details to instantly connect you with the best available, vetted local pros in your area. Just tell us what you need, and we’ll handle the rest!
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Is Cold Looms free for customers?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Yes! Using Cold Looms to request quotes and connect with professionals is completely free for customers.
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How quickly will I hear from a pro?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Most customers receive replies from interested pros within minutes, often within the hour!
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Who are the professionals on Cold Looms?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Every pro is reviewed and vetted for experience and reliability. We work with local experts in a wide variety of fields, from cleaning and repairs to home improvement.
+        </p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Can I become a pro on Cold Looms?
+        <span class="faq-arrow">&#9654;</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Absolutely! If you’re a skilled professional looking for more clients, <a href="#contact">contact us today</a> and we’ll help you get started.
+        </p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<footer class="site-footer" aria-label="Footer">
+  <div class="footer-flex">
+    <div class="footer-col">
+      <h4>Cold Looms</h4>
+      <a href="#">About</a>
+      <a href="#">Partner with Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Customers</h4>
+      <a href="#">How It Works</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Services Near Me</a>
+      <a href="#">Cost Estimates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Pros</h4>
+      <a href="#">Sign Up as a Pro</a>
+      <a href="#">Pro Resources</a>
+      <a href="#">Pro Reviews</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help</a>
+      <a href="https://coldlooms.github.io/LOL/privacy.html">Privacy Policy</a>
+      <a href="https://coldlooms.github.io/LOL/terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Cold Looms | Smart Outreach for Real Clients</p>
+    <p>
+      <a href="mailto:rentservicesllc@gmail.com">rentservicesllc@gmail.com</a>
+    </p>
+    <div class="footer-social" style="margin-top:1rem;">
+      <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/instagram-new.png" alt="Instagram" /></a>
+      <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook" /></a>
+      <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="Twitter" /></a>
+      <a href="#" aria-label="Gmail"><img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail" /></a>
+    </div>
+  </div>
+</footer>
+<button id="scrollToTopBtn" aria-label="Scroll to top" title="Back to top">↑</button>
+<script>
+  // Mobile nav toggle
+  function toggleMobileNav() {
+    const navLinks = document.getElementById('main-nav-links');
+    if (navLinks.classList.contains('show')) {
+      navLinks.classList.remove('show');
+      document.body.style.overflow = "";
+    } else {
+      navLinks.classList.add('show');
+      document.body.style.overflow = "hidden";
+    }
+  }
+  // Close nav if clicked outside
+  document.addEventListener('click', function(e) {
+    const navLinks = document.getElementById('main-nav-links');
+    if (navLinks && navLinks.classList.contains('show')) {
+      if (!navLinks.contains(e.target) && !e.target.classList.contains('nav-mobile-toggle')) {
+        navLinks.classList.remove('show');
+        document.body.style.overflow = "";
+      }
+    }
+  });
+  // Animated scroll reveal
+  function revealOnScroll() {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.94) el.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+  // FAQ accordion logic
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', "false"));
+        if (!open) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', "true");
+        }
+      });
+    });
+  });
+
+  // Scroll to top and sticky nav
+  window.addEventListener('scroll', () => {
+    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('scrollToTopBtn').style.display = window.scrollY > 120 ? 'flex' : 'none';
+  });
+  document.getElementById('scrollToTopBtn').onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+  // City detection
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const citySpan = document.getElementById('user-city');
+      if (citySpan && data.city && data.region) {
+        citySpan.textContent = data.city + ', ' + data.region;
+      } else if (citySpan && data.city) {
+        citySpan.textContent = data.city;
+      }
+    }).catch(() => {
+      const fallback = document.getElementById('user-city');
+      if (fallback) fallback.textContent = "your area";
+    });
+  // Modal logic using <dialog>
+  function openDialog(e) {
+    e.preventDefault();
+    const dialog = document.getElementById('login-dialog');
+    dialog.showModal();
+    setTimeout(() => dialog.querySelector('button[onclick="closeDialog()"]').focus(), 100);
+  }
+  function closeDialog() {
+    document.getElementById('login-dialog').close();
+  }
+  // PWA: register service worker if supported
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js');
+    });
+  }
+  // Popup logic for lead questionnaire
+  function openLeadPopup() {
+    const popup = document.getElementById('lead-popup');
+    if (popup && typeof popup.showModal === "function") {
+      popup.showModal();
+    } else if (popup) {
+      popup.setAttribute('open', 'true');
+      popup.style.display = 'flex';
+    }
+  }
+  function closeLeadPopup() {
+    const popup = document.getElementById('lead-popup');
+    if (popup && typeof popup.close === "function") {
+      popup.close();
+    } else if (popup) {
+      popup.removeAttribute('open');
+      popup.style.display = 'none';
+    }
+  }
+  // On load, show popup after slight delay (0.7s)
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(openLeadPopup, 700);
+  });
+  // Lead form submission logic
+  document.addEventListener('DOMContentLoaded', function() {
+    var leadForm = document.getElementById('lead-form');
+    var successMsg = document.getElementById('lead-success');
+    if (leadForm) {
+      leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new FormData(leadForm);
+        fetch(leadForm.action, {
+          method: "POST",
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(function(response) {
+          if (response.ok) {
+            leadForm.style.display = 'none';
+            successMsg.textContent = "Thank you! Your request has been received.";
+            successMsg.style.display = "block";
+            setTimeout(closeLeadPopup, 3500);
+          } else {
+            response.json().then(function(data){
+              successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
+              successMsg.style.display = "block";
+            });
+          }
+        }).catch(function(){
+          successMsg.textContent = "There was a problem submitting the form. Please try again.";
+          successMsg.style.display = "block";
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>
