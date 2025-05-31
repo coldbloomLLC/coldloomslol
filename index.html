@@ -547,10 +547,44 @@
   <section class="hero">
     <div class="hero-title">Find trusted pros for every project</div>
     <div class="hero-desc">From home repairs to creative gigs, Cold Looms helps you connect with top local professionals.<br>Get matched in minutes. Get it done right.</div>
-    <form class="hero-search" action="search.html" method="GET">
-      <input type="text" name="q" placeholder="What service do you need? (e.g., Plumber, Photographer)" required>
+    <form class="hero-search" id="service-search-form" onsubmit="return false;">
+      <input type="text" id="service-search-input" placeholder="What service do you need? (e.g., Plumber, Photographer)" required>
       <button type="submit">Search</button>
     </form>
+    <script>
+      document.getElementById('service-search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('service-search-input').value.trim().toLowerCase();
+        const serviceMap = {
+          "handyman": "handyman.html",
+          "house cleaning": "house-cleaning.html",
+          "cleaning": "house-cleaning.html",
+          "fence painting": "fence-painting.html",
+          "painting": "fence-painting.html",
+          "window washing": "window-washing.html",
+          "window cleaning": "window-washing.html",
+          "adu": "adu-services.html",
+          "adu services": "adu-services.html",
+          "junk removal": "junk-removal.html",
+          "junk": "junk-removal.html",
+          "power washing": "power-washing.html",
+          "pressure washing": "power-washing.html"
+          // Add more mappings as needed
+        };
+        let forward = null;
+        for (const key in serviceMap) {
+          if (input.includes(key)) {
+            forward = serviceMap[key];
+            break;
+          }
+        }
+        if (forward) {
+          window.location.href = forward;
+        } else {
+          window.location.href = "search.html?q=" + encodeURIComponent(input);
+        }
+      });
+    </script>
     <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
   </section>
   <section class="services" id="services">
