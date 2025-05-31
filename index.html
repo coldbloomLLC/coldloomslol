@@ -547,8 +547,8 @@
   <section class="hero">
     <div class="hero-title">Find trusted pros for every project</div>
     <div class="hero-desc">From home repairs to creative gigs, Cold Looms helps you connect with top local professionals.<br>Get matched in minutes. Get it done right.</div>
-    <form class="hero-search" onsubmit="return false;">
-      <input type="text" placeholder="What service do you need? (e.g., Plumber, Photographer)">
+    <form class="hero-search" action="search.html" method="GET">
+      <input type="text" name="q" placeholder="What service do you need? (e.g., Plumber, Photographer)" required>
       <button type="submit">Search</button>
     </form>
     <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
@@ -562,7 +562,7 @@
     <div class="service-desc">Repairs, installations, and everything in-between by skilled professionals.</div>
     </div>
       <div class="service-card" tabindex="0" onclick="location.href='house-cleaning.html'">
-      <div class="service-icon">🧹</div>
+      <div class="service-icon">🧹🏡</div>
       <div class="service-title">House Cleaning</div>
       <div class="service-desc">Professional cleaning services to keep your home spotless and fresh.</div>
     </div>
