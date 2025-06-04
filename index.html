@@ -545,11 +545,15 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-  <section class="hero">
+ <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Cold Looms</h1>
     <p>Smart Outreach for Real Clients</p>
+    <form class="hero-search" id="service-search-form" onsubmit="return false;">
+      <input type="text" id="service-search-input" placeholder="What service do you need? (e.g., Plumber, Photographer)" required>
+      <button type="submit">Search</button>
+    </form>
   </div>
   <style>
     .hero {
@@ -589,6 +593,44 @@
       color: #fff;
       font-size: 1.5rem;
       font-weight: 400;
+      margin-bottom: 2rem;
+    }
+    .hero-search {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      margin: 0 auto 2rem auto;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      box-shadow: 0 4px 24px #0002;
+      overflow: hidden;
+    }
+    .hero-search input {
+      flex: 1;
+      padding: 1rem 1.2rem;
+      border: none;
+      font-size: 1rem;
+      background: transparent;
+      color: #fff;
+      outline: none;
+    }
+    .hero-search input::placeholder {
+      color: #eee;
+      opacity: 1;
+    }
+    .hero-search button {
+      padding: 1rem 1.6rem;
+      border: none;
+      background: var(--primary, #008cfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-radius: 0 8px 8px 0;
+    }
+    .hero-search button:hover {
+      background: #005fa3;
     }
     @media (max-width: 600px) {
       .hero-content h1 {
@@ -600,8 +642,62 @@
       .hero-content {
         padding: 1rem;
       }
+      .hero-search {
+        max-width: 98vw;
+        flex-direction: column;
+        border-radius: 8px;
+      }
+      .hero-search input, .hero-search button {
+        border-radius: 0;
+      }
+      .hero-search input {
+        font-size: 1rem;
+        padding: 0.9rem 0.7rem;
+      }
+      .hero-search button {
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1rem;
+        border-radius: 0 0 8px 8px;
+      }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('service-search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('service-search-input').value.trim().toLowerCase();
+        const serviceMap = {
+          "handyman": "handyman.html",
+          "house cleaning": "house-cleaning.html",
+          "cleaning": "house-cleaning.html",
+          "fence painting": "fence-painting.html",
+          "painting": "fence-painting.html",
+          "window washing": "window-washing.html",
+          "window cleaning": "window-washing.html",
+          "adu": "adu-services.html",
+          "adu services": "adu-services.html",
+          "junk removal": "junk-removal.html",
+          "junk": "junk-removal.html",
+          "power washing": "power-washing.html",
+          "pressure washing": "power-washing.html"
+          // You can add more mappings as needed
+        };
+        let forward = null;
+        for (const key in serviceMap) {
+          if (input.includes(key)) {
+            forward = serviceMap[key];
+            break;
+          }
+        }
+        if (forward) {
+          window.location.href = forward;
+        } else {
+          window.location.href = "search.html?q=" + encodeURIComponent(input);
+        }
+      });
+    });
+  </script>
 </section>
 
     </div>
