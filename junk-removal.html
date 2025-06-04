@@ -2,202 +2,336 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Junk Removal Services | Cold Looms</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .tag {
-      background: #e0f2f1;
-      color: #00796b;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      user-select: none;
-    }
-    .active-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      justify-content: flex-start;
+    /* AMAZON THEME COLORS */
+    :root {
+      --amazon-blue: #232f3e;
+      --amazon-orange: #ff9900;
+      --amazon-light: #f3f3f3;
+      --amazon-border: #d5dbdb;
+      --amazon-link: #007185;
+      --amazon-star: #ffa41c;
     }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      height: 100%;
+      font-family: 'Amazon Ember', Arial, sans-serif;
+      background: var(--amazon-light);
+      min-height: 100%;
     }
-    h1.page-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-top: 2rem;
-      background: linear-gradient(to right, #00796b, #00bfa5);
-      -webkit-background-clip: text;
-      color: transparent;
+    /* AMAZON HEADER */
+    .amazon-navbar {
+      background: var(--amazon-blue);
+      color: #fff;
+      padding: 0.7rem 0;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+    .amazon-navbar .container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+    .amazon-logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--amazon-orange) !important;
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+    .amazon-logo span {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-left: 6px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    .amazon-search-bar {
+      flex: 1;
+      margin: 0 2rem;
+      display: flex;
+    }
+    .amazon-search-bar input[type="text"] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border: 2px solid var(--amazon-orange);
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .amazon-search-bar button {
+      background: var(--amazon-orange);
+      border: none;
+      color: #232f3e;
+      padding: 0.6rem 1.2rem;
+      font-size: 1.1rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .amazon-search-bar button:hover {
+      background: #f90;
+    }
+    .nav-signin {
+      background: none;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+    .nav-signin:hover { color: var(--amazon-orange);}
+    /* CITY BAR */
+    .city-bar {
+      background: #fff;
+      color: #232f3e;
+      font-size: 1.08rem;
+      text-align: left;
+      padding: 0.55rem 2rem;
+      border-bottom: 1px solid #e6e6e6;
+      letter-spacing: .02em;
+      box-shadow: 0 1px 0 #eee;
+      max-width: 1400px;
+      margin: auto;
+    }
+    .city-bar a { color: var(--amazon-link); text-decoration: underline; cursor: pointer; }
+    /* MAIN LAYOUT */
     .main-layout {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
       justify-content: center;
-      max-width: 1600px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1400px;
+      margin: 1.7rem auto 2.7rem auto;
       gap: 2rem;
       flex-wrap: wrap;
+      align-items: flex-start;
     }
+    /* AMAZON SIDEBAR/FILTER */
     .sidebar {
-      background: #e0f2f1;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      min-height: 100vh;
-      width: 280px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 2rem;
+      background: #fff;
+      border: 1px solid var(--amazon-border);
+      border-radius: 14px;
+      min-width: 260px;
+      max-width: 290px;
+      padding: 2rem 1.2rem 1.6rem 1.2rem;
       font-size: 1rem;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.05);
+      position: sticky;
+      top: 110px;
+      max-height: 85vh;
+      overflow-y: auto;
     }
     .sidebar h3 {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       margin-top: 0;
-      margin-bottom: 2rem;
-      background: #00796b;
-      color: white;
-      padding: 0.8rem 1rem;
-      border-radius: 10px;
-      text-align: center;
+      margin-bottom: 1.2rem;
+      color: var(--amazon-orange);
+      letter-spacing: 0.04em;
+      text-align: left;
+      font-weight: bold;
     }
     .filter-group {
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.8rem;
       border: none;
       padding: 0;
     }
     .filter-group legend {
-      font-weight: bold;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      color: #045c52;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--amazon-blue);
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.01em;
     }
     .filter-group label {
       display: flex;
       align-items: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
       font-size: 1rem;
       cursor: pointer;
+      color: #232f3e;
     }
     .filter-group input {
       margin-right: 0.5rem;
-      accent-color: #00bfa5;
+      accent-color: var(--amazon-orange);
+      width: 16px;
+      height: 16px;
     }
     .reset-link {
-      color: #00796b;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
+      color: var(--amazon-link);
+      font-weight: 600;
+      text-decoration: underline;
+      display: block;
+      margin-top: 0.7rem;
+      cursor: pointer;
     }
+    /* FILTER TAGS */
+    .active-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.3rem 0 0.7rem 0;
+      justify-content: flex-start;
+    }
+    .tag {
+      background: var(--amazon-orange);
+      color: #232f3e;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.93rem;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 500;
+      box-shadow: 0 2px 6px 0 rgba(255,153,0,0.13);
+      border: 1px solid #ffd580;
+    }
+    /* PRODUCT CARD GRID */
     .tile-grid {
       flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      background-color: #f9fdfc;
-      padding: 1rem;
-      border-radius: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.2rem;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
     }
+    /* AMAZON CARD / TILE */
     .tile {
-      border-radius: 16px;
-      padding: 1.8rem;
-      color: #004d40;
-      background-color: #ffffff;
-      border: 1px solid #e0e0e0;
+      border-radius: 11px;
+      padding: 2rem 1.2rem 1.1rem 1.2rem;
+      background: #fff;
+      border: 1.5px solid var(--amazon-border);
+      box-shadow: 0 2px 16px 0 rgba(34,47,62,0.08);
       display: flex;
       flex-direction: column;
-      text-align: center;
-      transition: all 0.3s ease-in-out;
+      align-items: center;
+      text-align: left;
+      transition: box-shadow 0.24s, transform 0.17s;
+      min-height: 420px;
+      position: relative;
     }
     .tile:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 8px 28px 0 rgba(255,153,0,0.13);
+      border-color: var(--amazon-orange);
     }
     .tile img {
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      margin: auto;
-      border: 3px solid #00bfa5;
+      margin-bottom: 1rem;
+      border: 2px solid var(--amazon-orange);
       padding: 2px;
+      background: #fff;
+      object-fit: cover;
     }
-    .viewprofile-button {
+    .tile h3 {
+      margin: 0.3rem 0 0.6rem 0;
+      font-size: 1.26rem;
+      color: var(--amazon-blue);
+      font-weight: bold;
+      letter-spacing: .01em;
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .tile .city-marker {
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--amazon-link);
+      margin-bottom: 0.18rem;
+      text-align: left;
+    }
+    .tile p {
+      margin: 0.12rem 0 0.18rem 0;
+      color: #111;
+      font-size: 1rem;
+      text-align: left;
+    }
+    .tile a {
+      color: var(--amazon-link);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .tile .viewprofile-button {
       margin-top: 1rem;
       display: inline-block;
-      background: transparent;
-      color: #00796b;
-      border: 2px solid #00bfa5;
-      padding: 0.6rem 1.6rem;
+      background: var(--amazon-orange);
+      color: #232f3e;
+      border: none;
+      padding: 0.7rem 1.6rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.2s, color 0.2s, border 0.2s;
+      font-size: 1.03rem;
+      letter-spacing: .01em;
+      transition: background 0.15s, color 0.15s;
       cursor: pointer;
+      box-shadow: 0 2px 10px #ffecb366;
     }
-    .viewprofile-button:hover, .viewprofile-button:focus {
-      background: #00bfa5;
-      color: #fff;
-      border-color: #00796b;
+    .tile .viewprofile-button:hover, .tile .viewprofile-button:focus {
+      background: #f90;
+      color: #232f3e;
+      outline: none;
     }
-    @media (max-width: 768px) {
-      .main-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-      .sidebar {
-        display: none;
-        width: 100%;
-        margin-bottom: 2rem;
-      }
-      .sidebar.active {
-        display: block;
-      }
-      .tile-grid {
-        grid-template-columns: 1fr;
-      }
+    .tile p[style*="color: #ffaa00"] {
+      color: var(--amazon-star) !important;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      margin-top: 0.5em;
+      margin-bottom: 0.3em;
     }
+    /* PAGE TITLE */
+    .page-title {
+      text-align: left;
+      font-size: 2.1rem;
+      margin: 2.3rem auto 0.6rem auto;
+      max-width: 1400px;
+      color: var(--amazon-blue);
+      font-weight: bold;
+      letter-spacing: .02em;
+      padding-left: 2px;
+    }
+    /* FILTER TOGGLE */
     .filter-toggle {
-      background-color: #00796b;
-      color: white;
+      background: var(--amazon-orange);
+      color: #232f3e;
       border: none;
-      padding: 0.75rem 1.2rem;
+      padding: 0.6rem 1.3rem;
       font-size: 1rem;
-      border-radius: 10px;
-      margin: 1rem auto;
+      border-radius: 7px;
+      margin: 1rem 0 1rem 0;
       display: none;
       cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #ffecb333;
     }
-    @media (max-width: 768px) {
-      .filter-toggle {
-        display: block;
-      }
+    @media (max-width: 900px) {
+      .main-layout { flex-direction: column; align-items: stretch;}
+      .sidebar { position: static; max-height: none; margin-bottom: 2rem;}
+      .tile-grid { grid-template-columns: 1fr;}
+      .filter-toggle { display: block;}
     }
-    .city-bar {
-      text-align:center; 
-      font-size:1.1rem; 
-      margin-bottom: 1rem; 
-      color:#045c52;
+    @media (max-width: 600px) {
+      .amazon-navbar .container, .main-layout, .city-bar, .page-title, footer > div { padding: 0 0.5rem;}
+      .sidebar { padding: 1.2rem 0.5rem;}
     }
-    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
-    .filter-subgroup {
-      margin-bottom: 1.2rem;
-    }
-    .filter-subgroup legend {
-      font-weight: normal;
-      font-size: 1.02rem;
-      color: #009688;
-      margin-bottom: 0.5rem;
-    }
-    /* --- MODAL DIALOG STYLES from index.html --- */
+
+    /* MODAL: Amazon style, but keep your structure */
     .popup-modal[open] {
       display: flex;
       flex-direction: column;
@@ -205,7 +339,7 @@
       justify-content: center;
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.31);
+      background: rgba(35,47,62,0.28);
       z-index: 9999;
       padding: 0;
       border: none;
@@ -213,44 +347,53 @@
     }
     .popup-modal .popup-content {
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 50px 0 rgba(14,226,184,0.18);
-      max-width: 98vw;
+      border-radius: 10px;
+      box-shadow: 0 8px 50px 0 rgba(255,153,0,0.18);
+      max-width: 96vw;
       width: 370px;
-      padding: 2.2rem 1.7rem 1.4rem 1.7rem;
+      padding: 2.1rem 1.7rem 1.4rem 1.7rem;
       position: relative;
-      text-align: center;
+      text-align: left;
       font-family: inherit;
+      border: 2.5px solid var(--amazon-orange);
     }
     .popup-modal .popup-content h2 {
-      color: #045c52;
+      color: var(--amazon-blue);
       margin-top: 0;
-      margin-bottom: 1.2rem;
-      font-family: inherit;
-      font-size: 1.38rem;
+      margin-bottom: 1.1rem;
+      font-size: 1.28rem;
+      font-weight: bold;
+      letter-spacing: .01em;
     }
     .popup-modal .popup-content form {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
     .popup-modal .popup-content input, 
     .popup-modal .popup-content select,
     .popup-modal .popup-content textarea {
       margin-bottom: 0.65rem;
-      border-radius: 7px;
-      border: 1.2px solid #00796b33;
+      border-radius: 5px;
+      border: 1.2px solid #e6e6e6;
       padding: 0.8rem 0.9rem;
       font-size: 1rem;
-      background: #f6fafd;
-      color: #222;
+      background: #f7fafc;
+      color: #232f3e;
       font-family: inherit;
       min-height: 44px;
+      outline: none;
+      transition: border 0.14s;
+    }
+    .popup-modal .popup-content input:focus, 
+    .popup-modal .popup-content select:focus,
+    .popup-modal .popup-content textarea:focus {
+      border: 1.2px solid var(--amazon-orange);
     }
     .popup-modal .popup-content textarea {min-height: 70px;}
     .popup-modal .popup-content button[type="submit"] {
-      background: #00796b;
-      color: #fff;
+      background: var(--amazon-orange);
+      color: #232f3e;
       padding: 0.85rem 0;
       font-size: 1.04rem;
       font-weight: bold;
@@ -258,14 +401,18 @@
       border-radius: 7px;
       cursor: pointer;
       margin-top: 0.7rem;
-      transition: background 0.18s, color 0.18s;
-      box-shadow: 0 2px 14px #00796b33;
+      transition: background 0.13s, color 0.13s;
+      box-shadow: 0 2px 14px #ffecb333;
       min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="submit"]:hover {
+      background: #f90;
+      color: #232f3e;
     }
     .popup-modal .popup-content button[type="button"] {
       position: absolute;
-      right: 1.2rem;
-      top: 1.2rem;
+      right: 1.1rem;
+      top: 1.1rem;
       font-size: 1.6rem;
       background: none;
       border: none;
@@ -274,86 +421,84 @@
       transition: color .15s;
       min-width: 44px; min-height: 44px;
     }
-    .popup-modal .popup-content button[type="button"]:hover { color: #045c52;}
+    .popup-modal .popup-content button[type="button"]:hover { color: var(--amazon-blue);}
     .popup-modal .success-message {
-      color: #045c52;
+      color: var(--amazon-blue);
       font-weight: bold;
       margin-top: 1.5rem;
-      font-size: 1.1rem;
+      font-size: 1.03rem;
     }
-    @media (max-width: 900px) {
-      .popup-modal .popup-content {width: 95vw;}
+    /* Footer: Amazon style */
+    footer {
+      background: #232f3e;
+      color: #fff;
+      padding: 3rem 1rem 2rem 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+    footer h4 { color: var(--amazon-orange); margin-bottom: 0.7em; font-size: 1.11rem;}
+    footer ul { list-style: none; padding: 0; margin: 0;}
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      opacity: 0.93;
+      transition: opacity 0.15s;
+    }
+    footer ul li a:hover { color: var(--amazon-orange); opacity: 1;}
+    footer > div {
+      max-width: 1400px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    /* Socials */
+    .socials-bar {
+      text-align: center;
+      margin: 2.2rem 0 1.1rem 0;
+    }
+    .socials-bar a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.16s;
+    }
+    .socials-bar a:hover { transform: scale(1.11);}
+    /* Highlight for filter search */
+    mark {
+      background: #ffea9e;
+      color: #232f3e;
+      padding: 0.08em 0.18em;
+      border-radius: 3px;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
-      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-      <button class="nav-signin" aria-haspopup="dialog" aria-controls="login-dialog" onclick="openDialog(event)" style="color:#00796b; font-weight:bold; background:none; border:none; font-size:1rem; cursor:pointer;">Sign In</button>
+  <!-- AMAZON HEADER -->
+  <nav class="amazon-navbar">
+    <div class="container">
+      <a href="index.html" class="amazon-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" style="height:28px; vertical-align:middle; margin-right:6px;" />
+        Cold Looms <span>Junk Removal</span>
+      </a>
+      <form class="amazon-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Search Junk Removal Pros, Services..." aria-label="Search"/>
+        <button type="submit">&#128269;</button>
+      </form>
+      <button class="nav-signin" aria-haspopup="dialog" aria-controls="login-dialog" onclick="openDialog(event)">Sign In</button>
     </div>
   </nav>
 
-  <!-- Popup Modal for Junk Removal Lead Capture -->
-  <dialog id="lead-popup" class="popup-modal">
-    <div class="popup-content">
-      <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
-      <h2>
-        Get Your Junk Removed Fast!
-        <br>
-        <span style="font-size:1rem;font-weight:normal;color:#00796b;">Tell us about your junk removal needs</span>
-      </h2>
-      <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" enctype="multipart/form-data">
-        <label for="junk-type">What type of junk do you need removed?</label>
-        <select id="junk-type" name="junk_type" required>
-          <option value="" disabled selected>Select type</option>
-          <option>General Household Junk</option>
-          <option>Furniture</option>
-          <option>Appliances</option>
-          <option>Yard Waste</option>
-          <option>Construction Debris</option>
-          <option>E-waste</option>
-          <option>Other</option>
-        </select>
-
-        <label for="pickup-address">Pickup Address or Cross Streets</label>
-        <input type="text" id="pickup-address" name="address" placeholder="Address or Area" required />
-
-        <label for="urgency">How soon do you need it gone?</label>
-        <select id="urgency" name="urgency" required>
-          <option value="" disabled selected>Select urgency</option>
-          <option>Today</option>
-          <option>This week</option>
-          <option>Flexible</option>
-        </select>
-
-        <label for="access-details">How can we access the junk? (e.g. curbside, backyard, apartment, stairs, etc.)</label>
-        <input type="text" id="access-details" name="access_details" placeholder="Access instructions" />
-
-        <label for="photos">Upload a photo (optional, up to 3)</label>
-        <input type="file" id="photos" name="photos" accept="image/*" multiple max="3">
-
-        <label for="popup-message">Describe what needs to go</label>
-        <textarea id="popup-message" name="message" placeholder="Brief description (e.g. old couch, boxes, yard debris)" required></textarea>
-
-        <button type="submit">Get My Junk Removal Quote</button>
-      </form>
-      <div class="success-message" id="lead-success" style="display:none;"></div>
-    </div>
-  </dialog>
-  <!-- Sign In Modal -->
-  <dialog id="login-dialog" aria-modal="true" aria-labelledby="modal-title">
-    <button onclick="closeDialog()" aria-label="Close dialog" style="float:right;font-size:1.3rem;background:none;border:none;">&times;</button>
-    <h2 id="modal-title" style="margin-top:0;font-size:1.2rem;color:#045c52;">Sign In</h2>
-    <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
-    <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
-  </dialog>
-
-  <h1 class="page-title">Junk Removal Pros</h1>
+  <!-- CITY BAR -->
   <div class="city-bar" id="city-bar">Detecting your city...</div>
+
+  <!-- PAGE TITLE -->
+  <h1 class="page-title">Junk Removal Pros</h1>
   <section class="main-layout">
+    <!-- AMAZON SIDEBAR FILTERS -->
     <aside class="sidebar">
-      <h3>FILTER</h3>
+      <h3>Filter Results</h3>
       <fieldset class="filter-group">
         <legend>Service Type</legend>
         <label><input type="checkbox" value="Junk Removal" /> Junk Removal</label>
@@ -424,26 +569,27 @@
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
-    <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
+    <button class="filter-toggle" onclick="toggleFilters()">Show/Hide Filters</button>
     <div class="active-tags" id="active-tags"></div>
+    <!-- PRODUCT CARD GRID -->
     <div class="tile-grid">
       <!-- LOADRUNNERS -->
       <div class="tile">
         <img src="https://i.ibb.co/cKSvS8Wg/load.png" alt="load" border="0">
-        <p class="city-marker" style="font-weight:bold; margin-bottom:0.2rem;">
+        <p class="city-marker">
           📍 Chatsworth/San Fernando Valley, CA
         </p>
-        <h3><strong>LOADRUNNERS</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p style="font-weight: bold; color: #00796b; margin-bottom: 0.2rem;">
+        <h3><strong>LOADRUNNERS</strong> <span style="color: var(--amazon-orange);">✔️</span></h3>
+        <p style="font-weight: bold; color: var(--amazon-link); margin-bottom: 0.2rem;">
           LoadRunners Junk Removal and Hauling
         </p>
         <p style="margin-bottom: 0.2rem;">
-          <a href="tel:8186726266" style="color: #045c52; text-decoration: none; font-weight: bold;">818-672-6266</a>
+          <a href="tel:8186726266" style="color: var(--amazon-blue); text-decoration: none; font-weight: bold;">818-672-6266</a>
         </p>
         <p style="margin-bottom: 0.5rem;">
-          <a href="https://loadrunnersjunk.com" target="_blank" style="color:#00bfa5; text-decoration:underline;">loadrunnersjunk.com</a>
+          <a href="https://loadrunnersjunk.com" target="_blank">loadrunnersjunk.com</a>
         </p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <p style="color: var(--amazon-star); font-size:1.2rem;">★★★★★</p>
         <a href="profiles/loadrunners.html" class="viewprofile-button">View Profile</a>
       </div>
       <!-- Eco Junk Pros -->
@@ -452,7 +598,7 @@
         <h3><strong>Eco Junk Pros</strong></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
         <p>Eco-friendly disposal, donation pickups, yard waste & e-waste. Residential. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
+        <p style="color: var(--amazon-star); font-size:1.2rem;">★★★★☆</p>
         <a href="profiles/ecojunkpros.html" class="viewprofile-button">View Profile</a>
       </div>
       <!-- Rapid Response Removal -->
@@ -461,16 +607,63 @@
         <h3><strong>Rapid Response Removal</strong></h3>
         <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
         <p>Emergency, construction debris, and cleanouts. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
+        <p style="color: var(--amazon-star); font-size:1.2rem;">★★★★★</p>
         <a href="profiles/rapidresponse.html" class="viewprofile-button">View Profile</a>
       </div>
     </div>
   </section>
-  <footer style="background:#f9f9f9; padding:3rem 1rem;">
-    <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
+  <!-- MODALS (Sign In & Lead Form) -->
+  <dialog id="lead-popup" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
+      <h2>
+        Get Your Junk Removed Fast!<br>
+        <span style="font-size:1rem;font-weight:normal;color:var(--amazon-orange);">Tell us about your junk removal needs</span>
+      </h2>
+      <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" enctype="multipart/form-data">
+        <label for="junk-type">What type of junk do you need removed?</label>
+        <select id="junk-type" name="junk_type" required>
+          <option value="" disabled selected>Select type</option>
+          <option>General Household Junk</option>
+          <option>Furniture</option>
+          <option>Appliances</option>
+          <option>Yard Waste</option>
+          <option>Construction Debris</option>
+          <option>E-waste</option>
+          <option>Other</option>
+        </select>
+        <label for="pickup-address">Pickup Address or Cross Streets</label>
+        <input type="text" id="pickup-address" name="address" placeholder="Address or Area" required />
+        <label for="urgency">How soon do you need it gone?</label>
+        <select id="urgency" name="urgency" required>
+          <option value="" disabled selected>Select urgency</option>
+          <option>Today</option>
+          <option>This week</option>
+          <option>Flexible</option>
+        </select>
+        <label for="access-details">How can we access the junk? (e.g. curbside, backyard, apartment, stairs, etc.)</label>
+        <input type="text" id="access-details" name="access_details" placeholder="Access instructions" />
+        <label for="photos">Upload a photo (optional, up to 3)</label>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple max="3">
+        <label for="popup-message">Describe what needs to go</label>
+        <textarea id="popup-message" name="message" placeholder="Brief description (e.g. old couch, boxes, yard debris)" required></textarea>
+        <button type="submit">Get My Junk Removal Quote</button>
+      </form>
+      <div class="success-message" id="lead-success" style="display:none;"></div>
+    </div>
+  </dialog>
+  <dialog id="login-dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button onclick="closeDialog()" aria-label="Close dialog" style="float:right;font-size:1.3rem;background:none;border:none;">&times;</button>
+    <h2 id="modal-title" style="margin-top:0;font-size:1.2rem;color:var(--amazon-blue);">Sign In</h2>
+    <p style="margin-bottom:1em;">Sign in functionality coming soon!</p>
+    <button class="cta-btn" onclick="closeDialog()" style="width:100%;">Close</button>
+  </dialog>
+  <!-- AMAZON FOOTER -->
+  <footer>
+    <div>
       <div>
-        <h4 style="color:#045c52;">Cold Looms</h4>
-        <ul style="list-style:none; padding:0;">
+        <h4>Cold Looms</h4>
+        <ul>
           <li><a href="#">About</a></li>
           <li><a href="#">Partner with Us</a></li>
           <li><a href="#">Careers</a></li>
@@ -478,8 +671,8 @@
         </ul>
       </div>
       <div>
-        <h4 style="color:#045c52;">Customers</h4>
-        <ul style="list-style:none; padding:0;">
+        <h4>Customers</h4>
+        <ul>
           <li><a href="#">How It Works</a></li>
           <li><a href="#">Sign Up</a></li>
           <li><a href="#">Services Near Me</a></li>
@@ -487,39 +680,39 @@
         </ul>
       </div>
       <div>
-        <h4 style="color:#045c52;">Pros</h4>
-        <ul style="list-style:none; padding:0;">
+        <h4>Pros</h4>
+        <ul>
           <li><a href="#">Sign Up as a Pro</a></li>
           <li><a href="#">Pro Resources</a></li>
           <li><a href="#">Pro Reviews</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="color:#045c52;">Support</h4>
-        <ul style="list-style:none; padding:0;">
+        <h4>Support</h4>
+        <ul>
           <li><a href="#">Help</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
         </ul>
       </div>
     </div>
+    <div class="socials-bar">
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"/>
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"/>
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter"/>
+      </a>
+      <a href="mailto:info@coldlooms.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email"/>
+      </a>
+    </div>
   </footer>
-  <div style="text-align:center; margin: 2rem 0;">
-    <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-    </a>
-    <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
-    </a>
-    <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
-    </a>
-  </div>
   <script>
-    // --- MODAL LOGIC (modern <dialog> structure, from index.html) ---
+    // --- MODAL LOGIC (modern <dialog> structure) ---
     function openDialog(e) {
       if (e) e.preventDefault();
       const dialog = document.getElementById('login-dialog');
