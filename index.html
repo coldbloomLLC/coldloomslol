@@ -174,10 +174,11 @@
     .testimonials,
 .success-stories {
   position: relative;
-  background: url('https://i.ibb.co/VWDMzC65/city.png') center center / cover no-repeat;
-  padding: 6.5rem 1rem 3rem 1rem;
-  color: white;
+  background: url('https://i.ibb.co/Kzb6bqBm/countertop.png') center center / cover no-repeat;
+  padding: 7rem 1rem 5rem 1rem; /* increased padding for more space */
+  color: #fff; /* ensures text is white */
   text-align: center;
+  min-height: 450px; /* ensures it's not too short */
   overflow: hidden;
 }
 
@@ -185,7 +186,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* dark overlay for readability */
+  background: rgba(0, 0, 0, 0.32); /* lighter overlay for better color */
   z-index: 1;
   pointer-events: none;
 }
@@ -194,7 +195,6 @@
   position: relative;
   z-index: 2;
 }
-
 
 
     .testimonials-title {
