@@ -7,24 +7,24 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     /* AMAZON THEME COLORS */
-    :root {
-      --amazon-blue: #232f3e;
-      --amazon-orange: #ff9900;
-      --amazon-light: #f3f3f3;
-      --amazon-border: #d5dbdb;
-      --amazon-link: #007185;
-      --amazon-star: #ffa41c;
-    }
+:root {
+  --coldlooms-blue:   #101c3a;   /* Primary brand blue (header/nav, titles, etc.) */
+  --coldlooms-accent: #00c2cb;   /* Accent teal (buttons, highlights, CTAs) */
+  --coldlooms-light:  #f8fafc;   /* Light background */
+  --coldlooms-border: #d3d7e3;   /* Border color */
+  --coldlooms-link:   #0073fa;   /* Link color */
+  --coldlooms-star:   #34e27a;   /* Star/highlight/accent color */
+}
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Amazon Ember', Arial, sans-serif;
-      background: var(--amazon-light);
+      background: var(--coldlooms-light);
       min-height: 100%;
     }
     /* AMAZON HEADER */
     .amazon-navbar {
-      background: var(--amazon-blue);
+      background: #008080;
       color: #fff;
       padding: 0.7rem 0;
       box-shadow: 0 1px 8px rgba(0,0,0,0.08);
@@ -43,7 +43,7 @@
     .amazon-logo {
       font-size: 2rem;
       font-weight: bold;
-      color: var(--amazon-orange) !important;
+      color: var(--coldlooms-accent) !important;
       text-decoration: none;
       letter-spacing: 1px;
       display: flex;
@@ -64,14 +64,14 @@
     .amazon-search-bar input[type="text"] {
       width: 100%;
       padding: 0.6rem 1rem;
-      border: 2px solid var(--amazon-orange);
+      border: 2px solid var(--coldlooms-accent);
       border-right: none;
       border-radius: 4px 0 0 4px;
       font-size: 1rem;
       outline: none;
     }
     .amazon-search-bar button {
-      background: var(--amazon-orange);
+      background: #00c2cb;
       border: none;
       color: #232f3e;
       padding: 0.6rem 1.2rem;
@@ -94,7 +94,7 @@
       margin-left: 1.2rem;
       transition: color 0.2s;
     }
-    .nav-signin:hover { color: var(--amazon-orange);}
+    .nav-signin:hover { color: var(--coldlooms-accent); }
     /* CITY BAR */
     .city-bar {
       background: #fff;
@@ -108,7 +108,7 @@
       max-width: 1400px;
       margin: auto;
     }
-    .city-bar a { color: var(--amazon-link); text-decoration: underline; cursor: pointer; }
+    .city-bar a { color: var(--coldlooms-link); text-decoration: underline; cursor: pointer; }
     /* MAIN LAYOUT */
     .main-layout {
       display: flex;
@@ -123,7 +123,7 @@
     /* AMAZON SIDEBAR/FILTER */
     .sidebar {
       background: #fff;
-      border: 1px solid var(--amazon-border);
+      border: 1px solid #d3d7e3;
       border-radius: 14px;
       min-width: 260px;
       max-width: 290px;
@@ -479,7 +479,7 @@
   <nav class="amazon-navbar">
     <div class="container">
       <a href="index.html" class="amazon-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" style="height:28px; vertical-align:middle; margin-right:6px;" />
+        
         Cold Looms <span>Junk Removal</span>
       </a>
       <form class="amazon-search-bar" onsubmit="event.preventDefault();">
