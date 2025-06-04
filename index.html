@@ -546,48 +546,63 @@
     </nav>
   </header>
   <section class="hero">
-    <div class="hero-title">Find trusted pros for every project</div>
-    <div class="hero-desc">From home repairs to creative gigs, Cold Looms helps you connect with top local professionals.<br>Get matched in minutes. Get it done right.</div>
-    <form class="hero-search" id="service-search-form" onsubmit="return false;">
-      <input type="text" id="service-search-input" placeholder="What service do you need? (e.g., Plumber, Photographer)" required>
-      <button type="submit">Search</button>
-    </form>
-    <script>
-      document.getElementById('service-search-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const input = document.getElementById('service-search-input').value.trim().toLowerCase();
-        const serviceMap = {
-          "handyman": "handyman.html",
-          "house cleaning": "house-cleaning.html",
-          "cleaning": "house-cleaning.html",
-          "fence painting": "fence-painting.html",
-          "painting": "fence-painting.html",
-          "window washing": "window-washing.html",
-          "window cleaning": "window-washing.html",
-          "adu": "adu-services.html",
-          "adu services": "adu-services.html",
-          "junk removal": "junk-removal.html",
-          "junk": "junk-removal.html",
-          "power washing": "power-washing.html",
-          "pressure washing": "power-washing.html"
-          // Add more mappings as needed
-        };
-        let forward = null;
-        for (const key in serviceMap) {
-          if (input.includes(key)) {
-            forward = serviceMap[key];
-            break;
-          }
-        }
-        if (forward) {
-          window.location.href = forward;
-        } else {
-          window.location.href = "search.html?q=" + encodeURIComponent(input);
-        }
-      });
-    </script>
-    <img class="hero-img" src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Tech Logo" loading="lazy" decoding="async" />
-  </section>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Cold Looms</h1>
+    <p>Smart Outreach for Real Clients</p>
+  </div>
+  <style>
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center center/cover no-repeat;
+      box-sizing: border-box;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20,20,20,0.65);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-content h1 {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+      .hero-content {
+        padding: 1rem;
+      }
+    }
+  </style>
+</section>
 
     </div>
     <style>
