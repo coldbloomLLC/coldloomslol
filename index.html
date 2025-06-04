@@ -172,10 +172,31 @@
       color: #444;
     }
     .testimonials,
-    .success-stories {
-      background: var(--muted);
-      padding: 3rem 1rem;
-    }
+.success-stories {
+  position: relative;
+  background: url('https://i.ibb.co/VWDMzC65/city.png') center center / cover no-repeat;
+  padding: 6.5rem 1rem 3rem 1rem;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.success-stories::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* dark overlay for readability */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.success-stories > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+
     .testimonials-title {
       text-align: center;
       font-size: 2rem;
