@@ -73,7 +73,7 @@
     .amazon-search-bar button {
       background: #00c2cb;
       border: none;
-      color: #232f3e;
+      color: #465365;
       padding: 0.6rem 1.2rem;
       font-size: 1.1rem;
       border-radius: 0 4px 4px 0;
@@ -98,7 +98,7 @@
     /* CITY BAR */
     .city-bar {
       background: #fff;
-      color: #232f3e;
+      color: #465365;
       font-size: 1.08rem;
       text-align: left;
       padding: 0.55rem 2rem;
@@ -430,7 +430,7 @@
     }
     /* Footer: Amazon style */
     footer {
-      background: #232f3e;
+      background: #000;
       color: #fff;
       padding: 3rem 1rem 2rem 1rem;
       font-size: 1rem;
@@ -455,16 +455,30 @@
       text-align: left;
     }
     /* Socials */
-    .socials-bar {
-      text-align: center;
-      margin: 2.2rem 0 1.1rem 0;
-    }
-    .socials-bar a {
-      margin: 0 10px;
-      display: inline-block;
-      transition: transform 0.16s;
-    }
-    .socials-bar a:hover { transform: scale(1.11);}
+    ..footer-social a {
+  margin: 0 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.footer-social a:hover {
+  transform: scale(1.15);
+}
+.footer-social a img {
+  background: #fff;
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent, #f5b100);
+  box-shadow: 0 2px 8px #0003;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+.footer-social a:hover img {
+  background: var(--accent, #f5b100);
+  border: 2px solid var(--primary, #008cfa);
+  box-shadow: 0 4px 20px #008cfa55;
+}
     /* Highlight for filter search */
     mark {
       background: #ffea9e;
@@ -696,20 +710,17 @@
         </ul>
       </div>
     </div>
-    <div class="socials-bar">
-      <a href="https://www.instagram.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"/>
-      </a>
-      <a href="https://www.facebook.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"/>
-      </a>
-      <a href="https://www.twitter.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter"/>
-      </a>
-      <a href="mailto:info@coldlooms.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email"/>
-      </a>
-    </div>
+<div class="footer-social" style="margin-top:1rem;">
+  <a href="https://www.facebook.com/profile.php?id=61575800669285" target="_blank" rel="noopener" aria-label="Facebook">
+    <img src="https://img.icons8.com/ios-filled/24/facebook--v1.png" alt="Facebook" />
+  </a>
+  <a href="https://x.com/ColdLoomoutreachdesk" target="_blank" rel="noopener" aria-label="X (Twitter)">
+    <img src="https://img.icons8.com/ios-filled/24/twitter--v1.png" alt="X (Twitter)" />
+  </a>
+  <a href="mailto:outreachdeskllc@gmail.com" aria-label="Gmail">
+    <img src="https://img.icons8.com/ios-filled/24/gmail.png" alt="Gmail" />
+  </a>
+</div>
   </footer>
   <script>
     // --- MODAL LOGIC (modern <dialog> structure) ---
