@@ -135,6 +135,29 @@
       max-height: 85vh;
       overflow-y: auto;
     }
+      @media (max-width: 900px) {
+  .sidebar {
+    display: none;
+    transition: max-height 0.3s, opacity 0.3s;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .sidebar.active {
+    display: block;
+    max-height: 1800px;
+    opacity: 1;
+  }
+  .filter-group label {
+    font-size: 1.15rem;
+    padding: 0.4em 0.2em;
+    min-height: 44px;
+  }
+  .filter-group input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+  }
+}
     .sidebar h3 {
       font-size: 1.4rem;
       margin-top: 0;
@@ -583,8 +606,7 @@
       </fieldset>
       <a href="#" class="reset-link">Reset filters</a>
     </aside>
-    <button class="filter-toggle" onclick="toggleFilters()">Show/Hide Filters</button>
-    <div class="active-tags" id="active-tags"></div>
+<button class="filter-toggle" id="filter-toggle" onclick="toggleFilters()">Show Filters</button>    <div class="active-tags" id="active-tags"></div>
     <!-- PRODUCT CARD GRID -->
     <div class="tile-grid">
       <!-- LOADRUNNERS -->
