@@ -135,17 +135,26 @@
       max-height: 85vh;
       overflow-y: auto;
     }
-      @media (max-width: 900px) {
+     @media (max-width: 900px) {
   .sidebar {
     display: none;
-    transition: max-height 0.3s, opacity 0.3s;
-    max-height: 0;
+    transition: opacity 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    max-width: 350px;
+    height: 100vh;
+    z-index: 2000;
+    box-shadow: 2px 0 20px #0002;
     opacity: 0;
-    overflow: hidden;
+    background: #fff;
+    overflow-y: auto;
+    border-radius: 0 14px 14px 0;
+    padding: 2rem 1.2rem 1.6rem 1.2rem;
   }
   .sidebar.active {
     display: block;
-    max-height: 1800px;
     opacity: 1;
   }
   .filter-group label {
@@ -157,7 +166,7 @@
     width: 22px;
     height: 22px;
   }
-}
+
     .sidebar h3 {
       font-size: 1.4rem;
       margin-top: 0;
@@ -512,6 +521,7 @@
   </style>
 </head>
 <body>
+<div id="sidebar-backdrop" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.15);z-index:1999;"></div>
   <!-- AMAZON HEADER -->
   <nav class="amazon-navbar">
     <div class="container">
