@@ -893,10 +893,23 @@
         updateCity(null);
       }
     });
-    function toggleFilters() {
-      const sidebar = document.querySelector('.sidebar');
-      sidebar.classList.toggle('active');
-    }
+   function toggleFilters() {
+  const sidebar = document.querySelector('.sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  sidebar.classList.toggle('active');
+  if (sidebar.classList.contains('active')) {
+    backdrop.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  } else {
+    backdrop.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+document.getElementById('sidebar-backdrop').onclick = function() {
+  document.querySelector('.sidebar').classList.remove('active');
+  this.style.display = 'none';
+  document.body.style.overflow = '';
+};
   </script>
 </body>
 </html>
