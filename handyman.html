@@ -319,7 +319,6 @@
       border: 2px solid var(--cl-primary, #212c44);
       box-shadow: 0 4px 20px #34b3a055;
     }
-    /* Popup Modal Styling (from junk-removal.html) */
     .popup-modal[open] {
       display: flex;
       flex-direction: column;
@@ -485,7 +484,7 @@
         <div class="pro-blurb">
           10+ years of experience fixing, building, and making sure your home looks its best. Fast, friendly, and detail-oriented.
         </div>
-        <a href="/profiles/john-carter.html" class="pro-profile-btn">View Profile</a>
+        <a href="profiles/john-carter.html" class="pro-profile-btn">View Profile</a>
       </div>
       <div class="pro-card">
         <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Handywoman Lisa" class="pro-photo">
@@ -557,7 +556,6 @@
     <a href="/contact.html" class="cta-btn">Get Started with a Handyman Today</a>
     <p style="margin-top:0.9rem; font-size: 1rem; color: var(--cl-primary);">Questions? <a href="mailto:support@coldlooms.com" style="color: var(--cl-accent); text-decoration: underline;">Email our support team</a></p>
   </section>
-  <!-- Popup Modal (from junk-removal.html) -->
   <dialog id="lead-popup" class="popup-modal">
     <div class="popup-content">
       <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
@@ -652,7 +650,6 @@
     </div>
   </footer>
   <script>
-    // Popup logic for lead questionnaire
     function openLeadPopup() {
       const popup = document.getElementById('lead-popup');
       if (popup && typeof popup.showModal === "function") {
@@ -671,11 +668,9 @@
         popup.style.display = 'none';
       }
     }
-    // On load, show popup after slight delay (0.7s)
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(openLeadPopup, 700);
     });
-    // Lead form submission logic
     document.addEventListener('DOMContentLoaded', function() {
       var leadForm = document.getElementById('lead-form');
       var successMsg = document.getElementById('lead-success');
@@ -708,7 +703,6 @@
         });
       }
     });
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         var target = document.querySelector(this.getAttribute('href'));
