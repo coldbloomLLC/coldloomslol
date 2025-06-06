@@ -120,34 +120,46 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
     .pro-card:hover {
       transform: translateY(-4px) scale(1.025);
       box-shadow: 0 4px 20px rgba(33,44,68,0.11);
     }
     .pro-photo {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 0.7rem;
       border: 3px solid var(--cl-accent);
+      background: #fff;
     }
     .pro-name {
-      font-size: 1.18rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.22rem;
       color: var(--cl-primary);
     }
+    .pro-rating {
+      color: #00a97f;
+      font-weight: 500;
+      font-size: 1.02rem;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3em;
+    }
     .pro-services {
-      font-size: 0.98rem;
+      font-size: 1.02rem;
       color: var(--cl-accent);
       margin-bottom: 0.42rem;
       font-weight: 500;
     }
     .pro-blurb {
-      font-size: 0.96rem;
-      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.1rem;
       color: var(--cl-text);
       flex-grow: 1;
     }
@@ -168,6 +180,32 @@
     .pro-profile-btn:hover {
       background: var(--cl-accent);
       color: var(--cl-dark);
+    }
+    .pro-social-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      margin: 1rem 0 0.2rem 0;
+    }
+    .pro-social-row a {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--cl-accent, #34b3a0);
+      width: 36px;
+      height: 36px;
+      justify-content: center;
+      transition: border 0.15s, background 0.15s;
+    }
+    .pro-social-row img {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    .pro-social-row a:hover {
+      background: var(--cl-accent, #34b3a0);
+      border: 2px solid var(--cl-primary, #212c44);
     }
     .services-section {
       background: var(--cl-light);
@@ -475,43 +513,34 @@
     <a href="#pros" class="cta-btn">Meet Our Cleaning Pros</a>
   </section>
   <section class="pros-section" id="pros">
-    <h2>Featured Cleaning Pros</h2>
+    <h2>Featured Cleaning Pro</h2>
     <div class="pros-grid">
+      <!-- VALERY PRO CARD -->
       <div class="pro-card">
-        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Cleaner Maria" class="pro-photo">
-        <div class="pro-name">Maria Gomez</div>
-        <div class="pro-services">Deep Cleaning, Move-Out, Eco-Friendly</div>
+        <img src="https://i.ibb.co/7j0R6wY/valeryscleaning-logo.png" alt="Valery’s Cleaning" class="pro-photo">
+        <div class="pro-name">Valery’s Cleaning</div>
+        <div class="pro-rating">5.0 ★★★★★ <span style="color:#888; font-size:0.98em;">(40+ reviews)</span></div>
+        <div class="pro-services">Residential & Commercial Cleaning</div>
         <div class="pro-blurb">
-          8+ years of professional cleaning, known for attention to detail and reliability. Specializes in family and pet-friendly homes.
+          Woman-owned & operated. Serving the San Fernando Valley & LA. Licensed, insured, and trusted for regular, deep, move-out, and office cleanings. <br>
+          <span style="color:#00bfa5; font-weight:bold;">$100 Minimum</span>
         </div>
-        <a href="/profiles/maria-gomez.html" class="pro-profile-btn">View Profile</a>
-      </div>
-      <div class="pro-card">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cleaner Emily" class="pro-photo">
-        <div class="pro-name">Emily Chen</div>
-        <div class="pro-services">Apartment, Recurring, Windows</div>
-        <div class="pro-blurb">
-          Emily brings a bright touch to every job—apartments, condos, or homes. Meticulous and always on time.
+        <a href="/profiles/valery.html" class="pro-profile-btn">View Profile</a>
+        <div class="pro-social-row">
+          <a href="https://www.yelp.com/biz/valerys-cleaning-san-fernando-valley" target="_blank" title="Yelp">
+            <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="Yelp">
+          </a>
+          <a href="https://www.instagram.com/valeryscleaning/" target="_blank" title="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/valeryscleaning/" target="_blank" title="Facebook">
+            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook">
+          </a>
         </div>
-        <a href="/profiles/emily-chen.html" class="pro-profile-btn">View Profile</a>
-      </div>
-      <div class="pro-card">
-        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Cleaner Max" class="pro-photo">
-        <div class="pro-name">Max Turner</div>
-        <div class="pro-services">Carpet, Post-Construction, One-Time</div>
-        <div class="pro-blurb">
-          Tough on messes, gentle on your home. Max specializes in carpet and after-renovation cleaning.
+        <div style="margin-top:0.5rem; font-size:0.98rem;">
+          <strong>Business Hours:</strong> Mon–Fri 8am–6pm, Sat 9am–4pm<br>
+          <strong>Contact:</strong> <a href="tel:8185554321" style="color:var(--cl-accent);text-decoration:underline;">(818) 555-4321</a>
         </div>
-        <a href="/profiles/max-turner.html" class="pro-profile-btn">View Profile</a>
-      </div>
-      <div class="pro-card">
-        <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="Cleaner Priya" class="pro-photo">
-        <div class="pro-name">Priya Patel</div>
-        <div class="pro-services">Kitchen, Bathroom, Green Products</div>
-        <div class="pro-blurb">
-          Priya’s friendly approach and natural cleaning methods make every home shine. Ask about eco upgrades!
-        </div>
-        <a href="/profiles/priya-patel.html" class="pro-profile-btn">View Profile</a>
       </div>
     </div>
   </section>
@@ -522,14 +551,11 @@
       <li>Deep Cleaning</li>
       <li>Move-In / Move-Out Cleaning</li>
       <li>Apartment & Condo Cleaning</li>
-      <li>Carpet & Upholstery Cleaning</li>
-      <li>Window Cleaning</li>
+      <li>Office Cleaning</li>
       <li>Kitchen Cleaning</li>
       <li>Bathroom Sanitization</li>
-      <li>Green/Eco-Friendly Cleaning</li>
       <li>Recurring Services</li>
-      <li>Post-Construction Cleaning</li>
-      <li>One-Time Cleaning</li>
+      <li>Custom Cleaning</li>
     </ul>
   </section>
   <section class="benefits-section">
@@ -571,12 +597,11 @@
           <option>Standard Cleaning</option>
           <option>Deep Cleaning</option>
           <option>Move-In / Move-Out</option>
-          <option>Carpet Cleaning</option>
-          <option>Window Cleaning</option>
+          <option>Office Cleaning</option>
           <option>Kitchen</option>
           <option>Bathroom</option>
-          <option>Post-Construction</option>
           <option>Recurring Service</option>
+          <option>Custom Cleaning</option>
           <option>Other</option>
         </select>
         <label for="location">Project Address or Area</label>
@@ -593,7 +618,7 @@
         <label for="photos">Upload a photo (optional, up to 3)</label>
         <input type="file" id="photos" name="photos" accept="image/*" multiple max="3">
         <label for="popup-message">Describe your project</label>
-        <textarea id="popup-message" name="message" placeholder="Brief description (e.g. deep clean kitchen, carpet shampoo, window cleaning)" required></textarea>
+        <textarea id="popup-message" name="message" placeholder="Brief description (e.g. deep clean kitchen, recurring service, move-out cleaning)" required></textarea>
         <button type="submit">Get My Cleaning Quote</button>
       </form>
       <div class="success-message" id="lead-success" style="display:none;"></div>
