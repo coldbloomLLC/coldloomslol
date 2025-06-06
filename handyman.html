@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Handyman Pros | Cold Looms</title>
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
-  <!-- Inline CSS for fast loading and Cold Looms branding -->
   <style>
     :root {
       --cl-primary: #212c44;
@@ -58,7 +56,6 @@
     .navbar nav a:hover {
       color: var(--cl-accent);
     }
-    /* HERO SECTION */
     .hero {
       background: linear-gradient(rgba(33,44,68,0.7), rgba(33,44,68,0.8)), url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
       color: var(--cl-light);
@@ -96,7 +93,6 @@
     .hero .cta-btn:hover {
       background: #268974;
     }
-    /* PROS GRID */
     .pros-section {
       max-width: 1200px;
       margin: 3rem auto 2rem auto;
@@ -173,7 +169,6 @@
       background: var(--cl-accent);
       color: var(--cl-dark);
     }
-    /* OUR SERVICES */
     .services-section {
       background: var(--cl-light);
       padding: 3.2rem 1rem 2.5rem 1rem;
@@ -214,7 +209,6 @@
       color: var(--cl-accent);
       font-size: 1.1rem;
     }
-    /* BENEFITS */
     .benefits-section {
       max-width: 1200px;
       margin: 2.5rem auto 2rem auto;
@@ -258,7 +252,6 @@
       color: var(--cl-primary);
       font-weight: 600;
     }
-    /* CONTACT/GET STARTED */
     .contact-section {
       text-align: center;
       margin: 3.4rem auto 2rem auto;
@@ -282,14 +275,12 @@
       background: var(--cl-accent);
       color: var(--cl-dark);
     }
-    /* FOOTER - UPDATED TO BLACK */
     footer {
       background: #000 !important;
       color: #fff !important;
       padding: 3rem 1rem !important;
     }
-    footer h4,
-    footer a {
+    footer h4, footer a {
       color: #fff !important;
     }
     footer ul {
@@ -312,12 +303,118 @@
       display: inline-block;
     }
     .footer-social img {
-      /* ICONS TEAL ON BLACK, WHITE ON HOVER */
       filter: invert(63%) sepia(24%) saturate(1564%) hue-rotate(120deg) brightness(97%) contrast(91%);
       transition: filter 0.18s;
+      background: #fff;
+      border-radius: 50%;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--cl-accent, #34b3a0);
+      box-shadow: 0 2px 8px #0003;
     }
     .footer-social a:hover img {
       filter: invert(100%) sepia(0%) saturate(7486%) hue-rotate(131deg) brightness(120%) contrast(100%);
+      background: var(--cl-accent, #34b3a0);
+      border: 2px solid var(--cl-primary, #212c44);
+      box-shadow: 0 4px 20px #34b3a055;
+    }
+    /* Popup Modal Styling (from junk-removal.html) */
+    .popup-modal[open] {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(35,47,62,0.28);
+      z-index: 9999;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .popup-modal .popup-content {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 50px 0 rgba(52,179,160,0.15);
+      max-width: 96vw;
+      width: 370px;
+      padding: 2.1rem 1.7rem 1.4rem 1.7rem;
+      position: relative;
+      text-align: left;
+      font-family: inherit;
+      border: 2.5px solid var(--cl-accent);
+    }
+    .popup-modal .popup-content h2 {
+      color: var(--cl-primary);
+      margin-top: 0;
+      margin-bottom: 1.1rem;
+      font-size: 1.28rem;
+      font-weight: bold;
+      letter-spacing: .01em;
+    }
+    .popup-modal .popup-content form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .popup-modal .popup-content input, 
+    .popup-modal .popup-content select,
+    .popup-modal .popup-content textarea {
+      margin-bottom: 0.65rem;
+      border-radius: 5px;
+      border: 1.2px solid #e6e6e6;
+      padding: 0.8rem 0.9rem;
+      font-size: 1rem;
+      background: #f7fafc;
+      color: #232f3e;
+      font-family: inherit;
+      min-height: 44px;
+      outline: none;
+      transition: border 0.14s;
+    }
+    .popup-modal .popup-content input:focus, 
+    .popup-modal .popup-content select:focus,
+    .popup-modal .popup-content textarea:focus {
+      border: 1.2px solid var(--cl-accent);
+    }
+    .popup-modal .popup-content textarea {min-height: 70px;}
+    .popup-modal .popup-content button[type="submit"] {
+      background: var(--cl-accent);
+      color: #232f3e;
+      padding: 0.85rem 0;
+      font-size: 1.04rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 0.7rem;
+      transition: background 0.13s, color 0.13s;
+      box-shadow: 0 2px 14px #34b3a033;
+      min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="submit"]:hover {
+      background: #268974;
+      color: #232f3e;
+    }
+    .popup-modal .popup-content button[type="button"] {
+      position: absolute;
+      right: 1.1rem;
+      top: 1.1rem;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      transition: color .15s;
+      min-width: 44px; min-height: 44px;
+    }
+    .popup-modal .popup-content button[type="button"]:hover { color: var(--cl-primary);}
+    .popup-modal .success-message {
+      color: var(--cl-primary);
+      font-weight: bold;
+      margin-top: 1.5rem;
+      font-size: 1.03rem;
     }
     @media (max-width: 900px) {
       .pros-grid, .benefits-list {
@@ -359,7 +456,6 @@
   </style>
 </head>
 <body>
-  <!-- HEADER/NAV -->
   <header>
     <div class="navbar">
       <a href="/" class="logo">Cold Looms</a>
@@ -372,8 +468,6 @@
       </nav>
     </div>
   </header>
-
-  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Welcome to the Cold Looms Handyman Network</h1>
     <p>
@@ -381,12 +475,9 @@
     </p>
     <a href="#pros" class="cta-btn">Meet Our Handyman Pros</a>
   </section>
-
-  <!-- HANDYMAN PROS GRID -->
   <section class="pros-section" id="pros">
     <h2>Featured Handyman Pros</h2>
     <div class="pros-grid">
-      <!-- Example Pro Card 1 -->
       <div class="pro-card">
         <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="Handyman John" class="pro-photo">
         <div class="pro-name">John Carter</div>
@@ -396,7 +487,6 @@
         </div>
         <a href="/profiles/john-carter.html" class="pro-profile-btn">View Profile</a>
       </div>
-      <!-- Example Pro Card 2 -->
       <div class="pro-card">
         <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Handywoman Lisa" class="pro-photo">
         <div class="pro-name">Lisa Nguyen</div>
@@ -406,7 +496,6 @@
         </div>
         <a href="/profiles/lisa-nguyen.html" class="pro-profile-btn">View Profile</a>
       </div>
-      <!-- Example Pro Card 3 -->
       <div class="pro-card">
         <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Handyman Alex" class="pro-photo">
         <div class="pro-name">Alex Rivera</div>
@@ -416,7 +505,6 @@
         </div>
         <a href="/profiles/alex-rivera.html" class="pro-profile-btn">View Profile</a>
       </div>
-      <!-- Example Pro Card 4 -->
       <div class="pro-card">
         <img src="https://randomuser.me/api/portraits/women/16.jpg" alt="Handywoman Priya" class="pro-photo">
         <div class="pro-name">Priya Patel</div>
@@ -428,8 +516,6 @@
       </div>
     </div>
   </section>
-
-  <!-- OUR SERVICES SECTION -->
   <section class="services-section" id="services">
     <h2>Our Handyman Services</h2>
     <ul class="services-list">
@@ -446,8 +532,6 @@
       <li>General Home Repairs</li>
     </ul>
   </section>
-
-  <!-- BENEFITS / WHY CHOOSE COLD LOOMS -->
   <section class="benefits-section">
     <h2>Why Choose Cold Looms?</h2>
     <ul class="benefits-list">
@@ -469,14 +553,52 @@
       </li>
     </ul>
   </section>
-
-  <!-- CONTACT / GET STARTED -->
   <section class="contact-section">
     <a href="/contact.html" class="cta-btn">Get Started with a Handyman Today</a>
     <p style="margin-top:0.9rem; font-size: 1rem; color: var(--cl-primary);">Questions? <a href="mailto:support@coldlooms.com" style="color: var(--cl-accent); text-decoration: underline;">Email our support team</a></p>
   </section>
-
-  <!-- ORIGINAL HANDYMAN.HTML FOOTER STARTS HERE, UPDATED TO BLACK AND ICONS TEAL/WHITE -->
+  <!-- Popup Modal (from junk-removal.html) -->
+  <dialog id="lead-popup" class="popup-modal">
+    <div class="popup-content">
+      <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
+      <h2>
+        Get Your Handyman Project Started!<br>
+        <span style="font-size:1rem;font-weight:normal;color:var(--cl-accent);">Tell us about your handyman needs</span>
+      </h2>
+      <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" enctype="multipart/form-data">
+        <label for="handyman-type">What do you need help with?</label>
+        <select id="handyman-type" name="handyman_type" required>
+          <option value="" disabled selected>Select service</option>
+          <option>TV Mounting</option>
+          <option>Drywall Repair</option>
+          <option>Furniture Assembly</option>
+          <option>Light Fixtures</option>
+          <option>Painting</option>
+          <option>Shelving</option>
+          <option>Smart Home Setup</option>
+          <option>General Repairs</option>
+          <option>Other</option>
+        </select>
+        <label for="location">Project Address or Area</label>
+        <input type="text" id="location" name="address" placeholder="Address or Area" required />
+        <label for="urgency">How soon do you need service?</label>
+        <select id="urgency" name="urgency" required>
+          <option value="" disabled selected>Select urgency</option>
+          <option>Today</option>
+          <option>This week</option>
+          <option>Flexible</option>
+        </select>
+        <label for="access-details">Access details (e.g. stairs, apartment, parking)</label>
+        <input type="text" id="access-details" name="access_details" placeholder="Access instructions" />
+        <label for="photos">Upload a photo (optional, up to 3)</label>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple max="3">
+        <label for="popup-message">Describe your project</label>
+        <textarea id="popup-message" name="message" placeholder="Brief description (e.g. mount TV, patch drywall, fix faucet)" required></textarea>
+        <button type="submit">Get My Handyman Quote</button>
+      </form>
+      <div class="success-message" id="lead-success" style="display:none;"></div>
+    </div>
+  </dialog>
   <footer>
     <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
       <div>
@@ -529,10 +651,64 @@
       </a>
     </div>
   </footer>
-  <!-- ORIGINAL HANDYMAN.HTML FOOTER ENDS HERE -->
-
-  <!-- Inline JS for smooth scroll (optional, lightweight) -->
   <script>
+    // Popup logic for lead questionnaire
+    function openLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.showModal === "function") {
+        popup.showModal();
+      } else if (popup) {
+        popup.setAttribute('open', 'true');
+        popup.style.display = 'flex';
+      }
+    }
+    function closeLeadPopup() {
+      const popup = document.getElementById('lead-popup');
+      if (popup && typeof popup.close === "function") {
+        popup.close();
+      } else if (popup) {
+        popup.removeAttribute('open');
+        popup.style.display = 'none';
+      }
+    }
+    // On load, show popup after slight delay (0.7s)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(openLeadPopup, 700);
+    });
+    // Lead form submission logic
+    document.addEventListener('DOMContentLoaded', function() {
+      var leadForm = document.getElementById('lead-form');
+      var successMsg = document.getElementById('lead-success');
+      if (leadForm) {
+        leadForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(leadForm);
+          fetch(leadForm.action, {
+            method: "POST",
+            body: data,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              leadForm.style.display = 'none';
+              successMsg.textContent = "Thank you! Your request has been received.";
+              successMsg.style.display = "block";
+              setTimeout(closeLeadPopup, 3500);
+            } else {
+              response.json().then(function(data){
+                successMsg.textContent = data.error || "There was a problem submitting the form. Please try again.";
+                successMsg.style.display = "block";
+              });
+            }
+          }).catch(function(){
+            successMsg.textContent = "There was a problem submitting the form. Please try again.";
+            successMsg.style.display = "block";
+          });
+        });
+      }
+    });
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         var target = document.querySelector(this.getAttribute('href'));
