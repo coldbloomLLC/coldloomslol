@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>House Cleaning Pros | Cold Looms</title>
   <link rel="icon" type="image/png" href="/favicon.png">
   <style>
-    :root {
-      --cl-primary: #212c44;
-      --cl-accent: #34b3a0;
-      --cl-bg: #f7f8fa;
-      --cl-dark: #181f33;
-      --cl-light: #ffffff;
-      --cl-text: #252b3a;
-      --cl-font: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-    }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: var(--cl-font);
-      background: var(--cl-bg);
-      color: var(--cl-text);
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: #f7f8fa;
+      color: #1a1a1a;
       min-height: 100%;
-      box-sizing: border-box;
     }
     header {
-      background: var(--cl-primary);
-      color: var(--cl-light);
+      background: #212c44;
+      color: #fff;
       padding: 0.5rem 0;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
@@ -42,11 +32,11 @@
       font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: 2px;
-      color: var(--cl-accent);
+      color: #34b3a0;
       text-decoration: none;
     }
     .navbar nav a {
-      color: var(--cl-light);
+      color: #fff;
       text-decoration: none;
       margin-left: 1.5rem;
       font-size: 1rem;
@@ -54,31 +44,31 @@
       transition: color 0.2s;
     }
     .navbar nav a:hover {
-      color: var(--cl-accent);
+      color: #34b3a0;
     }
     .hero {
-      background: linear-gradient(rgba(33,44,68,0.7), rgba(33,44,68,0.8)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      color: var(--cl-light);
+      background: linear-gradient(rgba(33,44,68,0.7), rgba(52,179,160,0.6)), url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: #fff;
       text-align: center;
       padding: 4.5rem 1rem 3rem 1rem;
       position: relative;
     }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 2.3rem;
       letter-spacing: 1px;
       margin-bottom: 0.6rem;
       font-weight: 700;
     }
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       margin-bottom: 2rem;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
     .hero .cta-btn {
-      background: var(--cl-accent);
-      color: var(--cl-light);
+      background: #34b3a0;
+      color: #fff;
       padding: 0.9rem 2rem;
       border: none;
       border-radius: 2rem;
@@ -93,130 +83,123 @@
     .hero .cta-btn:hover {
       background: #268974;
     }
-    .pros-section {
-      max-width: 1200px;
-      margin: 3rem auto 2rem auto;
+    .main-layout {
+      max-width: 1300px;
+      margin: 2.5rem auto 0 auto;
       padding: 0 1rem;
     }
-    .pros-section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: var(--cl-primary);
-      font-weight: 700;
-    }
-    .pros-grid {
+    .tile-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      background-color: #f9fdfc;
+      padding: 2rem 1rem;
+      border-radius: 12px;
     }
-    .pro-card {
-      background: var(--cl-light);
-      border-radius: 1.2rem;
-      box-shadow: 0 2px 14px rgba(33,44,68,0.06);
-      padding: 1.5rem 1rem 1.2rem 1rem;
-      text-align: center;
-      transition: transform 0.14s;
+    .tile {
+      border-radius: 16px;
+      padding: 1.5rem 1rem 1rem 1rem;
+      color: #004d40;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
+      text-align: center;
+      transition: all 0.2s;
     }
-    .pro-card:hover {
-      transform: translateY(-4px) scale(1.025);
-      box-shadow: 0 4px 20px rgba(33,44,68,0.11);
+    .tile:hover {
+      transform: translateY(-5px) scale(1.025);
+      box-shadow: 0 4px 16px #34b3a033;
     }
-    .pro-photo {
-      width: 90px;
-      height: 90px;
+    .tile img {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 0.7rem;
-      border: 3px solid var(--cl-accent);
+      margin-bottom: 0.8rem;
+      border: 3px solid #34b3a0;
       background: #fff;
+      object-fit: cover;
     }
-    .pro-name {
-      font-size: 1.25rem;
+    .tile h3 {
+      margin: 0 0 0.2rem 0;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.22rem;
-      color: var(--cl-primary);
+      color: #212c44;
     }
-    .pro-rating {
+    .tile .pro-stars {
       color: #00a97f;
       font-weight: 500;
-      font-size: 1.02rem;
+      font-size: 1.09rem;
       margin-bottom: 0.15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3em;
     }
-    .pro-services {
-      font-size: 1.02rem;
-      color: var(--cl-accent);
-      margin-bottom: 0.42rem;
-      font-weight: 500;
+    .tile .city-marker {
+      font-size: .98rem;
+      color: #666;
+      margin-bottom: 0.15rem;
     }
-    .pro-blurb {
+    .tile p {
+      margin: 0 0 0.6rem 0;
       font-size: 0.98rem;
-      margin-bottom: 1.1rem;
-      color: var(--cl-text);
-      flex-grow: 1;
     }
-    .pro-profile-btn {
-      background: var(--cl-primary);
-      color: var(--cl-light);
-      border: none;
-      padding: 0.6rem 1.5rem;
-      border-radius: 1.8rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.18s;
-      text-decoration: none;
+    .tile .viewprofile-button {
       margin-top: 0.2rem;
       display: inline-block;
+      background: #212c44;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.18s;
+      cursor: pointer;
+      font-size: 1rem;
     }
-    .pro-profile-btn:hover {
-      background: var(--cl-accent);
-      color: var(--cl-dark);
+    .tile .viewprofile-button:hover {
+      background: #34b3a0;
+      color: #181f33;
     }
-    .pro-social-row {
+    .tile .pro-social-row {
       display: flex;
+      gap: 0.55rem;
       justify-content: center;
-      gap: 0.7rem;
-      margin: 1rem 0 0.2rem 0;
+      margin: 0.5rem 0 0 0;
     }
-    .pro-social-row a {
+    .tile .pro-social-row a {
       display: inline-flex;
       align-items: center;
       border-radius: 50%;
       background: #fff;
-      border: 2px solid var(--cl-accent, #34b3a0);
-      width: 36px;
-      height: 36px;
+      border: 2px solid #34b3a0;
+      width: 32px;
+      height: 32px;
       justify-content: center;
       transition: border 0.15s, background 0.15s;
     }
-    .pro-social-row img {
-      width: 18px;
-      height: 18px;
+    .tile .pro-social-row img {
+      width: 16px;
+      height: 16px;
       display: block;
     }
-    .pro-social-row a:hover {
-      background: var(--cl-accent, #34b3a0);
-      border: 2px solid var(--cl-primary, #212c44);
+    .tile .pro-social-row a:hover {
+      background: #34b3a0;
+      border: 2px solid #212c44;
     }
     .services-section {
-      background: var(--cl-light);
+      background: #fff;
       padding: 3.2rem 1rem 2.5rem 1rem;
-      margin: 3rem 0;
+      margin: 3rem 0 2rem 0;
+      border-radius: 14px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .services-section h2 {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 1.3rem;
-      color: var(--cl-primary);
+      color: #212c44;
       font-weight: 700;
     }
     .services-list {
@@ -230,12 +213,12 @@
       padding: 0;
     }
     .services-list li {
-      background: var(--cl-bg);
+      background: #f7f8fa;
       border-radius: 1.1rem;
       box-shadow: 0 2px 8px rgba(33,44,68,0.05);
       padding: 1rem 2rem;
       font-size: 1.03rem;
-      color: var(--cl-dark);
+      color: #181f33;
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
@@ -244,7 +227,7 @@
     .services-list li:before {
       content: "✔️";
       margin-right: 0.7rem;
-      color: var(--cl-accent);
+      color: #34b3a0;
       font-size: 1.1rem;
     }
     .benefits-section {
@@ -254,7 +237,7 @@
     }
     .benefits-section h2 {
       font-size: 1.7rem;
-      color: var(--cl-accent);
+      color: #34b3a0;
       text-align: center;
       font-weight: 700;
       margin-bottom: 1.1rem;
@@ -270,7 +253,7 @@
     }
     .benefit-item {
       flex: 1 1 250px;
-      background: var(--cl-light);
+      background: #fff;
       border-radius: 1rem;
       box-shadow: 0 2px 8px rgba(33,44,68,0.05);
       padding: 1.1rem 1.5rem;
@@ -283,11 +266,11 @@
     }
     .benefit-icon {
       font-size: 1.7rem;
-      color: var(--cl-accent);
+      color: #34b3a0;
       margin-top: 0.1rem;
     }
     .benefit-content strong {
-      color: var(--cl-primary);
+      color: #212c44;
       font-weight: 600;
     }
     .contact-section {
@@ -298,8 +281,8 @@
     .contact-section .cta-btn {
       font-size: 1.15rem;
       padding: 1rem 2.2rem;
-      background: var(--cl-primary);
-      color: var(--cl-light);
+      background: #212c44;
+      color: #fff;
       border: none;
       border-radius: 2rem;
       font-weight: 700;
@@ -310,8 +293,8 @@
       box-shadow: 0 2px 8px rgba(33,44,68,0.05);
     }
     .contact-section .cta-btn:hover {
-      background: var(--cl-accent);
-      color: var(--cl-dark);
+      background: #34b3a0;
+      color: #181f33;
     }
     footer {
       background: #000 !important;
@@ -348,113 +331,17 @@
       padding: 8px;
       width: 40px;
       height: 40px;
-      border: 2px solid var(--cl-accent, #34b3a0);
+      border: 2px solid #34b3a0;
       box-shadow: 0 2px 8px #0003;
     }
     .footer-social a:hover img {
       filter: invert(100%) sepia(0%) saturate(7486%) hue-rotate(131deg) brightness(120%) contrast(100%);
-      background: var(--cl-accent, #34b3a0);
-      border: 2px solid var(--cl-primary, #212c44);
+      background: #34b3a0;
+      border: 2px solid #212c44;
       box-shadow: 0 4px 20px #34b3a055;
     }
-    .popup-modal[open] {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(35,47,62,0.28);
-      z-index: 9999;
-      padding: 0;
-      border: none;
-      box-shadow: none;
-    }
-    .popup-modal .popup-content {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 8px 50px 0 rgba(52,179,160,0.15);
-      max-width: 96vw;
-      width: 370px;
-      padding: 2.1rem 1.7rem 1.4rem 1.7rem;
-      position: relative;
-      text-align: left;
-      font-family: inherit;
-      border: 2.5px solid var(--cl-accent);
-    }
-    .popup-modal .popup-content h2 {
-      color: var(--cl-primary);
-      margin-top: 0;
-      margin-bottom: 1.1rem;
-      font-size: 1.28rem;
-      font-weight: bold;
-      letter-spacing: .01em;
-    }
-    .popup-modal .popup-content form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .popup-modal .popup-content input, 
-    .popup-modal .popup-content select,
-    .popup-modal .popup-content textarea {
-      margin-bottom: 0.65rem;
-      border-radius: 5px;
-      border: 1.2px solid #e6e6e6;
-      padding: 0.8rem 0.9rem;
-      font-size: 1rem;
-      background: #f7fafc;
-      color: #232f3e;
-      font-family: inherit;
-      min-height: 44px;
-      outline: none;
-      transition: border 0.14s;
-    }
-    .popup-modal .popup-content input:focus, 
-    .popup-modal .popup-content select:focus,
-    .popup-modal .popup-content textarea:focus {
-      border: 1.2px solid var(--cl-accent);
-    }
-    .popup-modal .popup-content textarea {min-height: 70px;}
-    .popup-modal .popup-content button[type="submit"] {
-      background: var(--cl-accent);
-      color: #232f3e;
-      padding: 0.85rem 0;
-      font-size: 1.04rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      margin-top: 0.7rem;
-      transition: background 0.13s, color 0.13s;
-      box-shadow: 0 2px 14px #34b3a033;
-      min-height: 44px;
-    }
-    .popup-modal .popup-content button[type="submit"]:hover {
-      background: #268974;
-      color: #232f3e;
-    }
-    .popup-modal .popup-content button[type="button"] {
-      position: absolute;
-      right: 1.1rem;
-      top: 1.1rem;
-      font-size: 1.6rem;
-      background: none;
-      border: none;
-      color: #aaa;
-      cursor: pointer;
-      transition: color .15s;
-      min-width: 44px; min-height: 44px;
-    }
-    .popup-modal .popup-content button[type="button"]:hover { color: var(--cl-primary);}
-    .popup-modal .success-message {
-      color: var(--cl-primary);
-      font-weight: bold;
-      margin-top: 1.5rem;
-      font-size: 1.03rem;
-    }
     @media (max-width: 900px) {
-      .pros-grid, .benefits-list {
+      .tile-grid, .benefits-list {
         grid-template-columns: 1fr 1fr;
         flex-direction: column;
         gap: 1.5rem;
@@ -471,10 +358,7 @@
       .hero h1 {
         font-size: 2rem;
       }
-      .pros-section h2, .services-section h2 {
-        font-size: 1.4rem;
-      }
-      .pros-grid {
+      .tile-grid {
         grid-template-columns: 1fr;
         gap: 1.3rem;
       }
@@ -486,7 +370,7 @@
         font-size: 0.97rem;
         padding: 0.7rem 1.2rem;
       }
-      .pro-card {
+      .tile {
         padding: 1.1rem 0.5rem;
       }
     }
@@ -495,11 +379,11 @@
 <body>
   <header>
     <div class="navbar">
-      <a href="https://coldloomslol.com" class="logo">Cold Looms</a>
+      <a href="/" class="logo">Cold Looms</a>
       <nav>
         <a href="/">Home</a>
         <a href="/services.html">Services</a>
-        <a href="/house-cleaning.html" style="color: var(--cl-accent); font-weight: 700;">House Cleaning</a>
+        <a href="/house-cleaning.html" style="color: #34b3a0; font-weight: 700;">House Cleaning</a>
         <a href="/LOL.html">About</a>
         <a href="mailto:outreachdeskllc@gmail.com">Contact</a>
       </nav>
@@ -508,42 +392,65 @@
   <section class="hero">
     <h1>Welcome to the Cold Looms Cleaning Network</h1>
     <p>
-      Connect with trusted, background-checked home cleaning pros ready to make your space sparkle—big or small. Fast, reliable, and always professional. Fresh, clean comfort starts here.
+      Discover trusted, background-checked home cleaning pros ready to make your space sparkle. Fast, reliable, and always professional. Fresh, clean comfort starts here.
     </p>
     <a href="#pros" class="cta-btn">Meet Our Cleaning Pros</a>
   </section>
-  <section class="pros-section" id="pros">
-    <h2>Featured Cleaning Pro</h2>
-    <div class="pros-grid">
-      <!-- VALERY PRO CARD -->
-      <div class="pro-card">
-        <img src="https://i.ibb.co/7j0R6wY/valeryscleaning-logo.png" alt="Valery’s Cleaning" class="pro-photo">
-        <div class="pro-name">Valery’s Cleaning</div>
-        <div class="pro-rating">5.0 ★★★★★ <span style="color:#888; font-size:0.98em;">(40+ reviews)</span></div>
-        <div class="pro-services">Residential & Commercial Cleaning</div>
-        <div class="pro-blurb">
-          Woman-owned & operated. Serving the San Fernando Valley & LA. Licensed, insured, and trusted for regular, deep, move-out, and office cleanings. <br>
-          <span style="color:#00bfa5; font-weight:bold;">$100 Minimum</span>
+  <main class="main-layout">
+    <section>
+      <div class="tile-grid" id="pros">
+        <!-- PRO CARD 1: Valery’s Cleaning (OG) -->
+        <div class="tile">
+          <img src="https://i.ibb.co/7j0R6wY/valeryscleaning-logo.png" alt="Valery’s Cleaning">
+          <h3>Valery’s Cleaning</h3>
+          <div class="pro-stars">★★★★★ <span style="color:#888; font-size:0.96em;">(40+ reviews)</span></div>
+          <div class="city-marker">📍 San Fernando Valley, CA</div>
+          <p>
+            Woman-owned & operated. Licensed, insured, and trusted for regular, deep, move-out, and office cleanings. $100 minimum.<br>
+          </p>
+          <a href="/profiles/valery.html" class="viewprofile-button">View Profile</a>
+          <div class="pro-social-row">
+            <a href="https://www.yelp.com/biz/valerys-cleaning-san-fernando-valley" target="_blank" title="Yelp"><img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="Yelp"></a>
+            <a href="https://www.instagram.com/valeryscleaning/" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/valeryscleaning/" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
+          </div>
         </div>
-        <a href="/profiles/valery.html" class="pro-profile-btn">View Profile</a>
-        <div class="pro-social-row">
-          <a href="https://www.yelp.com/biz/valerys-cleaning-san-fernando-valley" target="_blank" title="Yelp">
-            <img src="https://cdn-icons-png.flaticon.com/24/174/174857.png" alt="Yelp">
-          </a>
-          <a href="https://www.instagram.com/valeryscleaning/" target="_blank" title="Instagram">
-            <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram">
-          </a>
-          <a href="https://www.facebook.com/valeryscleaning/" target="_blank" title="Facebook">
-            <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook">
-          </a>
+        <!-- PRO CARD 2 -->
+        <div class="tile">
+          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Green Clean Pro">
+          <h3>Green Clean Pro</h3>
+          <div class="pro-stars">★★★★☆ <span style="color:#888; font-size:0.96em;">(28 reviews)</span></div>
+          <div class="city-marker">📍 Sherman Oaks, CA</div>
+          <p>
+            Eco-friendly, non-toxic cleaning for homes and offices. Licensed, insured. English, Spanish. Credit Card & Zelle accepted.
+          </p>
+          <a href="/profiles/greencleanpro.html" class="viewprofile-button">View Profile</a>
         </div>
-        <div style="margin-top:0.5rem; font-size:0.98rem;">
-          <strong>Business Hours:</strong> Mon–Fri 8am–6pm, Sat 9am–4pm<br>
-          <strong>Contact:</strong> <a href="tel:8185554321" style="color:var(--cl-accent);text-decoration:underline;">(818) 555-4321</a>
+        <!-- PRO CARD 3 -->
+        <div class="tile">
+          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Moveout Maids">
+          <h3>Moveout Maids</h3>
+          <div class="pro-stars">★★★★★ <span style="color:#888; font-size:0.96em;">(19 reviews)</span></div>
+          <div class="city-marker">📍 Woodland Hills, CA</div>
+          <p>
+            Specializing in move-in/out, apartment, and detail cleanings. Fast scheduling. English only. Cash, Venmo accepted.
+          </p>
+          <a href="/profiles/moveoutmaids.html" class="viewprofile-button">View Profile</a>
+        </div>
+        <!-- PRO CARD 4 -->
+        <div class="tile">
+          <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Office Sparkle">
+          <h3>Office Sparkle</h3>
+          <div class="pro-stars">★★★★☆ <span style="color:#888; font-size:0.96em;">(11 reviews)</span></div>
+          <div class="city-marker">📍 Encino, CA</div>
+          <p>
+            Commercial & office cleaning. Recurring or one-time. Licensed, bonded, insured. English, Tagalog. PayPal, Credit Card, Zelle.
+          </p>
+          <a href="/profiles/officesparkle.html" class="viewprofile-button">View Profile</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
   <section class="services-section" id="services">
     <h2>Our Cleaning Services</h2>
     <ul class="services-list">
@@ -581,14 +488,14 @@
   </section>
   <section class="contact-section">
     <a href="/contact.html" class="cta-btn">Get Started with a Cleaning Today</a>
-    <p style="margin-top:0.9rem; font-size: 1rem; color: var(--cl-primary);">Questions? <a href="mailto:support@coldlooms.com" style="color: var(--cl-accent); text-decoration: underline;">Email our support team</a></p>
+    <p style="margin-top:0.9rem; font-size: 1rem; color: #212c44;">Questions? <a href="mailto:support@coldlooms.com" style="color: #34b3a0; text-decoration: underline;">Email our support team</a></p>
   </section>
   <dialog id="lead-popup" class="popup-modal">
     <div class="popup-content">
       <button type="button" aria-label="Close popup" onclick="closeLeadPopup()">&times;</button>
       <h2>
         Get Your Cleaning Project Started!<br>
-        <span style="font-size:1rem;font-weight:normal;color:var(--cl-accent);">Tell us about your cleaning needs</span>
+        <span style="font-size:1rem;font-weight:normal;color:#34b3a0;">Tell us about your cleaning needs</span>
       </h2>
       <form id="lead-form" action="https://formspree.io/f/xvgkljww" method="POST" autocomplete="on" enctype="multipart/form-data">
         <label for="cleaning-type">What do you need cleaned?</label>
