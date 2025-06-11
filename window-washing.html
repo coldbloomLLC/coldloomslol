@@ -1,505 +1,848 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Window Washing Services | Cold Looms</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Junk Removal – Cold Looms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Montserrat and Inter fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
   <style>
-    .tag {
-      background: #e0f2f1;
-      color: #00796b;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      user-select: none;
-    }
-    .active-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      justify-content: flex-start;
+    :root {
+      --bg-gray: #f6f7fa;
+      --card-bg: #fff;
+      --border: #e0e3ea;
+      --primary: #0366d6;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --radius: 18px;
+      --sidebar-width: 320px;
+      --gap: 32px;
+      --map-width: 350px;
+      --ios-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      height: 100%;
+      background: var(--bg-gray);
+      color: var(--text);
+      font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+      font-size: 16px;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
     }
-    h1.page-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-top: 2rem;
-      background: linear-gradient(to right, #00796b, #00bfa5);
-      -webkit-background-clip: text;
-      color: transparent;
+    body {
+      min-height: 100vh;
+      overscroll-behavior-y: none;
     }
-    .main-layout {
+    .container {
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
-      max-width: 1600px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .sidebar {
-      background: #e0f2f1;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      max-width: 1440px;
+      margin: 0 auto;
       min-height: 100vh;
-      width: 280px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 2rem;
-      font-size: 1rem;
+      padding: 0;
+      background: var(--bg-gray);
     }
-    .sidebar h3 {
-      font-size: 1.8rem;
-      margin-top: 0;
-      margin-bottom: 2rem;
-      background: #00796b;
-      color: white;
-      padding: 0.8rem 1rem;
-      border-radius: 10px;
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: #fff;
+      border-right: 1px solid var(--border);
+      padding: 32px 24px 24px 24px;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      height: 100vh;
+      box-sizing: border-box;
+      z-index: 10;
+      min-width: 260px;
+      box-shadow: var(--ios-shadow);
+      border-radius: 0 0 var(--radius) var(--radius);
+      transition: box-shadow 0.2s, transform 0.32s cubic-bezier(.33,1,.68,1);
+      display: block;
+    }
+    .logo-wrapper {
       text-align: center;
+      margin-bottom: 26px;
+    }
+    .coldlooms-logo {
+      max-width: 170px;
+      height: auto;
+      margin-bottom: 4px;
+      display: inline-block;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #f6f7fa;
+    }
+    .sidebar h2 {
+      font-size: 1.13rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
     }
     .filter-group {
-      margin-bottom: 2.5rem;
-      border: none;
-      padding: 0;
+      margin-bottom: 22px;
     }
-    .filter-group legend {
-      font-weight: bold;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      color: #045c52;
+    .filter-label {
+      font-size: 1.02rem;
+      font-weight: 500;
+      margin-bottom: 7px;
+      display: block;
+      color: var(--muted);
     }
-    .filter-group label {
+    .sidebar input[type="text"], 
+    .sidebar input[type="number"],
+    .sidebar select {
+      width: 100%;
+      padding: 14px 14px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      font-family: inherit;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+      background: #fbfbfb;
+      box-sizing: border-box;
+      transition: border 0.15s;
+      appearance: none;
+      outline: none;
+    }
+    .sidebar input[type="text"]:focus, 
+    .sidebar input[type="number"]:focus,
+    .sidebar select:focus {
+      border: 1.5px solid var(--primary);
+      background: #f0f7ff;
+    }
+    .sidebar .range-group {
       display: flex;
       align-items: center;
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
+      gap: 10px;
+    }
+    .sidebar .range-group input[type="number"] {
+      width: 80px;
+      margin-bottom: 0;
+    }
+    .sidebar .slider {
+      width: 100%;
+      margin: 0 0 8px 0;
+      accent-color: var(--primary);
+      height: 4px;
+    }
+    .filter-stars {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+    .filter-stars input[type="radio"] {
+      display: none;
+    }
+    .filter-stars label {
+      font-size: 1.5em;
+      color: #ddd;
       cursor: pointer;
+      transition: color 0.2s;
+      touch-action: manipulation;
     }
-    .filter-group input {
-      margin-right: 0.5rem;
-      accent-color: #00bfa5;
+    .filter-stars input:checked ~ label,
+    .filter-stars label:hover,
+    .filter-stars label:hover ~ label {
+      color: #f8b600;
     }
-    .reset-link {
-      color: #00796b;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
+    .sidebar .btn-apply {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 13px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      width: 100%;
+      padding: 15px 0;
+      margin-top: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(3,102,214,0.07);
+      transition: background 0.2s;
     }
-    .tile-grid {
+    .sidebar .btn-apply:hover, .sidebar .btn-apply:active {
+      background: #0447a0;
+    }
+    .location-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .sidebar .btn-location {
+      flex-shrink: 0;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 0.97rem;
+      font-weight: 600;
+      padding: 10px 13px;
+      margin: 0;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(3,102,214,0.08);
+      letter-spacing: 0.03em;
+    }
+    .sidebar .btn-location:active {
+      background: #0447a0;
+    }
+    .user-coords {
+      color: #444;
+      font-size: 0.99em;
+      margin-top: 4px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      min-height: 20px;
+    }
+    .main-content {
       flex: 1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      background-color: #f9fdfc;
-      padding: 1rem;
-      border-radius: 12px;
-    }
-    .tile {
-      border-radius: 16px;
-      padding: 1.8rem;
-      color: #004d40;
-      background-color: #ffffff;
-      border: 1px solid #e0e0e0;
+      padding: 40px 20px 32px 20px;
       display: flex;
       flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
+    .results-header {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
       text-align: center;
-      transition: all 0.3s ease-in-out;
+      margin-top: 20px;
     }
-    .tile:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    .pro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+      margin-bottom: 8px;
     }
-    .tile img {
-      width: 64px;
-      height: 64px;
+    .pro-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px rgba(40,60,90,0.13);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 20px 18px 20px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      min-width: 0;
+      will-change: box-shadow, border-color;
+      touch-action: manipulation;
+    }
+    .pro-card[hidden] { display: none !important; }
+    .pro-card:hover {
+      box-shadow: 0 8px 32px rgba(40,60,90,0.18);
+      border-color: #badcff;
+    }
+    .pro-card-header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 13px;
+    }
+    .pro-img {
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
-      margin: auto;
-      border: 3px solid #00bfa5;
-      padding: 2px;
+      object-fit: cover;
+      background: #e3e7ed;
+      margin-right: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #a0aec0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    .viewprofile-button {
-      margin-top: 1rem;
+    .pro-info {
+      flex: 1;
+    }
+    .pro-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 3px 0;
+      letter-spacing: 0.01em;
+    }
+    .pro-rating {
+      font-size: 1.03rem;
+      color: #f8b600;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .pro-rating .star {
+      color: #f8b600;
+    }
+    .pro-category {
+      font-size: 0.99rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 7px;
+      margin-top: 2px;
+      letter-spacing: 0.01em;
+    }
+    .pro-desc {
+      font-size: 1.01rem;
+      color: var(--muted);
+      margin-bottom: 13px;
+      min-height: 38px;
+      flex: 1;
+      letter-spacing: 0.01em;
+    }
+    .pro-price {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #19bd76;
+      margin-bottom: 12px;
+    }
+    .pro-card .btn-profile {
       display: inline-block;
-      background: transparent;
-      color: #00796b;
-      border: 2px solid #00bfa5;
-      padding: 0.6rem 1.6rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s, color 0.2s, border 0.2s;
-      cursor: pointer;
-    }
-    .viewprofile-button:hover, .viewprofile-button:focus {
-      background: #00bfa5;
+      background: var(--primary);
       color: #fff;
-      border-color: #00796b;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.04rem;
+      padding: 11px 22px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-top: auto;
+      align-self: flex-start;
+      box-shadow: 0 2px 10px rgba(3,102,214,0.13);
     }
-    @media (max-width: 768px) {
-      .main-layout {
+    .pro-card .btn-profile:active, .pro-card .btn-profile:hover {
+      background: #0447a0;
+    }
+    .map-section {
+      width: var(--map-width);
+      min-width: 280px;
+      max-width: 400px;
+      background: #fff;
+      border-left: 1px solid var(--border);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      box-shadow: var(--ios-shadow);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .map-placeholder, .map-section iframe {
+      width: 95%;
+      height: 88%;
+      border-radius: var(--radius);
+      border: 2px dashed #c4d3e3;
+      background: #f4faff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5e768e;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .map-section iframe {
+      border: 0;
+      width: 95%;
+      height: 88%;
+      min-width: 220px;
+      min-height: 220px;
+      border-radius: var(--radius);
+      background: #f4faff;
+      display: block;
+      padding: 0;
+    }
+    .no-pros-message {
+      margin: 40px auto 0 auto;
+      font-size: 1.18rem;
+      color: var(--muted);
+      text-align: center;
+      background: #fff;
+      border-radius: 14px;
+      max-width: 490px;
+      box-shadow: 0 2px 10px rgba(40,40,60,0.07);
+      padding: 27px 20px;
+      border: 1px solid #e5e8ee;
+      display: none;
+    }
+    @media (max-width: 700px) {
+      html, body {
+        font-size: 15px;
+        background: var(--bg-gray);
+        overflow-x: hidden;
+      }
+      .container {
         flex-direction: column;
-        align-items: center;
+        min-height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      .main-content {
+        padding: 15px 2vw 24px 2vw;
+        width: 100vw;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
+      .results-header {
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin-top: 10px;
+        margin-bottom: 12px;
+      }
+      .pro-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 2px;
+      }
+      .pro-card {
+        padding: 18px 10px 14px 10px;
+        border-radius: 15px;
+      }
+      .pro-card-header {
+        margin-bottom: 8px;
+      }
+      .pro-img {
+        width: 52px;
+        height: 52px;
+        font-size: 1.6rem;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+      .logo-wrapper {
+        margin-top: 10px;
+        margin-bottom: 13px;
+      }
+      .coldlooms-logo {
+        max-width: 120px;
+        border-radius: 10px;
       }
       .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        min-width: 0;
+        width: 100vw;
+        max-width: 100vw;
+        z-index: 200;
+        box-shadow: 0 8px 38px rgba(50,60,120,0.18);
+        border-radius: 0 0 18px 18px;
+        transform: translateX(-105%);
+        transition: transform 0.32s cubic-bezier(.33,1,.68,1);
+        border-right: none;
+        border-bottom: 1px solid #e3e3e7;
+        padding: 28px 10vw 20px 10vw;
+        box-sizing: border-box;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: block;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar .btn-apply,
+      .sidebar .btn-location {
+        font-size: 1.09rem;
+        border-radius: 11px;
+        padding: 13px 0;
+      }
+      .filter-group {
+        margin-bottom: 17px;
+      }
+      .sidebar input[type="text"], 
+      .sidebar input[type="number"],
+      .sidebar select {
+        padding: 13px 10px;
+        font-size: 1.03rem;
+        border-radius: 9px;
+      }
+      .map-section {
+        display: none !important;
+      }
+      .sidebar-backdrop {
         display: none;
-        width: 100%;
-        margin-bottom: 2rem;
+        position: fixed;
+        left: 0; top: 0; right: 0; bottom: 0;
+        z-index: 100;
+        background: rgba(55,65,81,0.22);
+        backdrop-filter: blur(2px);
+        width: 100vw;
+        height: 100vh;
       }
-      .sidebar.active {
+      .sidebar-backdrop.active {
         display: block;
       }
-      .tile-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .filter-toggle {
-      background-color: #00796b;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 10px;
-      margin: 1rem auto;
-      display: none;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .filter-toggle {
+      .show-filters-btn {
         display: block;
+        margin: 16px auto 22px auto;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        font-size: 1.13rem;
+        font-weight: 700;
+        padding: 17px 0;
+        width: 97vw;
+        max-width: 500px;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(3,102,214,0.11);
       }
-    }
-    .city-bar {
-      text-align:center; 
-      font-size:1.1rem; 
-      margin-bottom: 1rem; 
-      color:#045c52;
-    }
-    .city-bar a { color: #00796b; text-decoration: underline; cursor: pointer; }
-    .filter-subgroup {
-      margin-bottom: 1.2rem;
-    }
-    .filter-subgroup legend {
-      font-weight: normal;
-      font-size: 1.02rem;
-      color: #009688;
-      margin-bottom: 0.5rem;
+      .show-filters-btn:active {
+        background: #0447a0;
+      }
+      body.sidebar-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100vw;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar" style="background:#f5f5f5; padding:1rem 0; box-shadow:0 1px 5px rgba(0,0,0,0.1);">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:0 1rem;">
-      <a href="index.html" class="nav-logo" style="color:#00796b; font-weight:bold; font-size:1.5rem; text-decoration:none;">Cold Looms</a>
-      <a href="#" class="sign-in" onclick="document.getElementById('login-modal').style.display='block'" style="color:#00796b; font-weight:bold; text-decoration:none;">Sign In</a>
-    </div>
-  </nav>
-  <h1 class="page-title">Window Washing Pros</h1>
-  <div class="city-bar" id="city-bar">Detecting your city...</div>
-  <section class="main-layout">
-    <aside class="sidebar">
-      <h3>FILTER</h3>
-      <fieldset class="filter-group">
-        <legend>Service Type</legend>
-        <label><input type="checkbox" value="Window Washing" /> Window Washing</label>
-        <label><input type="checkbox" value="Screen Cleaning" /> Screen Cleaning</label>
-        <label><input type="checkbox" value="Track Cleaning" /> Track Cleaning</label>
-        <label><input type="checkbox" value="Hard Water Stain Removal" /> Hard Water Stain Removal</label>
-        <label><input type="checkbox" value="Interior Windows" /> Interior Windows</label>
-        <label><input type="checkbox" value="Exterior Windows" /> Exterior Windows</label>
-        <label><input type="checkbox" value="Skylight Cleaning" /> Skylight Cleaning</label>
-        <label><input type="checkbox" value="Mirror Cleaning" /> Mirror Cleaning</label>
-        <label><input type="checkbox" value="Solar Panel Cleaning" /> Solar Panel Cleaning</label>
-        <label><input type="checkbox" value="Gutter Cleaning" /> Gutter Cleaning</label>
-        <label><input type="checkbox" value="Same Day" /> Same Day</label>
-        <label><input type="checkbox" value="Residential" /> Residential</label>
-        <label><input type="checkbox" value="Commercial" /> Commercial</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Property</legend>
-        <label><input type="checkbox" value="Residential" /> Residential</label>
-        <label><input type="checkbox" value="Commercial" /> Commercial</label>
-        <label><input type="checkbox" value="Emergency" /> Emergency</label>
-        <label><input type="checkbox" value="Recurring" /> Recurring</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Pro Credentials</legend>
-        <div class="filter-subgroup">
-          <legend>License</legend>
-          <label><input type="checkbox" value="Licensed" /> Licensed</label>
-          <label><input type="checkbox" value="Bonded" /> Bonded</label>
-          <label><input type="checkbox" value="Insured" /> Insured</label>
+  <div class="container">
+    <!-- iOS-style Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <!-- Sidebar / Filters -->
+    <aside class="sidebar" id="filters-sidebar">
+      <div class="logo-wrapper">
+        <a href="/">
+          <img src="https://i.ibb.co/h1Fv6dzj/NEWLOGOLOL.png" alt="Cold Looms Logo" class="coldlooms-logo">
+        </a>
+      </div>
+      <h2>Filter Pros</h2>
+      <div class="filter-group">
+        <label class="filter-label" for="search">What service do you need?</label>
+        <input type="text" id="search" placeholder="What service do you need?" autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="location">Location</label>
+        <div class="location-group">
+          <input type="text" id="location" placeholder="ZIP code or City" autocomplete="off">
+          <button type="button" class="btn-location" id="use-location-btn" title="Use my location">Use My Location</button>
         </div>
-        <div class="filter-subgroup">
-          <legend>Experience</legend>
-          <label><input type="checkbox" value="5+ Years Experience" /> 5+ Years</label>
-          <label><input type="checkbox" value="10+ Years Experience" /> 10+ Years</label>
+        <div class="user-coords">
+          <span id="user-lat"></span>
+          <span id="user-lng"></span>
         </div>
-        <div class="filter-subgroup">
-          <legend>Rating</legend>
-          <label><input type="checkbox" value="★★★★★" /> 5 Stars</label>
-          <label><input type="checkbox" value="★★★★☆" /> 4+ Stars</label>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="haul-size">Haul Size</label>
+        <select id="haul-size">
+          <option value="">All Haul Sizes</option>
+          <option value="small">Small Load – fits in the back of a midsize vehicle</option>
+          <option value="medium">Medium Load – about half of a standard truck bed</option>
+          <option value="large">Large Load – fills one full truck bed</option>
+          <option value="xl">XL Load – roughly two truck beds’ worth</option>
+          <option value="xxl">XXL Load – three or more truckloads</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Rating</span>
+        <div class="filter-stars">
+          <input type="radio" id="star5" name="rating" value="5">
+          <label for="star5">&#9733;</label>
+          <input type="radio" id="star4" name="rating" value="4">
+          <label for="star4">&#9733;</label>
+          <input type="radio" id="star3" name="rating" value="3">
+          <label for="star3">&#9733;</label>
+          <input type="radio" id="star2" name="rating" value="2">
+          <label for="star2">&#9733;</label>
+          <input type="radio" id="star1" name="rating" value="1">
+          <label for="star1">&#9733;</label>
         </div>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Availability</legend>
-        <label><input type="checkbox" value="Available Now" /> Available Now</label>
-        <label><input type="checkbox" value="Same Day" /> Same Day</label>
-        <label><input type="checkbox" value="Weekend" /> Weekend</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Payment Methods</legend>
-        <label><input type="checkbox" value="Cash" /> Cash</label>
-        <label><input type="checkbox" value="Credit Card" /> Credit Card</label>
-        <label><input type="checkbox" value="Venmo" /> Venmo</label>
-        <label><input type="checkbox" value="Zelle" /> Zelle</label>
-        <label><input type="checkbox" value="PayPal" /> PayPal</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Languages</legend>
-        <label><input type="checkbox" value="English" /> English</label>
-        <label><input type="checkbox" value="Spanish" /> Spanish</label>
-        <label><input type="checkbox" value="Mandarin" /> Mandarin</label>
-        <label><input type="checkbox" value="Tagalog" /> Tagalog</label>
-      </fieldset>
-      <fieldset class="filter-group">
-        <legend>Service Area</legend>
-        <label><input type="checkbox" value="Within 5 miles" /> Within 5 miles</label>
-        <label><input type="checkbox" value="Within 10 miles" /> Within 10 miles</label>
-        <label><input type="checkbox" value="Within 25 miles" /> Within 25 miles</label>
-        <label><input type="checkbox" value="Remote" /> Remote/Virtual</label>
-      </fieldset>
-      <a href="#" class="reset-link">Reset filters</a>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="availability">Availability</label>
+        <select id="availability">
+          <option value="">Anytime</option>
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Price Range ($)</label>
+        <div class="range-group">
+          <input type="number" id="min-price" placeholder="Min" min="0">
+          <span>–</span>
+          <input type="number" id="max-price" placeholder="Max" min="0">
+        </div>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="distance">Distance (miles)</label>
+        <input type="range" id="distance" min="5" max="50" step="1" value="25" class="slider">
+        <div style="font-size:0.97em; color: var(--muted);">
+          <span id="distance-value">25</span> miles
+        </div>
+      </div>
+      <button class="btn-apply" type="button">Apply Filters</button>
     </aside>
-    <button class="filter-toggle" onclick="toggleFilters()">Toggle Filters</button>
-    <div class="active-tags" id="active-tags"></div>
-    <div class="tile-grid">
-      <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Streak-Free Windows">
-        <h3><strong>Streak-Free Windows</strong> <span style="color: #00bfa5;">✔️</span></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Residential & commercial window washing, screen & track cleaning. Licensed, Insured. 10+ Years Experience. English, Spanish. Credit Card, Zelle accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="profiles/streakfreewindows.html" class="viewprofile-button">View Profile</a>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- For mobile: show filters button -->
+      <button class="show-filters-btn" type="button" id="show-filters-btn">Show Filters</button>
+      <div class="results-header">Browse Local Pros</div>
+      <section class="pro-grid" id="pro-grid">
+        <!-- Sample Service Pro Card 1 -->
+        <article class="pro-card" data-location="Los Angeles, CA">
+          <div class="pro-card-header">
+            <div class="pro-img">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" style="width:100%;height:100%;border-radius:50%;">
+            </div>
+            <div class="pro-info">
+              <div class="pro-name">John's Junk Removal</div>
+              <div class="pro-rating">
+                <span class="star">&#9733;</span> 4.8 (120)
+              </div>
+              <div class="pro-category">Junk Removal</div>
+            </div>
+          </div>
+          <div class="pro-desc">
+            Fast, affordable junk removal for homes & offices. Same-day service available!
+          </div>
+          <div class="pro-price">$80–$200</div>
+          <a href="#" class="btn-profile">View Profile</a>
+        </article>
+        <!-- Sample Service Pro Card 2 -->
+        <article class="pro-card" data-location="Santa Monica, CA">
+          <div class="pro-card-header">
+            <div class="pro-img">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Smith" style="width:100%;height:100%;border-radius:50%;">
+            </div>
+            <div class="pro-info">
+              <div class="pro-name">Sarah's Yard Cleanup</div>
+              <div class="pro-rating">
+                <span class="star">&#9733;</span> 5.0 (98)
+              </div>
+              <div class="pro-category">Yard Cleanup</div>
+            </div>
+          </div>
+          <div class="pro-desc">
+            Lawn care, leaf removal, and landscaping. Making your yard shine!
+          </div>
+          <div class="pro-price">$60–$150</div>
+          <a href="#" class="btn-profile">View Profile</a>
+        </article>
+        <!-- Sample Service Pro Card 3 -->
+        <article class="pro-card" data-location="Pasadena, CA">
+          <div class="pro-card-header">
+            <div class="pro-img">
+              <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Mike Lee" style="width:100%;height:100%;border-radius:50%;">
+            </div>
+            <div class="pro-info">
+              <div class="pro-name">Mike's Moving Help</div>
+              <div class="pro-rating">
+                <span class="star">&#9733;</span> 4.7 (89)
+              </div>
+              <div class="pro-category">Moving Help</div>
+            </div>
+          </div>
+          <div class="pro-desc">
+            Reliable moving services for apartments, homes, and offices.
+          </div>
+          <div class="pro-price">$120–$400</div>
+          <a href="#" class="btn-profile">View Profile</a>
+        </article>
+        <article class="pro-card" data-location="Long Beach, CA">
+          <div class="pro-card-header">
+            <div class="pro-img">
+              <img src="https://randomuser.me/api/portraits/women/78.jpg" alt="Linda Wu" style="width:100%;height:100%;border-radius:50%;">
+            </div>
+            <div class="pro-info">
+              <div class="pro-name">Linda's Cleaning Co.</div>
+              <div class="pro-rating">
+                <span class="star">&#9733;</span> 4.9 (142)
+              </div>
+              <div class="pro-category">Cleaning</div>
+            </div>
+          </div>
+          <div class="pro-desc">
+            Thorough home and office cleaning with eco-friendly products.
+          </div>
+          <div class="pro-price">$75–$180</div>
+          <a href="#" class="btn-profile">View Profile</a>
+        </article>
+        <!-- Add more cards as needed -->
+      </section>
+      <div class="no-pros-message" id="no-pros-message">
+        Enter your location to see available pros in your area.
       </div>
-      <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Eco Shine Glass">
-        <h3><strong>Eco Shine Glass</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Eco-friendly products, hard water stain & skylight cleaning. Licensed, Bonded. 10+ Years Experience. English, Tagalog. Cash, Venmo accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="profiles/ecoshineglass.html" class="viewprofile-button">View Profile</a>
-      </div>
-      <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Rapid Response Window Pros">
-        <h3><strong>Rapid Response Window Pros</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Emergency, same-day, and recurring service. Insured. 5+ Years Experience. English, Mandarin. Credit Card, PayPal accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★★</p>
-        <a href="profiles/rapidresponsewindow.html" class="viewprofile-button">View Profile</a>
-      </div>
-      <div class="tile">
-        <img src="https://i.ibb.co/JRZ5M3v/placeholder-profile.png" alt="Sparkle Pane Services">
-        <h3><strong>Sparkle Pane Services</strong></h3>
-        <p class="city-marker">📍 <span class="city-name"></span>, CA</p>
-        <p>Interior/exterior windows, mirrors, solar panel cleaning. Bonded. 10+ Years Experience. English. Cash, Zelle, Venmo accepted.</p>
-        <p style="color: #ffaa00; font-size: 1.2rem;">★★★★☆</p>
-        <a href="profiles/sparklepane.html" class="viewprofile-button">View Profile</a>
-      </div>
-    </div>
-  </section>
-  <footer style="background:#f9f9f9; padding:3rem 1rem;">
-    <div style="max-width:1200px; margin:auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align:left;">
-      <div>
-        <h4 style="color:#045c52;">Cold Looms</h4>
-        <ul style="list-style:none; padding:0;">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Partner with Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#045c52;">Customers</h4>
-        <ul style="list-style:none; padding:0;">
-          <li><a href="#">How It Works</a></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Services Near Me</a></li>
-          <li><a href="#">Cost Estimates</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#045c52;">Pros</h4>
-        <ul style="list-style:none; padding:0;">
-          <li><a href="#">Sign Up as a Pro</a></li>
-          <li><a href="#">Pro Resources</a></li>
-          <li><a href="#">Pro Reviews</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:#045c52;">Support</h4>
-        <ul style="list-style:none; padding:0;">
-          <li><a href="#">Help</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-  <div style="text-align:center; margin: 2rem 0;">
-    <a href="https://www.instagram.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" />
-    </a>
-    <a href="https://www.facebook.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook" />
-    </a>
-    <a href="https://www.twitter.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/733/733579.png" alt="Twitter" />
-    </a>
-    <a href="mailto:info@coldlooms.com" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/24/732/732200.png" alt="Email" />
-    </a>
+    </main>
+    <!-- Map (hidden on mobile) -->
+    <aside class="map-section">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.8830297217!2d-118.74138205907403!3d34.02003919141475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1749657615463!5m2!1sen!2sus" 
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </aside>
   </div>
-  <!-- LOGIN MODAL -->
-  <div id="login-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;">
-    <div style="background:white; width:90%; max-width:400px; margin:10% auto; padding:2rem; border-radius:12px; position:relative;">
-      <span onclick="document.getElementById('login-modal').style.display='none'" style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold;">✖</span>
-      <h2 style="margin-top:0; color:#045c52;">Sign In</h2>
-      <form id="login-form">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required style="width:100%; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:6px;">
-        <button type="submit" style="width:100%; padding:0.7rem; background-color:#00bfa5; color:white; border:none; border-radius:8px; font-weight:bold;">Login</button>
-      </form>
-    </div>
-  </div>
-</body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const tagContainer = document.getElementById("active-tags");
-    const checkboxes = document.querySelectorAll(".sidebar input[type='checkbox'], .sidebar input[type='radio']");
-    const tiles = document.querySelectorAll(".tile");
-
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener("change", () => {
-        const activeFilters = Array.from(checkboxes)
-          .filter(box => box.checked)
-          .map(box => box.value);
-
-        tiles.forEach(tile => {
-          const content = tile.textContent.toLowerCase();
-          const isMatch = activeFilters.length === 0 || activeFilters.every(filter => content.includes(filter.toLowerCase()));
-          tile.style.display = isMatch ? "flex" : "none";
-
-          const paragraphs = tile.querySelectorAll("p");
-          paragraphs.forEach(p => {
-            let text = p.textContent;
-            activeFilters.forEach(filter => {
-              const regex = new RegExp(`(${filter})`, 'gi');
-              text = text.replace(regex, '<mark>$1</mark>');
-            });
-            p.innerHTML = text;
-          });
-        });
-
-        tagContainer.innerHTML = "";
-        activeFilters.forEach(filter => {
-          const tag = document.createElement("span");
-          tag.className = "tag";
-          tag.textContent = filter + " ✕";
-          tag.onclick = () => {
-            checkboxes.forEach(box => {
-              if (box.value === filter) box.checked = false;
-            });
-            const event = new Event('change');
-            checkboxes[0].dispatchEvent(event);
-          };
-          tagContainer.appendChild(tag);
-        });
-      });
-    });
-
-    const resetLink = document.querySelector(".reset-link");
-    if (resetLink) {
-      resetLink.addEventListener("click", () => {
-        checkboxes.forEach(box => box.checked = false);
-        tiles.forEach(tile => tile.style.display = "flex");
-        tagContainer.innerHTML = "";
+  <script>
+    // Update distance value label
+    const distanceInput = document.getElementById('distance');
+    const distanceValue = document.getElementById('distance-value');
+    if(distanceInput && distanceValue) {
+      distanceInput.addEventListener('input', function() {
+        distanceValue.textContent = this.value;
       });
     }
-
-    // SIMPLE CLIENT-SIDE LOGIN
-    const loginForm = document.getElementById('login-form');
-    const loginModal = document.getElementById('login-modal');
-    const signInBtn = document.querySelector('.sign-in');
-
-    function showSignedIn(email) {
-      if (signInBtn) {
-        signInBtn.textContent = "Signed in as " + email;
-        signInBtn.style.pointerEvents = "none";
-        signInBtn.style.opacity = "0.6";
+    function handleResize() {
+      const sidebar = document.getElementById('filters-sidebar');
+      const btn = document.getElementById('show-filters-btn');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if(window.innerWidth <= 700) {
+        sidebar.classList.remove('open');
+        sidebar.style.display = '';
+        btn.style.display = 'block';
+        backdrop.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+      } else {
+        sidebar.classList.remove('open');
+        sidebar.style.display = '';
+        btn.style.display = 'none';
+        backdrop.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
       }
     }
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('DOMContentLoaded', handleResize);
 
-    if (loginForm) {
-      loginForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = loginForm.email.value;
-        localStorage.setItem("signedInEmail", email);
-        if (loginModal) loginModal.style.display = "none";
-        showSignedIn(email);
-      });
-    }
+    // Mobile sidebar open/close and backdrop
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('filters-sidebar');
+      const btn = document.getElementById('show-filters-btn');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (btn && sidebar && backdrop) {
+        btn.addEventListener('click', function() {
+          sidebar.classList.add('open');
+          backdrop.classList.add('active');
+          document.body.classList.add('sidebar-open');
+        });
+        backdrop.addEventListener('click', function() {
+          sidebar.classList.remove('open');
+          backdrop.classList.remove('active');
+          document.body.classList.remove('sidebar-open');
+        });
+      }
+    });
 
-    // On page load, restore sign-in state
-    const savedEmail = localStorage.getItem("signedInEmail");
-    if (savedEmail) {
-      showSignedIn(savedEmail);
-    }
+    // Geolocation functionality for "Use My Location"
+    document.addEventListener('DOMContentLoaded', function() {
+      const useLocationBtn = document.getElementById('use-location-btn');
+      const userLat = document.getElementById('user-lat');
+      const userLng = document.getElementById('user-lng');
 
-    // CITY DETECTOR
-    function updateCity(city) {
-      const cityBar = document.getElementById('city-bar');
-      cityBar.innerHTML = city
-        ? `Showing pros in <b>${city}, CA</b> <span style="font-size:.9em">(not your city? <a href="#" onclick="showCityPrompt();return false;">change</a>)</span>`
-        : 'Unable to detect city. <a href="#" onclick="showCityPrompt();return false;">Enter manually?</a>';
-      document.querySelectorAll('.city-name').forEach(span => span.textContent = city || "Unknown");
-    }
-    window.showCityPrompt = function() {
-      const entry = prompt("Enter your city (e.g. Northridge):");
-      if(entry) updateCity(entry.trim());
-    }
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        const lat = pos.coords.latitude, lon = pos.coords.longitude;
-        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-          .then(resp=>resp.json()).then(data=>{
-            let city = data.address.city || data.address.town || data.address.village || data.address.hamlet || "";
-            if(!city && data.address.suburb) city = data.address.suburb;
-            updateCity(city || null);
-          }).catch(()=>updateCity(null));
-      }, function() { updateCity(null); });
-    } else {
-      updateCity(null);
-    }
-  });
+      if (useLocationBtn) {
+        useLocationBtn.addEventListener('click', function() {
+          useLocationBtn.disabled = true;
+          useLocationBtn.textContent = 'Locating...';
 
-  function toggleFilters() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('active');
-  }
-</script>
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              const lat = position.coords.latitude;
+              const lng = position.coords.longitude;
+              console.log("User location:", lat, lng);
+              userLat.textContent = "Lat: " + lat.toFixed(5) + " ";
+              userLng.textContent = "Lng: " + lng.toFixed(5);
+              useLocationBtn.textContent = 'Use My Location';
+              useLocationBtn.disabled = false;
+            },
+            function (error) {
+              console.error("Location error:", error.message);
+              userLat.textContent = "";
+              userLng.textContent = "";
+              useLocationBtn.textContent = 'Use My Location';
+              useLocationBtn.disabled = false;
+            }
+          );
+        });
+      }
+
+      // The rest of your filtering code can stay as before...
+      const searchInput = document.getElementById('search');
+      const locationInput = document.getElementById('location');
+      const minPriceInput = document.getElementById('min-price');
+      const maxPriceInput = document.getElementById('max-price');
+      const proGrid = document.getElementById('pro-grid');
+      const proCards = Array.from(proGrid.getElementsByClassName('pro-card'));
+      const noProsMessage = document.getElementById('no-pros-message');
+      const haulSizeInput = document.getElementById('haul-size');
+
+      function parsePrice(priceStr) {
+        let nums = priceStr.replace(/\$/g, '').replace(/\s/g, '').split('–');
+        if (nums.length === 1) nums[1] = nums[0];
+        const min = parseInt(nums[0], 10);
+        const max = parseInt(nums[1], 10);
+        return { min: isNaN(min) ? 0 : min, max: isNaN(max) ? 0 : max };
+      }
+
+      function filterProCards() {
+        const searchQuery = searchInput.value.trim().toLowerCase();
+        const locationQuery = locationInput.value.trim().toLowerCase();
+        const minPrice = parseInt(minPriceInput.value, 10);
+        const maxPrice = parseInt(maxPriceInput.value, 10);
+        const haulSizeVal = haulSizeInput.value.toLowerCase();
+
+        let anyVisible = false;
+        // Only show cards if location is filled in
+        if (!locationQuery) {
+          proCards.forEach(card => card.hidden = true);
+          noProsMessage.style.display = 'block';
+          noProsMessage.textContent = "Enter your location to see available pros in your area.";
+          return;
+        }
+
+        proCards.forEach(card => {
+          const name = card.querySelector('.pro-name')?.textContent?.toLowerCase() || '';
+          const cat = card.querySelector('.pro-category')?.textContent?.toLowerCase() || '';
+          const desc = card.querySelector('.pro-desc')?.textContent?.toLowerCase() || '';
+          const cardLocation = card.getAttribute('data-location')?.toLowerCase() || '';
+          const priceText = card.querySelector('.pro-price')?.textContent || '';
+          const { min: cardMin, max: cardMax } = parsePrice(priceText);
+
+          // Haul size filter: simple substring match (could be improved with more data structure)
+          let matchesHaul = true;
+          if (haulSizeVal) matchesHaul = desc.includes(haulSizeVal) || cat.includes(haulSizeVal);
+
+          const matchesSearch = !searchQuery || name.includes(searchQuery) || cat.includes(searchQuery) || desc.includes(searchQuery);
+          const matchesLocation = cardLocation.includes(locationQuery);
+          let matchesPrice = true;
+          if (!isNaN(minPrice)) matchesPrice = cardMax >= minPrice;
+          if (!isNaN(maxPrice)) matchesPrice = matchesPrice && cardMin <= maxPrice;
+
+          // Only show if location matches and all other filters pass
+          if (matchesLocation && matchesSearch && matchesPrice && matchesHaul) {
+            card.hidden = false;
+            anyVisible = true;
+          } else {
+            card.hidden = true;
+          }
+        });
+        noProsMessage.style.display = anyVisible ? 'none' : 'block';
+        noProsMessage.textContent = anyVisible
+          ? ''
+          : 'No pros found in your area matching your filters.';
+      }
+
+      if (searchInput) searchInput.addEventListener('input', filterProCards);
+      if (locationInput) locationInput.addEventListener('input', filterProCards);
+      if (minPriceInput) minPriceInput.addEventListener('input', filterProCards);
+      if (maxPriceInput) maxPriceInput.addEventListener('input', filterProCards);
+      if (haulSizeInput) haulSizeInput.addEventListener('input', filterProCards);
+
+      // Initial filter on page load (in case location is pre-filled)
+      filterProCards();
+    });
+  </script>
+</body>
 </html>
